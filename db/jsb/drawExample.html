@@ -1,0 +1,58 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="/gospa.js"></script>
+<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[JavaScript 前端技術]](jsb:home) </title>
+
+<p><a href="/db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="/db/book/home.html"" class="innerLink">教科書</a>  / <a href="/db/jsb/home.html"" class="innerLink">JavaScript 前端技術</a>  </p>
+
+<h1 id="">繪圖範例</h1>
+
+<ul>
+<li>參考： <a href="http://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_canvas_drawimage">http://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_canvas_drawimage</a></li>
+</ul>
+
+<h2 id="">程式範例</h2>
+
+<p>檔案： <a href="http://ccc.nqu.edu.tw/db/jsb/code/canvas/canvas.html">canvas.html</a></p>
+
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+&lt;img id="ball" width="220" height="277" src="ball.jpg" alt="The Scream" style="display:none"&gt;
+&lt;p&gt;Canvas:&lt;/p&gt;
+&lt;canvas id="myCanvas" width="240" height="297" style="border:1px solid #d3d3d3;"/&gt;
+&lt;script&gt;
+window.onload = function() {
+  var c = document.getElementById("myCanvas");
+  var ctx = c.getContext("2d");
+  var img = document.getElementById("ball");
+  ctx.drawImage(img, 10, 100);
+  ctx.beginPath();
+  ctx.strokeStyle="red";
+  ctx.rect(20,20,40,40);
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.fillStyle="#0000FF";
+  ctx.fillRect(80,20,50,50);
+  ctx.stroke();   
+  ctx.beginPath();
+  ctx.strokeStyle = "black";
+  ctx.lineWidth = 5;
+  ctx.arc(100,75,50,0,2*Math.PI);
+  ctx.stroke();   
+}
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>執行結果</p>
+
+<div class="figure"><img src="db/jsb/canvasGraphicsExample.jpg"/><p class="caption"></p></div> 
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="/gospa.js"></script>
+<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[Web 程式設計]](wp:home) </title>
+
+<p><a href="/db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="/db/book/home.html"" class="innerLink">教科書</a>  / <a href="/db/wp/home.html"" class="innerLink">Web 程式設計</a>  </p>
+
+<h1 id="servernodejsserver">簡易 Server -- 最簡單的 node.js Server</h1>
+
+<pre><code class="javascript">var http = require('http');
+http.createServer(function (req, res) {
+  res.writeHead(200, {'Content-Type': 'text/html'});
+  res.end('&lt;html&gt;&lt;head&gt;&lt;meta charset="UTF-8"&gt;&lt;/head&gt;&lt;body&gt;&lt;a href="http://tw.yahoo.com"&gt;yahoo&lt;/a&gt; Hello World 你好！&lt;/body&gt;&lt;/html&gt;\n');
+}).listen(1337);
+console.log('Server running at http://127.0.0.1:1337/');
+</code></pre>
+
+</body>
+</html>

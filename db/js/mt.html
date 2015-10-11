@@ -1,0 +1,40 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="/gospa.js"></script>
+<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[JavaScript 語言]](js:home) </title>
+
+<p><a href="/db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="/db/book/home.html"" class="innerLink">教科書</a>  / <a href="/db/js/home.html"" class="innerLink">JavaScript 語言</a>  </p>
+
+<h1 id="">英翻中系統</h1>
+
+<p>程式： mt.js</p>
+
+<pre><code class="javascript">var log = console.log;
+
+var e2c = { dog:"狗", cat:"貓", a: "一隻", chase:"追", eat:"吃" };
+
+function mt(e) {
+  var c = [];
+  for (i in e) {
+    var eword = e[i];
+    var cword = e2c[eword];
+    c.push(cword);
+  }
+  return c;
+}
+
+var c = mt(process.argv.slice(2)); // 從 process.argv 這個陣列，例如：node mt a dog chase a cat 中取出 a dog chase a cat 這個子陣列出來。
+log(c);
+</code></pre>
+
+<p>執行結果：</p>
+
+<pre><code>D:\Dropbox\cccweb\db\js\code&gt;node mt a dog chase a cat
+[ '一隻', '狗', '追', '一隻', '貓' ]
+</code></pre>
+
+</body>
+</html>

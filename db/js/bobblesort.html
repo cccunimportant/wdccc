@@ -1,0 +1,44 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="/gospa.js"></script>
+<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[JavaScript 語言]](js:home) </title>
+
+<p><a href="/db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="/db/book/home.html"" class="innerLink">教科書</a>  / <a href="/db/js/home.html"" class="innerLink">JavaScript 語言</a>  </p>
+
+<h1 id="">泡沫排序法</h1>
+
+<p>檔案: <a href="db/js/code/bobbleSort.js" class="innerLink">bobbleSort.js</a></p>
+
+<pre><code>function bobbleSort(a) {
+  for (var i=0; i&lt;a.length; i++) {
+    for (var j=0; j&lt;i; j++) {
+      if (a[i]&lt;a[j]) {
+        var t=a[i];
+        a[i] = a[j];
+        a[j] = t;
+      }
+    }
+  }
+}
+
+var x = [ 3, 9, 2, 7, 1, 8, 5, 6];
+
+console.log("x=%j", x);
+
+bobbleSort(x);
+
+console.log("x=%j", x);
+</code></pre>
+
+<p>執行結果</p>
+
+<pre><code>D:\Dropbox\cccweb\db\js\code&gt;node bobbleSort.js
+x=[3,9,2,7,1,8,5,6]
+x=[1,2,3,5,6,7,8,9]
+</code></pre>
+
+</body>
+</html>

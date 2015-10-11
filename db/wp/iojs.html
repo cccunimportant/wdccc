@@ -1,0 +1,70 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="/gospa.js"></script>
+<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[Web 程式設計]](wp:home) </title>
+
+<p><a href="/db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="/db/book/home.html"" class="innerLink">教科書</a>  / <a href="/db/wp/home.html"" class="innerLink">Web 程式設計</a>  </p>
+
+<h1 id="iojsnodejses6node">io.js -- 從 node.js 分裂出來支援 ES6 新語法的新版 node</h1>
+
+<h2 id="">安裝</h2>
+
+<p>官網： <a href="https://iojs.org/en/index.html">https://iojs.org/en/index.html</a></p>
+
+<p>下載後一直按接受就行了！</p>
+
+<h2 id="">用法</h2>
+
+<p>和 node.js 一模一樣，只是把 <code>node &lt;filename&gt;</code> 改為 <code>iojs &lt;filename&gt;</code> 而已！</p>
+
+<h2 id="">範例：讀取檔案</h2>
+
+<p>程式： coFile.js</p>
+
+<pre><code class="javascript">var co = require('co');
+var readFile = require('mz/fs').readFile;
+var c = console;
+
+co(function* () {
+  var file1 = yield readFile('coFile.js');
+  var file2 = yield readFile('coFile.js');
+
+  c.log("file1="+file1);
+  c.log("file2="+file2);
+});
+</code></pre>
+
+<p>執行結果</p>
+
+<pre><code>nqu-192-168-61-142:example mac020$ iojs coFile
+file1=var co = require('co');
+var readFile = require('mz/fs').readFile;
+var c = console;
+
+co(function* () {
+  var file1 = yield readFile('coFile.js');
+  var file2 = yield readFile('coFile.js');
+
+  c.log("file1="+file1);
+  c.log("file2="+file2);
+});
+
+
+file2=var co = require('co');
+var readFile = require('mz/fs').readFile;
+var c = console;
+
+co(function* () {
+  var file1 = yield readFile('coFile.js');
+  var file2 = yield readFile('coFile.js');
+
+  c.log("file1="+file1);
+  c.log("file2="+file2);
+});
+</code></pre>
+
+</body>
+</html>

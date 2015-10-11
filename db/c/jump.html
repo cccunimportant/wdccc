@@ -1,0 +1,64 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="/gospa.js"></script>
+<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[C 語言]](c:home) </title>
+
+<p><a href="/db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="/db/book/home.html"" class="innerLink">教科書</a>  / <a href="/db/c/home.html"" class="innerLink">C 語言</a>  </p>
+
+<h2 id="setjumplongjump">長程跳躍 -- (setjump 與 longjump) 在錯誤發生時，儲存行程狀態，執行特定程式的方法</h2>
+
+<h3 id="setjumplongjump">程式範例： setjump 與 longjump</h3>
+
+<pre><code class="CPP">#include &lt;stdio.h&gt;
+#include &lt;setjmp.h&gt;
+
+jmp_buf jumper;
+
+int div(int a, int b) {
+  if (b == 0) { // can't divide by 0
+    longjmp(jumper, -3);
+  }
+  return a / b;
+}
+
+int main(int argc, char *argv[]) {
+  int jstatus = setjmp(jumper);
+  if (jstatus == 0) {
+    int a = atoi(argv[1]);
+    int b = atoi(argv[2]);
+    printf("%d/%d", a, b);
+    int result = div(a, b);
+    printf("=%d\n", result);
+  } 
+  else if (jstatus == -3)
+    printf(" --&gt; Error:divide by zero\n");
+  else
+    printf("Unhandled Error Case");
+}
+</code></pre>
+
+<h3 id="">執行結果</h3>
+
+<pre><code>D:\cp&gt;gcc jump.c -o jump
+
+D:\cp&gt;jump 7 2
+7/2=3
+
+D:\cp&gt;jump 7 0
+7/0 --&gt; Error:divide by zero
+</code></pre>
+
+<h3 id="">參考文獻</h3>
+
+<ul>
+<li>Java2s (C / ANSI-C) » setjmp.h » longjmp, <a href="http://www.java2s.com/Code/C/setjmp.h/longjmplongjump.htm">http://www.java2s.com/Code/C/setjmp.h/longjmplongjump.htm</a></li>
+<li>Exception Handling in C without C++ -- Clean error handling without overhead, by Tom Schotland and Peter Petersen <a href="http://www.on-time.com/ddj0011.htm">http://www.on-time.com/ddj0011.htm</a></li>
+<li><a href="http://se.csai.cn/ExpertEyes/No152.htm">第16集 C语言中一种更优雅的异常处理机制</a>, 作者：王胜祥　来源：希赛网　http://www.csai.cn　2005年5月19日</li>
+<li><a href="http://se.csai.cn/ExpertEyes/No153.htm">第17集 全面了解setjmp与longjmp的使用</a>, 作者：王胜祥　来源：希赛网　http://www.csai.cn　2005年5月21日 </li>
+</ul>
+
+</body>
+</html>

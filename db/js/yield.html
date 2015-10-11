@@ -1,0 +1,114 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="/gospa.js"></script>
+<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[JavaScript 語言]](js:home) </title>
+
+<p><a href="/db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="/db/book/home.html"" class="innerLink">教科書</a>  / <a href="/db/js/home.html"" class="innerLink">JavaScript 語言</a>  </p>
+
+<h1 id="javascriptyieldgenerator">JavaScript 新語法 -- Yield (Generator)</h1>
+
+<p>想不到我買的這本書竟然有創用電子版，太棒了！</p>
+
+<ul>
+<li>ECMAScript 6入门 -- <a href="http://es6.ruanyifeng.com/">http://es6.ruanyifeng.com/</a></li>
+</ul>
+
+<h2 id="yield">yield 基礎</h2>
+
+<p>程式來源： <a href="http://www.sitepoint.com/javascript-generators-preventing-callback-hell/">http://www.sitepoint.com/javascript-generators-preventing-callback-hell/</a></p>
+
+<p>程式： yieldBasic.js</p>
+
+<pre><code class="javascript">function* HelloGen() {
+  yield 100;
+  yield 400;
+}
+
+var gen = HelloGen();
+
+console.log(gen.next()); // {value: 100, done: false}
+console.log(gen.next()); // {value: 400, done: false}
+console.log(gen.next()); // {value: undefined, done: true}
+</code></pre>
+
+<p>執行結果： </p>
+
+<pre><code>nqu-192-168-61-142:yield mac020$ iojs yieldBasic
+{ value: 100, done: false }
+{ value: 400, done: false }
+{ value: undefined, done: true }
+</code></pre>
+
+<p>程式： yieldBasic2.js</p>
+
+<pre><code class="javascript">function* HelloGen2() {
+  var a = yield 100;
+  console.log("a="+a);
+  var b = yield a + 100;
+  console.log("b="+b);
+}
+
+var gen2 = HelloGen2();
+
+console.log(gen2.next());     // {value: 100, done: false}
+console.log(gen2.next(500));  // {value: 600, done: false}
+console.log(gen2.next(1000)); // {value: undefined, done: true}
+</code></pre>
+
+<p>執行結果： </p>
+
+<pre><code>nqu-192-168-61-142:yield mac020$ iojs yieldBasic2
+{ value: 100, done: false }
+a=500
+{ value: 600, done: false }
+b=1000
+{ value: undefined, done: true }
+</code></pre>
+
+<h2 id="yield">用 yield 取代回呼函數</h2>
+
+<p>程式來源： <a href="http://modernweb.com/2014/02/10/replacing-callbacks-with-es6-generators/">http://modernweb.com/2014/02/10/replacing-callbacks-with-es6-generators/</a></p>
+
+<p>檔案： yieldDelay.js</p>
+
+<pre><code>function delay(time, callback) {
+  setTimeout(function () {
+    callback("Slept for "+time);
+  }, time);
+}
+
+function run(generatorFunction) {
+    var generatorItr = generatorFunction(resume);
+    function resume(callbackValue) {
+        generatorItr.next(callbackValue);
+    }
+    generatorItr.next()
+}
+
+function* myDelayedMessages(resume) {
+    console.log(yield delay(1000, resume));
+    console.log(yield delay(1200, resume));
+}
+
+run(function* myDelayedMessages(resume) {
+    console.log(yield delay(1000, resume));
+    console.log(yield delay(1200, resume));
+})
+</code></pre>
+
+<p>執行結果：</p>
+
+<pre><code>nqu-192-168-61-142:yield mac020$ iojs yieldDelay
+Slept for 1000
+Slept for 1200
+</code></pre>
+
+<h2 id="co">套件 co</h2>
+
+<p>程式來源： <a href="http://www.sitepoint.com/javascript-generators-preventing-callback-hell/">http://www.sitepoint.com/javascript-generators-preventing-callback-hell/</a></p>
+
+</body>
+</html>

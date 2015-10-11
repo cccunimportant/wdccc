@@ -1,0 +1,46 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="/gospa.js"></script>
+<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[JavaScript 前端技術]](jsb:home) </title>
+
+<p><a href="/db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="/db/book/home.html"" class="innerLink">教科書</a>  / <a href="/db/jsb/home.html"" class="innerLink">JavaScript 前端技術</a>  </p>
+
+<h1 id="1">移動球 1</h1>
+
+<p>檔案： <a href="http://ccc.nqu.edu.tw/db/jsb/code/canvas/ballmove1.html">ballmove1.html</a></p>
+
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+&lt;img id="ball" src="ball.jpg" alt="The Scream"&gt;
+&lt;p&gt;Canvas:&lt;/p&gt;
+&lt;canvas id="myCanvas" width="300" height="300" style="border:1px solid #d3d3d3;"/&gt;
+&lt;script&gt;
+var img, ctx, canvas;
+var x=0, y=0;
+
+window.onload = function() {
+  canvas = document.getElementById("myCanvas");
+  ctx = canvas.getContext("2d");
+  img = document.getElementById("ball");
+  setTimeout(draw, 100);
+}
+
+function draw() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.drawImage(img, x, y);
+    x+=10; y+=10;
+  setTimeout(draw, 100);    
+}
+
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+</body>
+</html>

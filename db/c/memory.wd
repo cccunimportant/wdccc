@@ -1,0 +1,6 @@
+# 記憶體管理
+
+| 主題 | 說明 |
+|--------|--------|
+| [[C 的執行環境]](c_env)  |  text, data, bss, stack, heap  |
+| [[記憶體漏洞 ]](mem_leak)  |  (memory check) |

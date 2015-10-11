@@ -1,0 +1,68 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="/gospa.js"></script>
+<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[JavaScript 前端技術]](jsb:home) </title>
+
+<p><a href="/db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="/db/book/home.html"" class="innerLink">教科書</a>  / <a href="/db/jsb/home.html"" class="innerLink">JavaScript 前端技術</a>  </p>
+
+<h1 id="">網頁記事本</h1>
+
+<p>檔案： <a href="http://ccc.nqu.edu.tw/db/jsb/code/localstorage_notepad.html">localstorage_notepad.html</a></p>
+
+<pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset="UTF-8"&gt;
+&lt;style&gt;
+input , textarea { width:80%; margin:10; padding:10; }
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div&gt;
+&lt;div&gt;&lt;input id="title" "type="text" value="標題"/&gt;&lt;/div&gt;
+&lt;br/&gt;
+&lt;div&gt;&lt;textarea id="text" style="height:300px"&gt;內文&lt;/textarea&gt;&lt;/div&gt;
+&lt;button onclick="save()"&gt;儲存&lt;/button&gt;
+&lt;div&gt;
+&lt;table id="list"&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;script&gt;
+var oTitle = document.getElementById("title");
+var oText  = document.getElementById("text");
+var oList = document.getElementById("list");
+
+function save() {
+  var title = oTitle.value;
+  var text  = oText.value;
+  window.localStorage.setItem("notepad:"+title, text);
+    showList();
+}
+
+function showList() {
+  var rowHtml = "";
+  for (var title in window.localStorage) {
+      if (title.startsWith("notepad:")) {
+        rowHtml += "&lt;tr&gt;&lt;td&gt;&lt;a onclick=\"loadDoc('"+title+"')\"&gt;"+title.substring(8)+"&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;"
+        }
+    }
+    oList.innerHTML = rowHtml;
+}
+
+function loadDoc(title) {
+  oTitle.value = title.substring(8);
+    oText.value  = window.localStorage.getItem(title);
+}
+
+
+&lt;/script&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+</body>
+</html>

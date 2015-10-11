@@ -1,0 +1,44 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="/gospa.js"></script>
+<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[機率統計]](st:home) </title>
+
+<p><a href="/db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="/db/book/home.html"" class="innerLink">教科書</a>  / <a href="/db/st/home.html"" class="innerLink">機率統計</a>  </p>
+
+<h2 id="weibulldistribution">威布爾分布 (Weibull Distribution)</h2>
+
+<p>$\alpha \beta x^{\beta-1} e^{-\alpha x^{\beta}}$</p>
+
+<ul>
+<li><p>用途：(可靠度工程) f(x) 失敗時間, R(t) 可靠度, <a href="#st:$ \rho(t) $" class="innerLink">$ \rho(t) $</a> 失敗率</p></li>
+<li><p>Ｒ函數：weibull(a:shape, b:scale)</p>
+
+<ul><li>公式：f(x) = 1 / (π s (1 + ((x-l)/s)^2))</li>
+<li>說明：location=l , scale=s </li>
+<li>網址：<a href="http://stat.ethz.ch/R-manual/R-patched/library/stats/html/Weibull.html">http://stat.ethz.ch/R-manual/R-patched/library/stats/html/Weibull.html</a></li></ul></li>
+</ul>
+
+<h3 id="">特性</h3>
+
+<ul>
+<li><p>期望值：$\alpha^{-1/\beta} \rho(1+\frac{1}{\beta})$</p></li>
+<li><p>變異數：$\alpha^{-2/\beta} \rho(1+\frac{2}{\beta}) - \mu^2$</p></li>
+<li><p>動差生成函數： $m_x(t) = ??$</p></li>
+</ul>
+
+<h3 id="r">R 程式範例一</h3>
+
+<pre><code class="R">op=par(mfrow=c(2,2))
+curve(dweibull(x, 1, 1), 0, 10)
+curve(dweibull(x, 1, 5), 0, 10)
+curve(dweibull(x, 5, 1), 0, 10)
+curve(dweibull(x, 5, 5), 0, 10)
+</code></pre>
+
+<div class="figure"><img src="db/st/dweibullCurve4.jpg"/><p class="caption"></p></div>
+
+</body>
+</html>

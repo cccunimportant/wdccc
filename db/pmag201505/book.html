@@ -1,0 +1,1758 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="2015 年 5 月" />
+  <title>程式人雜誌</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
+  <link rel="stylesheet" href="../epub.css" type="text/css" />
+</head>
+<body>
+<div id="header_wrap">
+   <h1>wikidown 電子書</h1>
+</div>
+<div id="content">
+<div id="header">
+<h1 class="title"><a href="http://programmermagazine.github.com/home/">程式人雜誌</a></h1>
+<h2 class="author">2015 年 5 月</h2>
+<h3 class="date">本期焦點：JavaScript 語言的新進展 (ES6, io.js 與 koa)</h3>
+</div>
+<div id="TOC">
+<ul>
+<li><a href="#前言">前言</a><ul>
+<li><a href="#編輯小語">編輯小語</a></li>
+<li><a href="#授權聲明">授權聲明</a></li>
+</ul></li>
+<li><a href="#本期焦點">本期焦點</a><ul>
+<li><a href="#javascript-語言的新進展">JavaScript 語言的新進展</a></li>
+<li><a href="#ecmascript-6-的新語法">ECMAScript 6 的新語法</a></li>
+</ul></li>
+<li><a href="#yield-與-generator----讓-callback-不再是-javascript-的痛">Yield 與 Generator -- 讓 callback 不再是 javascript 的痛</a><ul>
+<li><a href="#iterator">Iterator</a></li>
+<li><a href="#yield-語法">Yield 語法</a></li>
+<li><a href="#yield-的真正用途">Yield 的真正用途</a></li>
+<li><a href="#用-yield-取代-callback">用 yield 取代 callback</a></li>
+<li><a href="#co---用-yield-讓控制流程更好用的套件">Co - 用 yield 讓控制流程更好用的套件</a></li>
+<li><a href="#koa----建構-web-網站的核心框架">koa -- 建構 web 網站的核心框架</a></li>
+</ul></li>
+<li><a href="#程式人文集">程式人文集</a><ul>
+<li><a href="#簡單留言系統----使用多頁技術">簡單留言系統 -- 使用多頁技術</a></li>
+<li><a href="#簡單留言系統----使用單頁技術">簡單留言系統 -- 使用單頁技術</a></li>
+<li><a href="#讓-wikidown-從-express-進化為-koa-版本">讓 wikidown 從 express 進化為 koa 版本</a></li>
+</ul></li>
+<li><a href="#雜誌訊息">雜誌訊息</a><ul>
+<li><a href="#讀者訂閱">讀者訂閱</a></li>
+<li><a href="#投稿須知">投稿須知</a></li>
+<li><a href="#參與編輯">參與編輯</a></li>
+<li><a href="#公益資訊">公益資訊</a></li>
+</ul></li>
+</ul>
+</div>
+<h1 id="前言">前言</h1>
+<h2 id="編輯小語">編輯小語</h2>
+<p>最近聽到許多用 node.js 的網友改去用 io.js ，然後他們還開始用了 koa.js 這個框架。</p>
+<p>筆者不看不知道，一看不得了，發現這是個重要的好東西，只好趕快來介紹給大家認識。</p>
+<p>於是就產生了這期的『JavaScript 語言的新進展 (ES6, io.js 與 koa)』 ....</p>
+<h2 id="授權聲明">授權聲明</h2>
+<p>本雜誌許多資料修改自維基百科，採用 創作共用：<a href="http://creativecommons.org/licenses/by-sa/3.0/tw/">姓名標示、相同方式分享</a> 授權，若您想要修改本書產生衍生著作時，至少應該遵守下列授權條件：</p>
+<ol style="list-style-type: decimal">
+<li>標示原作者姓名 (包含該文章作者，若有來自維基百科的部份也請一併標示)。</li>
+<li>採用 創作共用：<a href="http://creativecommons.org/licenses/by-sa/3.0/tw/">姓名標示、相同方式分享</a> 的方式公開衍生著作。</li>
+</ol>
+<p>另外、當本雜誌中有文章或素材並非採用 <a href="http://creativecommons.org/licenses/by-sa/3.0/tw/">姓名標示、相同方式分享</a> 時，將會在該文章或素材後面標示其授權，此時該文章將以該標示的方式授權釋出，請修改者注意這些授權標示，以避免產生侵權糾紛。</p>
+<p>例如有些文章可能不希望被作為「商業性使用」，此時就可能會採用創作共用：[姓名標示、非商業性、相同方式分享] 的授權，此時您就不應當將該文章用於商業用途上。</p>
+<p>最後、懇請勿移除公益捐贈的相關描述，以便讓愛心得以持續散播！</p>
+<h1 id="本期焦點">本期焦點</h1>
+<h2 id="javascript-語言的新進展">JavaScript 語言的新進展</h2>
+<p>JavaScript 是瀏覽器前端所能使用的唯一語言，您可以在 HTML 裡面的 <code>&lt;script&gt;....&lt;/script&gt;</code> 標記內寫入這種程式，通常用來操控網頁的動態顯示部份，但是在 2009 年 node.js 出現之後， JavaScript 也變成了 server 端最常用的語言之一。</p>
+<p>甚至、您可以 JavaScript 用來撰寫『視窗、手機、遊戲』等方面的程式，只要採用 QML、PhoneGap、Unity3D 等平台就可以了，如果您想進一步瞭解 JavaScript 語言，可以參考筆者正在撰寫的下列這本書籍。</p>
+<ul>
+<li><a href="http://ccc.nqu.edu.tw/db/js/history.html">JavaScript 語言</a></li>
+</ul>
+<p>在1995年時，Netscape 公司的布蘭登·艾克為了讓瀏覽器可以執行程式，在 Netscape 瀏覽器上加入了 LiveScript 這個語言，但是由於 Netscape和 Sun 聯盟推動 Java 語言，因此改名為 JavaScript ，並且將 JavaScript 登記為商標用語。</p>
+<p>因此、雖然我們稱副檔名為 .js 的那個語言為 javascript ，但是由於 JavaScript 是甲骨文公司的註冊商標，所以現在這個語言的制定單位只能說自己在制定的是 ECMAScript 語言，而不能說是 JavaScript (這種不可說不可說的東西，通常是法律或政治領域造成的）。</p>
+<p>由於我對這兩個名詞基本上不加以區分，因此以下我所說 JavaScript 的時候，請自動理解為『那個東西』。</p>
+<p>以下是 JavaScript 各個版本制定的年份與內容大要，提供給讀者參考！</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">版本</th>
+<th align="left">完成年份</th>
+<th align="left">說明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1</td>
+<td align="left">1997</td>
+<td align="left">ECMA 組織成立後的第一個 JavaScript 版本</td>
+</tr>
+<tr class="even">
+<td align="left">2</td>
+<td align="left">1998</td>
+<td align="left">格式修正，以使得其形式與ISO/IEC16262國際標準一致</td>
+</tr>
+<tr class="odd">
+<td align="left">3</td>
+<td align="left">1999</td>
+<td align="left">加入 regular expressions, try/catch exception handling 等等</td>
+</tr>
+<tr class="even">
+<td align="left">4</td>
+<td align="left">廢棄</td>
+<td align="left">因為政治因素還有某些無法向上相容的語法設計問題</td>
+</tr>
+<tr class="odd">
+<td align="left">5</td>
+<td align="left">2009</td>
+<td align="left">加入 strict mode, getters and setters, library support for JSON, 和更完整的 reflection 功能</td>
+</tr>
+<tr class="even">
+<td align="left">6</td>
+<td align="left">2015</td>
+<td align="left">加入超多新語法，較重要的有 for of, yield, import 與物件導向 class 類別等等</td>
+</tr>
+</tbody>
+</table>
+<p>您可以看到 ECMAScript 在 1999 年後沈寂了10年，之後在 2009 年又開始動了起來，並且在 2015 年推出了第六版，而這個第六版也就是我們這一系列文章所要介紹的主要對像了。</p>
+<h2 id="ecmascript-6-的新語法">ECMAScript 6 的新語法</h2>
+<p>如前文所述，ECMAScript 6 (ES6) 是 2015 年制定完成的 JavaScript 語言標準，既然筆者這篇文章撰寫的時間點也是 2015 年，那您應該會想，這個標準恐怕還得要好幾年才會實現吧！</p>
+<p>如果您這樣想的話，那可就大錯特錯了！ 在這個變動快速的今天， 在 ES6 還在一邊制定的時候， Google Chrome 就已經將這些功能加入到瀏覽器當中了，其他瀏覽器當然也不希望因此而落後，所以 Firefox, IE, Opera, Safari 無不卯足了勁的更新他們的瀏覽器引擎。</p>
+<p>如果您想要瞭解各家瀏覽器與 javascript 引擎對 ES6 的支援程度，可以參考下列表格：</p>
+<ul>
+<li><a href="https://kangax.github.io/compat-table/es6/" class="uri">https://kangax.github.io/compat-table/es6/</a></li>
+</ul>
+<p>而 server 端的 node.js 既然採用 Google 的 V8 引擎，自然也會隨之更新，於是 node.js 的新版也已經擁有這些功能，只是在使用時必須加上 --harmony 參數才會起動，而為了要不要預設啟動 ES6 功能的問題，以便進一步加入更多先進功能到 node.js 當中，更導致了 node.js 陣營的分裂 (fork)，關於 io.js 之所以要從 node.js 分裂出來的原因，您可以參考下列文章！</p>
+<ul>
+<li>您不可不知的 io.js -- <a href="http://blog.wu-boy.com/2015/02/getting-to-know-io-js/" class="uri">http://blog.wu-boy.com/2015/02/getting-to-know-io-js/</a></li>
+</ul>
+<p>問題是、到底 ES6 的新語法有哪些呢？ 關於這點說來就長了，筆者整理了一份表格如下。</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">語法</th>
+<th align="left">範例</th>
+<th align="left">說明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">arrows</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">classes</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">enhanced object literals</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">template strings</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">destructuring</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">default + rest + spread</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">let + const</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">iterators + for..of</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">generators</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">unicode</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">modules</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">module loaders</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">map + set + weakmap + weakset</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">proxies</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">symbols</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">subclassable built-ins</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">promises</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">math + number + string + array + object APIs</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">binary and octal literals</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">reflect api</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">tail calls</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p>如果您想更進一步瞭解這些新語法，已經有人寫好很棒的教材了，請參考下列的書籍和範例：</p>
+<ul>
+<li>ECMAScript 6入门 (作者：阮一峰) -- <a href="http://es6.ruanyifeng.com/" class="uri">http://es6.ruanyifeng.com/</a></li>
+<li><a href="https://github.com/lukehoban/es6features/blob/master/README.md">github/lukehoban/es6features</a></li>
+<li><a href="http://www.runpc.com.tw/content/content.aspx?id=109836">初探ECMAScript 6 (上)</a></li>
+<li><a href="http://www.runpc.com.tw/content/content.aspx?id=109837">初探ECMAScript 6 (下)</a></li>
+</ul>
+<p>如果您看完了上述的書籍和範例，勢必產生一個驚嘆號！</p>
+<p>ECMAScript 第 6 版怎麼改變得這麼大阿！</p>
+<p>先別急著驚訝，更厲害的是，這些功能所衍生出來的開放原始碼框架，已經滿坑滿谷了。</p>
+<p>要瞭解那滿坑滿谷基於 ES6 的開放原始碼框架，請繼續看下一篇文章！</p>
+<h1 id="yield-與-generator----讓-callback-不再是-javascript-的痛">Yield 與 Generator -- 讓 callback 不再是 javascript 的痛</h1>
+<p>雖然 新版的 JavaScript (ECMAScript 6, ES6) 有很多新穎的功能，但是其中最重要的，恐怕就是基於 yield 語法所衍生出來的一連串功能了，這種語法在 ruby 當中早就有了，並不是新鮮事，但是引入了 JavaScript 這個語言之後，就讓長期依靠 callback 的 node.js 等平台，有了全新的函式庫框架。</p>
+<p>要理解 yield 與 generator 之前，最好先瞭解一下 iterator 這個概念，</p>
+<h2 id="iterator">Iterator</h2>
+<p>Iterator 是用來遊走某些容器的物件，裡面通常包涵了 next() 這樣一個用來遊走的函數，可以前進到下一步，以下是一個陣列的 iterator 之實作方法。</p>
+<p>檔案： iterator.js</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> c = console;
+
+<span class="kw">function</span> <span class="fu">arrayIterator</span>(array){
+  <span class="kw">var</span> i = <span class="dv">0</span>;
+  <span class="kw">var</span> obj = {
+    <span class="dt">next</span>: <span class="kw">function</span>(){
+      <span class="kw">return</span> i &lt; <span class="ot">array</span>.<span class="fu">length</span> ?
+        {<span class="dt">value</span>: array[i++], <span class="dt">done</span>: <span class="kw">false</span>} :
+        {<span class="dt">value</span>: <span class="kw">undefined</span>, <span class="dt">done</span>: <span class="kw">true</span>};
+    }
+  }
+  <span class="kw">return</span> obj;
+}
+
+<span class="kw">var</span> ai = <span class="fu">arrayIterator</span>([<span class="st">&#39;x&#39;</span>, <span class="st">&#39;y&#39;</span>, <span class="st">&#39;z&#39;</span>]);
+
+<span class="ot">c</span>.<span class="fu">log</span>(<span class="ot">ai</span>.<span class="fu">next</span>()); <span class="co">// { value: &quot;x&quot;, done: false }</span>
+<span class="ot">c</span>.<span class="fu">log</span>(<span class="ot">ai</span>.<span class="fu">next</span>()); <span class="co">// { value: &quot;y&quot;, done: false }</span>
+<span class="ot">c</span>.<span class="fu">log</span>(<span class="ot">ai</span>.<span class="fu">next</span>()); <span class="co">// { value: &quot;z&quot;, done: false }</span>
+<span class="ot">c</span>.<span class="fu">log</span>(<span class="ot">ai</span>.<span class="fu">next</span>()); <span class="co">// { value: undefined, done: true }</span></code></pre>
+<p>執行結果</p>
+<pre><code>D:\git\generator&gt;iojs iterator
+{ value: &#39;x&#39;, done: false }
+{ value: &#39;y&#39;, done: false }
+{ value: &#39;z&#39;, done: false }
+{ value: undefined, done: true }</code></pre>
+<p>有了這樣的『遊走裝置』之後，我們就可以對各種容器從頭走到尾，而不需要在意到底容器的內部結構長什麼樣了，只要該容器支援 next() 函數就行了。</p>
+<p>例如我們可以用下列程式對陣列的 iterator 進行從頭到尾的遊走過程。</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">while</span> (<span class="kw">true</span>) {
+    <span class="kw">var</span> item = <span class="ot">ai</span>.<span class="fu">next</span>();
+    <span class="kw">if</span> (<span class="ot">item</span>.<span class="fu">done</span> === <span class="kw">true</span>)
+        <span class="kw">break</span>;
+  <span class="ot">c</span>.<span class="fu">log</span>(item);
+}</code></pre>
+<h2 id="yield-語法">Yield 語法</h2>
+<p>當您理解了上述的 iterator 之設計方式之後，就可以開始來看看 ECMAScript 6 當中新制定的 yield 語法了，以下是一個使用 yield 語法的範例！</p>
+<p>檔案： yield1.js</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> c = console;
+
+<span class="kw">function</span> *<span class="fu">gen1</span>(){
+    <span class="kw">var</span> a=<span class="dv">5</span>, b=<span class="dv">3</span>;
+    <span class="kw">yield</span> <span class="st">&quot;x&quot;</span>;
+    <span class="ot">c</span>.<span class="fu">log</span>(<span class="st">&quot;a=%d&quot;</span>, a);
+    <span class="kw">yield</span> <span class="st">&quot;y&quot;</span>;
+    b = a+b;
+    <span class="ot">c</span>.<span class="fu">log</span>(<span class="st">&quot;b=%d&quot;</span>, b);
+    <span class="kw">return</span> <span class="st">&quot;z&quot;</span>;
+}
+
+<span class="kw">var</span> g1 = <span class="fu">gen1</span>();
+
+<span class="ot">c</span>.<span class="fu">log</span>(<span class="ot">g1</span>.<span class="fu">next</span>()); <span class="co">// { value: &quot;x&quot;, done: false }</span>
+<span class="ot">c</span>.<span class="fu">log</span>(<span class="ot">g1</span>.<span class="fu">next</span>()); <span class="co">// { value: &quot;y&quot;, done: false }</span>
+<span class="ot">c</span>.<span class="fu">log</span>(<span class="ot">g1</span>.<span class="fu">next</span>()); <span class="co">// { value: &quot;z&quot;, done: true }</span>
+<span class="ot">c</span>.<span class="fu">log</span>(<span class="ot">g1</span>.<span class="fu">next</span>()); <span class="co">// { value: undefined, done: true }</span></code></pre>
+<p>執行結果</p>
+<pre><code>D:\git\generator&gt;iojs yield1
+{ value: &#39;x&#39;, done: false }
+a=5
+{ value: &#39;y&#39;, done: false }
+b=8
+{ value: &#39;z&#39;, done: true }
+{ value: undefined, done: true }</code></pre>
+<p>上述的程式看來有點詭異，但是如果您將函數想像成一個『擁有狀態的可執行容器』，而 next() 則是讓該函數前進一步，那麼所謂的 yield 只不過是把該函數目前的狀態傳回來而已。</p>
+<p>於是、函數就變成了一種容器物件，而 next() 則可以讓函數向前執行，直到碰到下一個 yield 或 return 指令為止，而 yield 指令傳回的 done 會是 false，但 return 指令則會傳回 done=true。</p>
+<h2 id="yield-的真正用途">Yield 的真正用途</h2>
+<p>大致瞭解了 yield 的原理之後，讓我們來看一下 yield 的真正用途，以下我們將用 delay 函數作為範例，示範 yield 的奇特用法。</p>
+<p>檔案： yieldDelay.js</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> g = <span class="fu">gen</span>(); <span class="co">// 建立函數物件</span>
+<span class="ot">g</span>.<span class="fu">next</span>(); <span class="co">// 開始執行到第一個 yield</span>
+
+<span class="kw">var</span> totalDelay = <span class="dv">0</span>;
+
+<span class="kw">function</span> <span class="fu">delay</span>(ms) {
+  <span class="fu">setTimeout</span>(<span class="kw">function</span>() {
+    <span class="ot">console</span>.<span class="fu">log</span>(<span class="st">&quot;delay &quot;</span>+ms+<span class="st">&quot; ms&quot;</span>);
+    totalDelay += ms;
+    <span class="ot">g</span>.<span class="fu">next</span>(totalDelay); <span class="co">// 這個 yield 完成後，傳回 totalDelay 並呼叫 next() 繼續執行到下一個 yield</span>
+  }, ms);
+}
+
+<span class="kw">function</span> *<span class="fu">gen</span>(){
+  <span class="kw">var</span> a=<span class="dv">5</span>, b=<span class="dv">3</span>, t;
+  t = <span class="kw">yield</span> <span class="fu">delay</span>(<span class="dv">800</span>);
+  <span class="ot">console</span>.<span class="fu">log</span>(<span class="st">&quot;a=%d t=%d&quot;</span>, a, t);
+  t = <span class="kw">yield</span> <span class="fu">delay</span>(<span class="dv">500</span>);
+  b = a+b;
+  <span class="ot">console</span>.<span class="fu">log</span>(<span class="st">&quot;b=%d t=%d&quot;</span>, b, t);
+  t = <span class="kw">yield</span> <span class="fu">delay</span>(<span class="dv">300</span>);
+  <span class="ot">console</span>.<span class="fu">log</span>(<span class="st">&quot;totalDelay=%d t=%d&quot;</span>, totalDelay, t);
+}</code></pre>
+<p>執行結果</p>
+<pre><code>D:\git\generator&gt;iojs yieldDelay
+delay 800 ms
+a=5 t=800
+delay 500 ms
+b=8 t=1300
+delay 300 ms
+totalDelay=1600 t=1600</code></pre>
+<p>您可以看到</p>
+<h2 id="用-yield-取代-callback">用 yield 取代 callback</h2>
+<p>大部分的 javascript 環境並不提供多線程 (multi-thread) 機制，於是輸出入的函數都會改用 callback 的方式設計。</p>
+<p>舉例而言， node.js 的輸出入函數就幾乎都有兩個版本，設計者通常會用採用 callback 的非同步版本以便在等待輸出入完成的時候還可以繼續執行程式，以下就是一個採用非同步輸出入的 node 程式範例。</p>
+<p>檔案： copyFile.js</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> fs = <span class="fu">require</span>(<span class="st">&#39;fs&#39;</span>);
+
+<span class="kw">function</span> <span class="fu">copyFile</span>(fromFile, toFile) {
+  <span class="ot">fs</span>.<span class="fu">readFile</span>(fromFile, <span class="st">&quot;utf8&quot;</span>, <span class="kw">function</span>(err, data) {
+    <span class="ot">console</span>.<span class="fu">log</span>(<span class="st">&#39;read %s complete!&#39;</span>, fromFile);
+    <span class="ot">fs</span>.<span class="fu">writeFile</span>(toFile,  data, <span class="kw">function</span>(err) {
+      <span class="ot">console</span>.<span class="fu">log</span>(<span class="st">&#39;write %s complete!&#39;</span>, toFile);
+    });
+  });
+}
+
+<span class="fu">copyFile</span>(<span class="ot">process</span>.<span class="fu">argv</span>[<span class="dv">2</span>], <span class="ot">process</span>.<span class="fu">argv</span>[<span class="dv">3</span>]);</code></pre>
+<p>執行結果</p>
+<pre><code>D:\git\generator&gt;node copyFile copyFile.js copyFile2.js
+read copyFile.js complete!
+write copyFile2.js complete!</code></pre>
+<p>但是、有了 yield 指令與有狀態的函數之後，就可以利用下列的方法，讓 callback 轉變為沒有 callback 的函數，只是在尚未結束之前要改用 yield 而已，以下是一個範例。</p>
+<p>檔案： yieldFile.js</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> fs = <span class="fu">require</span>(<span class="st">&#39;fs&#39;</span>);
+<span class="kw">var</span> gen;
+
+<span class="kw">function</span> <span class="fu">run</span>(generator) {
+  gen = <span class="fu">generator</span>();
+  <span class="ot">gen</span>.<span class="fu">next</span>();
+}
+
+<span class="kw">function</span> <span class="fu">read</span>(file) {
+  <span class="ot">fs</span>.<span class="fu">readFile</span>(file, <span class="kw">function</span>(err, data) {
+    <span class="kw">if</span> (!err) <span class="ot">console</span>.<span class="fu">log</span>(<span class="st">&#39;read %s success!&#39;</span>, file);
+    <span class="ot">gen</span>.<span class="fu">next</span>(data);
+  });
+}
+
+<span class="kw">function</span> <span class="fu">write</span>(file, data) {
+  <span class="ot">fs</span>.<span class="fu">writeFile</span>(file,  data, <span class="kw">function</span>(err) {
+    <span class="kw">if</span> (!err) <span class="ot">console</span>.<span class="fu">log</span>(<span class="st">&#39;write %s success!&#39;</span>, file);
+    <span class="ot">gen</span>.<span class="fu">next</span>();
+  });
+}
+
+<span class="fu">run</span>(<span class="kw">function</span>* () { 
+  <span class="kw">var</span> text = <span class="kw">yield</span> <span class="fu">read</span>(<span class="st">&#39;yieldFile.js&#39;</span>);
+  <span class="kw">yield</span> <span class="fu">write</span>(<span class="st">&#39;yieldFile.bak&#39;</span>, text);
+});</code></pre>
+<p>執行結果</p>
+<pre><code>nqu-192-168-61-142:generator mac020$ iojs yieldFile
+read yieldFile.js success!
+write yieldFile.bak success!
+</code></pre>
+<h2 id="co---用-yield-讓控制流程更好用的套件">Co - 用 yield 讓控制流程更好用的套件</h2>
+<p>很好的講解: <a href="https://github.com/dead-horse/co-and-koa-talk" class="uri">https://github.com/dead-horse/co-and-koa-talk</a></p>
+<h3 id="安裝">安裝</h3>
+<p>官網： <a href="https://github.com/tj/co" class="uri">https://github.com/tj/co</a></p>
+<h3 id="範例複製檔案">範例：複製檔案</h3>
+<p>程式： coReadWrite.js</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> co = <span class="fu">require</span>(<span class="st">&#39;co&#39;</span>);
+<span class="kw">var</span> fs = <span class="fu">require</span>(<span class="st">&#39;mz/fs&#39;</span>);
+
+<span class="fu">co</span>(<span class="kw">function</span>* () {
+  <span class="kw">var</span> file1 = <span class="kw">yield</span> <span class="ot">fs</span>.<span class="fu">readFile</span>(<span class="st">&#39;coReadWrite.js&#39;</span>);
+  <span class="kw">yield</span> <span class="ot">fs</span>.<span class="fu">writeFile</span>(<span class="st">&#39;coReadWrite.js.bak&#39;</span>, file1);
+  <span class="kw">var</span> file2 = <span class="kw">yield</span> <span class="ot">fs</span>.<span class="fu">readFile</span>(<span class="st">&#39;coReadWrite.js.bak&#39;</span>);
+
+  <span class="ot">console</span>.<span class="fu">log</span>(<span class="st">&quot;===coReadWrite.js===</span><span class="ch">\n</span><span class="st">&quot;</span>+file1);
+  <span class="ot">console</span>.<span class="fu">log</span>(<span class="st">&quot;===coReadWrite.js.bak===</span><span class="ch">\n</span><span class="st">&quot;</span>+file2);
+});</code></pre>
+<p>執行結果</p>
+<pre><code>NQU-192-168-60-101:iojs csienqu$ iojs coReadWrite 
+===coReadWrite.js===
+var co = require(&#39;co&#39;);
+var fs = require(&#39;mz/fs&#39;);
+
+co(function* () {
+  var file1 = yield fs.readFile(&#39;coReadWrite.js&#39;);
+  yield fs.writeFile(&#39;coReadWrite.js.bak&#39;, file1);
+  var file2 = yield fs.readFile(&#39;coReadWrite.js.bak&#39;);
+
+  console.log(&quot;===coReadWrite.js===\n&quot;+file1);
+  console.log(&quot;===coReadWrite.js.bak===\n&quot;+file2);
+});
+===coReadWrite.js.bak===
+var co = require(&#39;co&#39;);
+var fs = require(&#39;mz/fs&#39;);
+
+co(function* () {
+  var file1 = yield fs.readFile(&#39;coReadWrite.js&#39;);
+  yield fs.writeFile(&#39;coReadWrite.js.bak&#39;, file1);
+  var file2 = yield fs.readFile(&#39;coReadWrite.js.bak&#39;);
+
+  console.log(&quot;===coReadWrite.js===\n&quot;+file1);
+  console.log(&quot;===coReadWrite.js.bak===\n&quot;+file2);
+});
+NQU-192-168-60-101:iojs csienqu$ ls
+coRead2.js      iterator.js     yieldFile.js
+coReadWrite.js      node_modules
+coReadWrite.js.bak  yieldFile.bak</code></pre>
+<h3 id="將-callback-包裝成可以-yield-的形式">將 callback 包裝成可以 yield 的形式</h3>
+<p>以下範例來自 -- <a href="https://github.com/dead-horse/co-and-koa-talk" class="uri">https://github.com/dead-horse/co-and-koa-talk</a></p>
+<p>範例： 自行將 callback 函數 thunkify</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="ot">fs</span>.<span class="fu">stat</span>(filename, callback);
+
+<span class="co">// =&gt;</span>
+
+<span class="kw">function</span> <span class="fu">stat</span>(filename) {
+  <span class="kw">return</span> <span class="kw">function</span> (done) {
+    <span class="ot">fs</span>.<span class="fu">stat</span>(filename, done);
+  }
+}
+
+<span class="co">// =&gt;</span>
+
+<span class="kw">function</span> *() {
+  <span class="kw">yield</span> <span class="fu">stat</span>(<span class="st">&#39;./README.md&#39;</span>);
+}</code></pre>
+<p>範例： 使用 thunkify 套件</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> thunkify = <span class="fu">require</span>(<span class="st">&#39;thunkify&#39;</span>);
+<span class="kw">var</span> co = <span class="fu">require</span>(<span class="st">&#39;co&#39;</span>);
+<span class="kw">var</span> fs = <span class="fu">require</span>(<span class="st">&#39;fs&#39;</span>);
+
+<span class="kw">var</span> stat = <span class="fu">thunkify</span>(<span class="ot">fs</span>.<span class="fu">stat</span>);
+<span class="kw">var</span> readFile = <span class="fu">thunkify</span>(<span class="ot">fs</span>.<span class="fu">readFile</span>);
+
+<span class="fu">co</span>(<span class="kw">function</span> *() {
+  <span class="kw">var</span> stat = <span class="kw">yield</span> <span class="fu">stat</span>(<span class="st">&#39;./README.md&#39;</span>);
+  <span class="kw">var</span> content = <span class="kw">yield</span> <span class="fu">readFile</span>(<span class="st">&#39;./README.md&#39;</span>);
+})();</code></pre>
+<h3 id="自己製作一個-myco-套件">自己製作一個 myCo 套件</h3>
+<p>上文的說明應該已經闡述了如何用 yield 取代 callback 的方法，當然這種方法已經被實作成完整的套件了，像是 co.js 就是一個使用在 koa.js 裏的重要套件。</p>
+<p>為了更瞭解 co.js 的原理，我們實作了一個 myCo.js 以便更進一步體會其原理。</p>
+<p>檔案： myCo.js</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> fs = <span class="fu">require</span>(<span class="st">&#39;fs&#39;</span>);
+<span class="kw">var</span> c = console;
+
+<span class="kw">var</span> co = (<span class="kw">function</span>() {
+  <span class="kw">var</span> gen;
+
+  <span class="kw">var</span> resume = <span class="kw">function</span>(value) {
+    <span class="ot">gen</span>.<span class="fu">next</span>(value);
+  }
+
+  <span class="kw">function</span> <span class="fu">read</span>(file) {
+    <span class="ot">fs</span>.<span class="fu">readFile</span>(file, <span class="kw">function</span>(err, data) {
+      <span class="kw">if</span> (!err) <span class="ot">c</span>.<span class="fu">log</span>(<span class="st">&#39;read %s success!&#39;</span>, file);
+      <span class="fu">resume</span>(data);
+    });
+  }
+
+  <span class="kw">function</span> <span class="fu">write</span>(file, data) {
+    <span class="ot">fs</span>.<span class="fu">writeFile</span>(file,  data, <span class="kw">function</span>(err) {
+      <span class="kw">if</span> (!err) <span class="ot">c</span>.<span class="fu">log</span>(<span class="st">&#39;write %s success!&#39;</span>, file);
+      <span class="fu">resume</span>();
+    });
+  }
+
+  <span class="kw">function</span> <span class="fu">run</span>(generator) {
+      gen = <span class="fu">generator</span>();
+      <span class="ot">gen</span>.<span class="fu">next</span>();
+  }
+
+  <span class="kw">return</span> {
+    <span class="dt">run</span>:run, 
+    <span class="dt">write</span>:write,
+    <span class="dt">read</span>:read 
+  }
+})();
+
+
+<span class="kw">function</span> *<span class="fu">copyFile</span>(fromFile, toFile) {
+  <span class="ot">c</span>.<span class="fu">log</span>(<span class="st">&#39;copyFile %s %s&#39;</span>, fromFile, toFile);
+  <span class="kw">var</span> text = <span class="kw">yield</span> <span class="ot">co</span>.<span class="fu">read</span>(fromFile);
+  <span class="kw">yield</span> <span class="ot">co</span>.<span class="fu">write</span>(toFile, text); 
+}
+
+<span class="ot">co</span>.<span class="fu">run</span>(<span class="kw">function</span>* () { 
+  <span class="ot">c</span>.<span class="fu">log</span>(<span class="st">&#39;run ...&#39;</span>);
+  <span class="kw">yield</span> *<span class="fu">copyFile</span>(<span class="ot">process</span>.<span class="fu">argv</span>[<span class="dv">2</span>], <span class="ot">process</span>.<span class="fu">argv</span>[<span class="dv">3</span>]); <span class="co">// 如果被 yield 的函數裡還有 yield 的話，就要用 yield * </span>
+});</code></pre>
+<p>執行結果</p>
+<pre><code>nqu-192-168-61-142:generator mac020$ iojs myCo myCo.js myCo.bak
+run ...
+copyFile myCo.js myCo.bak
+read myCo.js success!
+write myCo.bak success!</code></pre>
+<h2 id="koa----建構-web-網站的核心框架">koa -- 建構 web 網站的核心框架</h2>
+<h3 id="簡介">簡介</h3>
+<ul>
+<li><p>說明： express 原班人馬創造支援 ES6 新語法 yield 的套件</p></li>
+<li><p>官網專案： <a href="https://github.com/koajs/koa" class="uri">https://github.com/koajs/koa</a></p></li>
+<li><p>推薦文章：<a href="http://weblogs.asp.net/shijuvarghese/a-simple-crud-demo-with-koa-js?hc_location=ufi">A Simple CRUD Demo with Koa.js Sunday, January 12, 2014</a></p></li>
+<li><p>推薦影片： James Moore (共十集） -- <a href="http://knowthen.com/category/node-js/" class="uri">http://knowthen.com/category/node-js/</a></p></li>
+<li><p>官方範例： <a href="https://github.com/koajs/examples" class="uri">https://github.com/koajs/examples</a></p></li>
+<li><p>single page app : <a href="https://medium.com/@adam_bickford/creating-a-basic-site-with-koa-pt-1-f3e1711f7a9" class="uri">https://medium.com/@adam_bickford/creating-a-basic-site-with-koa-pt-1-f3e1711f7a9</a></p></li>
+</ul>
+<h3 id="koa-與-express-相關套件的對應表">Koa 與 Express 相關套件的對應表</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left"> </th>
+<th align="left">Koa 相關套件</th>
+<th align="left">Express 相關套件</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">中間件</td>
+<td align="left">koa</td>
+<td align="left">connect</td>
+</tr>
+<tr class="even">
+<td align="left">路徑比對</td>
+<td align="left">koa-router</td>
+<td align="left">express</td>
+</tr>
+<tr class="odd">
+<td align="left">檔案靜態化</td>
+<td align="left">koa-static, koa-static-folder</td>
+<td align="left">express.static</td>
+</tr>
+<tr class="even">
+<td align="left">資料夾索引</td>
+<td align="left">koa-serve-index</td>
+<td align="left">serve-index</td>
+</tr>
+<tr class="odd">
+<td align="left">檔案輸出入</td>
+<td align="left">co-fs, mz/fs, save-to</td>
+<td align="left">fs</td>
+</tr>
+<tr class="even">
+<td align="left">post body 處理</td>
+<td align="left">koa-bodyparser, co-busboy</td>
+<td align="left">body-parser</td>
+</tr>
+<tr class="odd">
+<td align="left">session 管理</td>
+<td align="left">koa-session</td>
+<td align="left">express-session</td>
+</tr>
+</tbody>
+</table>
+<h3 id="官方範例">官方範例</h3>
+<p>請先安裝 git, io.js 並用下列指令下載 koa.js 官方範例後，再開始執行後面給的例子。</p>
+<pre><code>$ git clone https://github.com/koajs/examples.git
+$ cd examples
+$ ren examples koa-ex
+$ npm install
+$ npm install swig</code></pre>
+<h3 id="範例-hello-world">範例: Hello World</h3>
+<ul>
+<li>原始碼： <a href="https://github.com/koajs/examples/tree/master/hello-world" class="uri">https://github.com/koajs/examples/tree/master/hello-world</a></li>
+<li>使用方法：執行 iojs app 之後看 http://localhost:3000/</li>
+</ul>
+<h3 id="範例">範例:</h3>
+<ul>
+<li>原始碼： <a href="https://github.com/koajs/examples/tree/master/stream-file" class="uri">https://github.com/koajs/examples/tree/master/stream-file</a></li>
+<li>使用方法：執行 iojs app 之後看 http://localhost:3000/README.md</li>
+</ul>
+<h3 id="範例-templates">範例: templates</h3>
+<ul>
+<li>原始碼： <a href="https://github.com/koajs/examples/tree/master/templates" class="uri">https://github.com/koajs/examples/tree/master/templates</a></li>
+<li>使用方法： 執行 iojs index 之後看 http://localhost:4000/</li>
+</ul>
+<h1 id="程式人文集">程式人文集</h1>
+<h2 id="簡單留言系統----使用多頁技術">簡單留言系統 -- 使用多頁技術</h2>
+<h3 id="簡介-1">簡介</h3>
+<p>在 koa 的 github 官方專案上，提供了一個簡單的網誌留言系統 （說是網誌，但比較像留言），這個系統設計得非常簡單，因此是學習 koa 很好的入門材料，以下是該專案的原始碼網址。</p>
+<ul>
+<li>原始碼： <a href="https://github.com/koajs/examples/tree/master/blog" class="uri">https://github.com/koajs/examples/tree/master/blog</a></li>
+</ul>
+<p>安裝執行過程如下：</p>
+<pre><code>D:\git\koa-ex&gt;npm install swig
+swig@1.4.2 node_modules\swig
+├── optimist@0.6.1 (wordwrap@0.0.2, minimist@0.0.10)
+└── uglify-js@2.4.19 (uglify-to-browserify@1.0.2, async@0.2.10, yargs@3.5.4,
+source-map@0.1.34)
+
+D:\git\koa-ex&gt;cd blog
+
+D:\git\koa-ex\blog&gt;iojs index
+listening on port 3000
+  &lt;-- GET /post
+  --&gt; GET /post 404 23ms -
+  &lt;-- GET /
+  --&gt; GET / 200 116ms -
+  &lt;-- GET /post/new
+  --&gt; GET /post/new 200 18ms -
+  &lt;-- POST /post
+  --&gt; POST /post 302 47ms -
+  &lt;-- GET /
+  --&gt; GET / 200 10ms -
+  &lt;-- GET /post/new
+  --&gt; GET /post/new 200 40ms -
+  &lt;-- POST /post
+  --&gt; POST /post 302 32ms -
+  &lt;-- GET /
+  --&gt; GET / 200 25ms -
+  &lt;-- GET /post/0
+  --&gt; GET /post/0 200 8ms -
+  &lt;-- GET /post/1
+  --&gt; GET /post/1 200 7ms -
+  &lt;-- GET /post/new
+  --&gt; GET /post/new 200 5ms -
+</code></pre>
+<p>執行結果如下</p>
+<div class="figure">
+<img src="koa_blog.jpg" />
+</div>
+<p>這個專案除了採用 koa 框架撰寫伺服端之外，還採用了 swig 這個樣板引擎來呈現網頁，首先讓我們來看伺服端的寫法。</p>
+<h3 id="伺服端主程式">伺服端主程式</h3>
+<p>檔案： index.js</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript">
+<span class="co">/**</span>
+<span class="co"> * Module dependencies.</span>
+<span class="co"> */</span>
+
+<span class="kw">var</span> render = <span class="fu">require</span>(<span class="st">&#39;./lib/render&#39;</span>);
+<span class="kw">var</span> logger = <span class="fu">require</span>(<span class="st">&#39;koa-logger&#39;</span>);
+<span class="kw">var</span> route = <span class="fu">require</span>(<span class="st">&#39;koa-route&#39;</span>);
+<span class="kw">var</span> parse = <span class="fu">require</span>(<span class="st">&#39;co-body&#39;</span>);
+<span class="kw">var</span> koa = <span class="fu">require</span>(<span class="st">&#39;koa&#39;</span>);
+<span class="kw">var</span> app = <span class="fu">koa</span>();
+
+<span class="co">// &quot;database&quot;</span>
+
+<span class="kw">var</span> posts = [];
+
+<span class="co">// middleware</span>
+
+<span class="ot">app</span>.<span class="fu">use</span>(<span class="fu">logger</span>());
+
+<span class="co">// route middleware</span>
+
+<span class="ot">app</span>.<span class="fu">use</span>(<span class="ot">route</span>.<span class="fu">get</span>(<span class="st">&#39;/&#39;</span>, list));
+<span class="ot">app</span>.<span class="fu">use</span>(<span class="ot">route</span>.<span class="fu">get</span>(<span class="st">&#39;/post/new&#39;</span>, add));
+<span class="ot">app</span>.<span class="fu">use</span>(<span class="ot">route</span>.<span class="fu">get</span>(<span class="st">&#39;/post/:id&#39;</span>, show));
+<span class="ot">app</span>.<span class="fu">use</span>(<span class="ot">route</span>.<span class="fu">post</span>(<span class="st">&#39;/post&#39;</span>, create));
+
+<span class="co">// route definitions</span>
+
+<span class="co">/**</span>
+<span class="co"> * Post listing.</span>
+<span class="co"> */</span>
+
+<span class="kw">function</span> *<span class="fu">list</span>() {
+  <span class="kw">this</span>.<span class="fu">body</span> = <span class="kw">yield</span> <span class="fu">render</span>(<span class="st">&#39;list&#39;</span>, { <span class="dt">posts</span>: posts });
+}
+
+<span class="co">/**</span>
+<span class="co"> * Show creation form.</span>
+<span class="co"> */</span>
+
+<span class="kw">function</span> *<span class="fu">add</span>() {
+  <span class="kw">this</span>.<span class="fu">body</span> = <span class="kw">yield</span> <span class="fu">render</span>(<span class="st">&#39;new&#39;</span>);
+}
+
+<span class="co">/**</span>
+<span class="co"> * Show post :id.</span>
+<span class="co"> */</span>
+
+<span class="kw">function</span> *<span class="fu">show</span>(id) {
+  <span class="kw">var</span> post = posts[id];
+  <span class="kw">if</span> (!post) <span class="kw">this</span>.<span class="fu">throw</span>(<span class="dv">404</span>, <span class="st">&#39;invalid post id&#39;</span>);
+  <span class="kw">this</span>.<span class="fu">body</span> = <span class="kw">yield</span> <span class="fu">render</span>(<span class="st">&#39;show&#39;</span>, { <span class="dt">post</span>: post });
+}
+
+<span class="co">/**</span>
+<span class="co"> * Create a post.</span>
+<span class="co"> */</span>
+
+<span class="kw">function</span> *<span class="fu">create</span>() {
+  <span class="kw">var</span> post = <span class="kw">yield</span> <span class="fu">parse</span>(<span class="kw">this</span>);
+  <span class="kw">var</span> id = <span class="ot">posts</span>.<span class="fu">push</span>(post) - <span class="dv">1</span>;
+  <span class="ot">post</span>.<span class="fu">created_at</span> = <span class="kw">new</span> Date;
+  <span class="ot">post</span>.<span class="fu">id</span> = id;
+  <span class="kw">this</span>.<span class="fu">redirect</span>(<span class="st">&#39;/&#39;</span>);
+}
+
+<span class="co">// listen</span>
+
+<span class="ot">app</span>.<span class="fu">listen</span>(<span class="dv">3000</span>);
+<span class="ot">console</span>.<span class="fu">log</span>(<span class="st">&#39;listening on port 3000&#39;</span>);</code></pre>
+<p>您可以看到伺服端的 list 功能之處理，大致如下所示。</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="ot">app</span>.<span class="fu">use</span>(<span class="ot">route</span>.<span class="fu">get</span>(<span class="st">&#39;/&#39;</span>, list));
+...
+<span class="kw">function</span> *<span class="fu">list</span>() {
+  <span class="kw">this</span>.<span class="fu">body</span> = <span class="kw">yield</span> <span class="fu">render</span>(<span class="st">&#39;list&#39;</span>, { <span class="dt">posts</span>: posts });
+}</code></pre>
+<p>這代表當您訪問網址為根目錄時，會呼叫樣板引擎去呈現 list.html 這個樣板，並將貼文 posts 傳入到樣板中。</p>
+<p>但是、主程式裏並沒有指定使用哪個樣板引擎，指定的工作是在 <a href="lib/render.js.html">lib/render.js</a> 這個檔案裏設定的。(https://github.com/koajs/examples/blob/master/blog/lib/render.js)</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> views = <span class="fu">require</span>(<span class="st">&#39;co-views&#39;</span>);
+
+<span class="co">// setup views mapping .html</span>
+<span class="co">// to the swig template engine</span>
+
+<span class="ot">module</span>.<span class="fu">exports</span> = <span class="fu">views</span>(__dirname + <span class="st">&#39;/../views&#39;</span>, {
+  <span class="dt">map</span>: { <span class="dt">html</span>: <span class="st">&#39;swig&#39;</span> }
+});</code></pre>
+<p>您可以看到其中設定使用 swig 樣板引擎，還有其樣板的置放目錄為 views 。</p>
+<p>接著讓我們看看樣板到底長甚麼樣？ 以下是 list.html 的內容。</p>
+<p>檔案： list.html</p>
+<pre class="sourceCode html"><code class="sourceCode html">{% extends &#39;layout.html&#39; %}
+
+{% block title %}Posts{% endblock %}
+
+{% block content %}
+  <span class="kw">&lt;h1&gt;</span>Posts<span class="kw">&lt;/h1&gt;</span>
+  <span class="kw">&lt;p&gt;</span>You have <span class="kw">&lt;strong&gt;</span>{{ posts.length }}<span class="kw">&lt;/strong&gt;</span> posts!<span class="kw">&lt;/p&gt;</span>
+  <span class="kw">&lt;p&gt;&lt;a</span><span class="ot"> href=</span><span class="st">&quot;/post/new&quot;</span><span class="kw">&gt;</span>Create a Post<span class="kw">&lt;/a&gt;&lt;/p&gt;</span>
+  <span class="kw">&lt;ul</span><span class="ot"> id=</span><span class="st">&quot;posts&quot;</span><span class="kw">&gt;</span>
+    {% for post in posts %}
+      <span class="kw">&lt;li&gt;</span>
+        <span class="kw">&lt;h2&gt;</span>{{ post.title }}<span class="kw">&lt;/h2&gt;</span>
+        <span class="kw">&lt;p&gt;&lt;a</span><span class="ot"> href=</span><span class="st">&quot;/post/{{ post.id }}&quot;</span><span class="kw">&gt;</span>Read post<span class="kw">&lt;/a&gt;&lt;/p&gt;</span>
+      <span class="kw">&lt;/li&gt;</span>
+    {% endfor %}
+  <span class="kw">&lt;/ul&gt;</span>
+{% endblock %}</code></pre>
+<p>其中第一行又引入了一個 layout.html 的樣板，其內容如下：</p>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;html&gt;</span>
+<span class="kw">&lt;head&gt;</span>
+  <span class="kw">&lt;title&gt;</span>{% block title %}Blog{% endblock %}<span class="kw">&lt;/title&gt;</span>
+  <span class="kw">&lt;style&gt;</span>
+    body <span class="kw">{</span>
+      <span class="kw">padding:</span> <span class="dt">80px</span><span class="kw">;</span>
+      <span class="kw">font:</span> <span class="dt">16px</span> Helvetica, Arial<span class="kw">;</span>
+    <span class="kw">}</span>
+    h1 <span class="kw">{</span>
+      <span class="kw">font-size:</span> <span class="dt">2em</span><span class="kw">;</span>
+    <span class="kw">}</span>
+    h2 <span class="kw">{</span>
+      <span class="kw">font-size:</span> <span class="dt">1.2em</span><span class="kw">;</span>
+    <span class="kw">}</span>
+    <span class="fl">#posts</span> <span class="kw">{</span>
+      <span class="kw">margin:</span> <span class="dt">0</span><span class="kw">;</span>
+      <span class="kw">padding:</span> <span class="dt">0</span><span class="kw">;</span>
+    <span class="kw">}</span>
+    <span class="fl">#posts</span> li <span class="kw">{</span>
+      <span class="kw">margin:</span> <span class="dt">40px</span> <span class="dt">0</span><span class="kw">;</span>
+      <span class="kw">padding:</span> <span class="dt">0</span><span class="kw">;</span>
+      <span class="kw">padding-bottom:</span> <span class="dt">20px</span><span class="kw">;</span>
+      <span class="kw">border-bottom:</span> <span class="dt">1px</span> <span class="dt">solid</span> <span class="dt">#eee</span><span class="kw">;</span>
+      <span class="kw">list-style:</span> <span class="dt">none</span><span class="kw">;</span>
+    <span class="kw">}</span>
+    <span class="fl">#posts</span> li<span class="dv">:last-child</span> <span class="kw">{</span>
+      <span class="kw">border-bottom:</span> <span class="dt">none</span><span class="kw">;</span>
+    <span class="kw">}</span>
+    textarea <span class="kw">{</span>
+      <span class="kw">width:</span> <span class="dt">500px</span><span class="kw">;</span>
+      <span class="kw">height:</span> <span class="dt">300px</span><span class="kw">;</span>
+    <span class="kw">}</span>
+    input<span class="ch">[type=text]</span>,
+    textarea <span class="kw">{</span>
+      <span class="kw">border:</span> <span class="dt">1px</span> <span class="dt">solid</span> <span class="dt">#eee</span><span class="kw">;</span>
+      <span class="kw">border-top-color:</span> <span class="dt">#ddd</span><span class="kw">;</span>
+      <span class="kw">border-left-color:</span> <span class="dt">#ddd</span><span class="kw">;</span>
+      <span class="kw">border-radius:</span> <span class="dt">2px</span><span class="kw">;</span>
+      <span class="kw">padding:</span> <span class="dt">15px</span><span class="kw">;</span>
+      <span class="kw">font-size:</span> <span class="dt">.8em</span><span class="kw">;</span>
+    <span class="kw">}</span>
+    input<span class="ch">[type=text]</span> <span class="kw">{</span>
+      <span class="kw">width:</span> <span class="dt">500px</span><span class="kw">;</span>
+    <span class="kw">}</span>
+  <span class="kw">&lt;/style&gt;</span>
+<span class="kw">&lt;/head&gt;</span>
+<span class="kw">&lt;body&gt;</span>
+  <span class="kw">&lt;section</span><span class="ot"> id=</span><span class="st">&quot;content&quot;</span><span class="kw">&gt;</span>
+    {% block content %}
+      <span class="kw">&lt;p&gt;</span>Missing content!<span class="kw">&lt;/p&gt;</span>
+    {% endblock %}
+  <span class="kw">&lt;/section&gt;</span>
+<span class="kw">&lt;/body&gt;</span>
+<span class="kw">&lt;/html&gt;</span></code></pre>
+<p>您可以看到 swig 的樣板有類似繼承的架構，可以透過子樣板中的標記將母樣板的內容修改掉，而這也正是使用樣板引擎的好處之一。</p>
+<h3 id="結語">結語</h3>
+<p>如果還有不清楚的地方，請各位讀者直接參考該專案的原始碼，網址如下：</p>
+<ul>
+<li><a href="https://github.com/koajs/examples/tree/master/blog/views" class="uri">https://github.com/koajs/examples/tree/master/blog/views</a></li>
+</ul>
+<h2 id="簡單留言系統----使用單頁技術">簡單留言系統 -- 使用單頁技術</h2>
+<h3 id="簡介-2">簡介</h3>
+<p>最近在 HTML5 的加持與前端框架越來越強大的影響下，單頁技術開始快速興起，但是我們卻很少看到單頁技術的完整範例。</p>
+<p>為了在上課時示範給學生看，筆者寫了一個非常簡單的單頁留言系統。</p>
+<p>為了簡單起見，該系統沒有用到資料庫，暫時將留言都存在記憶體的 JSON 物件裡面。</p>
+<p>這個專案已經上傳到 github 上，以下是專案的網址。</p>
+<ul>
+<li>專案: <a href="https://github.com/ccckmit/KoaSpaNote/" class="uri">https://github.com/ccckmit/KoaSpaNote/</a></li>
+</ul>
+<p>我們在後端使用了 Koa 這個採用 yield 語法的框架，然後在前端採用 bootstrap 和 jQuery 這兩個框架，並且用 AJAX 作為前後端的溝通方法。</p>
+<p>這個留言系統可以新增、修改、或列出留言，但我們沒有實做刪除功能，以下是列出留言的畫面。</p>
+<div class="figure">
+<img src="noteSpaList.jpg" alt="圖、留言列表" /><p class="caption">圖、留言列表</p>
+</div>
+<p>然後我們可以按某一筆留言進去編輯，以下是編輯時的畫面。</p>
+<div class="figure">
+<img src="noteSpaEdit.jpg" alt="圖、編輯第二筆留言" /><p class="caption">圖、編輯第二筆留言</p>
+</div>
+<p>我們也可以按『新增記事』按鈕去增加新的留言，如下所示。</p>
+<div class="figure">
+<img src="noteSpaNew.jpg" alt="圖、新增留言" /><p class="caption">圖、新增留言</p>
+</div>
+<p>新增完之後又會自動跳回列出留言的畫面如下。</p>
+<div class="figure">
+<img src="noteSpaList2.jpg" alt="圖、新增後留言列表" /><p class="caption">圖、新增後留言列表</p>
+</div>
+<p>在以上的互動過程中，伺服器會印出下列訊息。</p>
+<pre><code>D:\git\KoaSpaNote&gt;iojs KoaNoteServer.js
+noteServer started at port : 3000
+get /web/note.html
+get /web/main.css
+/list path=/list
+/list req=[object Object]
+/list notes=[{&quot;title&quot;:&quot;title1&quot;,&quot;body&quot;:&quot;body1&quot;},{&quot;title&quot;:&quot;title2&quot;,&quot;body&quot;:&quot;body2&quot;}
+,{&quot;title&quot;:&quot;title3&quot;,&quot;body&quot;:&quot;body3&quot;}]
+response: code=200
+[{&quot;title&quot;:&quot;title1&quot;,&quot;body&quot;:&quot;body1&quot;},{&quot;title&quot;:&quot;title2&quot;,&quot;body&quot;:&quot;body2&quot;},{&quot;title&quot;:&quot;t
+itle3&quot;,&quot;body&quot;:&quot;body3&quot;}]
+
+get /web/favicon.ico
+
+  Error: ENOENT: no such file or directory, open &#39;D:\git\KoaSpaNote\web\favicon.
+ico&#39;
+      at Error (native)
+
+response: code=200
+{&quot;title&quot;:&quot;title1&quot;,&quot;body&quot;:&quot;body1&quot;}
+
+response: code=200
+{&quot;title&quot;:&quot;title2&quot;,&quot;body&quot;:&quot;body2&quot;}
+
+response: code=200
+{&quot;title&quot;:&quot;title2&quot;,&quot;body&quot;:&quot;body2\n\nxxx&quot;}
+
+post new title 1:new body 1
+response: code=200
+write success!
+
+/list path=/list
+/list req=[object Object]
+/list notes=[{&quot;title&quot;:&quot;title1&quot;,&quot;body&quot;:&quot;body1&quot;},{&quot;title&quot;:&quot;title2&quot;,&quot;body&quot;:&quot;body2\n
+\nxxx&quot;},{&quot;title&quot;:&quot;title3&quot;,&quot;body&quot;:&quot;body3&quot;},{&quot;title&quot;:&quot;new title 1&quot;,&quot;body&quot;:&quot;new bod
+y 1&quot;}]
+response: code=200
+[{&quot;title&quot;:&quot;title1&quot;,&quot;body&quot;:&quot;body1&quot;},{&quot;title&quot;:&quot;title2&quot;,&quot;body&quot;:&quot;body2\n\nxxx&quot;},{&quot;ti
+tle&quot;:&quot;title3&quot;,&quot;body&quot;:&quot;body3&quot;},{&quot;title&quot;:&quot;new title 1&quot;,&quot;body&quot;:&quot;new body 1&quot;}]
+</code></pre>
+<p>這就是整個留言系統的功能了，接著讓我們來看看前後端的程式碼。</p>
+<h3 id="前端網頁">前端網頁</h3>
+<p>檔案： note.html</p>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;html&gt;</span>
+<span class="kw">&lt;head&gt;</span>
+  <span class="kw">&lt;meta</span><span class="ot"> charset=</span><span class="st">&quot;utf-8&quot;</span> <span class="kw">/&gt;</span>
+  <span class="kw">&lt;link</span><span class="ot"> href=</span><span class="st">&quot;favicon.ico&quot;</span><span class="ot"> rel=</span><span class="st">&quot;icon&quot;</span><span class="kw">&gt;</span>
+  <span class="kw">&lt;link</span><span class="ot"> href=</span><span class="st">&quot;http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css&quot;</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="kw">&gt;</span>
+  <span class="kw">&lt;link</span><span class="ot"> href=</span><span class="st">&quot;main.css&quot;</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="kw">&gt;</span>
+  <span class="kw">&lt;title&gt;</span>簡易記事本<span class="kw">&lt;/title&gt;</span>
+<span class="kw">&lt;/head&gt;</span>
+<span class="kw">&lt;body</span><span class="ot"> onload=</span><span class="st">&quot;init()&quot;</span><span class="kw">&gt;</span>
+  <span class="kw">&lt;nav</span><span class="ot"> class=</span><span class="st">&quot;navbar navbar-inverse navbar-fixed-top&quot;</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;container&quot;</span><span class="kw">&gt;</span>
+      <span class="kw">&lt;button</span><span class="ot"> type=</span><span class="st">&quot;button&quot;</span><span class="ot"> class=</span><span class="st">&quot;navbar-toggle collapsed&quot;</span><span class="ot"> data-toggle=</span><span class="st">&quot;collapse&quot;</span><span class="ot"> data-target=</span><span class="st">&quot;#navbar&quot;</span><span class="ot"> aria-expanded=</span><span class="st">&quot;false&quot;</span><span class="ot"> aria-controls=</span><span class="st">&quot;navbar&quot;</span><span class="kw">&gt;</span>
+        <span class="kw">&lt;span</span><span class="ot"> class=</span><span class="st">&quot;sr-only&quot;</span><span class="kw">&gt;</span>Toggle navigation<span class="kw">&lt;/span&gt;</span>
+        <span class="kw">&lt;span</span><span class="ot"> class=</span><span class="st">&quot;icon-bar&quot;</span><span class="kw">&gt;&lt;/span&gt;</span>
+        <span class="kw">&lt;span</span><span class="ot"> class=</span><span class="st">&quot;icon-bar&quot;</span><span class="kw">&gt;&lt;/span&gt;</span>
+        <span class="kw">&lt;span</span><span class="ot"> class=</span><span class="st">&quot;icon-bar&quot;</span><span class="kw">&gt;&lt;/span&gt;</span>
+      <span class="kw">&lt;/button&gt;</span>
+      <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;navbar-header&quot;</span><span class="ot"> style=</span><span class="st">&quot;color:#C0C0C0&quot;</span><span class="kw">&gt;</span>
+        簡易記事本
+      <span class="kw">&lt;/div&gt;</span>
+      <span class="kw">&lt;div</span><span class="ot"> id=</span><span class="st">&quot;navbar&quot;</span><span class="ot"> class=</span><span class="st">&quot;navbar-collapse collapse&quot;</span><span class="kw">&gt;</span>
+        <span class="kw">&lt;form</span><span class="ot"> class=</span><span class="st">&quot;navbar-form navbar-right&quot;</span><span class="kw">&gt;</span>
+          <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;form-group&quot;</span><span class="kw">&gt;</span>
+            <span class="kw">&lt;input</span><span class="ot"> id=</span><span class="st">&quot;filepath&quot;</span><span class="ot"> type=</span><span class="st">&quot;hidden&quot;</span><span class="ot"> class=</span><span class="st">&quot;form-control&quot;</span><span class="ot"> placeholder=</span><span class="st">&quot;filepath&quot;</span><span class="ot"> aria-describedby=</span><span class="st">&quot;basic-addon1&quot;</span><span class="kw">&gt;</span>
+            <span class="kw">&lt;button</span><span class="ot"> class=</span><span class="st">&quot;btn btn-success&quot;</span><span class="ot"> type=</span><span class="st">&quot;button&quot;</span><span class="ot"> onclick=</span><span class="st">&quot;list()&quot;</span><span class="kw">&gt;</span>所有記事<span class="kw">&lt;/button&gt;</span>
+            <span class="kw">&lt;button</span><span class="ot"> class=</span><span class="st">&quot;btn btn-success&quot;</span><span class="ot"> type=</span><span class="st">&quot;button&quot;</span><span class="ot"> onclick=</span><span class="st">&quot;newNote()&quot;</span><span class="kw">&gt;</span>新增記事<span class="kw">&lt;/button&gt;</span>
+          <span class="kw">&lt;/div&gt;</span>
+        <span class="kw">&lt;/form&gt;</span>     
+      <span class="kw">&lt;/div&gt;</span>
+    <span class="kw">&lt;/div&gt;</span>
+  <span class="kw">&lt;/nav&gt;</span>
+
+  <span class="kw">&lt;div</span><span class="ot"> id=</span><span class="st">&quot;panelList&quot;</span><span class="ot"> class=</span><span class="st">&quot;tab-pane panel&quot;</span><span class="kw">&gt;</span>
+  <span class="kw">&lt;/div&gt;</span>
+  <span class="kw">&lt;div</span><span class="ot"> id=</span><span class="st">&quot;panelEdit&quot;</span><span class="ot"> class=</span><span class="st">&quot;tab-pane panel&quot;</span><span class="kw">&gt;</span>
+    標題： <span class="kw">&lt;input</span><span class="ot"> id=</span><span class="st">&quot;editTitle&quot;</span><span class="ot"> type=</span><span class="st">&quot;text&quot;</span><span class="ot"> value=</span><span class="st">&quot;&quot;</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;br/&gt;</span>
+    <span class="kw">&lt;textarea</span><span class="ot"> id=</span><span class="st">&quot;editBody&quot;</span><span class="ot"> class=</span><span class="st">&quot;form-control&quot;</span><span class="ot"> style=</span><span class="st">&quot;width:100%; height:60%&quot;</span><span class="kw">&gt;&lt;/textarea&gt;</span>
+    <span class="kw">&lt;button</span><span class="ot"> class=</span><span class="st">&quot;btn btn-success&quot;</span><span class="ot"> onclick=</span><span class="st">&quot;save()&quot;</span><span class="kw">&gt;</span>儲存<span class="kw">&lt;/button&gt;</span>
+  <span class="kw">&lt;/div&gt;</span>
+  <span class="kw">&lt;div</span><span class="ot"> id=</span><span class="st">&quot;panelNew&quot;</span><span class="ot"> class=</span><span class="st">&quot;tab-pane panel&quot;</span><span class="kw">&gt;</span>
+    標題： <span class="kw">&lt;input</span><span class="ot"> id=</span><span class="st">&quot;newTitle&quot;</span><span class="ot"> type=</span><span class="st">&quot;text&quot;</span><span class="ot"> value=</span><span class="st">&quot;&quot;</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;br/&gt;</span>
+    <span class="kw">&lt;textarea</span><span class="ot"> id=</span><span class="st">&quot;newBody&quot;</span><span class="ot"> class=</span><span class="st">&quot;form-control&quot;</span><span class="ot"> style=</span><span class="st">&quot;width:100%; height:60%&quot;</span><span class="kw">&gt;&lt;/textarea&gt;</span>
+    <span class="kw">&lt;button</span><span class="ot"> class=</span><span class="st">&quot;btn btn-success&quot;</span><span class="ot"> onclick=</span><span class="st">&quot;add()&quot;</span><span class="kw">&gt;</span>新增<span class="kw">&lt;/button&gt;</span>
+  <span class="kw">&lt;/div&gt;</span>
+  <span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span>
+  <span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span>
+<span class="kw">&lt;script&gt;</span>
+<span class="fu">$</span>(<span class="st">&#39;.panel&#39;</span>).<span class="fu">css</span>( <span class="st">&quot;display&quot;</span>, <span class="st">&quot;none&quot;</span>);
+Server = {
+  <span class="dt">timeout </span>: <span class="dv">4000</span>
+};
+<span class="ot">Server</span>.<span class="fu">save</span>=<span class="kw">function</span>(file, text) {
+  <span class="ot">$</span>.<span class="fu">ajax</span>({
+    <span class="dt">type</span>: <span class="st">&quot;POST&quot;</span>,
+    <span class="dt">url</span>: <span class="st">&quot;/note/&quot;</span>+file,
+    <span class="dt">timeout</span>: <span class="kw">this</span>.<span class="fu">timeout</span>,
+    <span class="dt">data</span>: { <span class="dt">text</span>: text }
+  })
+  .<span class="fu">done</span>(<span class="kw">function</span>(data) {
+    <span class="fu">alert</span>( <span class="st">&quot;存檔完成!&quot;</span>);
+  })
+  .<span class="fu">fail</span>(<span class="kw">function</span>() {
+    <span class="fu">alert</span>( <span class="st">&quot;存檔失敗！&quot;</span> );
+  });
+}
+<span class="ot">Server</span>.<span class="fu">load</span>=<span class="kw">function</span>(file) {
+  <span class="kw">return</span> <span class="ot">$</span>.<span class="fu">ajax</span>({
+    <span class="dt">type</span>: <span class="st">&quot;GET&quot;</span>,
+    <span class="dt">url</span>: <span class="st">&quot;/note/&quot;</span>+file,
+    <span class="dt">timeout</span>: <span class="kw">this</span>.<span class="fu">timeout</span>,
+    <span class="dt">data</span>: {}
+  });
+}
+<span class="kw">function</span> <span class="fu">init</span>() {
+  <span class="fu">list</span>();
+}
+<span class="kw">function</span> <span class="fu">switchPanel</span>(name) {
+  <span class="fu">$</span>(<span class="st">&#39;.panel&#39;</span>).<span class="fu">css</span>( <span class="st">&quot;display&quot;</span>, <span class="st">&quot;none&quot;</span>);
+  <span class="fu">$</span>(<span class="st">&#39;#&#39;</span>+name).<span class="fu">css</span>( <span class="st">&quot;display&quot;</span>, <span class="st">&quot;block&quot;</span>);
+}
+<span class="kw">function</span> <span class="fu">list</span>() {
+  <span class="fu">switchPanel</span>(<span class="st">&#39;panelList&#39;</span>);
+  <span class="ot">$</span>.<span class="fu">ajax</span>({
+    <span class="dt">type</span>: <span class="st">&quot;GET&quot;</span>,
+    <span class="dt">url</span>: <span class="st">&quot;/list&quot;</span>,
+    <span class="dt">timeout</span>: <span class="kw">this</span>.<span class="fu">timeout</span>,
+    <span class="dt">data</span>: {}
+  })
+  .<span class="fu">done</span>(<span class="kw">function</span>(data) {
+    <span class="kw">var</span> notes = <span class="ot">JSON</span>.<span class="fu">parse</span>(data);
+        <span class="fu">$</span>(<span class="st">&#39;#panelList&#39;</span>).<span class="fu">empty</span>();
+        <span class="fu">$</span>(<span class="st">&#39;#panelList&#39;</span>).<span class="fu">append</span>(<span class="st">&quot;&lt;ol&gt;&quot;</span>);
+    <span class="kw">for</span> (<span class="kw">var</span> i <span class="kw">in</span> notes) {
+      <span class="kw">var</span> title = notes[i].<span class="fu">title</span>;
+      <span class="kw">var</span> body  = notes[i].<span class="fu">body</span>;
+      <span class="fu">$</span>(<span class="st">&#39;#panelList&#39;</span>).<span class="fu">append</span>(<span class="st">&#39;&lt;li&gt;&lt;a href=&quot;javascript:edit(&#39;</span>+i+<span class="st">&#39;)&quot;&gt;&#39;</span>+title+<span class="st">&quot;&lt;/a&gt;&lt;/li&gt;&quot;</span>)
+    }
+        <span class="fu">$</span>(<span class="st">&#39;#panelList&#39;</span>).<span class="fu">append</span>(<span class="st">&quot;&lt;/ol&gt;&quot;</span>);
+  });
+}
+<span class="kw">var</span> noteID;
+<span class="kw">function</span> <span class="fu">edit</span>(id) {
+  <span class="fu">switchPanel</span>(<span class="st">&#39;panelEdit&#39;</span>);
+    noteID = id;
+  <span class="ot">$</span>.<span class="fu">ajax</span>({
+    <span class="dt">type</span>: <span class="st">&quot;GET&quot;</span>,
+    <span class="dt">url</span>: <span class="st">&quot;/note/&quot;</span>+id,
+    <span class="dt">timeout</span>: <span class="kw">this</span>.<span class="fu">timeout</span>,
+    <span class="dt">data</span>: {}
+  })
+  .<span class="fu">done</span>(<span class="kw">function</span>(data) {
+    <span class="kw">var</span> note = <span class="ot">JSON</span>.<span class="fu">parse</span>(data);
+    <span class="fu">$</span>(<span class="st">&#39;#editTitle&#39;</span>).<span class="fu">val</span>(<span class="ot">note</span>.<span class="fu">title</span>);
+    <span class="fu">$</span>(<span class="st">&#39;#editBody&#39;</span>).<span class="fu">val</span>(<span class="ot">note</span>.<span class="fu">body</span>);
+  });
+}
+<span class="kw">function</span> <span class="fu">save</span>() {
+  <span class="kw">var</span> title = <span class="fu">$</span>(<span class="st">&#39;#editTitle&#39;</span>).<span class="fu">val</span>();
+  <span class="kw">var</span> body  = <span class="fu">$</span>(<span class="st">&#39;#editBody&#39;</span>).<span class="fu">val</span>();
+  <span class="ot">$</span>.<span class="fu">ajax</span>({
+    <span class="dt">type</span>: <span class="st">&quot;POST&quot;</span>,
+    <span class="dt">url</span>: <span class="st">&quot;/note/&quot;</span>+noteID,
+    <span class="dt">timeout</span>: <span class="kw">this</span>.<span class="fu">timeout</span>,
+    <span class="dt">data</span>: {
+      <span class="dt">title</span>:title,
+            <span class="dt">body</span>:body
+    }
+  })
+  .<span class="fu">done</span>(<span class="kw">function</span>(data) {
+      <span class="fu">alert</span>(<span class="st">&#39;存檔完成!&#39;</span>);
+    });
+}
+<span class="kw">function</span> <span class="fu">newNote</span>() {
+  <span class="fu">switchPanel</span>(<span class="st">&#39;panelNew&#39;</span>);
+  <span class="fu">$</span>(<span class="st">&#39;#editTitle&#39;</span>).<span class="fu">val</span>(<span class="st">&#39;&#39;</span>);
+  <span class="fu">$</span>(<span class="st">&#39;#editBody&#39;</span>).<span class="fu">val</span>(<span class="st">&#39;&#39;</span>);
+}
+<span class="kw">function</span> <span class="fu">add</span>() {
+  <span class="kw">var</span> title = <span class="fu">$</span>(<span class="st">&#39;#newTitle&#39;</span>).<span class="fu">val</span>();
+  <span class="kw">var</span> body  = <span class="fu">$</span>(<span class="st">&#39;#newBody&#39;</span>).<span class="fu">val</span>();
+  <span class="ot">$</span>.<span class="fu">ajax</span>({
+    <span class="dt">type</span>: <span class="st">&quot;POST&quot;</span>,
+    <span class="dt">url</span>: <span class="st">&quot;/new&quot;</span>,
+    <span class="dt">timeout</span>: <span class="kw">this</span>.<span class="fu">timeout</span>,
+    <span class="dt">data</span>: {
+      <span class="dt">title</span>:title,
+            <span class="dt">body</span>:body
+    }
+  })
+  .<span class="fu">done</span>(<span class="kw">function</span>(data) {
+      <span class="fu">alert</span>(<span class="st">&#39;新增完成!&#39;</span>);
+        <span class="fu">list</span>();
+    });
+}
+&lt;<span class="ot">/script&gt;</span>
+<span class="ot">&lt;/body</span>&gt;
+&lt;<span class="ot">/html&gt;</span></code></pre>
+<h3 id="後端伺服器">後端伺服器</h3>
+<p>檔案： KoaNoteServer.js</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> http    = <span class="fu">require</span>(<span class="st">&#39;http&#39;</span>);
+<span class="kw">var</span> url     = <span class="fu">require</span>(<span class="st">&#39;url&#39;</span>);
+<span class="kw">var</span> koa     = <span class="fu">require</span>(<span class="st">&#39;koa&#39;</span>);
+<span class="kw">var</span> fs      = <span class="fu">require</span>(<span class="st">&#39;mz/fs&#39;</span>);
+<span class="kw">var</span> path    = <span class="fu">require</span>(<span class="st">&#39;path&#39;</span>);
+<span class="kw">var</span> bodyParser = <span class="fu">require</span>(<span class="st">&quot;koa-bodyparser&quot;</span>); <span class="co">// 參考：http://codeforgeek.com/2014/09/handle-get-post-request-express-4/</span>
+<span class="kw">var</span> route   = <span class="fu">require</span>(<span class="st">&#39;koa-route&#39;</span>);
+<span class="kw">var</span> c       = console;
+
+<span class="kw">var</span> app = <span class="fu">koa</span>();
+<span class="ot">app</span>.<span class="fu">use</span>(<span class="fu">bodyParser</span>());
+
+<span class="kw">var</span> notes = [ {<span class="dt">title</span>:<span class="st">&#39;title1&#39;</span>, <span class="dt">body</span>:<span class="st">&#39;body1&#39;</span>}, 
+              {<span class="dt">title</span>:<span class="st">&#39;title2&#39;</span>, <span class="dt">body</span>:<span class="st">&#39;body2&#39;</span>}, 
+              {<span class="dt">title</span>:<span class="st">&#39;title3&#39;</span>, <span class="dt">body</span>:<span class="st">&#39;body3&#39;</span>} ];
+
+<span class="kw">function</span> <span class="fu">response</span>(res, code, msg) {
+  <span class="ot">res</span>.<span class="fu">status</span> = code;
+  <span class="ot">res</span>.<span class="fu">set</span>({<span class="st">&#39;Content-Length&#39;</span>:<span class="st">&#39;&#39;</span>+<span class="ot">msg</span>.<span class="fu">length</span>,<span class="st">&#39;Content-Type&#39;</span>:<span class="st">&#39;text/plain&#39;</span>});
+  <span class="ot">res</span>.<span class="fu">body</span> = msg;
+  <span class="ot">c</span>.<span class="fu">log</span>(<span class="st">&quot;response: code=&quot;</span>+code+<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>+msg+<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>);
+}
+
+<span class="ot">app</span>.<span class="fu">use</span>(<span class="ot">route</span>.<span class="fu">get</span>(<span class="st">&#39;/&#39;</span>, <span class="kw">function</span>*() {
+  <span class="kw">this</span>.<span class="fu">redirect</span>(<span class="st">&#39;/web/note.html&#39;</span>);
+}));
+
+<span class="kw">var</span> mime = { <span class="st">&quot;.css&quot;</span>:<span class="st">&quot;text/css&quot;</span>, <span class="st">&quot;.html&quot;</span>: <span class="st">&quot;text/html&quot;</span>, <span class="st">&quot;.htm&quot;</span>:<span class="st">&quot;text/html&quot;</span>, <span class="st">&quot;.jpg&quot;</span>:<span class="st">&quot;image/jpg&quot;</span>, <span class="st">&quot;.png&quot;</span>:<span class="st">&quot;image/png&quot;</span>, <span class="st">&quot;.gif&quot;</span>:<span class="st">&quot;image/gif&quot;</span>, <span class="st">&quot;.pdf&quot;</span>:<span class="st">&quot;application/pdf&quot;</span>};
+
+<span class="kw">function</span> <span class="fu">fileMimeType</span>(path) {
+  <span class="kw">for</span> (<span class="kw">var</span> tail <span class="kw">in</span> mime) {
+    <span class="kw">if</span> (<span class="ot">path</span>.<span class="fu">endsWith</span>(tail))
+      <span class="kw">return</span> mime[tail];
+  }
+}
+
+<span class="ot">app</span>.<span class="fu">use</span>(<span class="ot">route</span>.<span class="fu">get</span>(<span class="ot">/</span><span class="fl">\/</span><span class="ot">web</span><span class="fl">\/</span><span class="ot">.</span><span class="fl">*</span><span class="ot">/</span>, <span class="kw">function</span> *<span class="fu">toStatic</span>() {
+  <span class="kw">var</span> req = <span class="kw">this</span>.<span class="fu">request</span>, res = <span class="kw">this</span>.<span class="fu">response</span>;
+  <span class="ot">c</span>.<span class="fu">log</span>(<span class="st">&#39;get %s&#39;</span>, <span class="kw">this</span>.<span class="fu">path</span>);
+  <span class="kw">var</span> mimetype = <span class="fu">fileMimeType</span>(<span class="kw">this</span>.<span class="fu">path</span>)
+  <span class="kw">if</span> (mimetype) <span class="kw">this</span>.<span class="fu">type</span> = mimetype+<span class="st">&quot;;&quot;</span>;
+  <span class="kw">this</span>.<span class="fu">body</span> = <span class="ot">fs</span>.<span class="fu">createReadStream</span>(__dirname+<span class="kw">this</span>.<span class="fu">path</span>);
+}));
+
+<span class="ot">app</span>.<span class="fu">use</span>(<span class="ot">route</span>.<span class="fu">get</span>(<span class="st">&quot;/list&quot;</span>, <span class="kw">function</span> *<span class="fu">list</span>() {
+  <span class="ot">c</span>.<span class="fu">log</span>(<span class="st">&quot;/list path=%s&quot;</span>, <span class="kw">this</span>.<span class="fu">path</span>);
+  <span class="ot">c</span>.<span class="fu">log</span>(<span class="st">&quot;/list req=%s&quot;</span>, <span class="kw">this</span>.<span class="fu">request</span>);
+  <span class="ot">c</span>.<span class="fu">log</span>(<span class="st">&quot;/list notes=%j&quot;</span>, notes);
+  <span class="fu">response</span>(<span class="kw">this</span>.<span class="fu">response</span>, <span class="dv">200</span>, <span class="ot">JSON</span>.<span class="fu">stringify</span>(notes));
+}));
+
+<span class="ot">app</span>.<span class="fu">use</span>(<span class="ot">route</span>.<span class="fu">get</span>(<span class="st">&quot;/note/:id&quot;</span>, <span class="kw">function</span> *<span class="fu">edit</span>(id) {
+  <span class="kw">var</span> i = <span class="fu">parseInt</span>(id);
+  <span class="fu">response</span>(<span class="kw">this</span>.<span class="fu">response</span>, <span class="dv">200</span>, <span class="ot">JSON</span>.<span class="fu">stringify</span>(notes[i]));
+}));
+
+<span class="ot">app</span>.<span class="fu">use</span>(<span class="ot">route</span>.<span class="fu">post</span>(<span class="st">&quot;/note/:id&quot;</span>, <span class="kw">function</span> *<span class="fu">save</span>(id) {
+  <span class="kw">var</span> i = <span class="fu">parseInt</span>(id);
+  <span class="kw">var</span> title = <span class="kw">this</span>.<span class="ot">request</span>.<span class="ot">body</span>.<span class="fu">title</span>;
+  <span class="kw">var</span> body = <span class="kw">this</span>.<span class="ot">request</span>.<span class="ot">body</span>.<span class="fu">body</span>;
+  notes[i] = { <span class="dt">title</span>:title, <span class="dt">body</span>:body };
+  <span class="fu">response</span>(<span class="kw">this</span>.<span class="fu">response</span>, <span class="dv">200</span>, <span class="ot">JSON</span>.<span class="fu">stringify</span>(notes[i]));
+}));
+
+<span class="ot">app</span>.<span class="fu">use</span>(<span class="ot">route</span>.<span class="fu">post</span>(<span class="st">&#39;/new&#39;</span>, <span class="kw">function</span> *<span class="fu">newNote</span>() {
+  <span class="kw">var</span> req = <span class="kw">this</span>.<span class="fu">request</span>, res = <span class="kw">this</span>.<span class="fu">response</span>;
+  <span class="kw">var</span> title = <span class="kw">this</span>.<span class="ot">request</span>.<span class="ot">body</span>.<span class="fu">title</span>;
+  <span class="kw">var</span> body = <span class="kw">this</span>.<span class="ot">request</span>.<span class="ot">body</span>.<span class="fu">body</span>;
+  <span class="ot">c</span>.<span class="fu">log</span>(<span class="st">&#39;post %s:%s&#39;</span>, title, body);
+  <span class="ot">notes</span>.<span class="fu">push</span>({<span class="dt">title</span>:title, <span class="dt">body</span>:body});
+  <span class="fu">response</span>(res, <span class="dv">200</span>, <span class="st">&#39;write success!&#39;</span>);
+}));
+
+<span class="ot">http</span>.<span class="fu">createServer</span>(<span class="ot">app</span>.<span class="fu">callback</span>()).<span class="fu">listen</span>(<span class="dv">3000</span>);
+
+<span class="ot">c</span>.<span class="fu">log</span>(<span class="st">&quot;noteServer started at port : 3000&quot;</span>);</code></pre>
+<h2 id="讓-wikidown-從-express-進化為-koa-版本">讓 wikidown 從 express 進化為 koa 版本</h2>
+<p>在 2015 年 3 月的時候，我們介紹了 wikidown.js 這個維基網誌系統，當時我們是採用 express 作為後端伺服器的。</p>
+<p>但是後來筆者一邊學習 koa 套件與 yield 語法，決定一邊將 wikidown.js 改為 koa 版本，於是就將原本的 wikiServer.js 程式改用 KoaServer.js 替代。</p>
+<p>以下是筆者的個人網站，該網站就是用 wikidown.js 架設的，如果您從以下的 http 版本進入，您將可以瀏覽，但不能編輯。</p>
+<ul>
+<li>http 版入口 -- <a href="http://ccc.nqu.edu.tw/" class="uri">http://ccc.nqu.edu.tw/</a></li>
+</ul>
+<p>但是筆者個人要編輯的時候，則必須從有安全加密的 https (ssl) 版本進入，然後輸入帳號密碼之後，就可以進行編輯與瀏覽了。</p>
+<ul>
+<li>https 版入口 -- <a href="https://ccc.nqu.edu.tw/" class="uri">https://ccc.nqu.edu.tw/</a></li>
+</ul>
+<p>本系統的前後端程式碼，分別列出如下：</p>
+<h3 id="後端程式">後端程式</h3>
+<p>檔案： KoaServer.js</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> http    = <span class="fu">require</span>(<span class="st">&#39;http&#39;</span>);
+<span class="kw">var</span> https   = <span class="fu">require</span>(<span class="st">&#39;https&#39;</span>);
+<span class="kw">var</span> c       = console;
+<span class="kw">var</span> url     = <span class="fu">require</span>(<span class="st">&#39;url&#39;</span>);
+<span class="kw">var</span> fs      = <span class="fu">require</span>(<span class="st">&#39;mz/fs&#39;</span>);
+<span class="kw">var</span> koa     = <span class="fu">require</span>(<span class="st">&#39;koa&#39;</span>);
+<span class="kw">var</span> send    = <span class="fu">require</span>(<span class="st">&#39;koa-send&#39;</span>);
+<span class="kw">var</span> path    = <span class="fu">require</span>(<span class="st">&#39;path&#39;</span>);
+<span class="kw">var</span> bodyParser = <span class="fu">require</span>(<span class="st">&quot;koa-bodyparser&quot;</span>); <span class="co">// 參考：http://codeforgeek.com/2014/09/handle-get-post-request-express-4/</span>
+<span class="kw">var</span> session = <span class="fu">require</span>(<span class="st">&#39;koa-session&#39;</span>);
+<span class="kw">var</span> serveIndex = <span class="fu">require</span>(<span class="st">&#39;koa-serve-index&#39;</span>);
+<span class="kw">var</span> route   = <span class="fu">require</span>(<span class="st">&#39;koa-route&#39;</span>);
+<span class="kw">var</span> parse   = <span class="fu">require</span>(<span class="st">&#39;co-busboy&#39;</span>);
+<span class="kw">var</span> saveTo  = <span class="fu">require</span>(<span class="st">&#39;save-to&#39;</span>);
+<span class="kw">var</span> jslib   = <span class="fu">require</span>(<span class="st">&#39;./web/jslib&#39;</span>);
+<span class="kw">var</span> wdlib   = <span class="fu">require</span>(<span class="st">&#39;./wdlib&#39;</span>);
+<span class="kw">var</span> setting = <span class="fu">require</span>(<span class="st">&#39;./setting&#39;</span>);
+<span class="kw">var</span> passwords = <span class="ot">setting</span>.<span class="fu">passwords</span>;
+
+<span class="kw">var</span> app = <span class="fu">koa</span>();
+<span class="kw">var</span> webDir = <span class="ot">path</span>.<span class="fu">join</span>(__dirname, <span class="st">&#39;web&#39;</span>);
+<span class="kw">var</span> dbRoot = <span class="ot">path</span>.<span class="fu">join</span>(__dirname, <span class="st">&#39;db&#39;</span>);
+
+<span class="ot">c</span>.<span class="fu">log</span>(<span class="st">&quot;dbRoot=%s&quot;</span>, dbRoot);
+
+<span class="ot">app</span>.<span class="fu">keys</span> = [<span class="st">&#39;xxxxxxxxxxxxxxxxx&#39;</span>]; <span class="co">// 使用時請改掉</span>
+<span class="ot">app</span>.<span class="fu">use</span>(<span class="fu">session</span>(app));
+<span class="ot">app</span>.<span class="fu">use</span>(<span class="fu">bodyParser</span>({<span class="dt">formLimit</span>:<span class="dv">5</span>*<span class="dv">1000</span>*<span class="dv">1000</span>, <span class="dt">jsonLimit</span>:<span class="dv">5</span>*<span class="dv">1000</span>*<span class="dv">1000</span>}));
+
+<span class="kw">function</span> <span class="fu">response</span>(res, code, msg) {
+  <span class="ot">res</span>.<span class="fu">status</span> = code;
+  <span class="ot">res</span>.<span class="fu">set</span>({<span class="st">&#39;Content-Length&#39;</span>:<span class="st">&#39;&#39;</span>+<span class="ot">msg</span>.<span class="fu">length</span>,<span class="st">&#39;Content-Type&#39;</span>:<span class="st">&#39;text/plain&#39;</span>});
+  <span class="ot">res</span>.<span class="fu">body</span> = msg;
+  <span class="ot">c</span>.<span class="fu">log</span>(<span class="st">&quot;response: code=&quot;</span>+code+<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>+msg+<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>);
+}
+
+<span class="kw">function</span> <span class="fu">isPass</span>(req) {
+  <span class="ot">c</span>.<span class="fu">log</span>(<span class="st">&quot;loginToSave=&quot;</span>+<span class="ot">setting</span>.<span class="fu">loginToSave</span>);
+  <span class="kw">if</span> (<span class="ot">setting</span>.<span class="fu">loginToSave</span> === <span class="kw">false</span>) 
+    <span class="kw">return</span> <span class="kw">true</span>;
+  <span class="ot">c</span>.<span class="fu">log</span>(<span class="st">&#39;req.session.user=&#39;</span>+<span class="ot">req</span>.<span class="ot">session</span>.<span class="fu">user</span>);
+  <span class="kw">return</span> <span class="kw">typeof</span>(<span class="ot">req</span>.<span class="ot">session</span>.<span class="fu">user</span>)!==<span class="st">&#39;undefined&#39;</span>;
+}
+
+<span class="co">// 處理檔案上傳 : multipart upload</span>
+<span class="ot">app</span>.<span class="fu">use</span>(<span class="kw">function</span> *(next){
+  <span class="kw">var</span> domain = <span class="kw">this</span>.<span class="ot">request</span>.<span class="ot">url</span>.<span class="fu">split</span>(<span class="st">&quot;/&quot;</span>).<span class="fu">pop</span>();
+  <span class="kw">if</span> (<span class="st">&#39;POST&#39;</span> !== <span class="kw">this</span>.<span class="ot">request</span>.<span class="fu">method</span>) <span class="kw">return</span> <span class="kw">yield</span> next;
+  <span class="kw">if</span> (!<span class="kw">this</span>.<span class="ot">request</span>.<span class="ot">url</span>.<span class="fu">startsWith</span>(<span class="st">&#39;/upload/&#39;</span>)) <span class="kw">return</span> <span class="kw">yield</span> next;
+  <span class="kw">if</span> (!<span class="kw">this</span>.<span class="ot">request</span>.<span class="fu">header</span>[<span class="st">&quot;content-type&quot;</span>].<span class="fu">startsWith</span>(<span class="st">&quot;multipart/form-data;&quot;</span>)) <span class="kw">return</span> <span class="kw">yield</span> next;
+  <span class="kw">var</span> part, parts = <span class="fu">parse</span>(<span class="kw">this</span>);
+  <span class="kw">var</span> files = [], file;
+  <span class="kw">while</span> (part = <span class="kw">yield</span> parts) {
+    <span class="ot">console</span>.<span class="fu">log</span>(<span class="st">&#39;part=%j&#39;</span>, part);
+    <span class="kw">if</span> (<span class="kw">typeof</span> <span class="ot">part</span>.<span class="fu">filename</span> !== <span class="st">&#39;undefined&#39;</span>) {
+      <span class="ot">files</span>.<span class="fu">push</span>(file = <span class="ot">path</span>.<span class="fu">join</span>(dbRoot, domain, <span class="ot">part</span>.<span class="fu">filename</span>));
+      <span class="ot">console</span>.<span class="fu">log</span>(<span class="st">&#39;uploading %s -&gt; %s&#39;</span>, <span class="ot">part</span>.<span class="fu">filename</span>, file);
+      <span class="kw">yield</span> <span class="fu">saveTo</span>(part, file);
+    }
+  }
+  <span class="kw">this</span>.<span class="fu">body</span> = files;
+});
+
+<span class="ot">app</span>.<span class="fu">use</span>(<span class="ot">route</span>.<span class="fu">get</span>(<span class="st">&#39;/&#39;</span>, <span class="kw">function</span>*() {
+  <span class="kw">this</span>.<span class="fu">redirect</span>(<span class="st">&#39;/web/wikidown.html&#39;</span>);
+}));
+
+<span class="kw">var</span> mime = { <span class="st">&quot;.html&quot;</span>: <span class="st">&quot;text/html&quot;</span>, <span class="st">&quot;.htm&quot;</span>:<span class="st">&quot;text/html&quot;</span>, <span class="st">&quot;.jpg&quot;</span>:<span class="st">&quot;image/jpg&quot;</span>, <span class="st">&quot;.png&quot;</span>:<span class="st">&quot;image/png&quot;</span>, <span class="st">&quot;.gif&quot;</span>:<span class="st">&quot;image/gif&quot;</span>, <span class="st">&quot;.pdf&quot;</span>:<span class="st">&quot;application/pdf&quot;</span>};
+
+<span class="kw">function</span> <span class="fu">fileMimeType</span>(path) {
+  <span class="kw">for</span> (<span class="kw">var</span> tail <span class="kw">in</span> mime) {
+    <span class="kw">if</span> (<span class="ot">path</span>.<span class="fu">endsWith</span>(tail))
+      <span class="kw">return</span> mime[tail];
+  }
+}
+
+<span class="ot">app</span>.<span class="fu">use</span>(<span class="ot">route</span>.<span class="fu">get</span>(<span class="ot">/.</span><span class="fl">*</span><span class="ot">/</span>, <span class="kw">function</span> *<span class="fu">toStatic</span>() {
+    <span class="kw">if</span> (!<span class="kw">this</span>.<span class="ot">path</span>.<span class="fu">startsWith</span>(<span class="st">&quot;/setting.js&quot;</span>)) {
+    <span class="kw">var</span> mimetype = <span class="fu">fileMimeType</span>(<span class="kw">this</span>.<span class="fu">path</span>)
+    <span class="kw">if</span> (mimetype) <span class="kw">this</span>.<span class="fu">type</span> = mimetype+<span class="st">&quot;;&quot;</span>;
+    <span class="ot">c</span>.<span class="fu">log</span>(<span class="st">&#39;get %s&#39;</span>, <span class="kw">this</span>.<span class="fu">path</span>);
+    <span class="kw">this</span>.<span class="fu">body</span> = <span class="ot">fs</span>.<span class="fu">createReadStream</span>(__dirname+<span class="kw">this</span>.<span class="fu">path</span>);
+    }
+}));
+
+<span class="ot">app</span>.<span class="fu">use</span>(<span class="ot">route</span>.<span class="fu">post</span>(<span class="st">&#39;/wd/:domain/:file&#39;</span>, <span class="kw">function</span>*(domain, file) {
+  <span class="kw">var</span> req = <span class="kw">this</span>.<span class="fu">request</span>, res = <span class="kw">this</span>.<span class="fu">response</span>;
+  <span class="kw">var</span> obj = <span class="kw">this</span>.<span class="ot">request</span>.<span class="ot">body</span>.<span class="fu">obj</span>;
+  <span class="kw">if</span> (!<span class="fu">isPass</span>(<span class="kw">this</span>)) {
+    <span class="fu">response</span>(res, <span class="dv">401</span>, <span class="st">&#39;Please login to save!&#39;</span>)
+    <span class="kw">return</span>;
+  }
+  <span class="ot">c</span>.<span class="fu">log</span>(<span class="st">&#39;post %s:%s&#39;</span>, domain, file)
+  <span class="co">// 寫入檔案 （通常是 *.wd 檔案）</span>
+  <span class="kw">yield</span> <span class="ot">fs</span>.<span class="fu">mkdir</span>(dbRoot+<span class="st">&quot;/&quot;</span>+domain+<span class="st">&quot;/&quot;</span>).<span class="fu">catch</span>(<span class="kw">function</span>(){});
+  <span class="kw">yield</span> <span class="ot">fs</span>.<span class="fu">writeFile</span>(dbRoot+<span class="st">&quot;/&quot;</span>+domain+<span class="st">&quot;/&quot;</span>+file, obj).<span class="fu">then</span>(<span class="kw">function</span>() {
+    <span class="fu">response</span>(res, <span class="dv">200</span>, <span class="st">&#39;write success!&#39;</span>);
+  }).<span class="fu">catch</span>(<span class="kw">function</span>() {
+    <span class="fu">response</span>(res, <span class="dv">403</span>, <span class="st">&#39;write fail!&#39;</span>); <span class="co">// 403: Forbidden</span>
+  });  <span class="co">// 將 *.wd 轉為 *.html 後寫入</span>
+  <span class="kw">if</span> (<span class="ot">jslib</span>.<span class="fu">endsWith</span>(file, <span class="st">&#39;.wd&#39;</span>)) {
+    <span class="kw">var</span> html = <span class="ot">wdlib</span>.<span class="fu">toHtml</span>(obj, domain);
+    <span class="kw">var</span> htmFile = <span class="ot">file</span>.<span class="fu">replace</span>(<span class="ot">/</span><span class="fl">\.</span><span class="ot">wd</span><span class="fl">$</span><span class="ot">/</span>, <span class="st">&#39;.html&#39;</span>);
+    <span class="kw">yield</span> <span class="ot">fs</span>.<span class="fu">writeFile</span>(dbRoot+<span class="st">&quot;/&quot;</span>+domain+<span class="st">&quot;/&quot;</span>+htmFile, html);      
+  }
+}));
+
+<span class="co">// 以下為 https 版本，必較不容易被竊取密碼，但是有 self signed 的認證問題</span>
+<span class="co">// 目前設定只有 https 版本可以登入並修改資料，http 版不行。</span>
+<span class="co">// var secureApp = app;</span>
+
+<span class="kw">var</span> secureApp = app;
+
+<span class="ot">secureApp</span>.<span class="fu">use</span>(<span class="ot">route</span>.<span class="fu">post</span>(<span class="st">&quot;/login&quot;</span>, <span class="kw">function</span>*() {
+  <span class="kw">var</span> req = <span class="kw">this</span>.<span class="fu">request</span>, res = <span class="kw">this</span>.<span class="fu">response</span>;
+  <span class="kw">var</span> p = <span class="kw">this</span>.<span class="ot">request</span>.<span class="fu">body</span>;
+  <span class="kw">if</span> (<span class="ot">req</span>.<span class="fu">protocol</span> !== <span class="st">&#39;https&#39;</span>) {
+    <span class="fu">response</span>(res, <span class="dv">401</span>, <span class="ot">p</span>.<span class="fu">user</span>+<span class="st">&quot;:login fail!&quot;</span>);
+    <span class="kw">return</span>;
+  }  
+  <span class="kw">if</span> (passwords[<span class="ot">p</span>.<span class="fu">user</span>] === <span class="ot">p</span>.<span class="fu">password</span>) {
+    <span class="kw">this</span>.<span class="ot">session</span>.<span class="fu">user</span> = <span class="ot">p</span>.<span class="fu">user</span>;
+    <span class="fu">response</span>(res, <span class="dv">200</span>, <span class="ot">p</span>.<span class="fu">user</span>+<span class="st">&quot;:login success!&quot;</span>);
+  } <span class="kw">else</span> {
+    <span class="fu">response</span>(res, <span class="dv">401</span>, <span class="ot">p</span>.<span class="fu">user</span>+<span class="st">&quot;:login fail!&quot;</span>);
+  }
+}));
+
+<span class="ot">secureApp</span>.<span class="fu">use</span>(<span class="ot">route</span>.<span class="fu">post</span>(<span class="st">&quot;/logout&quot;</span>, <span class="kw">function</span>*() {
+  <span class="kw">var</span> req = <span class="kw">this</span>.<span class="fu">request</span>, res = <span class="kw">this</span>.<span class="fu">response</span>;
+  <span class="kw">this</span>.<span class="fu">session</span> = <span class="kw">null</span>;
+  <span class="fu">response</span>(res, <span class="dv">200</span>, <span class="st">&quot;logout success!&quot;</span>);
+}));
+
+<span class="kw">var</span> port = <span class="ot">process</span>.<span class="ot">env</span>.<span class="fu">PORT</span> || <span class="dv">80</span>; <span class="co">// process.env.PORT for Heroku</span>
+
+<span class="ot">console</span>.<span class="fu">log</span>(<span class="st">&#39;Server started: http://localhost:&#39;</span>+port);
+
+<span class="ot">http</span>.<span class="fu">createServer</span>(<span class="ot">app</span>.<span class="fu">callback</span>()).<span class="fu">listen</span>(port);
+
+<span class="kw">var</span> sslPort = <span class="dv">443</span>;
+<span class="ot">https</span>.<span class="fu">createServer</span>({
+      <span class="dt">key</span>: <span class="ot">fs</span>.<span class="fu">readFileSync</span>(<span class="st">&#39;key.pem&#39;</span>),
+      <span class="dt">cert</span>: <span class="ot">fs</span>.<span class="fu">readFileSync</span>(<span class="st">&#39;cert.pem&#39;</span>),
+      <span class="co">// 以下只有 self signed 認證的方式需要</span>
+      <span class="dt">requestCert</span>: <span class="kw">true</span>, 
+      <span class="dt">ca</span>: [ <span class="ot">fs</span>.<span class="fu">readFileSync</span>(<span class="st">&#39;csr.pem&#39;</span>) ]
+}, <span class="ot">app</span>.<span class="fu">callback</span>()).<span class="fu">listen</span>(sslPort);
+
+<span class="ot">console</span>.<span class="fu">log</span>(<span class="st">&#39;Http Server started: http://localhost:&#39;</span>+sslPort);
+</code></pre>
+<h3 id="前端程式">前端程式</h3>
+<p>檔案： wikidown.js</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript">&lt;html&gt;
+&lt;head&gt;
+  &lt;meta charset=<span class="st">&quot;utf-8&quot;</span> <span class="ot">/&gt;</span>
+<span class="ot">  &lt;link href=&quot;favicon.ico&quot; rel=&quot;icon&quot;&gt;</span>
+<span class="ot">  &lt;link href=&quot;css/bootstrap</span>.<span class="ot">min</span>.<span class="fu">css</span><span class="st">&quot; rel=&quot;</span>stylesheet<span class="st">&quot;&gt;</span>
+  &lt;link href=<span class="st">&quot;css/highlight.default.min.css&quot;</span> rel=<span class="st">&quot;stylesheet&quot;</span>&gt;
+  &lt;link href=<span class="st">&quot;css/fileinput.css&quot;</span> media=<span class="st">&quot;all&quot;</span> rel=<span class="st">&quot;stylesheet&quot;</span><span class="ot">/&gt;</span>
+<span class="ot">  &lt;link href=&quot;wikidown.css&quot; rel=&quot;stylesheet&quot;&gt;</span>
+<span class="ot">  &lt;title&gt;Wikidown&lt;/title</span>&gt;
+&lt;<span class="ot">/head&gt;</span>
+<span class="ot">&lt;body onload=&quot;init</span><span class="fl">()</span><span class="ot">&quot;&gt;</span>
+<span class="ot">  &lt;nav class=&quot;navbar navbar-inverse navbar-fixed-top&quot;&gt;</span>
+<span class="ot">    &lt;div class=&quot;container&quot;&gt;</span>
+<span class="ot">      &lt;button type=&quot;button&quot; class=&quot;navbar-toggle collapsed&quot; data-toggle=&quot;collapse&quot; data-target=&quot;#navbar&quot; aria-expanded=&quot;false&quot; aria-controls=&quot;navbar&quot;&gt;</span>
+<span class="ot">        &lt;span class=&quot;sr-only&quot;&gt;Toggle navigation&lt;/span</span>&gt;
+        &lt;span <span class="kw">class</span>=<span class="st">&quot;icon-bar&quot;</span>&gt;&lt;<span class="ot">/span&gt;</span>
+<span class="ot">        &lt;span class=&quot;icon-bar&quot;&gt;&lt;/span</span>&gt;
+        &lt;span <span class="kw">class</span>=<span class="st">&quot;icon-bar&quot;</span>&gt;&lt;<span class="ot">/span&gt;</span>
+<span class="ot">      &lt;/button</span>&gt;
+      &lt;div <span class="kw">class</span>=<span class="st">&quot;navbar-header&quot;</span> style=<span class="st">&quot;color:#C0C0C0&quot;</span>&gt;
+&lt;!--        &lt;a <span class="kw">class</span>=<span class="st">&quot;navbar-brand&quot;</span> href=<span class="st">&quot;#main:home&quot;</span>&gt;
+          &lt;span <span class="kw">class</span>=<span class="st">&quot;glyphicon glyphicon-home&quot;</span>&gt;&lt;<span class="ot">/span&gt; &amp;nbsp;</span>
+<span class="ot">        &lt;/a</span>&gt; --&gt;
+                &lt;span id=<span class="st">&quot;titleHome&quot;</span> <span class="kw">class</span>=<span class="st">&quot;navbar-nav titleLink&quot;</span>&gt;&lt;p&gt;&lt;a href=<span class="st">&quot;#main:home&quot;</span> <span class="kw">class</span>=<span class="st">&quot;innerLink&quot;</span>&gt;首頁&lt;<span class="ot">/a&gt; /</span>&lt;<span class="ot">/p&gt;&lt;/span</span>&gt;
+        &lt;span id=<span class="st">&quot;titleHead&quot;</span> <span class="kw">class</span>=<span class="st">&quot;navbar-nav titleLink&quot;</span>&gt;&lt;<span class="ot">/span&gt;</span>
+<span class="ot">      &lt;/div</span>&gt;
+      &lt;div id=<span class="st">&quot;navbar&quot;</span> <span class="kw">class</span>=<span class="st">&quot;navbar-collapse collapse&quot;</span>&gt;
+        &lt;ul <span class="kw">class</span>=<span class="st">&quot;nav navbar-nav navbar-right&quot;</span>&gt;
+          &lt;li <span class="kw">class</span>=<span class="st">&quot;dropdown&quot;</span>&gt;
+            &lt;a <span class="kw">class</span>=<span class="st">&quot;dropdown-toggle&quot;</span> data-toggle=<span class="st">&quot;dropdown&quot;</span>&gt;&lt;span <span class="kw">class</span>=<span class="st">&quot;glyphicon glyphicon-globe&quot;</span>&gt;&lt;<span class="ot">/span&gt;&lt;!--&lt;span class=&quot;caret&quot;&gt;--&gt;&lt;/span</span>&gt;&lt;<span class="ot">/a&gt;</span>
+<span class="ot">            &lt;ul class=&quot;dropdown-menu&quot; role=&quot;menu&quot;&gt;</span>
+<span class="ot">              &lt;li&gt;&lt;a onclick=&quot;Mt.switchLang</span><span class="fl">(</span><span class="ot">&#39;us&#39;</span><span class="fl">)</span><span class="ot">&quot;&gt;English&lt;/a</span>&gt;&lt;<span class="ot">/li&gt;</span>
+<span class="ot">              &lt;li&gt;&lt;a onclick=&quot;Mt.switchLang</span><span class="fl">(</span><span class="ot">&#39;tw&#39;</span><span class="fl">)</span><span class="ot">&quot;&gt;中文&lt;/a</span>&gt;&lt;<span class="ot">/li&gt;</span>
+<span class="ot">            &lt;/ul</span>&gt;
+          &lt;<span class="ot">/li&gt;</span>
+<span class="ot">        &lt;/ul</span>&gt;
+        &lt;ul <span class="kw">class</span>=<span class="st">&quot;nav navbar-nav navbar-right hide&quot;</span> id=<span class="st">&quot;menuLogin&quot;</span>&gt;
+          &lt;li <span class="kw">class</span>=<span class="st">&quot;dropdown&quot;</span>&gt;
+            &lt;a <span class="kw">class</span>=<span class="st">&quot;dropdown-toggle&quot;</span> data-toggle=<span class="st">&quot;dropdown&quot;</span>&gt;登入&lt;<span class="ot">/a&gt;</span>
+<span class="ot">            &lt;ul class=&quot;dropdown-menu&quot; role=&quot;menu&quot;&gt;</span>
+<span class="ot">              &lt;li&gt;&lt;a onclick=&quot;login</span><span class="fl">()</span><span class="ot">&quot;&gt;登入&lt;/a</span>&gt;&lt;<span class="ot">/li&gt;</span>
+<span class="ot">              &lt;li&gt;&lt;a onclick=&quot;logout</span><span class="fl">()</span><span class="ot">&quot;&gt;登出&lt;/a</span>&gt;&lt;<span class="ot">/li&gt;</span>
+<span class="ot">            &lt;/ul</span>&gt;
+          &lt;<span class="ot">/li&gt;</span>
+<span class="ot">        &lt;/ul</span>&gt;
+        &lt;ul <span class="kw">class</span>=<span class="st">&quot;nav navbar-nav navbar-right&quot;</span>&gt;
+          &lt;li <span class="kw">class</span>=<span class="st">&quot;dropdown&quot;</span>&gt;
+            &lt;a <span class="kw">class</span>=<span class="st">&quot;dropdown-toggle&quot;</span> data-toggle=<span class="st">&quot;dropdown&quot;</span>&gt;分享&lt;<span class="ot">/a&gt;</span>
+<span class="ot">            &lt;ul class=&quot;dropdown-menu&quot; role=&quot;menu&quot;&gt;</span>
+<span class="ot">              &lt;li&gt;&lt;a onclick=&quot;facebookShare</span><span class="fl">()</span><span class="ot">&quot;&gt;Facebook&lt;/a</span>&gt;&lt;<span class="ot">/li&gt;</span>
+<span class="ot">              &lt;li&gt;&lt;a onclick=&quot;staticShare</span><span class="fl">()</span><span class="ot">&quot;&gt;靜態連結&lt;/a</span>&gt;&lt;<span class="ot">/li&gt;</span>
+<span class="ot">            &lt;/ul</span>&gt;
+          &lt;<span class="ot">/li&gt;</span>
+<span class="ot">        &lt;/ul</span>&gt;
+        &lt;form <span class="kw">class</span>=<span class="st">&quot;navbar-form navbar-right hide&quot;</span> id=<span class="st">&quot;menuEdit&quot;</span>&gt;
+          &lt;div <span class="kw">class</span>=<span class="st">&quot;form-group&quot;</span>&gt;
+            &lt;input id=<span class="st">&quot;filepath&quot;</span> type=<span class="st">&quot;hidden&quot;</span> <span class="kw">class</span>=<span class="st">&quot;form-control&quot;</span> placeholder=<span class="st">&quot;filepath&quot;</span> aria-describedby=<span class="st">&quot;basic-addon1&quot;</span>&gt;
+            &lt;button <span class="kw">class</span>=<span class="st">&quot;btn btn-success&quot;</span> type=<span class="st">&quot;button&quot;</span> onclick=<span class="st">&quot;show()&quot;</span>&gt;預覽&lt;<span class="ot">/button&gt;</span>
+<span class="ot">            &lt;button class=&quot;btn btn-success&quot; type=&quot;button&quot; onclick=&quot;edit</span><span class="fl">()</span><span class="ot">&quot;&gt;編輯&lt;/button</span>&gt;
+            &lt;button <span class="kw">class</span>=<span class="st">&quot;btn btn-success&quot;</span> type=<span class="st">&quot;button&quot;</span> onclick=<span class="st">&quot;save()&quot;</span>&gt;儲存&lt;<span class="ot">/button&gt;</span>
+<span class="ot">            &lt;button class=&quot;btn btn-success&quot; type=&quot;button&quot; onclick=&quot;upload</span><span class="fl">()</span><span class="ot">&quot;&gt;上傳&lt;/button</span>&gt;
+&lt;!--        &lt;button <span class="kw">class</span>=<span class="st">&quot;btn btn-success&quot;</span> type=<span class="st">&quot;button&quot;</span> onclick=<span class="st">&quot;share()&quot;</span>&gt;分享&lt;<span class="ot">/button&gt;--&gt;</span>
+<span class="ot">          &lt;/div</span>&gt;
+        &lt;<span class="ot">/form&gt;     </span>
+<span class="ot">      &lt;/div</span>&gt;
+    &lt;<span class="ot">/div&gt;</span>
+<span class="ot">  &lt;/nav</span>&gt;
+
+  &lt;div id=<span class="st">&quot;panelShow&quot;</span> <span class="kw">class</span>=<span class="st">&quot;tab-pane panel&quot;</span>&gt; &lt;!-- 預覽 --&gt;
+    &lt;div id=<span class="st">&quot;htmlBox&quot;</span> style=<span class="st">&quot;overflow-y:scroll;height:90%;padding:10px;&quot;</span>&gt;&lt;<span class="ot">/div&gt;</span>
+<span class="ot">  &lt;/div</span>&gt;
+  &lt;div id=<span class="st">&quot;panelEdit&quot;</span> <span class="kw">class</span>=<span class="st">&quot;tab-pane panel&quot;</span>&gt; &lt;!-- 編輯 --&gt;
+    &lt;br/&gt;
+    &lt;textarea id=<span class="st">&quot;wdBox&quot;</span> <span class="kw">class</span>=<span class="st">&quot;form-control&quot;</span> style=<span class="st">&quot;width:100%; height:80%&quot;</span>&gt;&lt;<span class="ot">/textarea&gt;</span>
+<span class="ot">  &lt;/div</span>&gt;
+  &lt;div id=<span class="st">&quot;panelUpload&quot;</span> <span class="kw">class</span>=<span class="st">&quot;tab-pane panel&quot;</span> style=<span class="st">&quot;height:75%&quot;</span>&gt;
+    &lt;center&gt;
+    &lt;div <span class="kw">class</span>=<span class="st">&quot;kv-main&quot;</span>&gt;
+      &lt;form enctype=<span class="st">&quot;multipart/form-data&quot;</span>&gt;
+        &lt;div <span class="kw">class</span>=<span class="st">&quot;form-group&quot;</span>&gt;
+      &lt;input id=<span class="st">&quot;imageUpload&quot;</span> name=<span class="st">&quot;imageUpload&quot;</span> type=<span class="st">&quot;file&quot;</span> multiple=<span class="kw">true</span> <span class="kw">class</span>=<span class="st">&quot;file-loading&quot;</span>&gt;
+        &lt;<span class="ot">/div&gt;</span>
+<span class="ot">      &lt;/form</span>&gt;
+    &lt;<span class="ot">/div&gt;</span>
+<span class="ot">    &lt;/center</span>&gt;
+  &lt;<span class="ot">/div&gt;</span>
+<span class="ot">  &lt;div id=&quot;panelLogin&quot; class=&quot;tab-pane panel&quot;&gt; &lt;!-- 登入 --&gt;</span>
+<span class="ot">    &lt;form class=&quot;form-signin&quot; role=&quot;form&quot;&gt;</span>
+<span class="ot">      &lt;input type=&quot;text&quot; id=&quot;loginUser&quot; class=&quot;form-control&quot; required autofocus data-mt=&quot;User&quot; placeholder=&quot;帳號&quot;/</span>&gt;
+      &lt;input type=<span class="st">&quot;password&quot;</span> id=<span class="st">&quot;loginPassword&quot;</span> <span class="kw">class</span>=<span class="st">&quot;form-control&quot;</span> required data-mt=<span class="st">&quot;Password&quot;</span> placeholder=<span class="st">&quot;密碼&quot;</span><span class="ot">/&gt;</span>
+<span class="ot">      &lt;button class=&quot;btn btn-lg btn-primary btn-block&quot; type=&quot;button&quot; data-mt=&quot;Login&quot; onclick=&quot;Server.login</span><span class="fl">()</span><span class="ot">&quot;&gt;登入&lt;/button</span>&gt;
+    &lt;<span class="ot">/form&gt;</span>
+<span class="ot">  &lt;/div</span>&gt;
+  &lt;script src=<span class="st">&quot;js/jquery.min.js&quot;</span>&gt;&lt;<span class="ot">/script&gt;</span>
+<span class="ot">  &lt;script src=&quot;js/bootstrap</span>.<span class="ot">min</span>.<span class="fu">js</span><span class="st">&quot;&gt;&lt;/script&gt;</span>
+&lt;script&gt;
+<span class="fu">$</span>(<span class="st">&#39;.panel&#39;</span>).<span class="fu">css</span>( <span class="st">&quot;display&quot;</span>, <span class="st">&quot;none&quot;</span>);
+
+<span class="kw">var</span> domain, file, converter; <span class="co">// filepath, </span>
+<span class="kw">var</span> wdNewFile = <span class="st">&#39;# 標題：文件不存在</span><span class="ch">\n\n</span><span class="st">您可以編輯後存檔！</span><span class="ch">\n</span><span class="st">## 語法</span><span class="ch">\n</span><span class="st">* [內部連結](innerLink.html)</span><span class="ch">\n</span><span class="st">* [外部連結](link)&#39;</span>;
+
+<span class="kw">function</span> <span class="fu">isLogin</span>() {
+  <span class="kw">if</span> (<span class="ot">localStorage</span>.<span class="fu">wd_login</span> !== <span class="st">&quot;true&quot;</span>) { <span class="co">// 注意：sessionStorage 不能跨頁面持續，所以得用 localStorage</span>
+    <span class="fu">alert</span>(<span class="st">&#39;未登入無法存檔上傳，請先登入!&#39;</span>);
+    <span class="fu">login</span>();
+    <span class="kw">return</span> <span class="kw">false</span>;
+  }
+  <span class="kw">return</span> <span class="kw">true</span>;
+}
+
+Server = {
+  <span class="dt">timeout </span>: <span class="dv">4000</span>
+};
+
+<span class="ot">Server</span>.<span class="fu">save</span>=<span class="kw">function</span>(domain, file, doc) {
+  <span class="ot">$</span>.<span class="fu">ajax</span>({
+    <span class="dt">type</span>: <span class="st">&quot;POST&quot;</span>,
+    <span class="dt">url</span>: <span class="st">&quot;/wd/&quot;</span>+domain+<span class="st">&quot;/&quot;</span>+file+<span class="st">&quot;.wd&quot;</span>,
+    <span class="dt">timeout</span>: <span class="kw">this</span>.<span class="fu">timeout</span>,
+    <span class="dt">data</span>: { <span class="dt">obj</span>: doc },
+        <span class="dt">statusCode</span>: {
+      <span class="dv">401</span>: <span class="kw">function</span>() { <span class="co">// 401:Unauthorized</span>
+        <span class="ot">localStorage</span>.<span class="fu">wd_login</span> = <span class="st">&quot;false&quot;</span>;
+        <span class="fu">isLogin</span>();
+      }
+    }
+  })
+  .<span class="fu">done</span>(<span class="kw">function</span>(data) {
+    <span class="fu">alert</span>( <span class="st">&quot;存檔完成!&quot;</span>);
+  })
+  .<span class="fu">fail</span>(<span class="kw">function</span>() {
+    <span class="fu">alert</span>( <span class="st">&quot;存檔失敗！&quot;</span> );
+  });
+}
+
+<span class="ot">Server</span>.<span class="fu">load</span>=<span class="kw">function</span>(domain, file) {
+  <span class="kw">return</span> <span class="ot">$</span>.<span class="fu">ajax</span>({
+    <span class="dt">type</span>: <span class="st">&quot;GET&quot;</span>,
+    <span class="dt">url</span>: <span class="st">&quot;../db/&quot;</span>+domain+<span class="st">&quot;/&quot;</span>+file+<span class="st">&quot;.wd&quot;</span>,
+    <span class="dt">timeout</span>: <span class="kw">this</span>.<span class="fu">timeout</span>,
+    <span class="dt">data</span>: {}
+  });
+}
+
+<span class="ot">Server</span>.<span class="fu">login</span>=<span class="kw">function</span>() {
+  <span class="ot">$</span>.<span class="fu">ajax</span>({
+    <span class="dt">type</span>: <span class="st">&quot;POST&quot;</span>,
+    <span class="dt">url</span>: <span class="st">&quot;/login&quot;</span>,
+    <span class="dt">timeout</span>: <span class="kw">this</span>.<span class="fu">timeout</span>,
+    <span class="dt">data</span>: { <span class="dt">user</span>:<span class="fu">$</span>(<span class="st">&#39;#loginUser&#39;</span>).<span class="fu">val</span>(), <span class="dt">password</span>:<span class="fu">$</span>(<span class="st">&#39;#loginPassword&#39;</span>).<span class="fu">val</span>() },
+  })
+  .<span class="fu">done</span>(<span class="kw">function</span>(data) {
+    <span class="ot">localStorage</span>.<span class="fu">wd_login</span> = <span class="st">&quot;true&quot;</span>;
+    <span class="fu">alert</span>( <span class="st">&quot;登入成功!&quot;</span>);
+    <span class="fu">$</span>(<span class="st">&#39;#loginPassword&#39;</span>).<span class="fu">val</span>(<span class="st">&#39;&#39;</span>);
+    <span class="fu">edit</span>();
+  })
+  .<span class="fu">fail</span>(<span class="kw">function</span>() {
+    <span class="ot">localStorage</span>.<span class="fu">wd_login</span> = <span class="st">&quot;false&quot;</span>;
+    <span class="fu">alert</span>( <span class="st">&quot;登入失敗！&quot;</span> );
+    <span class="fu">login</span>();
+  });
+}
+
+<span class="ot">Server</span>.<span class="fu">logout</span>=<span class="kw">function</span>() {
+  <span class="ot">$</span>.<span class="fu">ajax</span>({
+    <span class="dt">type</span>: <span class="st">&quot;POST&quot;</span>,
+    <span class="dt">url</span>: <span class="st">&quot;/logout&quot;</span>,
+    <span class="dt">timeout</span>: <span class="kw">this</span>.<span class="fu">timeout</span>,
+    <span class="dt">data</span>: {},
+  })
+  .<span class="fu">done</span>(<span class="kw">function</span>(data) {
+    <span class="ot">localStorage</span>.<span class="fu">wd_login</span> = <span class="st">&quot;false&quot;</span>;
+    <span class="fu">alert</span>( <span class="st">&quot;登出成功!&quot;</span>);
+    <span class="fu">show</span>();
+  })
+  .<span class="fu">fail</span>(<span class="kw">function</span>() {
+    <span class="fu">alert</span>( <span class="st">&quot;登出失敗！&quot;</span> );
+  });
+}
+
+<span class="ot">window</span>.<span class="fu">onhashchange</span> = <span class="kw">function</span> () {
+  filepath = <span class="ot">window</span>.<span class="ot">location</span>.<span class="ot">hash</span>.<span class="fu">substring</span>(<span class="dv">1</span>);
+  <span class="kw">var</span> parts  = <span class="ot">filepath</span>.<span class="fu">split</span>(<span class="st">&#39;:&#39;</span>);
+  domain = parts[<span class="dv">0</span>], file=parts[<span class="dv">1</span>];
+  <span class="fu">loadFile</span>(domain, file);
+  <span class="fu">show</span>();
+}
+
+<span class="ot">window</span>.<span class="fu">onbeforeunload</span> = <span class="kw">function</span>(){}
+
+<span class="kw">function</span> <span class="fu">md2html</span>(md) {
+  <span class="kw">return</span> <span class="ot">converter</span>.<span class="fu">makeHtml</span>(md);
+}
+
+<span class="kw">function</span> <span class="fu">init</span>() {
+  converter = <span class="kw">new</span> <span class="ot">Showdown</span>.<span class="fu">converter</span>({ <span class="dt">extensions</span>: [<span class="st">&#39;mathjax&#39;</span>, <span class="st">&#39;table&#39;</span>] });
+  <span class="kw">if</span> (<span class="ot">window</span>.<span class="ot">location</span>.<span class="fu">hash</span> === <span class="st">&#39;&#39;</span>)
+    <span class="ot">window</span>.<span class="ot">location</span>.<span class="fu">hash</span> = <span class="st">&#39;#main:home&#39;</span>;
+  <span class="ot">window</span>.<span class="fu">onhashchange</span>();
+  <span class="kw">if</span> (<span class="ot">window</span>.<span class="ot">location</span>.<span class="fu">protocol</span> === <span class="st">&#39;https:&#39;</span>) {
+    <span class="co">// $(&#39;#navbar&#39;).css(&#39;display&#39;, &#39;none&#39;);</span>
+    <span class="fu">$</span>(<span class="st">&#39;#menuLogin&#39;</span>).<span class="fu">removeClass</span>(<span class="st">&#39;hide&#39;</span>);
+    <span class="fu">$</span>(<span class="st">&#39;#menuEdit&#39;</span>).<span class="fu">removeClass</span>(<span class="st">&#39;hide&#39;</span>);
+  }
+  <span class="ot">MathJax</span>.<span class="ot">Hub</span>.<span class="fu">Config</span>({
+      <span class="dt">extensions</span>: [<span class="st">&quot;tex2jax.js&quot;</span>],
+      <span class="dt">jax</span>: [<span class="st">&quot;input/TeX&quot;</span>, <span class="st">&quot;output/HTML-CSS&quot;</span>],
+            <span class="dt">displayAlign</span>: <span class="st">&quot;left&quot;</span>,
+      <span class="dt">tex2jax</span>: {
+        <span class="dt">inlineMath</span>: [ [<span class="st">&#39;$&#39;</span>,<span class="st">&#39;$&#39;</span>], [<span class="st">&quot;</span><span class="ch">\\</span><span class="st">(&quot;</span>,<span class="st">&quot;</span><span class="ch">\\</span><span class="st">)&quot;</span>] ],
+        <span class="dt">displayMath</span>: [ [<span class="st">&#39;$$&#39;</span>,<span class="st">&#39;$$&#39;</span>], [<span class="st">&quot;</span><span class="ch">\\</span><span class="st">[&quot;</span>,<span class="st">&quot;</span><span class="ch">\\</span><span class="st">]&quot;</span>] ],
+        <span class="dt">processEscapes</span>: <span class="kw">true</span>
+      },
+      <span class="st">&quot;HTML-CSS&quot;</span>: { <span class="dt">availableFonts</span>: [<span class="st">&quot;TeX&quot;</span>], <span class="dt">scale</span>: <span class="dv">130</span> }
+    });
+}
+
+<span class="kw">function</span> <span class="fu">switchPanel</span>(name) {
+  <span class="fu">$</span>(<span class="st">&#39;.panel&#39;</span>).<span class="fu">css</span>( <span class="st">&quot;display&quot;</span>, <span class="st">&quot;none&quot;</span>);
+  <span class="fu">$</span>(<span class="st">&#39;#&#39;</span>+name).<span class="fu">css</span>( <span class="st">&quot;display&quot;</span>, <span class="st">&quot;block&quot;</span>);
+}
+
+<span class="kw">function</span> <span class="fu">templateApply</span>(wd) {
+  <span class="kw">var</span> templateNow = <span class="ot">config</span>.<span class="fu">template</span>[domain];
+  <span class="kw">if</span> (templateNow===<span class="kw">undefined</span>)
+    templateNow = <span class="ot">config</span>.<span class="fu">template</span>[<span class="st">&#39;default&#39;</span>];
+  <span class="kw">return</span> <span class="ot">templateNow</span>.<span class="fu">split</span>(<span class="st">&#39;&lt;%=wd%&gt;&#39;</span>).<span class="fu">join</span>(wd); <span class="co">// 不能用 replace(reg, str), 因為 str 中可能有參數 ＄...$ 符號，所以改用 split + join</span>
+}
+
+<span class="kw">function</span> <span class="fu">wdToHtml</span>(wd, domain) {
+  wd  = <span class="st">&#39;</span><span class="ch">\n</span><span class="st">&#39;</span>+wd+<span class="st">&#39; &#39;</span>;
+  wd  = <span class="ot">wd</span>.<span class="fu">replace</span>(<span class="ot">/</span><span class="fl">(</span><span class="bn">\s</span><span class="fl">)</span><span class="ot">@</span><span class="fl">\[\[(</span><span class="bn">[</span><span class="fl">^</span><span class="bn">\]]</span><span class="fl">*?)\]\]\((</span><span class="ot">.</span><span class="fl">*?)\)</span><span class="ot">/gi</span>, <span class="st">&#39;$1&lt;a href=&quot;../db/&#39;</span>+domain+<span class="st">&#39;/$3&quot; class=&quot;innerLink&quot;&gt;$2&lt;/a&gt;&#39;</span>); <span class="co">// 內部檔案 [text](pathToFile.html)</span>
+  wd  = <span class="ot">wd</span>.<span class="fu">replace</span>(<span class="ot">/</span><span class="fl">(</span><span class="bn">\s</span><span class="fl">)</span><span class="ot">@</span><span class="fl">\[\[(</span><span class="bn">[</span><span class="fl">^</span><span class="bn">\]]</span><span class="fl">*?)\]\]</span><span class="ot">/gi</span>, <span class="st">&#39;$1&lt;a href=&quot;../db/&#39;</span>+domain+<span class="st">&#39;/$2&quot; class=&quot;innerLink&quot;&gt;$2&lt;/a&gt;&#39;</span>); <span class="co">// 內部檔案 [pathToFile](pathToFile.html)</span>
+  wd  = <span class="ot">wd</span>.<span class="fu">replace</span>(<span class="ot">/</span><span class="fl">(</span><span class="bn">\s</span><span class="fl">)\!\[\[(</span><span class="bn">[</span><span class="fl">^</span><span class="bn">\]]</span><span class="fl">*?)\]\]\((</span><span class="ot">.</span><span class="fl">*?)\)</span><span class="ot">/gi</span>, <span class="st">&#39;$1&lt;div class=&quot;figure&quot;&gt;&lt;img src=&quot;../db/&#39;</span>+domain+<span class="st">&#39;/$3&quot;/&gt;&lt;p class=&quot;caption&quot;&gt;$2&lt;/p&gt;&lt;/div&gt;&#39;</span>); <span class="co">// 內部圖片 ![text](file)</span>
+  wd  = <span class="ot">wd</span>.<span class="fu">replace</span>(<span class="ot">/</span><span class="fl">(</span><span class="bn">\s</span><span class="fl">)\[\[(</span><span class="bn">[</span><span class="fl">^</span><span class="bn">\]]</span><span class="fl">+?)\]\]\((</span><span class="bn">[</span><span class="fl">^</span><span class="bn">:</span><span class="fl">\)</span><span class="bn">]</span><span class="fl">+)</span><span class="ot">:</span><span class="fl">(</span><span class="bn">[</span><span class="fl">^</span><span class="bn">:</span><span class="fl">\)</span><span class="bn">]</span><span class="fl">+)\)</span><span class="ot">/gi</span>, <span class="st">&#39;$1&lt;a href=&quot;#$3:$4&quot; class=&quot;innerLink&quot;&gt;$2&lt;/a&gt;&#39;</span>); <span class="co">// 內部連結 [text](../domain/file.html)</span>
+  wd  = <span class="ot">wd</span>.<span class="fu">replace</span>(<span class="ot">/</span><span class="fl">(</span><span class="bn">\s</span><span class="fl">)\[\[(</span><span class="bn">[</span><span class="fl">^</span><span class="bn">\]]</span><span class="fl">+?)\]\]\((</span><span class="ot">.</span><span class="fl">*?)\)</span><span class="ot">/gi</span>, <span class="st">&#39;$1&lt;a href=&quot;#&#39;</span>+domain+<span class="st">&#39;:$3&quot; class=&quot;innerLink&quot;&gt;$2&lt;/a&gt;&#39;</span>); <span class="co">// 內部連結 [text](file.html)</span>
+  wd  = <span class="ot">wd</span>.<span class="fu">replace</span>(<span class="ot">/</span><span class="fl">(</span><span class="bn">\s</span><span class="fl">)\[\[(</span><span class="bn">[</span><span class="fl">^</span><span class="bn">\]:]</span><span class="fl">+)</span><span class="ot">:</span><span class="fl">(</span><span class="bn">[</span><span class="fl">^</span><span class="bn">\]:]</span><span class="fl">+)\]\]</span><span class="ot">/gi</span>, <span class="st">&#39;$1&lt;a href=&quot;#$2:$3&quot; class=&quot;innerLink&quot;&gt;$2:$3&lt;/a&gt;&#39;</span>); <span class="co">// 內部連結 [[domain:file]]</span>
+  wd  = <span class="ot">wd</span>.<span class="fu">replace</span>(<span class="ot">/</span><span class="fl">(</span><span class="bn">\s</span><span class="fl">)\[\[(</span><span class="bn">[</span><span class="fl">^</span><span class="bn">\]:]</span><span class="fl">+?)\]\]</span><span class="ot">/gi</span>, <span class="st">&#39;$1&lt;a href=&quot;#&#39;</span>+domain+<span class="st">&#39;:$2&quot; class=&quot;innerLink&quot;&gt;$2&lt;/a&gt;&#39;</span>); <span class="co">// 內部連結 [file](file.html)</span>
+<span class="co">//  wd  = wd.replace(/(\s)\$([^$\n]+?)\$/gi, &#39;$1\n&lt;script type=&quot;math/tex&quot;&gt;$2&lt;/&#39;+&#39;script&gt;\n&#39;);// 數學式 $$[latex]$$,  刻意把 &#39;&lt;/&#39;+&#39;script&gt;&#39; 分開，避免瀏覽器認為是真的 script 區塊</span>
+  <span class="kw">return</span> <span class="fu">md2html</span>(wd);
+}
+
+<span class="kw">function</span> <span class="fu">login</span>() {
+  <span class="fu">switchPanel</span>(<span class="st">&#39;panelLogin&#39;</span>);
+}
+
+<span class="kw">function</span> <span class="fu">logout</span>() {
+  <span class="ot">Server</span>.<span class="fu">logout</span>();
+}
+
+<span class="kw">function</span> <span class="fu">edit</span>() {
+  <span class="fu">switchPanel</span>(<span class="st">&#39;panelEdit&#39;</span>);
+}
+
+<span class="kw">function</span> <span class="fu">upload</span>() {
+  <span class="kw">if</span> (!<span class="fu">isLogin</span>()) <span class="kw">return</span>;
+  <span class="fu">switchPanel</span>(<span class="st">&#39;panelUpload&#39;</span>);
+  <span class="fu">$</span>(<span class="st">&quot;#imageUpload&quot;</span>).<span class="fu">fileinput</span>({
+    <span class="dt">uploadUrl</span>: <span class="st">&quot;/upload/&quot;</span>+domain,
+    <span class="dt">maxFileCount</span>: <span class="dv">10</span>,
+    <span class="dt">uploadAsync</span>: <span class="kw">false</span>,
+    <span class="dt">uploadExtraData</span>: {
+        <span class="dt">domain</span>: domain,
+        <span class="dt">file</span>: file
+    }
+  });
+}
+
+<span class="kw">function</span> <span class="fu">absolute</span>(base, relative) {
+    <span class="kw">var</span> stack = <span class="ot">base</span>.<span class="fu">split</span>(<span class="st">&quot;/&quot;</span>),
+        parts = <span class="ot">relative</span>.<span class="fu">split</span>(<span class="st">&quot;/&quot;</span>);
+    <span class="ot">stack</span>.<span class="fu">pop</span>(); <span class="co">// remove current file name (or empty string)</span>
+                 <span class="co">// (omit if &quot;base&quot; is the current folder without trailing slash)</span>
+    <span class="kw">for</span> (<span class="kw">var</span> i=<span class="dv">0</span>; i&lt;<span class="ot">parts</span>.<span class="fu">length</span>; i++) {
+        <span class="kw">if</span> (parts[i] == <span class="st">&quot;.&quot;</span>)
+            <span class="kw">continue</span>;
+        <span class="kw">if</span> (parts[i] == <span class="st">&quot;..&quot;</span>)
+            <span class="ot">stack</span>.<span class="fu">pop</span>();
+        <span class="kw">else</span>
+            <span class="ot">stack</span>.<span class="fu">push</span>(parts[i]);
+    }
+    <span class="kw">return</span> <span class="ot">stack</span>.<span class="fu">join</span>(<span class="st">&quot;/&quot;</span>);
+}
+
+<span class="kw">function</span> <span class="fu">httpRef</span>() {
+  <span class="kw">return</span> <span class="ot">window</span>.<span class="ot">location</span>.<span class="ot">href</span>.<span class="fu">replace</span>(<span class="st">&#39;https:&#39;</span>, <span class="st">&#39;http:&#39;</span>);
+}
+
+<span class="kw">function</span> <span class="fu">facebookShare</span>() {
+  <span class="ot">window</span>.<span class="fu">open</span>(<span class="st">&quot;https://www.facebook.com/sharer/sharer.php?u=&quot;</span>+<span class="fu">escape</span>(<span class="fu">absolute</span>(<span class="fu">httpRef</span>(), <span class="st">&#39;../db/&#39;</span>+domain+<span class="st">&#39;/&#39;</span>+file+<span class="st">&#39;.html&#39;</span>))+<span class="st">&#39;&amp;t=&#39;</span>+<span class="ot">document</span>.<span class="fu">title</span>, <span class="st">&#39;&#39;</span>, <span class="st">&#39;menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600&#39;</span>)
+}
+
+<span class="kw">function</span> <span class="fu">staticShare</span>() {
+<span class="co">//  window.open(&#39;../db/&#39;+domain+&#39;/&#39;+file+&#39;.html&#39;, &#39;&#39;, &#39;menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600&#39;)</span>
+  <span class="ot">window</span>.<span class="fu">open</span>(<span class="fu">absolute</span>(<span class="fu">httpRef</span>(), <span class="st">&#39;../db/&#39;</span>+domain+<span class="st">&#39;/&#39;</span>+file+<span class="st">&#39;.html&#39;</span>), <span class="st">&#39;&#39;</span>, <span class="st">&#39;menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600&#39;</span>)
+}
+
+<span class="kw">function</span> <span class="fu">show</span>() {
+  <span class="kw">var</span> wd = <span class="fu">$</span>(<span class="st">&#39;#wdBox&#39;</span>).<span class="fu">val</span>();
+  wd  = <span class="fu">templateApply</span>(wd);
+  <span class="kw">var</span> html = <span class="fu">wdToHtml</span>(wd, domain);
+  <span class="fu">$</span>(<span class="st">&#39;#htmlBox&#39;</span>).<span class="fu">html</span>(html);
+  <span class="fu">$</span>(<span class="st">&#39;pre code&#39;</span>).<span class="fu">each</span>(<span class="kw">function</span>(i, block) {
+    <span class="ot">hljs</span>.<span class="fu">highlightBlock</span>(block);
+  });
+  <span class="fu">switchPanel</span>(<span class="st">&#39;panelShow&#39;</span>);
+  <span class="kw">if</span> (<span class="kw">typeof</span>(MathJax) !== <span class="st">&#39;undefined&#39;</span>) {
+    <span class="ot">MathJax</span>.<span class="ot">Hub</span>.<span class="fu">Queue</span>([<span class="st">&quot;Typeset&quot;</span>,<span class="ot">MathJax</span>.<span class="fu">Hub</span>, <span class="st">&quot;htmlBox&quot;</span>]);
+    }
+  <span class="fu">showTitle</span>();
+}
+
+<span class="kw">function</span> <span class="fu">showTitleHead</span>(domain) {
+  <span class="kw">var</span> titleHead = <span class="ot">config</span>.<span class="fu">title</span>[<span class="st">&#39;default&#39;</span>];
+  <span class="kw">if</span> (<span class="ot">config</span>.<span class="fu">title</span>[domain] !== <span class="kw">undefined</span>)
+    titleHead = <span class="ot">config</span>.<span class="fu">title</span>[domain];
+  <span class="kw">var</span> titleHtml = <span class="fu">wdToHtml</span>(titleHead, domain);
+  <span class="fu">$</span>(<span class="st">&#39;#titleHead&#39;</span>).<span class="fu">html</span>(titleHtml);
+}
+
+<span class="kw">function</span> <span class="fu">showTitle</span>() {
+  <span class="kw">if</span> (<span class="fu">$</span>(<span class="st">&#39;h1&#39;</span>).<span class="fu">length</span> &gt; <span class="dv">0</span>)
+    <span class="fu">$</span>(<span class="st">&#39;title&#39;</span>).<span class="fu">html</span>(<span class="fu">$</span>(<span class="st">&#39;#titleHead&#39;</span>).<span class="fu">text</span>()+<span class="st">&#39; -- &#39;</span>+<span class="fu">$</span>(<span class="st">&#39;h1&#39;</span>)[<span class="dv">0</span>].<span class="fu">innerText</span>);
+  <span class="kw">else</span> <span class="kw">if</span> (<span class="fu">$</span>(<span class="st">&#39;h2&#39;</span>).<span class="fu">length</span>&gt;<span class="dv">0</span>)
+    <span class="fu">$</span>(<span class="st">&#39;title&#39;</span>).<span class="fu">html</span>(<span class="fu">$</span>(<span class="st">&#39;#titleHead&#39;</span>).<span class="fu">text</span>()+<span class="st">&#39; -- &#39;</span>+<span class="fu">$</span>(<span class="st">&#39;h2&#39;</span>)[<span class="dv">0</span>].<span class="fu">innerText</span>);
+}
+
+<span class="kw">function</span> <span class="fu">loadFile</span>(domain, file) {
+  <span class="fu">showTitleHead</span>(domain);
+  <span class="ot">window</span>.<span class="ot">location</span>.<span class="fu">hash</span> = <span class="st">&#39;#&#39;</span>+domain+<span class="st">&#39;:&#39;</span>+file;
+  <span class="ot">Server</span>.<span class="fu">load</span>(domain, file)
+  .<span class="fu">done</span>(<span class="kw">function</span>(wd) {
+    <span class="fu">$</span>(<span class="st">&#39;#wdBox&#39;</span>).<span class="fu">val</span>(wd);
+    <span class="fu">show</span>();
+  })
+  .<span class="fu">fail</span>(<span class="kw">function</span>() {
+    <span class="fu">$</span>(<span class="st">&#39;#wdBox&#39;</span>).<span class="fu">val</span>(wdNewFile);
+    <span class="fu">show</span>();
+  });
+}
+
+<span class="kw">function</span> <span class="fu">save</span>() {
+  <span class="kw">if</span> (!<span class="fu">isLogin</span>()) <span class="kw">return</span>;
+  <span class="kw">var</span> wd = <span class="fu">$</span>(<span class="st">&#39;#wdBox&#39;</span>).<span class="fu">val</span>();
+  <span class="ot">Server</span>.<span class="fu">save</span>(domain, file, wd);
+}
+<span class="co">/*</span>
+<span class="co">// 以下這種作法是為了加快速度，避免一開始載入 MathJax 花太久時間 ...</span>
+<span class="co">// 刻意把 &#39;&lt;/&#39;+&#39;script&gt;&#39; 分開，避免瀏覽器認為是真的 script 區塊</span>
+<span class="co">$( document ).ready(function() {</span>
+<span class="co">    $(&#39;body&#39;).append(&#39;&lt;&#39;+&#39;script src=&quot;http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG&quot;&gt;&lt;/&#39;+&#39;script&gt;&#39;);</span>
+<span class="co">});</span>
+<span class="co">*/</span>
+&lt;<span class="ot">/script&gt;</span>
+
+<span class="ot">&lt;script src=&quot;js/Showdown/Showdown.js&quot;&gt;&lt;/script</span>&gt;
+&lt;script src=<span class="st">&quot;js/Showdown/extensions/table.min.js&quot;</span>&gt;&lt;<span class="ot">/script&gt;</span>
+<span class="ot">&lt;script src=&quot;js/Showdown/extensions/mathjax</span>.<span class="fu">js</span><span class="st">&quot;&gt;&lt;/script&gt;</span>
+&lt;script src=<span class="st">&quot;js/highlight.min.js&quot;</span>&gt;&lt;<span class="ot">/script&gt;</span>
+<span class="ot">&lt;script src=&quot;js/fileinput</span>.<span class="fu">js</span><span class="st">&quot; type=&quot;</span>text/javascript<span class="st">&quot;&gt;&lt;/script&gt;</span>
+&lt;script src=<span class="st">&quot;config.js&quot;</span>&gt;&lt;<span class="ot">/script&gt;</span>
+<span class="ot">&lt;script src=&quot;MathJax/MathJax</span>.<span class="fu">js</span>?config=TeX-AMS-MML_SVG<span class="st">&quot;&gt;&lt;/script&gt;</span>
+&lt;<span class="ot">/body&gt;</span>
+<span class="ot">&lt;/html</span>&gt;</code></pre>
+<h3 id="結語-1">結語</h3>
+<p>這個程式改成 koa 之後，所有的 callback 幾乎都不見了，而這也正是 koa 框架從 yield 語法上得到的優點阿！</p>
+<h1 id="雜誌訊息">雜誌訊息</h1>
+<h2 id="讀者訂閱">讀者訂閱</h2>
+<p>程式人雜誌是一個結合「開放原始碼與公益捐款活動」的雜誌，簡稱「開放公益雜誌」。開放公益雜誌本著「讀書做善事、寫書做公益」的精神，我們非常歡迎程式人認養專欄、或者捐出您的網誌，如果您願意成為本雜誌的專欄作家，請加入 <a href="https://www.facebook.com/groups/programmerMagazine/">程式人雜誌社團</a> 一同共襄盛舉。</p>
+<p>我們透過發行這本雜誌，希望讓大家可以讀到想讀的書，學到想學的技術，同時也讓寫作的朋友的作品能產生良好價值 – 那就是讓讀者根據雜誌的價值捐款給慈善團體。 讀雜誌做公益也不需要有壓力，您不需要每讀一本就急著去捐款，您可以讀了十本再捐，或者使用固定的月捐款方式，當成是雜誌訂閱費，或者是季捐款、一年捐一次等都 OK ! 甚至是單純當個讀者我們也都很歡迎！</p>
+<p>本雜誌每期參考價：NT 50 元，如果您喜歡本雜誌，請將書款捐贈公益團體。例如可捐贈給「羅慧夫顱顏基金會 彰化銀行(009) 帳號：5234-01-41778-800」。(若匯款要加註可用「程式人雜誌」五個字)</p>
+<h2 id="投稿須知">投稿須知</h2>
+<p><em>給專欄寫作者：</em> 做公益不需要有壓力。如果您願意撰寫專欄，您可以輕鬆的寫，如果當月的稿件出不來，我們會安排其他稿件上場。</p>
+<p><em>給網誌捐贈者：</em> 如果您沒時間寫專欄或投稿，沒關係，只要將您的網誌以 [創作共用的「姓名標示、非商業性、相同方式分享」授權] 並通知我們，我們會自動從中選取需要的文章進行編輯，放入適當的雜誌當中出刊。</p>
+<p><em>給文章投稿者：</em> 程式人雜誌非常歡迎您加入作者的行列，如果您想撰寫任何文章或投稿，請用 markdown 或 LibreOffice 編輯好您的稿件，並於每個月 25 日前投稿到<a href="https://www.facebook.com/groups/programmerMagazine/">程式人雜誌社團</a> 的檔案區，我們會盡可能將稿件編入隔月1號出版程式人雜誌當中，也歡迎您到社團中與我們一同討論。</p>
+<p>如果您要投稿給程式人雜誌，我們最希望的格式是採用 markdown 的格式撰寫，然後將所有檔按壓縮為 zip 上傳到社團檔案區給我們， 如您想學習 markdown 的撰寫出版方式，可以參考 [看影片學 markdown 編輯出版流程] 一文。</p>
+<p>如果您無法採用 markdown 的方式撰寫，也可以直接給我們您的稿件，像是 MS. Word 的 doc 檔或 LibreOffice 的 odt 檔都可以，我們 會將這些稿件改寫為 markdown 之後編入雜誌當中。</p>
+<h2 id="參與編輯">參與編輯</h2>
+<p>您也可以擔任程式人雜誌的編輯，甚至創造一個全新的公益雜誌，我們誠摯的邀請您加入「開放公益出版」的行列，如果您想擔任編輯或創造新雜誌，也歡迎到 <a href="https://www.facebook.com/groups/programmerMagazine/">程式人雜誌社團</a> 來與我們討論相關事宜。</p>
+<h2 id="公益資訊">公益資訊</h2>
+<table>
+<thead>
+<tr class="header">
+<th align="left">公益團體</th>
+<th align="left">聯絡資訊</th>
+<th align="left">服務對象</th>
+<th align="left">捐款帳號</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">財團法人羅慧夫顱顏基金會</td>
+<td align="left"><a href="http://www.nncf.org/" class="uri">http://www.nncf.org/</a> <br/> <script type="text/javascript">
+<!--
+h='&#110;&#110;&#x63;&#102;&#46;&#x6f;&#114;&#x67;';a='&#64;';n='&#108;&#x79;&#110;&#110;';e=n+a+h;
+document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail">'+e+'<\/'+'a'+'>');
+// -->
+</script><noscript>&#108;&#x79;&#110;&#110;&#32;&#x61;&#116;&#32;&#110;&#110;&#x63;&#102;&#32;&#100;&#x6f;&#116;&#32;&#x6f;&#114;&#x67;</noscript> <br/> 02-27190408分機 232</td>
+<td align="left">顱顏患者 (如唇顎裂、小耳症或其他罕見顱顏缺陷）</td>
+<td align="left">銀行：009 彰化銀行民生分行 <br/> 帳號：5234-01-41778-800</td>
+</tr>
+<tr class="even">
+<td align="left">社團法人台灣省兒童少年成長協會</td>
+<td align="left"><a href="http://www.cyga.org/" class="uri">http://www.cyga.org/</a> <br/> <script type="text/javascript">
+<!--
+h='&#x67;&#x6d;&#x61;&#x69;&#108;&#46;&#x63;&#x6f;&#x6d;';a='&#64;';n='&#x63;&#x79;&#x67;&#x61;&#x39;&#x39;';e=n+a+h;
+document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail">'+e+'<\/'+'a'+'>');
+// -->
+</script><noscript>&#x63;&#x79;&#x67;&#x61;&#x39;&#x39;&#32;&#x61;&#116;&#32;&#x67;&#x6d;&#x61;&#x69;&#108;&#32;&#100;&#x6f;&#116;&#32;&#x63;&#x6f;&#x6d;</noscript> <br/> 04-23058005</td>
+<td align="left">單親、隔代教養.弱勢及一般家庭之兒童青少年</td>
+<td align="left">銀行：新光銀行 <br/> 戶名：台灣省兒童少年成長協會 <br/> 帳號：103-0912-10-000212-0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="footer">wikidown 電子書</div>
+</body>
+</html>

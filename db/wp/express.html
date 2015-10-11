@@ -1,0 +1,71 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="/gospa.js"></script>
+<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[Web 程式設計]](wp:home) </title>
+
+<p><a href="/db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="/db/book/home.html"" class="innerLink">教科書</a>  / <a href="/db/wp/home.html"" class="innerLink">Web 程式設計</a>  </p>
+
+<h1 id="nodejsexpress">Node.js -- Express 路由套件</h1>
+
+<h2 id="nodeexpress">用 node+express 呈現靜態網站</h2>
+
+<p>專案下載： <a href="db/wp/code/staticServer.zip" class="innerLink">staticServer.zip</a></p>
+
+<p>檔案: staticServer.js</p>
+
+<pre><code class="javascript">var express = require('express');
+var path = require('path');
+var serveIndex = require('serve-index');
+var app = express();
+
+var dir = path.join(__dirname, 'public');
+app.use('/', express.static(dir));
+app.use('/', serveIndex(dir, {'icons': true}));
+
+app.listen(3000);
+
+console.log('dirname='+__dirname+" path="+path.join(__dirname, 'public'));
+console.log('Server started: http://localhost:3000/');
+</code></pre>
+
+<p>檔案: package.json</p>
+
+<pre><code class="javascript">{
+  "name": "staticServer",
+  "version": "0.0.0",
+  "description": "A static server based on express",
+  "main": "staticServer.js",
+  "dependencies": {
+    "serve-index": "",
+    "body-parser": "^1.4.3",
+    "express": "^4.4.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" &amp;&amp; exit 1",
+    "start": "node staticServer.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ccckmit/staticServer.git"
+  },
+  "keywords": [
+    "server",
+    "tutorial",
+    "example"
+  ],
+  "author": "ccckmit",
+  "bugs": {
+    "url": "https://github.com/ccckmit/staticServer/issues"
+  },
+  "homepage": "https://github.com/staticServer/staticServer"
+}
+</code></pre>
+
+<h2 id="">參考文獻</h2>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<html><head><meta charset="utf-8"><link href="../static.css" rel="stylesheet"><title>陳鍾誠/教科書/系統軟體/MCU0微處理器--超簡易的16位元處理器</title></head><body><header><p><a href="../main/home.html">&lt;&lt;</a>  <a href="../ccc/home.html">陳鍾誠</a>  / <a href="../book/home.html">教科書</a>  / <a href="../ss/home.html">系統軟體</a> </p></header><main><article><h1 id="mcu016">MCU0 微處理器 -- 超簡易的 16 位元處理器</h1>
+
+<h2 id="">指令格式</h2>
+
+<p>指令格式: OP C</p>
+
+<p>OP 為四位元指令碼</p>
+
+<p>C 為12位元常數，通常是記憶體位址。</p>
+
+<p>每個指令均為16位元。</p>
+
+<h2 id="c">C 語言表頭宣告</h2>
+
+<p>檔案:  mcu0.h</p>
+
+<pre><code class="CPP">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#include &lt;stdlib.h&gt;
+
+#define UINT16 unsigned short // 16 位元無號數
+#define BYTE unsigned char // 8 位元無號數
+#define MAX_LEN 256 // 宣告一般字串的最大長度
+#define WORD_OP 0xF // K10: WORD 10 中的那個 WORD 假指令之假代碼
+#define LD   0x0    // LD 指令的代碼 ....
+#define ADD  0x1
+#define JMP  0x2
+#define ST   0x3
+#define CMP  0x4
+#define JEQ  0x5
+#define RET  0xE
+// 表格裡的 pair=(name, value) 結構。
+typedef struct {
+  char *name;
+  int  value; 
+} Pair;
+</code></pre>
+
+<hr />
+
+<p><center style="font-size:small;color:#888888">本文部份內容修改自 <a href="http://zh.wikipedia.org/">維基百科</a> ， 使用時請遵守 <a href="http://creativecommons.org/licenses/by-sa/3.0/tw/">姓名標示、相同方式分享</a> 授權。<br/> 編輯：  <a href="#ccc:home">陳鍾誠</a>  email: <a href="&#109;&#97;&#105;&#x6c;&#x74;&#111;:&#x63;&#99;&#x63;&#x6b;&#x6d;&#105;&#x74;&#x40;&#x67;&#x6d;&#x61;&#x69;&#x6c;&#x2e;&#99;&#x6f;&#109;">&#x63;&#99;&#x63;&#x6b;&#x6d;&#105;&#x74;&#x40;&#x67;&#x6d;&#x61;&#x69;&#x6c;&#x2e;&#99;&#x6f;&#109;</a></center></p></article></main></body></html>

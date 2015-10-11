@@ -1,0 +1,20 @@
+# 一次學會五種主流程式語言
+
+| 主題                             |  JavaScript | C/C++ 語言 | C# 語言 | Java 語言 |  R 語言 |
+|----------------------------------|-------------|-----------|---------|-----------|---------|
+| [[教科書]](book)    |  [[JavaScript]](js:book)  | [[C/C++]](c:book)  | [[C#]](cs:book)  |  [[java]](ja:book)  |  [[R]](r:book)  |
+| [[上課須知]](note)    |  [[JavaScript]](js:note)  | [[C/C++]](c:note)  | [[C#]](cs:note)  |  [[java]](ja:note)  |  [[R]](r:note)  |
+| [[第一堂課]](basic)    |  [[JavaScript]](js:home)  | [[C/C++]](c:home)  | [[C#]](cs:home)  |  [[java]](ja:home)  |  [[R]](r:home)  |
+| [[命令列執行環境]](commandline)        | [[node.js]](js:basic) | [[gcc/g++]](gcc)   | [[csc]](cs:csharp) | [[jdk]] | [[R-project]](r:basic)        |
+| [[整合開發工具]](IDE)            | [[Visual Studio Code]](js:vscode) | [[Dev C++]](c:devcpp) | [[Visual Studio]](cs:csharp) | [[Eclipse]] | [[RStudio]](r:rstudio) |
+| [[變數]](var)                    | [[var.js]](js:basic)  | [[var.c]]  | [[var.cs]](cs:varexp) | [[var.java]] | [[var.r]](r:var) |
+| [[運算式]](exp)                  | [[exp.js]](js:basic)  | [[exp.c]]  | [[exp.cs]](cs:varexp) | [[exp.java]] | [[exp.r]](r:exp) |
+| [[條件語句]](if)                 | [[if.js]](js:control)   | [[if.c]]   | [[if.cs]](cs:ifloop)  | [[if.java]]  | [[if.r]](r:if) |
+| [[迴圈]](loop)                   | [[loop.js]](js:control) | [[loop.c]] | [[loop.cs]](cs:ifloop) | [[loop.java]] | [[loop.r]](r:loop) |
+| [[陣列]](array)                  | [[array.js]](js:control) | [[array.c]]| [[array.cs]](cs:array) | [[array.java]] | [[array.r]](r:array)  |
+| [[函數]](function)               | [[func.js]](js:function) | [[func.c]] | [[func.cs]](cs:function) | [[func.java]] | [[func.r]](r:function) |
+| [[物件]](array)                  | [[obj.js]](js:objectoriented)  | [[obj.c]]  | [[obj.cs]](cs:object) | [[obj.java]] | [[obj.r]](r:object) |
+| [[資料結構]](data)       | [[data.js]](js:data)  | [[data.c]](c:data)  | [[data.cs]](cs:data) | [[data.java]](ja:data) | [[data.r]](r:data) |
+| [[輸出入]](io)                  | [[io.js]](js:io)  | [[io.c]](c:io)  | [[io.cs]](cs:io) | [[io.java]](ja:io) | [[obj.r]](r:io) |
+| [[更多]](special)            | [[more.js]](js:home) | [[more.c]](c:home)  | [[more.cs]](cs:home) | [[more.java]](ja:home) | [[more.r]](r:home) |
+| [[應用專長]](app)                | [[網站]](app.js) | [[系統]](app.c) | [[視窗]](app.cs) | [[手機]](spec.java) | [[科學計算]](app.r) |

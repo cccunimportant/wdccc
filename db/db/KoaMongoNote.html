@@ -1,0 +1,290 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="/gospa.js"></script>
+<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[資料庫]](db:home) </title>
+
+<p><a href="/db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="/db/book/home.html"" class="innerLink">教科書</a>  / <a href="/db/db/home.html"" class="innerLink">資料庫</a>  </p>
+
+<h1 id="">專案：簡易記事本</h1>
+
+<ul>
+<li>檔案下載： <a href="db/db/code/MongoNoteServer.zip" class="innerLink">MongoNoteServer.zip</a></li>
+<li>專案 -- <a href="https://github.com/ccckmit/MongoNoteServer">https://github.com/ccckmit/MongoNoteServer</a></li>
+</ul>
+
+<h2 id="">簡介</h2>
+
+<p>一個簡易的記事系統，採用 koa 當伺服端，並用 mongoDB 儲存記事資料。</p>
+
+<div class="figure"><img src="db/db/MongoNoteList.jpg"/><p class="caption">圖、MongoNoteServer 的列表畫面</p></div>
+
+<div class="figure"><img src="db/db/MongoNoteEdit.jpg"/><p class="caption">圖、MongoNoteServer 的編輯畫面</p></div>
+
+<div class="figure"><img src="db/db/MongoNoteAdd.jpg"/><p class="caption">圖、MongoNoteServer 的新增畫面</p></div>
+
+<h2 id="">執行方法</h2>
+
+<pre><code>&gt; npm install
+
+&gt; iojs MongoNoteServer
+
+After the server startup, you may type http://localhost:3000/ to use the note system.
+</code></pre>
+
+<h2 id="mongonoteserverjs">後端程式碼 : MongoNoteServer.js</h2>
+
+<pre><code class="javascript">var http    = require('http');
+var koa     = require('koa');
+var bodyParser = require("koa-bodyparser"); // 參考：http://codeforgeek.com/2014/09/handle-get-post-request-express-4/
+var fs      = require('mz/fs');
+var route   = require('koa-route');
+var co      = require('co');
+var monk    = require('monk');
+var comonk  = require('co-monk');
+var db      = monk('localhost/test');
+var notes   = comonk(db.get('notes'));
+var c       = console;
+
+var app = koa();
+app.use(bodyParser());
+
+
+function response(res, code, msg) {
+  res.status = code;
+  res.set({'Content-Length':''+msg.length,'Content-Type':'text/plain'});
+  res.body = msg;
+  c.log("response: code="+code+"\n"+msg+"\n");
+}
+
+app.use(route.get('/', function*() {
+  this.redirect('/web/note.html');
+}));
+
+var mime = { ".css":"text/css", ".html": "text/html", ".htm":"text/html", ".jpg":"image/jpg", ".png":"image/png", ".gif":"image/gif", ".pdf":"application/pdf"};
+
+function fileMimeType(path) {
+  for (var tail in mime) {
+    if (path.endsWith(tail))
+      return mime[tail];
+  }
+}
+
+app.use(route.get(/\/web\/.*/, function *toStatic() {
+  var req = this.request, res = this.response;
+  c.log('get %s', this.path);
+  var mimetype = fileMimeType(this.path)
+  if (mimetype) this.type = mimetype+";";
+  this.body = fs.createReadStream(__dirname+this.path);
+}));
+
+app.use(route.get("/list", function *list() {
+  c.log("/list path=%s", this.path);
+  var objs = yield notes.find({}); // 查出所有記事
+  c.log("objs=%j", objs);
+  response(this.response, 200, JSON.stringify(objs));
+}));
+
+app.use(route.get("/note/:id", function *edit(id) {
+  var obj = yield notes.findOne({_id:id}); // 查出所有記事
+  response(this.response, 200, JSON.stringify(obj));
+}));
+
+app.use(route.post("/note/:id", function *save(id) {
+  var title = this.request.body.title;
+  var body = this.request.body.body;
+  var obj = { title:title, body:body };
+  yield notes.update({_id:id}, obj);
+  response(this.response, 200, JSON.stringify(obj));
+}));
+
+app.use(route.post('/new', function *newNote() {
+  var title = this.request.body.title;
+  var body = this.request.body.body;
+  c.log('post %s:%s', title, body);
+  yield notes.insert({title:title, body:body});
+  response(this.response, 200, 'write success!');
+}));
+
+http.createServer(app.callback()).listen(3000);
+
+c.log("noteServer started at port : 3000");
+</code></pre>
+
+<h2 id="notehtml">前端程式碼 : note.html</h2>
+
+<pre><code class="html">&lt;html&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8" /&gt;
+  &lt;link href="favicon.ico" rel="icon"&gt;
+  &lt;link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet"&gt;
+  &lt;link href="main.css" rel="stylesheet"&gt;
+  &lt;title&gt;簡易記事本 (MongoDB 資料庫版)&lt;/title&gt;
+&lt;/head&gt;
+&lt;body onload="init()"&gt;
+  &lt;nav class="navbar navbar-inverse navbar-fixed-top"&gt;
+    &lt;div class="container"&gt;
+      &lt;button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"&gt;
+        &lt;span class="sr-only"&gt;Toggle navigation&lt;/span&gt;
+        &lt;span class="icon-bar"&gt;&lt;/span&gt;
+        &lt;span class="icon-bar"&gt;&lt;/span&gt;
+        &lt;span class="icon-bar"&gt;&lt;/span&gt;
+      &lt;/button&gt;
+      &lt;div class="navbar-header" style="color:#C0C0C0"&gt;
+        簡易記事本 (MongoDB 資料庫版)
+      &lt;/div&gt;
+      &lt;div id="navbar" class="navbar-collapse collapse"&gt;
+        &lt;form class="navbar-form navbar-right"&gt;
+          &lt;div class="form-group"&gt;
+            &lt;input id="filepath" type="hidden" class="form-control" placeholder="filepath" aria-describedby="basic-addon1"&gt;
+            &lt;button class="btn btn-success" type="button" onclick="list()"&gt;所有記事&lt;/button&gt;
+            &lt;button class="btn btn-success" type="button" onclick="newNote()"&gt;新增記事&lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/form&gt;     
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/nav&gt;
+
+  &lt;div id="panelList" class="tab-pane panel"&gt;
+  &lt;/div&gt;
+  &lt;div id="panelEdit" class="tab-pane panel"&gt;
+    標題： &lt;input id="editTitle" type="text" value=""&gt;
+    &lt;br/&gt;
+    &lt;textarea id="editBody" class="form-control" style="width:100%; height:60%"&gt;&lt;/textarea&gt;
+    &lt;button class="btn btn-success" onclick="save()"&gt;儲存&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div id="panelNew" class="tab-pane panel"&gt;
+    標題： &lt;input id="newTitle" type="text" value=""&gt;
+    &lt;br/&gt;
+    &lt;textarea id="newBody" class="form-control" style="width:100%; height:60%"&gt;&lt;/textarea&gt;
+    &lt;button class="btn btn-success" onclick="add()"&gt;新增&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"&gt;&lt;/script&gt;
+  &lt;script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+$('.panel').css( "display", "none");
+
+Server = {
+  timeout : 4000
+};
+
+Server.save=function(file, text) {
+  $.ajax({
+    type: "POST",
+    url: "/note/"+file,
+    timeout: this.timeout,
+    data: { text: text }
+  })
+  .done(function(data) {
+    alert( "存檔完成!");
+  })
+  .fail(function() {
+    alert( "存檔失敗！" );
+  });
+}
+
+Server.load=function(file) {
+  return $.ajax({
+    type: "GET",
+    url: "/note/"+file,
+    timeout: this.timeout,
+    data: {}
+  });
+}
+
+function init() {
+  list();
+}
+
+function switchPanel(name) {
+  $('.panel').css( "display", "none");
+  $('#'+name).css( "display", "block");
+}
+
+function list() {
+  switchPanel('panelList');
+  $.ajax({
+    type: "GET",
+    url: "/list",
+    timeout: this.timeout,
+    data: {}
+  })
+  .done(function(data) {
+    var notes = JSON.parse(data);
+        $('#panelList').empty();
+        $('#panelList').append("&lt;ol&gt;");
+    for (var i in notes) {
+      $('#panelList').append('&lt;li&gt;&lt;a href="javascript:edit(\''+notes[i]._id+'\')"&gt;'+notes[i].title+"&lt;/a&gt;&lt;/li&gt;")
+    }
+        $('#panelList').append("&lt;/ol&gt;");
+  });
+}
+
+var noteID;
+
+function edit(id) {
+  switchPanel('panelEdit');
+    noteID = id;
+  $.ajax({
+    type: "GET",
+    url: "/note/"+id,
+    timeout: this.timeout,
+    data: {}
+  })
+  .done(function(data) {
+    var note = JSON.parse(data);
+    $('#editTitle').val(note.title);
+    $('#editBody').val(note.body);
+  });
+}
+
+function save() {
+  var title = $('#editTitle').val();
+  var body  = $('#editBody').val();
+  $.ajax({
+    type: "POST",
+    url: "/note/"+noteID,
+    timeout: this.timeout,
+    data: {
+      title:title,
+            body:body
+    }
+  })
+  .done(function(data) {
+      alert('存檔完成!');
+    });
+}
+
+function newNote() {
+  switchPanel('panelNew');
+  $('#editTitle').val('');
+  $('#editBody').val('');
+}
+
+function add() {
+  var title = $('#newTitle').val();
+  var body  = $('#newBody').val();
+  $.ajax({
+    type: "POST",
+    url: "/new",
+    timeout: this.timeout,
+    data: {
+      title:title,
+            body:body
+    }
+  })
+  .done(function(data) {
+      alert('新增完成!');
+        list();
+    });
+}
+
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+</body>
+</html>

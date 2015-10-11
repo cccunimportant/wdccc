@@ -1,0 +1,61 @@
+| 主題                                                          |   說明       |
+|---------------------------------------------------|-------------|
+| [[入門:如何透過 Blender 學習 3D 動畫設計]](blender)  |   入門需要知道的所有事情都在這裡  |
+
+* <http://3dtutorials.net/tutorials/blender-2-74-cycles-texture-reducer-for-gpu-rendering.html>
+
+* 用 weight paint 更細緻的調整關節骨架的影響範圍 （讚！）
+ * <http://youtu.be/rkT92aoMpP0>
+
+* 草地
+ * <http://www.blendswap.com/blends/view/78937>
+
+* Simple Guidance for blender users (一張圖學會 blender) 
+ * <http://blenderaid.com/post/110665754844/from-giudansky-com>
+
+* Cycle Render 入門
+ * [YouTube: Blender 2.7 Tutorial #10 : Intro to Materials & Nodes in Cycles #b3d](https://youtu.be/Heg89K3ZMDo)
+ * [YouTube: Blender 2.7 Tutorial #11 : Intro to Lighting & Rendering in Cycles #b3d](https://www.youtube.com/watch?v=gTMORaEygRE)
+ * [YouTube: Blender 2.7 Tutorial #12 : Image Textures & Bump Maps #b3d](https://www.youtube.com/watch?v=NeWTTINkUG0)
+ * <http://blender.stackexchange.com/questions/8697/how-do-i-put-an-image-texture-on-a-material-in-cycles>
+
+* 逼真的材質
+ * <http://www.blenderguru.com/tutorials/basics-realistic-texturing/>
+ * 重點是，Material/Surface/Color 要選 Image Texture，然後選好圖片後進 edit mode 按 u 選 UV mapping/unwrap 即可。
+
+* 連接兩點 -- 選兩點後按 f
+ * 合併兩點 -- 選兩點後按 alt-M
+ * <http://blenderartists.org/forum/showthread.php?126252-connecting-vertices>
+
+* 人物建模的好影片
+ * <https://www.facebook.com/alon.peled.16/videos/10153127774524003/>
+
+* 骨架
+ * 設定型態： （小人）object data / display / B-bone
+ * 骨架寬度： http://wiki.blender.org/index.php/Doc:2.6/Manual/Rigging/Armatures/Editing/Properties
+ * Ctrl-Alt-S 可設定寬度
+
+* 海洋功能
+ * <http://wiki.blender.org/index.php/Doc:2.6/Manual/Modifiers/Simulate/Ocean>
+
+* 船浮在水上跑 -- Blender 2.7: Ship floating on the ocean (tutorial) 
+ * <https://www.youtube.com/watch?v=sfi7HW8qHAo>
+
+* 如何做出草
+ * 可用透明貼圖後，設定花紋 (texture) 中的 image/use alpha 的方式，讓多邊形看起來只有草的部分留下來。
+ * 參考：  low poly grass patches -- <http://www.blendswap.com/blends/view/71002>
+
+* 山水樹景
+ * <http://www.blendswap.com/blends/view/72058>
+ * 樹是用樹幹加上多邊形透明貼圖做成的，請看上面模型中的 object - tree
+ * 您可以用 append 匯入整個場景後，再用 ctrl-c 將樹複製到自己的場景，然後用 ctrl-v 貼到場景內，記得要用 cycle render 才看得到。
+ * 匯入後結果請參考： @[[copytree.zip]]
+
+* 叢林湖面
+ * <http://www.blendswap.com/blends/view/77903>
+ * 叢林是用貼圖，但是加了兩棵較近的樹枝
+ * 湖面是用有點微微凹凸的平面，然後加上 Glossy BSDF 和 Glass BSDF 兩者用 Mix Shader 合成的效果。
+ * 樹枝則是加上了surface 和 displacement.
+
+* Cycle Render 的物件如何被使用
+ * Combining Blender Internal and Cycles in one render -- <http://urchn.org/post/combining-blender-internal-and-cycles-in-one-render>

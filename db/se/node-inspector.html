@@ -1,0 +1,75 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="/gospa.js"></script>
+<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[軟體工程]](se:home) </title>
+
+<p><a href="/db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="/db/book/home.html"" class="innerLink">教科書</a>  / <a href="/db/se/home.html"" class="innerLink">軟體工程</a>  </p>
+
+<h1 id="nodeinspectorjavascript">使用 node-inspector 除錯 javascript 程式</h1>
+
+<h2 id="">參考</h2>
+
+<ul>
+<li><a href="http://ithelp.ithome.com.tw/question/10161382">Node.js 系列學習日誌 #26 - 調校 Debug 工具 node-inspector</a></li>
+<li><a href="https://www.youtube.com/watch?v=03qGA-GJXjI">YouTube: Debugging node.js w/node-inspector</a>
+<ul><li><a href="http://stackoverflow.com/questions/23340968/debugging-node-js-with-node-inspector">http://stackoverflow.com/questions/23340968/debugging-node-js-with-node-inspector</a></li></ul></li>
+</ul>
+
+<h2 id="">使用方法</h2>
+
+<pre><code>node debug &lt;your-program&gt;
+node-inspector 
+// 然後打開 http://127.0.0.1:8080/debug?ws=127.0.0.1:8080&amp;port=5858
+</code></pre>
+
+<h2 id="">使用範例</h2>
+
+<p>程式: madd.js</p>
+
+<pre><code>var add = function(a,b){
+    var r = [];
+    for(var i = 0; i &lt; a.length; i++){
+        r[i] = [];
+        for(var j = 0; j &lt; a[i].length; j++){
+            r[i][j] = a[i][j] + b[i][j];
+        }
+    }
+    return r;
+}
+
+var a = [[3,2,1],[1,2,3]];
+var b = add(a,a);
+
+console.log("a = %j", a);
+console.log("b = %j", b);
+</code></pre>
+
+<p>先執行 node debug madd.js</p>
+
+<pre><code>D:\git\matrix&gt;node debug madd.js
+&lt; Debugger listening on port 5858
+connecting to port 5858... ok
+break in D:\git\matrix\madd.js:1
+&gt; 1 var add = function(a,b){
+  2     var r = [];
+  3     for(var i = 0; i &lt; a.length; i++){
+</code></pre>
+
+<p>接著執行 node-inspector</p>
+
+<pre><code>C:\Users\user&gt;node-inspector
+Node Inspector v0.10.0
+Visit http://127.0.0.1:8080/debug?ws=127.0.0.1:8080&amp;port=5858 to start debugging
+</code></pre>
+
+<p>然後打開 http://127.0.0.1:8080/debug?ws=127.0.0.1:8080&amp;port=5858 就會看到下列畫面。</p>
+
+<div class="figure"><img src="db/se/node-inspector-run.jpg"/><p class="caption"></p></div>
+
+<p>另外、如果您的程式有印出訊息的話，也會出現在 console 視窗當中。</p>
+
+</body>
+</html>

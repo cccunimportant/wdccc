@@ -1,0 +1,74 @@
+# 程式設計 -- 使用 JavaScript 作為第一門語言
+
+| 分級 | 教科書  | 作者  |
+|----|--------|-----------|
+| 入門 | [[JavaScript 語言基礎]](js:home) | 陳鍾誠 |
+| 入門 | [[JavaScript 前端技術]](jsb:home) | 陳鍾誠  | 
+| 進階 | [JavaScript 标准参考教程](http://javascript.ruanyifeng.com/)  |  阮一峰  | 
+| 進階 | [[Web 程式設計]](wp:home) (含後端 server 技術) |  陳鍾誠  | 
+
+| 基本語法  | 範例 | 習題  |
+|--------|-----------|-----|
+| [[JavaScript 的歷史與簡介]](js:history) | [[Node.js 開發工具]](js:basic) , [[DOS命令列操作]](freshman:dos), [[MAC 操作]](freshman:mac)  | [[習題：code.org 1 小時學程式]](freshman:codeorg)   |
+| [[JavaScript 的基本運算]](js:basic) | [[Node.js 交談介面]](js:nodeOp) , [[加減乘除]](js:numOp) , [[布林判斷]](js:boolOp) | 習題：兩變數交換, [[思考：x=x+1?]](freshman:assign) |
+| [[JavaScript 的流程控制]](js:control) | 影片： [if的用法](https://youtu.be/6xthcG0sZIo) , [while 與 for 的執行過程](https://youtu.be/zip2kPrWET0) |  習題： min, max, 10 ! , 九九乘法表  |
+| [[JavaScript 的陣列]](js:array) | [[Node.js 陣列操作]](js:arrayOp) , [[字串運算]](js:stringOp) | 習題：陣列相加 |
+| [[JavaScript 的函數與參數]](js:function0) | [[向量]](js:vector) , [[矩陣運算1]](js:matrix1) , [[矩陣運算2]](js:matrix2) | 習題： [[質數測試, 印出<100的質數]](js:prime) | 
+| [[JavaScript 中的 JSON 字典格式]](js:dictionary) | [[查字典程式]](js:dlook) | 習題： [[通訊錄查詢]](js:plook)  |
+| 專案： [[英翻中系統]](js:mt) |   [[英中互翻]](js:mt2) | [[習題：中翻英系統]](js:c2e) |
+| [[再探函數:匿名函數與回呼]](js:callback0) | [[微分]](js:df) , [[積分]](js:integral) , [[映射]](js:map) , [[亂數]](js:random)  | 習題：模擬擲骰子, 四顆骰子加總  |
+| [[遞迴函數]](js:recursive) | [[自動產生數學式]](js:genexp) | 習題: [[用遞迴的方法算 n!]](js:rec_factorial) , [[自動產生英文語句]](js:genen) |
+
+| 基本物件與函式庫  | Node.js 命令列版範例 | 習題 | 
+|--------|-----------|-----|
+| [[數值 (Number)]](js:number) |  [[平方根1]](js:squareroot1) , [[平方根2]](js:squareroot) | 習題：複數的加減乘除 | 
+| [[數學函式庫 (Math)]](js:math) | [[均等分佈]](js:runif) , [[常態分布]](js:rnorm) | 習題：模擬擲骰子 | 
+| [[陣列 (Array)]](js:array) | [[泡沫排序法]](js:bobblesort)  | 習題：循序搜尋 | 
+| [[字串 (String)]](js:string) | [[中翻英系統]](js:c2e) |  習題：子字串，字串連接 | 
+| [[JSON 物件]](js:json) | [[JSON 轉字串]](js:jsonStr) | 習題： JSON 轉 XML    | 
+| 補充: 查詢 API | node.js API ([英文](https://nodejs.org/api/) , [中文](http://nodeapi.ucdok.com/#/api/) ) , MDN ([英文](https://developer.mozilla.org/en-US/) , [中文](https://developer.mozilla.org/zh-TW/)) | [請查出 node.js 下讀取檔案的 API](https://nodejs.org/api/fs.html#fs_fs_readfile_filename_options_callback) , <BR/> [請查出瀏覽器中 setTimeOut 的 API](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setTimeout) | 
+
+| 瀏覽器 (前端技術)  | 網頁版範例 |
+|--------|-----------|
+| [[網頁瀏覽器 (Browser) 基礎技術]](jsb:browser) |   |
+| [[Chrome 開發工具]](jsb:chrome) |   |
+| [[事件的概念]](jsb:event) |  [[按鈕範例]](jsb:button) |
+| [[網頁畫布 Canvas]](jsb:canvas) | [[繪圖範例]](jsb:drawExample) |
+| 專案：網頁手繪板 | [[網頁手繪板]](jsb:painter) |
+| [[前端儲存體 localStorage]](jsb:localStorage) |  |
+| 專案：網頁記事本 | [[網頁記事本]](jsb:note) |
+| [[時間驅動]](jsb:timer) | [[小時鐘]](jsb:clock) |
+| 專案：移動球 | [[移動球]](jsb:moveball) |
+| [[遊戲設計]](jsb:game) | [[移動球 2]](jsb:moveball2) |
+| 專案：乒乓球遊戲 | [[乒乓球遊戲]](jsb:pingpong) |
+| [[圖表繪製]](jsb:chart) | [[vis.js 繪圖函式庫]](jsb:vis) |
+| [[地理資訊]](jsb:map) | [[Google地圖]](jsb:googlemap) |
+| [[圖片牆]](jsb:photowall) | [[jquery-photowall]](jsb:jquery-photowall) |
+
+| 進階語法與函式庫  |  範例 | 習題  | 
+|--------|-----------|----|
+| [[JavaScript 的物件與 JSON]](js:object) | [[向量物件]](js:vector) , [[矩陣運算(物件版)]](js:omatrix) |  |
+| [[變動數量的參數]](js:arguments) |   |   |
+| [[Node.js 檔案輸出入系統中的回呼]](js:callback) |  |   |
+| [[閉包]](js:function) | | |
+| [[Object 物件]](js:object0) |   | 習題： keys(), toString(), prototype | 
+| [[正規表達式(RegExp)]](js:regexp) |  | 習題：取出電話與 email | 
+| [[ArrayBuffer 物件]](js:arraybuffer) |  |  | 
+
+| 進階技術與專案  | 專案範例 |
+|--------|-----------|
+| 聊天機器人 | [專案：中文版 Eliza](http://programmermagazine.github.io/201308/htm/article2.html) | 
+| 影像處理 |  [[專案：影像處理]](jsb:imageProcessing)  |
+| [[電腦下棋]](ai:chess) | [[專案：五子棋 - 人機對局 (命令列 node.js)]](ai:chess_gomoku) , [[網頁版五子棋]](jsb:web_gomoku) | 
+| 英文學習測驗 | [專案：elearn](https://ccc.nqu.edu.tw/web/elearn/elearn.html) | 
+| 機器翻譯 | [專案：mt 英翻中](https://ccc.nqu.edu.tw/web/elearn/mt.html) | 
+| 科學計算 | [專案：jslab](http://ccc.nqu.edu.tw/web/jslab/jslab.html) | 
+| [[人工智慧]](ai:home) | 一整本書和一堆程式 | 
+| [[系統軟體]](ss:home) | 一整本書和一堆程式 | 
+
+
+## 修課方法
+
+1. 期中與期末您可以選擇「繳交程式或接受上機考」，或者提出其他方案。
+2. 提出其他方案者，請在 2015/10/2 前將方案提交給老師。
+3. 上課時我們將採用 [[楚河漢界教學法]](ccc:riverTeachingMethod) 。

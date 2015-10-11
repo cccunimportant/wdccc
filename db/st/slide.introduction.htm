@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+  <meta name="author" content="陳鍾誠" />
+<script>
+function checkRadio(name, i) {
+  if (document.getElementsByName(name)[i].checked) alert('恭喜你，答對了！'); else alert('答錯了，請重選！');
+}
+</script>
+  <title>機率統計簡介</title>
+  <style type="text/css">code{white-space: pre;}</style>
+<style>
+  html { background-color: black; }
+  body { background-color: #ffffcc; border-radius: 12px; }
+  
+  /* A section is a slide. It's size is 800x600, and this will never change */
+  a { color: #3366FF; text-decoration:none; }
+  section {
+      font-family: Arial, serif;
+      font-size: 20pt;
+	  font-family:'Tahoma', '標楷體';  
+  }
+
+  figure>img {  }
+  
+  img {
+	width:auto;
+    height: 1em;
+	max-width:90%;
+	min-height:1cm;
+  }
+
+  input {
+      font-size: 20pt;
+	  font-family:'Tahoma', '標楷體';  
+	  margin:10pt 10pt 10pt 10pt;
+  }
+  address, blockquote, dl, fieldset, form, h1, h2, h3, h4, h5, h6, hr, ol, p, pre, table, ul, dl { padding: 10px 20px 10px 20px; }
+  h1, h2, h3 {
+    font-family:'Tahoma', '標楷體'; 
+    text-align: center;
+    margin: 10pt 10pt 20pt 10pt;
+  }
+  ul, ol {
+    margin: 10px 20px 10px 20px;
+  }
+  li { 
+    font-family:'Tahoma', '標楷體';   
+    color: #333333;
+	margin: 10px 20px 10px 20px;
+  }
+  section.titleslide h1 { margin-top: 200px; }
+  h1.title { margin-top: 150px; }
+  h1 { font-size: 150%; }
+  h2 { font-size: 120%; }
+  h3 { font-size: 100%; }
+  q { quotes: "“" "”" "‘" "’"; }
+  blockquote { font-style: normal }
+  /* Figures are displayed full-page, with the caption on
+     top of the image/video */
+  figure {  }
+
+  figcaption {
+    display:none;
+//  margin: 70px;
+  }
+  footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 40px;
+    text-align: right;
+    background-color: #F3F4F8;
+    border-top: 1px solid #CCC;
+  }
+
+  /* Transition effect */
+  /* Feel free to change the transition effect for original
+     animations. See here:
+     https://developer.mozilla.org/en/CSS/CSS_transitions
+     How to use CSS3 Transitions: */
+  section {
+      -moz-transition: left 400ms linear 0s;
+      -webkit-transition: left 400ms linear 0s;
+      -ms-transition: left 400ms linear 0s;
+      transition: left 400ms linear 0s;
+  }
+
+  /* Before */
+  section { left: -150%; }
+  /* Now */
+  section[aria-selected] { left: 0; }
+  /* After */
+  section[aria-selected] ~ section { left: +150%; }
+
+  /* Incremental elements */
+
+  /* By default, visible */
+  .incremental > * { opacity: 1; }
+
+  /* The current item */
+  .incremental > *[aria-selected] { color: blue; opacity: 1; }
+
+  /* The items to-be-selected */
+  .incremental > *[aria-selected] ~ * { opacity: 0.2; }
+</style>
+</head>
+<body>
+<section class="title">
+  <h1 class="title">機率統計簡介</h1>
+  <h2 class="author">陳鍾誠</h2>
+  <h3 class="date">2013 年 9 月 9 日</h3>
+</section>
+<section id="機率與統計" class="slide level1">
+<h1>機率與統計</h1>
+</section>
+<section id="機率統計架構圖" class="slide level1">
+<h1>機率統計架構圖</h1>
+<center>
+<img src="../img/ProbAndStatistics.png" width="600"/>
+</center>
+
+</section>
+<section id="什麼是機率" class="slide level1">
+<h1>什麼是機率</h1>
+</section>
+<section id="機率" class="slide level1">
+<h1>機率</h1>
+<ul class="incremental">
+<li>樣本空間</li>
+<li>樣本</li>
+<li>某樣本發生的機率</li>
+<li>事件</li>
+<li>某事件發生的機率</li>
+</ul>
+</section>
+<section id="範例擲骰子" class="slide level1">
+<h1>範例：擲骰子</h1>
+<ul class="incremental">
+<li>樣本空間：{1, 2, 3, 4, 5, 6}</li>
+<li>樣本：3</li>
+<li>某樣本發生的機率：P(3) = 1/6</li>
+<li>事件：A = {3, 5}</li>
+<li>某事件發生的機率：P(A) = 2/6</li>
+</ul>
+</section>
+<section id="範例丟銅板" class="slide level1">
+<h1>範例：丟銅板</h1>
+<ul class="incremental">
+<li>樣本空間：{正, 反}</li>
+<li>樣本：正</li>
+<li>某樣本發生的機率：P(正) = 1/2</li>
+<li>事件：A = {正, 反}</li>
+<li>某事件發生的機率：P(A) = 1</li>
+</ul>
+</section>
+<section id="範例丟兩個銅版" class="slide level1">
+<h1>範例：丟兩個銅版</h1>
+<ul class="incremental">
+<li>樣本空間：{正正, 正反, 反正, 反反}</li>
+<li>樣本：正正</li>
+<li>某樣本發生的機率：P(正正) = 1/4</li>
+<li>事件：A = {正反, 反正}</li>
+<li>某事件發生的機率：P(A) = 2/4</li>
+</ul>
+</section>
+<section id="範例擲茭-博杯" class="slide level1">
+<h1>範例：擲茭 (博杯)</h1>
+<ul class="incremental">
+<li>樣本空間：{正正, 正反, 反正, 反反}</li>
+<li>樣本：正正</li>
+<li>某樣本發生的機率：P(正正) = ??</li>
+<li>事件：A = {正反, 反正}</li>
+<li>某事件發生的機率：P(A) = ??</li>
+</ul>
+</section>
+<section id="統計擲茭-博一個杯" class="slide level1">
+<h1>統計：擲茭 (博一個杯)</h1>
+<ul class="incremental">
+<li>樣本空間：{正, 反}</li>
+<li>樣本：正</li>
+<li>某樣本發生的機率：P(正) = 未知</li>
+<li>那我要怎樣才能知道 「P(正) = 多少」 呢？</li>
+</ul>
+</section>
+<section id="機率統計架構圖-1" class="slide level1">
+<h1>機率統計架構圖</h1>
+<center>
+<img src="../img/ProbAndStatistics.png" width="600"/>
+</center>
+
+</section>
+<section id="方法抽樣" class="slide level1">
+<h1>方法：抽樣</h1>
+<ul class="incremental">
+<li>連續博 1000 次</li>
+<li>看看總共有幾個正面 =&gt; 假如有 550 個</li>
+<li>那麼、我們應該猜測 「P(正) = 多少」 呢？</li>
+</ul>
+</section>
+<section id="方法估計" class="slide level1">
+<h1>方法：估計</h1>
+<ul class="incremental">
+<li>看看總共有幾個正面 =&gt; 假如有 550 個</li>
+<li>那麼、我們應該猜測 「P(正) = 多少」 呢？</li>
+</ul>
+</section>
+<section id="不偏估計式" class="slide level1">
+<h1>不偏估計式</h1>
+<ul class="incremental">
+<li>若 <img style="vertical-align:middle" src="http://chart.apis.google.com/chart?cht=tx&amp;chl=E%5B%5Chat%7B%5Ctheta%7D%5D%20%3D%20%5Ctheta" alt="E[\hat{\theta}] = \theta" title="E[\hat{\theta}] = \theta" /></li>
+<li>則稱 <img style="vertical-align:middle" src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Chat%7B%5Ctheta%7D" alt="\hat{\theta}" title="\hat{\theta}" /> 為 <img style="vertical-align:middle" src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Ctheta" alt="\theta" title="\theta" /> 的不偏估計式。</li>
+</ul>
+</section>
+<section id="方法點估計" class="slide level1">
+<h1>方法：點估計</h1>
+<ul class="incremental">
+<li>猜測 P(正) = 550/1000 = 0.55</li>
+</ul>
+</section>
+<section id="方法區間估計" class="slide level1">
+<h1>方法：區間估計</h1>
+<ul class="incremental">
+<li>找到一個區間，讓目標點：</li>
+<li>落在區間外的機率夠小 <img style="vertical-align:middle" src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Calpha" alt="\alpha" title="\alpha" /></li>
+<li>落在區間內的機率夠高 <img style="vertical-align:middle" src="http://chart.apis.google.com/chart?cht=tx&amp;chl=1-%5Calpha" alt="1-\alpha" title="1-\alpha" /></li>
+</ul>
+</section>
+<section id="信賴區間" class="slide level1">
+<h1>信賴區間</h1>
+<ul class="incremental">
+<li>估計式 <img style="vertical-align:middle" src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Ctheta" alt="\theta" title="\theta" /> 的 <img style="vertical-align:middle" src="http://chart.apis.google.com/chart?cht=tx&amp;chl=100%281-%5Calpha%29%25" alt="100(1-\alpha)%" title="100(1-\alpha)%" /> 信賴區間是一個範圍</li>
+<li>估計式 <img style="vertical-align:middle" src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Ctheta" alt="\theta" title="\theta" /> 在這個範圍之間的機率是 <img style="vertical-align:middle" src="http://chart.apis.google.com/chart?cht=tx&amp;chl=100%281-%5Calpha%29%25" alt="100(1-\alpha)%" title="100(1-\alpha)%" /></li>
+</ul>
+</section>
+<section id="區間估計的特性" class="slide level1">
+<h1>區間估計的特性</h1>
+<ul class="incremental">
+<li>樣本數越多，就可以用更小的信賴區間達到相同的信賴程度</li>
+<li>這個稱為大數法則</li>
+</ul>
+</section>
+<section id="精確的區間估計" class="slide level1">
+<h1>精確的區間估計</h1>
+<ul class="incremental">
+<li>必須靠「中央極限定理」。</li>
+<li>樣本平均數 <img style="vertical-align:middle" src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbar%28X%29" alt="\bar(X)" title="\bar(X)" /> 會趨近於常態分布</li>
+</ul>
+</section>
+<section id="有了中央極限定理之後" class="slide level1">
+<h1>有了中央極限定理之後</h1>
+<ul class="incremental">
+<li>就可以做精確的區間估計</li>
+<li>也可以做「檢定」</li>
+</ul>
+</section>
+<section id="何謂檢定" class="slide level1">
+<h1>何謂檢定</h1>
+<ul class="incremental">
+<li>根據某一組樣本，檢定某個假設 H1 是否可能</li>
+<li><p>方法是看看相反的 H0 是否不太可能發生</p></li>
+<li>H1：稱為研究假設 (research hypothesis) 或對立假設 (alternhative hypothesis)</li>
+<li><p>H0：稱為虛無假設 (null hypothesis)</p></li>
+</ul>
+</section>
+<section id="檢定的決策矩陣" class="slide level1">
+<h1>檢定的決策矩陣</h1>
+<center>
+<img src="../img/test.png"/>
+</center>
+
+</section>
+<section id="檢定的對象" class="slide level1">
+<h1>檢定的對象</h1>
+<ul class="incremental">
+<li>平均值的檢定</li>
+<li>方差的檢定</li>
+<li>比例 p 的檢定</li>
+<li>中位數 M 的檢定</li>
+</ul>
+</section>
+<section id="檢定的範例" class="slide level1">
+<h1>檢定的範例</h1>
+<ul class="incremental">
+<li>假如我想要檢定下列事項</li>
+<li>擲茭 (博一個杯)
+<ul class="incremental">
+<li>H0: P(正) = 0.5</li>
+<li>H1: P(正) ≠ 0.5</li>
+</ul></li>
+</ul>
+</section>
+<section id="檢定的結果" class="slide level1">
+<h1>檢定的結果</h1>
+<ul class="incremental">
+<li>P(正) = 0.5，但是卻被我們拒絕了 (型 I 錯誤)</li>
+<li>P(正) = 0.5，且我們無法拒絕 (正確決策)</li>
+<li>P(正) ≠ 0.5，且我們拒絕了 H0 (正確決策)</li>
+<li>P(正) ≠ 0.5，且我們接受了 H0 (型 II 錯誤)</li>
+</ul>
+</section>
+<section id="以上是一般的機率統計課程範圍" class="slide level1">
+<h1>以上是一般的機率統計課程範圍</h1>
+</section>
+<section id="但還有些高等主題像是" class="slide level1">
+<h1>但還有些高等主題、像是</h1>
+<ul class="incremental">
+<li>迴歸分析</li>
+<li>方差分析</li>
+<li>主成分分析</li>
+<li>因子實驗</li>
+<li>數據分類</li>
+</ul>
+</section>
+<section id="以上" class="slide level1">
+<h1>以上</h1>
+<ul class="incremental">
+<li>就是本學期所要教的課程內容</li>
+<li>而且、我們會用 R 軟體來上課</li>
+</ul>
+</section>
+<!-- {{{{ dzslides core
+#
+#
+#     __  __  __       .  __   ___  __
+#    |  \  / /__` |    | |  \ |__  /__`
+#    |__/ /_ .__/ |___ | |__/ |___ .__/ core :€
+#
+#
+# The following block of code is not supposed to be edited.
+# But if you want to change the behavior of these slides,
+# feel free to hack it!
+#
+-->
+
+<div id="progress-bar"></div>
+
+<!-- Default Style -->
+<style>
+  * { margin: 0; padding: 0; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+  details { display: none; }
+  body {
+    width: 800px; height: 600px;
+    margin-left: -400px; margin-top: -300px;
+    position: absolute; top: 50%; left: 50%;
+    overflow: hidden;
+  }
+  section {
+    position: absolute;
+    pointer-events: none;
+    width: 100%; height: 100%;
+  }
+  section[aria-selected] { pointer-events: auto; }
+  html { overflow: hidden; }
+  body { display: none; }
+  body.loaded { display: block; }
+  .incremental {visibility: hidden; }
+  .incremental[active] {visibility: visible; }
+  #progress-bar{
+    bottom: 0;
+    position: absolute;
+    -moz-transition: width 400ms linear 0s;
+    -webkit-transition: width 400ms linear 0s;
+    -ms-transition: width 400ms linear 0s;
+    transition: width 400ms linear 0s;
+  }
+  figure {
+    width: 100%;
+    height: 100%;
+  }
+  figure > * {
+    position: absolute;
+  }
+  figure > img, figure > video {
+    width: 100%; height: 100%;
+  }
+</style>
+
+<script>
+  var Dz = {
+    remoteWindows: [],
+    idx: -1,
+    step: 0,
+    slides: null,
+    progressBar : null,
+    params: {
+      autoplay: "1"
+    }
+  };
+
+  Dz.init = function() {
+    document.body.className = "loaded";
+    this.slides = $$("body > section");
+    this.progressBar = $("#progress-bar");
+    this.setupParams();
+    this.onhashchange();
+    this.setupTouchEvents();
+    this.onresize();
+  }
+  
+  Dz.setupParams = function() {
+    var p = window.location.search.substr(1).split('&');
+    p.forEach(function(e, i, a) {
+      var keyVal = e.split('=');
+      Dz.params[keyVal[0]] = decodeURIComponent(keyVal[1]);
+    });
+  // Specific params handling
+    if (!+this.params.autoplay)
+      $$.forEach($$("video"), function(v){ v.controls = true });
+  }
+
+  Dz.onkeydown = function(aEvent) {
+    // Don't intercept keyboard shortcuts
+    if (aEvent.altKey
+      || aEvent.ctrlKey
+      || aEvent.metaKey
+      || aEvent.shiftKey) {
+      return;
+    }
+    if ( aEvent.keyCode == 37 // left arrow
+      || aEvent.keyCode == 38 // up arrow
+      || aEvent.keyCode == 33 // page up
+    ) {
+      aEvent.preventDefault();
+      this.back();
+    }
+    if ( aEvent.keyCode == 39 // right arrow
+      || aEvent.keyCode == 40 // down arrow
+      || aEvent.keyCode == 34 // page down
+    ) {
+      aEvent.preventDefault();
+      this.forward();
+    }
+    if (aEvent.keyCode == 35) { // end
+      aEvent.preventDefault();
+      this.goEnd();
+    }
+    if (aEvent.keyCode == 36) { // home
+      aEvent.preventDefault();
+      this.goStart();
+    }
+    if (aEvent.keyCode == 32) { // space
+      aEvent.preventDefault();
+      this.toggleContent();
+    }
+    if (aEvent.keyCode == 70) { // f
+      aEvent.preventDefault();
+      this.goFullscreen();
+    }
+  }
+
+  /* Touch Events */
+
+  Dz.setupTouchEvents = function() {
+    var orgX, newX;
+    var tracking = false;
+
+    var db = document.body;
+    db.addEventListener("touchstart", start.bind(this), false);
+    db.addEventListener("touchmove", move.bind(this), false);
+
+    function start(aEvent) {
+      aEvent.preventDefault();
+      tracking = true;
+      orgX = aEvent.changedTouches[0].pageX;
+    }
+
+    function move(aEvent) {
+      if (!tracking) return;
+      newX = aEvent.changedTouches[0].pageX;
+      if (orgX - newX > 100) {
+        tracking = false;
+        this.forward();
+      } else {
+        if (orgX - newX < -100) {
+          tracking = false;
+          this.back();
+        }
+      }
+    }
+  }
+
+  /* Adapt the size of the slides to the window */
+
+  Dz.onresize = function() {
+    var db = document.body;
+    var sx = db.clientWidth / window.innerWidth;
+    var sy = db.clientHeight / window.innerHeight;
+    var transform = "scale(" + (1/Math.max(sx, sy)) + ")";
+
+    db.style.MozTransform = transform;
+    db.style.WebkitTransform = transform;
+    db.style.OTransform = transform;
+    db.style.msTransform = transform;
+    db.style.transform = transform;
+  }
+
+
+  Dz.getDetails = function(aIdx) {
+    var s = $("section:nth-of-type(" + aIdx + ")");
+    var d = s.$("details");
+    return d ? d.innerHTML : "";
+  }
+
+  Dz.onmessage = function(aEvent) {
+    var argv = aEvent.data.split(" "), argc = argv.length;
+    argv.forEach(function(e, i, a) { a[i] = decodeURIComponent(e) });
+    var win = aEvent.source;
+    if (argv[0] === "REGISTER" && argc === 1) {
+      this.remoteWindows.push(win);
+      this.postMsg(win, "REGISTERED", document.title, this.slides.length);
+      this.postMsg(win, "CURSOR", this.idx + "." + this.step);
+      return;
+    }
+    if (argv[0] === "BACK" && argc === 1)
+      this.back();
+    if (argv[0] === "FORWARD" && argc === 1)
+      this.forward();
+    if (argv[0] === "START" && argc === 1)
+      this.goStart();
+    if (argv[0] === "END" && argc === 1)
+      this.goEnd();
+    if (argv[0] === "TOGGLE_CONTENT" && argc === 1)
+      this.toggleContent();
+    if (argv[0] === "SET_CURSOR" && argc === 2)
+      window.location.hash = "#" + argv[1];
+    if (argv[0] === "GET_CURSOR" && argc === 1)
+      this.postMsg(win, "CURSOR", this.idx + "." + this.step);
+    if (argv[0] === "GET_NOTES" && argc === 1)
+      this.postMsg(win, "NOTES", this.getDetails(this.idx));
+  }
+
+  Dz.toggleContent = function() {
+    // If a Video is present in this new slide, play it.
+    // If a Video is present in the previous slide, stop it.
+    var s = $("section[aria-selected]");
+    if (s) {
+      var video = s.$("video");
+      if (video) {
+        if (video.ended || video.paused) {
+          video.play();
+        } else {
+          video.pause();
+        }
+      }
+    }
+  }
+
+  Dz.setCursor = function(aIdx, aStep) {
+    // If the user change the slide number in the URL bar, jump
+    // to this slide.
+    aStep = (aStep != 0 && typeof aStep !== "undefined") ? "." + aStep : ".0";
+    window.location.hash = "#" + aIdx + aStep;
+  }
+
+  Dz.onhashchange = function() {
+    var cursor = window.location.hash.split("#"),
+        newidx = 1,
+        newstep = 0;
+    if (cursor.length == 2) {
+      newidx = ~~cursor[1].split(".")[0];
+      newstep = ~~cursor[1].split(".")[1];
+      if (newstep > Dz.slides[newidx - 1].$$('.incremental > *').length) {
+        newstep = 0;
+        newidx++;
+      }
+    }
+    this.setProgress(newidx, newstep);
+    if (newidx != this.idx) {
+      this.setSlide(newidx);
+    }
+    if (newstep != this.step) {
+      this.setIncremental(newstep);
+    }
+    for (var i = 0; i < this.remoteWindows.length; i++) {
+      this.postMsg(this.remoteWindows[i], "CURSOR", this.idx + "." + this.step);
+    }
+  }
+
+  Dz.back = function() {
+    if (this.idx == 1 && this.step == 0) {
+      return;
+    }
+    if (this.step == 0) {
+      this.setCursor(this.idx - 1,
+                     this.slides[this.idx - 2].$$('.incremental > *').length);
+    } else {
+      this.setCursor(this.idx, this.step - 1);
+    }
+  }
+
+  Dz.forward = function() {
+    if (this.idx >= this.slides.length &&
+        this.step >= this.slides[this.idx - 1].$$('.incremental > *').length) {
+        return;
+    }
+    if (this.step >= this.slides[this.idx - 1].$$('.incremental > *').length) {
+      this.setCursor(this.idx + 1, 0);
+    } else {
+      this.setCursor(this.idx, this.step + 1);
+    }
+  }
+
+  Dz.goStart = function() {
+    this.setCursor(1, 0);
+  }
+
+  Dz.goEnd = function() {
+    var lastIdx = this.slides.length;
+    var lastStep = this.slides[lastIdx - 1].$$('.incremental > *').length;
+    this.setCursor(lastIdx, lastStep);
+  }
+
+  Dz.setSlide = function(aIdx) {
+    this.idx = aIdx;
+    var old = $("section[aria-selected]");
+    var next = $("section:nth-of-type("+ this.idx +")");
+    if (old) {
+      old.removeAttribute("aria-selected");
+      var video = old.$("video");
+      if (video) {
+        video.pause();
+      }
+    }
+    if (next) {
+      next.setAttribute("aria-selected", "true");
+      var video = next.$("video");
+      if (video && !!+this.params.autoplay) {
+        video.play();
+      }
+    } else {
+      // That should not happen
+      this.idx = -1;
+      // console.warn("Slide doesn't exist.");
+    }
+  }
+
+  Dz.setIncremental = function(aStep) {
+    this.step = aStep;
+    var old = this.slides[this.idx - 1].$('.incremental > *[aria-selected]');
+    if (old) {
+      old.removeAttribute('aria-selected');
+    }
+    var incrementals = $$('.incremental');
+    if (this.step <= 0) {
+      $$.forEach(incrementals, function(aNode) {
+        aNode.removeAttribute('active');
+      });
+      return;
+    }
+    var next = this.slides[this.idx - 1].$$('.incremental > *')[this.step - 1];
+    if (next) {
+      next.setAttribute('aria-selected', true);
+      next.parentNode.setAttribute('active', true);
+      var found = false;
+      $$.forEach(incrementals, function(aNode) {
+        if (aNode != next.parentNode)
+          if (found)
+            aNode.removeAttribute('active');
+          else
+            aNode.setAttribute('active', true);
+        else
+          found = true;
+      });
+    } else {
+      setCursor(this.idx, 0);
+    }
+    return next;
+  }
+
+  Dz.goFullscreen = function() {
+    var html = $('html'),
+        requestFullscreen = html.requestFullscreen || html.requestFullScreen || html.mozRequestFullScreen || html.webkitRequestFullScreen;
+    if (requestFullscreen) {
+      requestFullscreen.apply(html);
+    }
+  }
+  
+  Dz.setProgress = function(aIdx, aStep) {
+    var slide = $("section:nth-of-type("+ aIdx +")");
+    if (!slide)
+      return;
+    var steps = slide.$$('.incremental > *').length + 1,
+        slideSize = 100 / (this.slides.length - 1),
+        stepSize = slideSize / steps;
+    this.progressBar.style.width = ((aIdx - 1) * slideSize + aStep * stepSize) + '%';
+  }
+  
+  Dz.postMsg = function(aWin, aMsg) { // [arg0, [arg1...]]
+    aMsg = [aMsg];
+    for (var i = 2; i < arguments.length; i++)
+      aMsg.push(encodeURIComponent(arguments[i]));
+    aWin.postMessage(aMsg.join(" "), "*");
+  }
+  
+  function init() {
+    Dz.init();
+    window.onkeydown = Dz.onkeydown.bind(Dz);
+    window.onresize = Dz.onresize.bind(Dz);
+    window.onhashchange = Dz.onhashchange.bind(Dz);
+    window.onmessage = Dz.onmessage.bind(Dz);
+  }
+
+  window.onload = init;
+</script>
+
+
+<script> // Helpers
+  if (!Function.prototype.bind) {
+    Function.prototype.bind = function (oThis) {
+
+      // closest thing possible to the ECMAScript 5 internal IsCallable
+      // function 
+      if (typeof this !== "function")
+      throw new TypeError(
+        "Function.prototype.bind - what is trying to be fBound is not callable"
+      );
+
+      var aArgs = Array.prototype.slice.call(arguments, 1),
+          fToBind = this,
+          fNOP = function () {},
+          fBound = function () {
+            return fToBind.apply( this instanceof fNOP ? this : oThis || window,
+                   aArgs.concat(Array.prototype.slice.call(arguments)));
+          };
+
+      fNOP.prototype = this.prototype;
+      fBound.prototype = new fNOP();
+
+      return fBound;
+    };
+  }
+
+  var $ = (HTMLElement.prototype.$ = function(aQuery) {
+    return this.querySelector(aQuery);
+  }).bind(document);
+
+  var $$ = (HTMLElement.prototype.$$ = function(aQuery) {
+    return this.querySelectorAll(aQuery);
+  }).bind(document);
+
+  $$.forEach = function(nodeList, fun) {
+    Array.prototype.forEach.call(nodeList, fun);
+  }
+
+</script>
+<!-- vim: set fdm=marker: }}} -->
+</body>
+</html>

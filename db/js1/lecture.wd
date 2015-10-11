@@ -1,0 +1,11 @@
+| 講義  | 範例 | 習題  |
+|--------|-----------|-----|
+| [[JavaScript 的歷史與簡介]](js:history) | [[Node.js 開發工具]](js:basic) , [[DOS命令列操作]](freshman:dos), [[MAC 操作]](freshman:mac)  | [[習題：code.org 1 小時學程式]](freshman:codeorg)   |
+| [[JavaScript 的基本運算]](js:basic) | [[Node.js 交談介面]](js:nodeOp) , [[加減乘除]](js:numOp) , [[布林判斷]](js:boolOp) | 習題：兩變數交換, [[思考：x=x+1?]](freshman:assign) |
+| [[JavaScript 的流程控制]](js:control) | 影片： [if的用法](https://youtu.be/6xthcG0sZIo) , [while 與 for 的執行過程](https://youtu.be/zip2kPrWET0) |  習題： min, max, 10 ! , 九九乘法表  |
+| [[JavaScript 的陣列]](js:array) | [[Node.js 陣列操作]](js:arrayOp) , [[字串運算]](js:stringOp) | 習題：陣列相加 |
+| [[JavaScript 的函數與參數]](js:function0) | [[向量]](js:vector) , [[矩陣運算1]](js:matrix1) , [[矩陣運算2]](js:matrix2) | 習題： [[質數測試, 印出<100的質數]](js:prime) | 
+| [[JavaScript 中的 JSON 字典格式]](js:dictionary) | [[查字典程式]](js:dlook) | 習題： [[通訊錄查詢]](js:plook)  |
+| 專案： [[英翻中系統]](js:mt) |   [[英中互翻]](js:mt2) | [[習題：中翻英系統]](js:c2e) |
+| [[再探函數:匿名函數與回呼]](js:callback0) | [[微分]](js:df) , [[積分]](js:integral) , [[映射]](js:map) , [[亂數]](js:random)  | 習題：模擬擲骰子, 四顆骰子加總  |
+| [[遞迴函數]](js:recursive) | [[自動產生數學式]](js:genexp) | 習題: [[用遞迴的方法算 n!]](js:rec_factorial) , [[自動產生英文語句]](js:genen) |

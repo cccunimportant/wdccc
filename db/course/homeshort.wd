@@ -1,0 +1,34 @@
+# 課程地圖
+
+<table>
+<tr><th>分類</th><th>課程</th><th>語言與軟體</th><th>說明</th></tr>
+<tr><td rowspan="2">程式</td><td> [[程式設計]](js) </td><td>JavaScript + Node.js </td><td rowspan="2">從語言到網站</td></tr>
+<tr><td> [[程式設計進階]](js2) </td><td>JavaScript + 基礎 C 語言</td></tr>
+<tr><td rowspan="2">電腦</td><td> [[計算機結構]](co) </td><td>JavaScript + Verilog</td><td rowspan="2">從硬體到軟體</td></tr>
+<tr><td> [[系統程式]](sp) </td><td>JavaScript + 深入 C 語言</td></tr>
+<tr><td rowspan="2">研究</td><td> [[機率與統計]](st) </td><td>JavaScript + R 軟體</td><td rowspan="2">從數學到智慧</td></tr>
+<tr><td> [[人工智慧]](ai) </td><td>JavaScript</td></tr>
+</table>
+
+
+<table>
+<tr><th>課程</th><th>語言與軟體</th><th>說明</th></tr>
+<tr><td> [[程式設計]](js) </td><td>JavaScript + Node.js </td><td rowspan="2">語言<br/>網站</td></tr>
+<tr><td> [[程式設計進階]](js2) </td><td>JavaScript + Node.js </td></tr>
+<tr><td> [[計算機結構]](co) </td><td>JavaScript + Verilog</td><td rowspan="2">硬體<br/>軟體</td></tr>
+<tr><td> [[系統程式]](sp) </td><td>JavaScript + Verilog</td></tr>
+<tr><td> [[機率與統計]](st) </td><td>JavaScript + R 軟體</td><td rowspan="2">數學<br/>智慧</td></tr>
+<tr><td> [[人工智慧]](ai) </td><td>JavaScript + R 軟體</td></tr>
+</table>
+
+
+
+<table>
+<tr><th>課程</th><th>語言與軟體</th></tr>
+<tr><td> [[程式設計]](js) </td><td>JavaScript + Node.js </td></tr>
+<tr><td> [[程式設計進階]](js2) </td><td>JavaScript + Node.js </td></tr>
+<tr><td> [[計算機結構]](co) </td><td>JavaScript + Verilog</td></tr>
+<tr><td> [[系統程式]](sp) </td><td>JavaScript + Verilog</td></tr>
+<tr><td> [[機率與統計]](st) </td><td>JavaScript + R 軟體</td></tr>
+<tr><td> [[人工智慧]](ai) </td><td>JavaScript + R 軟體</td></tr>
+</table>

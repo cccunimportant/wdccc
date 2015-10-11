@@ -1,0 +1,82 @@
+## 變動數量的參數
+
+對於一般的函數，參數個數是固定的，例如上述範例的 add(a,b) 與 sub(a,b) ，都很明確的有兩個參數，因此直接用 a, b 就可以存取該參數。
+
+但是、對於那種有不確定參數個數的函數，就沒有對應名稱可以用來存取這些參數了。
+
+還好、javascript 在呼叫每個函數時，都會將參數放到一個稱為 arguments 的變數裏，arguments 是一個陣列，我們可以透過 arguments 來存取每一個參數，以下是一個範例。
+
+檔案：arg.js
+
+```javascript
+function print() {
+  for (var i in arguments) {
+    console.log(i, ":", arguments[i]);
+  }
+}
+
+print(3, 2.71828, "hello");
+```
+
+執行結果：
+
+```
+D:\js\code>node arg.js
+0 : 3
+1 : 2.71828
+2 : hello
+```
+
+
+
+這種變動參數個數的函數，有時候很有用。例如、若我們要寫一個可以找出最小值的函數，就可以用下列的 min() 函數。
+
+檔案：min.js
+
+```javascript
+function min() {
+  var m = arguments[0];
+  for (var i in arguments) {
+    if (arguments[i] < m)
+      m = arguments[i];
+  }
+  return m;
+}
+
+var x = min(3, 7, 2, 9, 1, 5, 8);
+console.log("x=min(3, 7, 2, 9, 1, 5, 8)=", x);
+```
+
+執行結果
+
+```
+D:\Dropbox\Public\web\js\code>node min.js
+x=min(3, 7, 2, 9, 1, 5, 8)= 1
+```
+
+## 變數的領域範圍
+
+在上述的 min.js 程式中，您可以看到我們經常會用 var 這個關鍵字來宣告變數。但事實上，即使我們不用 var 宣告，該程式也能正常運作。以下是一個完全沒有 var 宣告的版本。
+
+檔案：min2.js
+
+```javascript
+function min() {
+  m = arguments[0];
+  for (i in arguments) {
+    if (arguments[i] < m)
+      m = arguments[i];
+  }
+  return m;
+}
+
+x = min(3, 7, 2, 9, 1, 5, 8);
+console.log("x=min(3, 7, 2, 9, 1, 5, 8)=", x);
+```
+
+但是、上述這個沒有 var 的版本 min2.js ，與那個有 var 的版本其實在某些細微處有所不同，因為採用 var 宣告時，該變數將會是一個區域變數，而沒有採用 var 宣告就直接指定的方式，則會是一個「全域」變數，這種全域變數有可能造成更多的衝突問題，所以在一般的情況下，我們都會加上 var 宣告。
+
+關於是否該為變數加上 var 的更詳細描述，可以參考下列文章：
+
+* [JavaScript 語言核心（3）你的變數 var 了嗎？](http://www.codedata.com.tw/javascript/essential-javascript-variable/)
+

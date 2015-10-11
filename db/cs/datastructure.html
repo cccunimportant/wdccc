@@ -1,0 +1,172 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="/gospa.js"></script>
+<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[C# 語言]](cs:home) </title>
+
+<p><a href="/db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="/db/book/home.html"" class="innerLink">教科書</a>  / <a href="/db/cs/home.html"" class="innerLink">C# 語言</a>  </p>
+
+<h1 id="c">C# 程式基礎：資料結構</h1>
+
+<h2 id="">容器函式庫</h2>
+
+<table>
+<thead>
+<tr>
+<th id="一般型別" style="text-align:left;">一般型別            </th>
+<th id="泛型型別" style="text-align:left;">泛型型別              </th>
+<th id="說明" style="text-align:left;">說明                                                                     </th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align:left;"><p>ArrayList           </p></td>
+<td style="text-align:left;"><p><code>List&lt; &gt;</code>             </p></td>
+<td style="text-align:left;"><p>串列，以陣列實作的串列結構                                               </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>Queue               </p></td>
+<td style="text-align:left;"><p><code>Queue&lt; &gt;</code>            </p></td>
+<td style="text-align:left;"><p>佇列，先進先出的結構                                                     </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>Stack               </p></td>
+<td style="text-align:left;"><p><code>Stack&lt; &gt;</code>            </p></td>
+<td style="text-align:left;"><p>堆疊，後進先出的結構                                                     </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>Hashtable           </p></td>
+<td style="text-align:left;"><p><code>Dictionary&lt; &gt;</code>       </p></td>
+<td style="text-align:left;"><p>雜湊表格，快速用 key 查找 value                                          </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>SortedList          </p></td>
+<td style="text-align:left;"><p><code>SortedList&lt; &gt;</code>       </p></td>
+<td style="text-align:left;"><p>排序串列，使用排序與二分搜尋法的結構                                     </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>ListDictionary      </p></td>
+<td style="text-align:left;"><p><code>Dictionary&lt; &gt;</code>       </p></td>
+<td style="text-align:left;"><p>字典，快速用 key 查找 value                                              </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>HybridDictionary    </p></td>
+<td style="text-align:left;"><p><code>Dictionary&lt; &gt;</code>       </p></td>
+<td style="text-align:left;"><p>小集合採用 ListDictionary，集合變大時，會自動改用 Hashtable 的一種字典   </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>OrderedDictionary   </p></td>
+<td style="text-align:left;"><p><code>Dictionary&lt; &gt;</code>       </p></td>
+<td style="text-align:left;"><p>比SortedList類別多了一些功能的類別                                       </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>SortedDictionary    </p></td>
+<td style="text-align:left;"><p><code>SortedDictionary&lt; &gt;</code> </p></td>
+<td style="text-align:left;"><p>鍵值一定是字串，用法跟 Hashtable 相似                                    </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>NameValueCollection </p></td>
+<td style="text-align:left;"><p><code>Dictionary&lt; &gt;</code>       </p></td>
+<td style="text-align:left;"><p>NameValueCollection可以單一索引鍵對應多重值                              </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>DictionaryEntry     </p></td>
+<td style="text-align:left;"><p><code>KeyValPair&lt; &gt;</code>       </p></td>
+<td style="text-align:left;"><p>字典中的一個項目，(Key, Value) 的結構                                    </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>StringCollection    </p></td>
+<td style="text-align:left;"><p><code>List&lt;String&gt;</code>        </p></td>
+<td style="text-align:left;"><p>用法跟ArrayList相似                                                      </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>StringDictionary    </p></td>
+<td style="text-align:left;"><p><code>Dictionary&lt;String&gt;</code>  </p></td>
+<td style="text-align:left;"><p>字串字典                                                                 </p></td>
+</tr>
+
+</tbody>
+</table>
+
+<ul>
+<li>上層結構：Collection</li>
+<li>容器物件：Array, ArrayList, HashTable, SortedList</li>
+<li>位元容器：BitArray, BitVector32, </li>
+<li>泛型容器：NameValueCollection, Dictionary</li>
+</ul>
+
+<h2 id="">容器的使用</h2>
+
+<p>範例：</p>
+
+<pre><code class="CS">using System;
+using System.Collections;
+using System.Collections.Generic;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            ArrayList a = new ArrayList();
+            a.Add("John");
+            a.Add(1);
+            a.Add(3.1416);
+            a.RemoveAt(2);
+
+            Object[] array = a.ToArray();
+            Console.WriteLine(array);
+
+            List&lt;Object&gt; list = new List&lt;Object&gt;();
+            list.Add("John");
+            list.Add("Mary");
+            list.Add("George");
+            list.Add("3.14159");
+            list.Add(3.14159);
+
+            foreach (Object o in list)
+                Console.Write(o+" ");
+            Console.WriteLine();
+            char c = 'A';
+//            Console.Write("{0:X}", (int) c);
+
+            Hashtable h = new Hashtable();
+            h.Add("John", "0977332415");
+            h.Add("Mary", "0977342415");
+            h.Add("George", "0977372416");
+            h.Add("Peter", "0977332425");
+            String gtel = (String) h["George"];
+            Console.WriteLine("George Tel : "+gtel);
+
+            Dictionary&lt;String, String&gt; d = new Dictionary&lt;string, string&gt;();
+            d.Add("John", "0977332415");
+            d.Add("Mary", "0977342415");
+            d.Add("George", "0977372416");
+            d.Add("Peter", "0977332425");
+            gtel = d["George"];
+            Console.WriteLine("George Tel : " + gtel);
+
+        }
+
+    }
+}
+</code></pre>
+
+</body>
+</html>

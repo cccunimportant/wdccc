@@ -1,0 +1,34 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="/gospa.js"></script>
+<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[機率統計]](st:home) </title>
+
+<p><a href="/db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="/db/book/home.html"" class="innerLink">教科書</a>  / <a href="/db/st/home.html"" class="innerLink">機率統計</a>  </p>
+
+<h2 id="">共變異數：兩組樣本的相關度統計</h2>
+
+<pre><code class="R">&gt; cor(x, x+1)
+[1] 1
+&gt; cor(x, -x)
+[1] -1
+&gt; cor(x, 0.5*x)
+[1] 1
+&gt; 0.5*x
+ [1]  6.0  8.5 25.0 16.5 49.0 38.5 19.5 39.5  3.5 13.0
+&gt; cor(x, 0.5*x+1)
+[1] 1
+&gt; cor(x, -0.5*x+1)
+[1] -1
+&gt; y=sample(1:100, 10)
+&gt; y
+ [1] 53 69 57 93 27 37 60 83 77 55
+&gt; 
+&gt; cor(x,y)
+[1] -0.4683468
+</code></pre>
+
+</body>
+</html>

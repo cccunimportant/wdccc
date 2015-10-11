@@ -1,0 +1,117 @@
+var config = (function() {
+    
+  var titleCcc  = ' [[陳鍾誠]](ccc:home) ';
+  var titleBook  = ' / [[教科書]](book:home) ';
+  var titlePmag = ' [[程式人雜誌]](pmag:home) ';
+  var titleYmag = ' [[少年科技人雜誌]](ymag:home) ';
+
+  var title={
+    'default':' [[Wikidown]](wikidown:home) ',
+		main:titleCcc, 
+    ccc:titleCcc,
+    book:titleCcc+titleBook,
+    course:titleCcc+' / [[課程]](course:home) ',
+    exam:titleCcc+' / [[考題]](exam:home) ',
+    novel:titleCcc+' / [[小說]](novel:home) ',
+		mag: '[[雜誌]](mag:home) ',
+    pmag:titlePmag,
+    ymag:titleYmag,
+    ymag201502:titleYmag+' / [[2015年2月號]](ymag201502:home) ',
+    pmag201503:titlePmag+' / [[2015年3月號]](pmag201503:home) ',
+    ymag201504:titleYmag+' / [[2015年4月號]](ymag201504:home) ',
+    pmag201505:titlePmag+' / [[2015年5月號]](pmag201505:home) ',
+    ymag201506:titleYmag+' / [[2015年6月號]](ymag201506:home) ',
+    pmag201507:titlePmag+' / [[2015年7月號]](pmag201507:home) ',
+    ymag201508:titleYmag+' / [[2015年8月號]](ymag201508:home) ',
+    pmag201509:titlePmag+' / [[2015年9月號]](pmag201509:home) ',
+    ymag201510:titleYmag+' / [[2015年10月號]](ymag201510:home) ',
+    pmag201511:titlePmag+' / [[2015年11月號]](pmag201511:home) ',
+    ymag201512:titleYmag+' / [[2015年12月號]](ymag201512:home) ',
+    poem:titleCcc+' / [[程式與詩]](poem:home) ',
+    pb:titleCcc+titleBook+' / [[程式設計]](pb:home) ',
+    db:titleCcc+titleBook+' / [[資料庫]](db:home) ',
+    ss:titleCcc+titleBook+' / [[系統軟體]](ss:home) ',
+    co:titleCcc+titleBook+' / [[計算機結構]](co:home) ',
+    ai:titleCcc+titleBook+' / [[人工智慧]](ai:home) ',
+    cl:titleCcc+titleBook+' / [[語言處理]](cl:home) ',
+    ct:titleCcc+titleBook+' / [[計算理論]](ct:home) ',
+    ca:titleCcc+titleBook+' / [[微積分]](ca:home) ',
+    st:titleCcc+titleBook+' / [[機率統計]](st:home) ',
+    "3d":titleCcc+titleBook+' / [[Blender動畫]](3d:home) ',
+    dm:titleCcc+titleBook+' / [[離散數學]](dm:home) ',
+    se:titleCcc+titleBook+' / [[軟體工程]](se:home) ',
+    ss:titleCcc+titleBook+' / [[系統軟體]](ss:home) ',    
+    sc:titleCcc+titleBook+' / [[科學計算]](sc:home) ',
+    sci:titleCcc+titleBook+' / [[科學技術]](sci:home) ',
+    cr:titleCcc+titleBook+' / [[密碼學]](cr:home) ',
+    ph:titleCcc+titleBook+' / [[物理]](ph:home) ',
+    ch:titleCcc+titleBook+' / [[化學]](ch:home) ',
+    bi:titleCcc+titleBook+' / [[生物]](bi:home) ',
+    sh:titleCcc+titleBook+' / [[科技史]](sh:home) ',
+    ar:titleCcc+titleBook+' / [[Arduino]](ar:home) ',
+    pi:titleCcc+titleBook+' / [[樹莓派]](pi:home) ',
+    c :titleCcc+titleBook+' / [[C 語言]](c:home) ',
+    js:titleCcc+titleBook+' / [[JavaScript 語言]](js:home) ',
+    js1:titleCcc+titleBook+' / [[JavaScript 第一門課]](js1:home) ',
+    js0:titleCcc+titleBook+' / [[JavaScript 第一門課]](js0:home) ',
+    jsb:titleCcc+titleBook+' / [[JavaScript 前端技術]](jsb:home) ',
+    wp:titleCcc+titleBook+' / [[Web 程式設計]](wp:home) ',
+    r :titleCcc+titleBook+' / [[R 軟體]](r:home) ',
+    cs:titleCcc+titleBook+' / [[C# 語言]](cs:home) ',
+    mm:titleCcc+titleBook+' / [[媒體]](mm:home) ',
+    ee:titleCcc+titleBook+' / [[動手玩電路]](ee:home) ',
+    ma:titleCcc+titleBook+' / [[學習當一位 maker]](ma:home) '
+  };
+
+  var templateCopyright='<%=wd%>\n\n----\n\n\
+  <center style="font-size:small;color:#888888">(C) 版權所有，但可以轉貼網址。<br/> 作者：  [陳鍾誠](#ccc:home)  email: <ccckmit@gmail.com> </center>\n\
+  [陳鍾誠]: http://ccckmit.wikidot.com/\n';
+
+  var templatePhysics='<%=wd%>\n\n----\n\n\
+  <center style="font-size:small;color:#888888">本文部份內容與大部份圖片修改自 [維基百科] 與 OpenStax College 的 [College Physics](https://openstaxcollege.org/textbooks/college-physics) 一書 ， 使用時請遵守 [姓名標示、相同方式分享] 授權。<br/> 編輯：  [陳鍾誠](#ccc:home)  email: <ccckmit@gmail.com></center>\n\
+  [程式人雜誌社團]: https://www.facebook.com/groups/programmerMagazine/\n\
+  [少年科技人社團]: https://www.facebook.com/groups/youngmaker.magazine/\n\
+  [少年科技人雜誌]: http://programmermagazine.github.io/youngmaker/\n\
+  [程式人雜誌]: http://programmermagazine.github.io/home/\n\
+  [姓名標示、相同方式分享]: http://creativecommons.org/licenses/by-sa/3.0/tw/\n\
+  [姓名標示、非商業性、相同方式分享]: http://creativecommons.org/licenses/by-nc-sa/3.0/tw/\n\
+  [陳鍾誠]: http://ccckmit.wikidot.com/\n\
+  [維基百科]:http://zh.wikipedia.org/\n';
+	
+  var templateCC='<%=wd%>\n\n----\n\n\
+  <center style="font-size:small;color:#888888">本文部份內容與大部份圖片修改自 [維基百科] ， 使用時請遵守 [姓名標示、相同方式分享] 授權。<br/> 編輯：  [陳鍾誠](#ccc:home)  email: <ccckmit@gmail.com></center>\n\
+  [程式人雜誌社團]: https://www.facebook.com/groups/programmerMagazine/\n\
+  [少年科技人社團]: https://www.facebook.com/groups/youngmaker.magazine/\n\
+  [少年科技人雜誌]: http://programmermagazine.github.io/youngmaker/\n\
+  [程式人雜誌]: http://programmermagazine.github.io/home/\n\
+  [姓名標示、相同方式分享]: http://creativecommons.org/licenses/by-sa/3.0/tw/\n\
+  [姓名標示、非商業性、相同方式分享]: http://creativecommons.org/licenses/by-nc-sa/3.0/tw/\n\
+  [陳鍾誠]: http://ccckmit.wikidot.com/\n\
+  [維基百科]:http://zh.wikipedia.org/\n';
+
+  var template={
+    'default':templateCC,
+    js:templateCopyright,
+    js0:templateCopyright,
+		cr:templateCopyright,
+    novel:templateCopyright,
+		ph:templatePhysics,
+    ccc:templateCopyright
+  };
+  
+  var sideMooc = "課程#home#active;課本#textbook;講義#lecture;影片#video;訊息#info#active;作業#assignment;公告#announcement;大綱#overview;討論#discuss";
+  var side={
+    'default':'',
+    js1:sideMooc
+  }
+
+  return {
+    title: title,
+    side: side,
+    template: template,    
+  }
+
+})();
+
+if (typeof module !== 'undefined') 
+  module.exports = config;

@@ -1,0 +1,37 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="/gospa.js"></script>
+<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[JavaScript 語言]](js:home) </title>
+
+<p><a href="/db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="/db/book/home.html"" class="innerLink">教科書</a>  / <a href="/db/js/home.html"" class="innerLink">JavaScript 語言</a>  </p>
+
+<h1 id="mocha">mocha (摩卡) -- 單元測試工具</h1>
+
+<p>程式來源：  <a href="http://mochajs.org/">http://mochajs.org/</a></p>
+
+<pre><code>$ npm install -g mocha
+$ mkdir test
+$ $EDITOR test/test.js
+
+var assert = require("assert")
+describe('Array', function(){
+  describe('#indexOf()', function(){
+    it('should return -1 when the value is not present', function(){
+      assert.equal(-1, [1,2,3].indexOf(5));
+      assert.equal(-1, [1,2,3].indexOf(0));
+    })
+  })
+})
+
+$  mocha
+
+  .
+
+  ✔ 1 test complete (1ms)
+</code></pre>
+
+</body>
+</html>

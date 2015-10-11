@@ -1,0 +1,49 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="/gospa.js"></script>
+<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[C 語言]](c:home) </title>
+
+<p><a href="/db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="/db/book/home.html"" class="innerLink">教科書</a>  / <a href="/db/c/home.html"" class="innerLink">C 語言</a>  </p>
+
+<h2 id="cencapsulation">以 C 語言實作物件封裝 (Encapsulation)</h2>
+
+<p>物件導向中的封裝，是指將資料與函數封裝在一個稱為物件的結構當中，我們可以使用 C 語言的結構，將資料與函數指標一起放入結構中，就形成了一個類似物件的結構。</p>
+
+<h3 id="circle">程式範例：實作 Circle 物件</h3>
+
+<pre><code class="CPP">#include &lt;stdio.h&gt;
+
+struct Circle {
+  void (*new)(struct Circle*, float); 
+  float (*area)(struct Circle*);
+  float r;
+};
+
+float CircleArea(struct Circle *obj) { return 3.14 * obj-&gt;r * obj-&gt;r; }
+
+void CircleNew(struct Circle *obj, float r) {
+  obj-&gt;new = CircleNew;
+  obj-&gt;area = CircleArea;
+  obj-&gt;r = r;
+}
+
+int main() {
+  struct Circle c;
+  CircleNew(&amp;c, 3.0);
+  printf("area() = %G\n", c.area(&amp;c));
+}
+</code></pre>
+
+<h3 id="">執行結果</h3>
+
+<pre><code>D:\cp&gt;gcc Circle.c -o Circle
+
+D:\cp&gt;Circle
+area() = 28.26
+</code></pre>
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="/gospa.js"></script>
+<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[C 語言]](c:home) </title>
+
+<p><a href="/db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="/db/book/home.html"" class="innerLink">教科書</a>  / <a href="/db/c/home.html"" class="innerLink">C 語言</a>  </p>
+
+<h2 id="">臨時暫存檔 -- 如何建立暫存檔案</h2>
+
+<h3 id="">程式範例</h3>
+
+<pre><code class="CPP">#include &lt;stdio.h&gt;
+
+int main(void){
+  FILE *file;
+  if((file=tmpfile())==NULL) {
+    printf("Cannot open temporary work file.\n");
+    exit(1);
+  }
+  fprintf(file, "Hello! How are you.");
+  fflush(file);
+
+  char msg[10];
+  fseek(file, 0, SEEK_SET);
+  fscanf(file, "%s", msg);
+  printf("msg=%s", msg);
+  fclose(file);  
+}
+</code></pre>
+
+<h3 id="">執行結果</h3>
+
+<pre><code>D:\cp&gt;gcc tmpfile.c -o tmpfile
+
+D:\cp&gt;tmpfile
+msg=Hello!
+</code></pre>
+
+</body>
+</html>

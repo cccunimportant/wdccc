@@ -1,0 +1,57 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="/gospa.js"></script>
+<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[JavaScript 語言]](js:home) </title>
+
+<p><a href="/db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="/db/book/home.html"" class="innerLink">教科書</a>  / <a href="/db/js/home.html"" class="innerLink">JavaScript 語言</a>  </p>
+
+<h1 id="">亂數</h1>
+
+<p>檔案： <a href="db/js/code/random.js" class="innerLink">random.js</a></p>
+
+<pre><code>function randBetween(a,b) {
+  return a+Math.random()*(b-a);
+}
+
+function randInt(a,b) {
+  return Math.floor(randBetween(a,b));
+}
+
+function repeats(n, f) {
+  var a = [];
+  for (var i=0; i&lt;n; i++) {
+    a.push(f());
+  }
+  return a;
+}
+
+var rList = repeats(10, function() {
+  var r=randInt(0,2);
+  console.log("r="+r);
+  return r;
+});
+
+console.log("rList=%j", rList);
+</code></pre>
+
+<p>執行結果</p>
+
+<pre><code>D:\Dropbox\cccweb\db\js\code&gt;node random.js
+r=1
+r=1
+r=1
+r=0
+r=1
+r=0
+r=0
+r=1
+r=0
+r=0
+rList=[1,1,1,0,1,0,0,1,0,0]
+</code></pre>
+
+</body>
+</html>

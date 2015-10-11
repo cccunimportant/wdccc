@@ -1,0 +1,76 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="/gospa.js"></script>
+<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[C 語言]](c:home) </title>
+
+<p><a href="/db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="/db/book/home.html"" class="innerLink">教科書</a>  / <a href="/db/c/home.html"" class="innerLink">C 語言</a>  </p>
+
+<h2 id="ifelseendififdefifndef">條件編譯 -- #if, #else, #endif, #ifdef, #ifndef, ….</h2>
+
+<h3 id="">條件編譯的語法</h3>
+
+<pre><code class="CPP">#if constant_expression
+#elif constant_expression
+...
+#else
+#endif
+</code></pre>
+
+<h3 id="">程式範例</h3>
+
+<pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+#ifdef Linux
+  printf("OS=LINUX\n");
+#elif defined(Windows)
+  printf("OS=Microsoft Windows\n");
+#elif defined(OS)
+  printf("OS=%s", OS);
+#else 
+  printf("OS=Unknown\n");
+#endif
+}
+</code></pre>
+
+<h3 id="">執行結果</h3>
+
+<pre><code>D:\cp&gt;gcc macroIf.c -o macroIf
+
+D:\cp&gt;macroIf
+OS=Unknown
+
+D:\cp&gt;gcc -DWindows macroIf.c -o macroIf
+
+D:\cp&gt;macroIf
+OS=Microsoft Windows
+
+D:\cp&gt;gcc -DLinux macroIf.c -o macroIf
+
+D:\cp&gt;macroIf
+OS=LINUX
+
+D:\cp&gt;gcc -DOS=\"Sun Solaris\" macroIf.c -o macroIf
+gcc: Solaris": Invalid argument
+macroIf.c: In function `main':
+macroIf.c:9: error: missing terminating " character
+macroIf.c:9: error: syntax error before ')' token
+
+D:\cp&gt;gcc -DOS=\"Solaris\" macroIf.c -o macroIf
+
+D:\cp&gt;macroIf
+OS=Solaris
+D:\cp&gt;
+</code></pre>
+
+<h3 id="">參考文獻</h3>
+
+<ul>
+<li>Wikipedia:C preprocessor -- http://en.wikipedia.org/wiki/C_preprocessor </li>
+</ul>
+
+</body>
+</html>

@@ -1,0 +1,112 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="/gospa.js"></script>
+<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[C# 語言]](cs:home) </title>
+
+<p><a href="/db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="/db/book/home.html"" class="innerLink">教科書</a>  / <a href="/db/cs/home.html"" class="innerLink">C# 語言</a>  </p>
+
+<h1 id="c">C# 視窗程式：設計文字編輯器</h1>
+
+<p>教學錄影：</p>
+
+<ul>
+<li>C# 檔案處理 -- <a href="http://youtu.be/3EyPcAddd70">http://youtu.be/3EyPcAddd70</a></li>
+<li>C# 文字編輯器 1 -- <a href="http://youtu.be/xymT54El53E">http://youtu.be/xymT54El53E</a></li>
+<li>C# 文字編輯器 2 -- <a href="http://youtu.be/xz5sKvZjLZI">http://youtu.be/xz5sKvZjLZI</a></li>
+</ul>
+
+<p>專案下載：</p>
+
+<ul>
+<li>只有介面的版本 (英文) -- <a href="https://dl.dropbox.com/u/101584453/cs/code/Editor1.zip">https://dl.dropbox.com/u/101584453/cs/code/Editor1.zip</a></li>
+<li>只有介面的版本 (中文) -- <a href="https://dl.dropbox.com/u/101584453/cs/code/Editor2.zip">https://dl.dropbox.com/u/101584453/cs/code/Editor2.zip</a></li>
+<li>完整版 -- <a href="https://dl.dropbox.com/u/101584453/cs/code/TextEditor2012.zip">https://dl.dropbox.com/u/101584453/cs/code/TextEditor2012.zip</a></li>
+</ul>
+
+<p>執行結果</p>
+
+<div class="figure"><img src="db/cs/TextEditorRun.jpg"/><p class="caption">文字編輯器執行畫面</p></div>
+
+<p>程式碼</p>
+
+<pre><code class="CS">using System;
+using System.ComponentModel;
+using System.Windows.Forms;
+using System.IO;
+namespace WindowsFormsApplication1
+{
+    public partial class FormEditor : Form
+    {
+        String filePath = null;
+
+        public FormEditor()
+        {
+            InitializeComponent();
+        }
+
+        public static String fileToText(String filePath)
+        {
+            StreamReader file = new StreamReader(filePath);
+            String text = file.ReadToEnd();
+            file.Close();
+            return text;
+        }
+
+        public static void textToFile(String filePath, String text)
+        {
+            StreamWriter file = new StreamWriter(filePath);
+            file.Write(text);
+            file.Close();
+        }
+
+        private void openFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                String text = fileToText(openFileDialog.FileName);
+                richTextBox.Text = text;
+                filePath = openFileDialog.FileName;
+            }
+        }
+
+        private void newFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            richTextBox.Text = "";
+            filePath = null;
+        }
+
+        private void saveFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (filePath == null)
+            {
+                dialogSaveFile();
+            }
+            else
+            {
+                textToFile(filePath, richTextBox.Text);
+            }
+        }
+
+        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            dialogSaveFile();
+        }
+
+        public void dialogSaveFile()
+        {
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                textToFile(saveFileDialog.FileName, richTextBox.Text);
+                filePath = saveFileDialog.FileName;
+            }
+        }
+
+    }
+}
+</code></pre>
+
+</body>
+</html>

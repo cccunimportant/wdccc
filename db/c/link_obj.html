@@ -1,0 +1,90 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="/gospa.js"></script>
+<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[C 語言]](c:home) </title>
+
+<p><a href="/db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="/db/book/home.html"" class="innerLink">教科書</a>  / <a href="/db/c/home.html"" class="innerLink">C 語言</a>  </p>
+
+<h2 id="">鏈結串列：內含物件版 — 通用性鏈結串列，一般性的寫法。</h2>
+
+<h3 id="">程式範例：鏈結串列 -- 內含物件版</h3>
+
+<pre><code class="CPP">#include &lt;stdio.h&gt;
+
+typedef struct lnode { 
+  struct lnode *next;
+  void *obj;
+} ListNode;
+
+typedef struct {
+  ListNode *head;
+} List;
+
+void ListNew(List *list) {
+  list-&gt;head = NULL;
+}
+
+void ListAdd(List *list, ListNode *node) {
+  if (node == NULL) return;
+  node-&gt;next = list-&gt;head;
+  list-&gt;head = node;
+}
+
+typedef void(*F1)(void*);
+
+void ListPrint(List *list, F1 f) {
+  ListNode *p;
+  for (p = list-&gt;head; p != NULL; p=p-&gt;next)
+    f(p-&gt;obj);
+}
+
+typedef struct {
+    char *name;
+    int age;
+} Person;
+
+void PersonPrint(Person *p) {
+  printf("%s is %d years old\n", p-&gt;name, p-&gt;age);  
+}
+
+int main() {
+    Person john = {
+      .name = "John",
+      .age = 40
+    };
+    Person mary = {
+      .name = "Mary",
+      .age = 32
+    };
+    Person george = {
+      .name = "George",
+      .age = 26
+    };
+    ListNode jnode = { .obj=&amp;john, .next=NULL };
+    ListNode mnode = { .obj=&amp;mary, .next=NULL };
+    ListNode gnode = { .obj=&amp;george, .next=NULL };
+    List list;
+    ListNew(&amp;list);
+    ListAdd(&amp;list, &amp;jnode);
+    ListAdd(&amp;list, &amp;mnode);
+    ListAdd(&amp;list, &amp;gnode);
+    ListPrint(&amp;list, (F1) PersonPrint);
+    return 0;
+}
+</code></pre>
+
+<h3 id="">執行結果</h3>
+
+<pre><code>D:\cp&gt;gcc LinkedListObj.c -o LinkedListObj
+
+D:\cp&gt;LinkedListObj
+George is 26 years old
+Mary is 32 years old
+John is 40 years old
+</code></pre>
+
+</body>
+</html>

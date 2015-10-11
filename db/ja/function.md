@@ -1,0 +1,86 @@
+# 函數
+
+範例一：計算平方的函數
+
+```java
+class Func1
+{ 
+  public static void main(String[] args)
+  {
+    int x = square(5);
+    System.out.println("x="+x);
+  }
+
+  public static int square(int n) 
+  {
+    return n*n;
+  }
+}
+
+```
+
+範例二：陣列相加
+
+```java
+class Func1
+{ 
+  public static void main(String[] args)
+  {
+    int a[][] = {{1,2}, 
+                 {3,4}};
+    int b[][] = {{5,6}, 
+                 {7,8}};
+    int c[][] = new int[2][2];
+    add(a, b, c);
+    System.out.println("=======a=======");
+    print(a);
+    System.out.println("=======b=======");
+    print(b);
+    System.out.println("=======c=======");
+    print(c);
+  }
+
+  public static void add(int x[][], int y[][], int z[][])
+  {
+  	for (int i=0; i<z.length; i++)
+  	  for (int j=0; j<z[i].length; j++)
+  	  {
+  	  	z[i][j] = x[i][j] + y[i][j];
+  	  }
+  }
+
+  public static void print(int x[][])
+  {
+  	for (int i=0; i<x.length; i++)
+  	{
+  	  for (int j=0; j<x[i].length; j++)
+  	    System.out.print(x[i][j]+" ");
+  	  System.out.println();
+    }
+  }  
+}
+```
+
+## 遞迴函數
+
+範例一：費氏序列
+
+```java
+class Recursive1 {
+    public static void main(String[] args) {
+    	int x = f(5);
+    	System.out.println("f(5)="+x);
+    }
+    
+    public static int f(int n) {
+    	System.out.println("n="+n);
+    	if (n == 0)
+    	return 1;
+    	else {
+    	int fn_1 = f(n-1);
+    	System.out.println("f("+(n-1)+")="+fn_1);
+    	return fn_1*n;
+    	}
+    }
+}
+```

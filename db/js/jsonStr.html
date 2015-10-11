@@ -1,0 +1,51 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="/gospa.js"></script>
+<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[JavaScript 語言]](js:home) </title>
+
+<p><a href="/db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="/db/book/home.html"" class="innerLink">教科書</a>  / <a href="/db/js/home.html"" class="innerLink">JavaScript 語言</a>  </p>
+
+<h1 id="json">JSON 轉字串</h1>
+
+<p>檔案: <a href="db/js/code/jsonStr.js" class="innerLink">jsonStr.js</a></p>
+
+<pre><code>var obj = { ccc: { name: "陳鍾誠", age:46, tel:"082313534" }, snoopy: { type:"dog", age:3 } };
+
+var objStr = JSON.stringify(obj);
+
+console.log("objStr=%s", objStr);
+
+var obj2 = JSON.parse(objStr);
+
+console.log("obj2=%j", obj);
+
+var objStr2 = JSON.stringify(obj, null, 2);
+
+console.log("objStr2=%s", objStr2);
+</code></pre>
+
+<p>執行結果</p>
+
+<pre><code>D:\Dropbox\cccweb\db\js\code&gt;node jsonStr.js
+objStr={"ccc":{"name":"陳鍾誠","age":46,"tel":"082313534"},"snoopy":{"type":"dog
+","age":3}}
+obj2={"ccc":{"name":"陳鍾誠","age":46,"tel":"082313534"},"snoopy":{"type":"dog",
+"age":3}}
+objStr2={
+  "ccc": {
+    "name": "陳鍾誠",
+    "age": 46,
+    "tel": "082313534"
+  },
+  "snoopy": {
+    "type": "dog",
+    "age": 3
+  }
+}
+</code></pre>
+
+</body>
+</html>

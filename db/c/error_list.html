@@ -1,0 +1,42 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="/gospa.js"></script>
+<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[C 語言]](c:home) </title>
+
+<p><a href="/db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="/db/book/home.html"" class="innerLink">教科書</a>  / <a href="/db/c/home.html"" class="innerLink">C 語言</a>  </p>
+
+<h2 id="strerror">錯誤訊息列表 -- 用 strerror 列出所有內建的錯誤訊息</h2>
+
+<h3 id="">程式範例</h3>
+
+<pre><code class="CPP">#include &lt;stdio.h&gt;
+#include &lt;errno.h&gt;
+
+int main ()
+{
+  FILE * file;
+  file=fopen ("exist.not","rb");
+  if (file==NULL) {
+    perror("perror");
+    printf("strerror(errno)=%s\n", strerror(errno));
+  }
+  else
+    fclose (file);
+  return 0;
+}
+</code></pre>
+
+<h3 id="">執行結果</h3>
+
+<pre><code>D:\cp&gt;gcc perror.c -o perror
+
+D:\cp&gt;perror
+perror: No such file or directory
+strerror(errno)=No such file or directory
+</code></pre>
+
+</body>
+</html>

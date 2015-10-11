@@ -1,0 +1,173 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="/gospa.js"></script>
+<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[軟體工程]](se:home) </title>
+
+<p><a href="/db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="/db/book/home.html"" class="innerLink">教科書</a>  / <a href="/db/se/home.html"" class="innerLink">軟體工程</a>  </p>
+
+<h1 id="bddjasmine">BDD 測試導向開發工具 -- Jasmine</h1>
+
+<ul>
+<li>官網： <a href="http://jasmine.github.io/">http://jasmine.github.io/</a></li>
+<li>github : <a href="https://github.com/jasmine/jasmine">https://github.com/jasmine/jasmine</a></li>
+</ul>
+
+<h2 id="">安裝</h2>
+
+<p>參考： <a href="https://github.com/jasmine/jasmine-npm">https://github.com/jasmine/jasmine-npm</a></p>
+
+<pre><code>npm install -g jasmine
+</code></pre>
+
+<h2 id="">系統預設範例</h2>
+
+<pre><code>nqu-192-168-61-142:public mac020$ cd jasmine_test
+nqu-192-168-61-142:jasmine_test mac020$ jasmine init
+nqu-192-168-61-142:jasmine_test mac020$ ls
+spec
+nqu-192-168-61-142:jasmine_test mac020$ jasmine examples
+nqu-192-168-61-142:jasmine_test mac020$ ls
+lib    spec
+nqu-192-168-61-142:jasmine_test mac020$ ls -R
+lib    spec
+
+./lib:
+jasmine_examples
+
+./lib/jasmine_examples:
+Player.js    Song.js
+
+./spec:
+helpers            jasmine_examples    support
+
+./spec/helpers:
+jasmine_examples
+
+./spec/helpers/jasmine_examples:
+SpecHelper.js
+
+./spec/jasmine_examples:
+PlayerSpec.js
+
+./spec/support:
+jasmine.json
+nqu-192-168-61-142:jasmine_test mac020$ 
+</code></pre>
+
+<h2 id="">使用範例</h2>
+
+<pre><code>nqu-192-168-61-142:jasmine_test mac020$ jasmine
+Started
+.....
+
+
+5 specs, 0 failures
+Finished in 0.009 seconds
+</code></pre>
+
+<p>其測試檔 PlayerSpec.js 的內容如下：</p>
+
+<pre><code>describe("Player", function() {
+  var Player = require('../../lib/jasmine_examples/Player');
+  var Song = require('../../lib/jasmine_examples/Song');
+  var player;
+  var song;
+
+  beforeEach(function() {
+    player = new Player();
+    song = new Song();
+  });
+
+  it("should be able to play a Song", function() {
+    player.play(song);
+    expect(player.currentlyPlayingSong).toEqual(song);
+
+    //demonstrates use of custom matcher
+    expect(player).toBePlaying(song);
+  });
+
+  describe("when song has been paused", function() {
+    beforeEach(function() {
+      player.play(song);
+      player.pause();
+    });
+
+    it("should indicate that the song is currently paused", function() {
+      expect(player.isPlaying).toBeFalsy();
+
+      // demonstrates use of 'not' with a custom matcher
+      expect(player).not.toBePlaying(song);
+    });
+
+    it("should be possible to resume", function() {
+      player.resume();
+      expect(player.isPlaying).toBeTruthy();
+      expect(player.currentlyPlayingSong).toEqual(song);
+    });
+  });
+
+  // demonstrates use of spies to intercept and test method calls
+  it("tells the current song if the user has made it a favorite", function() {
+    spyOn(song, 'persistFavoriteStatus');
+
+    player.play(song);
+    player.makeFavorite();
+
+    expect(song.persistFavoriteStatus).toHaveBeenCalledWith(true);
+  });
+
+  //demonstrates use of expected exceptions
+  describe("#resume", function() {
+    it("should throw an exception if song is already playing", function() {
+      player.play(song);
+
+      expect(function() {
+        player.resume();
+      }).toThrowError("song is already playing");
+    });
+  });
+});
+</code></pre>
+
+<p>執行結果如下：</p>
+
+<pre><code>nqu-192-168-61-142:jasmine_test mac020$ jasmine
+Started
+.....
+
+
+5 specs, 0 failures
+Finished in 0.009 seconds
+</code></pre>
+
+<p>如果加入一行不正確的測試如下：</p>
+
+<pre><code>  it("should be able to play a Song", function() {
+    player.play(song);
+    expect(player.currentlyPlayingSong).toEqual(song);
+    expect(player.currentlyPlayingSong).not.toEqual(song); // 加入這行
+</code></pre>
+
+<p>那麼執行結果將變成</p>
+
+<pre><code>nqu-192-168-61-142:jasmine_test mac020$ jasmine
+Started
+F....
+
+Failures:
+1) Player should be able to play a Song
+  Message:
+    Expected Song({  }) not to equal Song({  }).
+  Stack:
+    Error: Expected Song({  }) not to equal Song({  }).
+        at Object.&lt;anonymous&gt; (/Users/mac020/Dropbox/Public/jasmine_test/spec/jasmine_examples/PlayerSpec.js:15:45)
+
+5 specs, 1 failure
+Finished in 0.014 seconds
+</code></pre>
+
+</body>
+</html>

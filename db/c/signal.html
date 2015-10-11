@@ -1,0 +1,65 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="/gospa.js"></script>
+<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[C 語言]](c:home) </title>
+
+<p><a href="/db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="/db/book/home.html"" class="innerLink">教科書</a>  / <a href="/db/c/home.html"" class="innerLink">C 語言</a>  </p>
+
+<h2 id="signal">訊號機制 -- (signal) 攔截中斷訊號的處理機制</h2>
+
+<h3 id="">程式範例</h3>
+
+<pre><code class="CPP">#include &lt;signal.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;windows.h&gt;
+
+void sigdump(int sig) {
+    printf("catch a signal:%d\n", sig);
+}
+
+int main(int argc, void *argv[]) {
+    signal(SIGABRT, &amp;sigdump);    // Process abort signal.
+    signal(SIGFPE, &amp;sigdump);    // Erroneous arithmetic operation.
+    signal(SIGILL, &amp;sigdump);    // Illegal instruction.
+    signal(SIGINT, &amp;sigdump);    // Terminal interrupt signal. Ctrl-C
+    signal(SIGSEGV, &amp;sigdump);    // Invalid memory reference.
+    signal(SIGTERM, &amp;sigdump);    // Termination signal.
+    int a=7, b=0, result;
+    if (strcmp(argv[1], "FPE")==0)
+      result = a/b;
+    else if (strcmp(argv[1], "SEGV")==0) {
+      * (int*) (10000) = 1;
+    }
+    Sleep(1000*10);
+    return 0;
+}
+</code></pre>
+
+<h3 id="">執行結果</h3>
+
+<pre><code>D:\cp&gt;gcc signal.c -o signal
+
+D:\cp&gt;signal FPE
+catch a signal:8
+
+D:\cp&gt;signal SEGV
+catch a signal:11
+
+D:\cp&gt;signal
+catch a signal:11
+
+D:\cp&gt;signal X     // 執行後請在 10 秒鐘內按下 Ctrl-C，就會出現 catch a signal:2 的訊息
+catch a signal:2  
+</code></pre>
+
+<h3 id="">參考文獻</h3>
+
+<ul>
+<li>C语言编程技巧-signal(信号), 2008-12-08 来源：网络 -- <a href="http://www.uml.org.cn/c++/200812083.asp">http://www.uml.org.cn/c++/200812083.asp</a></li>
+</ul>
+
+</body>
+</html>

@@ -1,0 +1,184 @@
+## Nand2Tetris 第 7-8 週 -- 中間碼轉組合語言
+
+本文程式修改自下列 github 網址，使用時請注意遵守開源授權。
+
+* <https://github.com/havivha/Nand2Tetris/tree/master/7>
+* <https://github.com/havivha/Nand2Tetris/tree/master/8>
+
+關於 nand2tetris 第 7-8 週的內容與解說，請參考下列文章。
+
+* [少年科技人雜誌 / 2015年8月號 / Nand2Tetris 第 7 週 -- VM I: Stack Arithmetic](http://localhost/db/ymag201508/focus2.html)
+* [少年科技人雜誌 / 2015年8月號 / Nand2Tetris 第 8 週 -- VM II: Program Control](http://localhost/db/ymag201508/focus2.html)
+
+在本文中，我們主要補充的是實作的方法。我們採用 JavaScript 撰寫，並用 node.js 環境進行測試。
+
+以下是筆者 Nand2Tetris 第 7-8 週習題實作中，程式的主要架構部分。
+
+```javascript
+function vm2asm(vmFile) {
+  ...
+  pass1(lines);
+} 
+
+function pass1(lines, asmFile) {
+  c.log("============== pass1 ================");
+  for (var i=0; i<lines.length; i++) {
+    var p = parse(lines[i], i);
+    if (p===null) continue;
+    comment(lines[i]);
+    translate(p);
+  }
+}
+
+function parse(line, i) {
+  ...
+}
+
+function translate(p) {
+  var p1 = p.tokens[1];
+  var p2 = p.tokens[2];
+  switch (p.op) {
+    case "push": cmdPush(p1, parseInt(p2)); break;
+    case "pop":  cmdPop(p1, parseInt(p2)); break;
+    case "add":  cmdBinary("D+A"); break;
+    case "sub":  cmdBinary("A-D"); break;
+    case "and":  cmdBinary("D&A"); break;
+    case "or" :  cmdBinary("D|A"); break;
+    case "not":  cmdUnary("!D"); break;
+    case "neg":  cmdUnary("-D"); break;
+    case "eq" :  cmdCompare("JEQ"); break;
+    case "gt" :  cmdCompare("JGT"); break;
+    case "lt" :  cmdCompare("JLT"); break;
+    case "goto": cmdGoto(p1); break;
+    case "if-goto": cmdIfGoto(p1); break;
+    case "label": cmdLabel(p1); break;
+    case "function": cmdFunction(p1, parseInt(p2)); break;
+    case "call"  : cmdCall(p1, parseInt(p2)); break;
+    case "return": cmdReturn(); break;
+    default: error();
+  }
+}
+```
+
+接著就是每個指令轉換的實作部份，為了避免公佈解答，我們僅顯示部份程式碼，以便讓讀者知道整體架構。
+
+```javascript
+function cmdGoto(label) {
+  A(label);
+  C("0;JMP");
+}
+
+function cmdIfGoto(label) {
+  popToDest('D');
+  A(label);
+  C('D;JNE');
+}
+
+function cmdUnary(comp) {
+  decSp();               // --SP
+  stackToDest('D');      // D=*SP
+  C('D='+comp);          // D=COMP
+  compToStack('D');      // *SP=D
+  incSp();               // ++SP
+}
+
+function cmdCompare(j) {
+  decSp();               // --SP
+  stackToDest('D');      // D=*SP
+  decSp();               // --SP
+  stackToDest('A');      // A=*SP
+  C('D=A-D');            // D=A-D
+  var label_eq = jump('D', j);  // D;jump to label_eq
+  compToStack('0');      // *SP=0
+  var label_ne = jump('0', 'JMP'); // 0;JMP to label_ne
+  cmdLabel(label_eq);    // (label_eq)
+  compToStack('-1');     // *SP=-1
+  cmdLabel(label_ne);       // (label_ne)
+  incSp();               // ++SP
+}
+
+function cmdBinary(comp) {
+  decSp();           // --SP
+  stackToDest('D');  // D=*SP
+  decSp();           // --SP
+  stackToDest('A');  // A=*SP
+  C('D='+comp);      // D=comp
+  compToStack('D');  // *SP=D
+  incSp();
+}
+
+function cmdLabel(name) {
+  asm("("+name+")");
+}
+
+function cmdFunction(name, n) {
+  cmdLabel(name);
+  for (var i=0; i<n; i++) {
+    cmdPush("constant", 0);
+  }
+}
+
+function cmdCall(name, n) {
+  var returnAddress = newLabel();
+  cmdPush("constant", returnAddress); // push return_address
+  cmdPush("reg", R_LCL);              // push LCL
+  cmdPush("reg", R_ARG);              // push ARG
+  cmdPush("reg", R_THIS);             // push THIS
+  cmdPush("reg", R_THAT);             // push THAT
+  loadSeg("R"+R_SP, -n-5, true);
+  compToReg(R_ARG, 'D');              // ARG=SP-n-5
+  regToReg(R_LCL, R_SP);              // LCL=SP
+  A(name);                            // A=function_name
+  C('0;JMP');                         // 0;JMP
+  cmdLabel(returnAddress);            // (return_address)
+}
+
+function regToReg(dest, src) {
+  regToDest('D', src);
+  compToReg(dest, 'D');        // Rdest = Rsrc
+}
+
+function prevFrameToReg(reg) {
+  regToDest('D', R_FRAME);     // D=FRAME
+  C('D=D-1');                  // D=FRAME-1
+  compToReg(R_FRAME, 'D');     // FRAME=FRAME-1
+  C('A=D');                    // A=FRAME-1
+  C('D=M');                    // D=*(FRAME-1)
+  compToReg(reg, 'D');         // reg=D
+}
+
+function cmdReturn() {
+  regToReg(R_FRAME, R_LCL);   // R_FRAME = R_LCL
+  A("5");                     // A=5 ??
+  C("A=D-A");                 // A=FRAME-5
+  C("D=M");                   // D=M
+  compToReg(R_RET, 'D');      // RET=*(FRAME-5)
+  cmdPop("argument", 0);      // *ARG=return value
+  regToDest('D', R_ARG);      // D=ARG
+  compToReg(R_SP, 'D+1');     // SP=ARG+1
+  prevFrameToReg(R_THAT);     // THAT=*(FRAME-1)
+  prevFrameToReg(R_THIS);     // THIS=*(FRAME-2)
+  prevFrameToReg(R_ARG);      // ARG=*(FRAME-3)
+  prevFrameToReg(R_LCL);      // LCL=*(FRAME-4)
+  regToDest('A', R_RET);      // A=RET
+  C("0;JMP");                 // goto RET
+}
+
+function jump(comp, j) {
+  var label = newLabel();
+  A(label);
+  C(""+comp+";"+j);
+  return label;
+}
+
+function init() {
+  comment("init");
+  A('256');
+  C('D=A');
+  compToReg(R_SP, 'D');    // SP=256
+  cmdCall('Sys.init', 0);  // call Sys.init()
+}
+```
+
+當您了解了上述的主架構之後，應該就能開始自己重新打造完整的程式了。
+

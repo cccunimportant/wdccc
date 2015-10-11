@@ -1,0 +1,31 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="/gospa.js"></script>
+<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[人工智慧]](ai:home) </title>
+
+<p><a href="/db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="/db/book/home.html"" class="innerLink">教科書</a>  / <a href="/db/ai/home.html"" class="innerLink">人工智慧</a>  </p>
+
+<h1 id="minmaxalphabeta">Min-Max 策略搜尋 -- Alpha-Beta 修剪法</h1>
+
+<pre><code>  algorithm AlphaBeta(x: node, level, lowBound, maxBound:integer):integer
+    if terminal(x) or level=0 then  
+       return e(x)
+    else
+       ans = lb
+       for i=1 to childNumber do
+         temp = -alphaBeta( child[i], level-1, -maxBound, -ans)
+         if ans &lt; temp then ans = temp
+         if ans &gt; maxBound then break
+       endfor
+       ab = ans
+    endif
+  end algorithm
+</code></pre>
+
+<h2 id="">參考文獻</h2>
+
+</body>
+</html>

@@ -1,0 +1,11 @@
+| 分類  |  書籍連結  |
+|--------|-----------|
+|  [[數學]](book:math)  |   [[微積分]](ca:home) ｜ [[機率統計]](st:home)  ｜ [[科學計算]](r:home)｜  [[密碼學]](cr:home)  ｜  [[計算理論]](ct:home)  |
+|  [[科技]](sci:home)  |  [[物理]](ph:home)｜ [[化學]](sci:chemistry)｜ [[生物]](sci:biology)｜ [[實驗]](sci:experiment) ｜ [[科技史]](sh:home) |
+|  [[硬體]](book:hardware)  | [[電學]](ee:basic) :  [[電路]](ee:circuit) / [[電子]](ee:transistor) / [[電磁]](ee:magnet)  ｜ [[Arduino]](ma:home)  ｜ [[計算機結構]](co:home)   ｜ [[Maker]](ma:home)   |
+|  [[程式]](pb:home)  |  [[系統程式]](ss:home)  ｜ [[JavaScript]](js:home)  ｜  [[C 語言]](c:home) ｜  [[R 軟體]](r:home) ｜ [[C# 語言]](cs:home)  ｜  [[軟體工程]](se:home)   |
+| [[網路]](book:net)  |   [[Web 程式]](wp:home)  : [[HTML]](wp:html) / [[CSS]](wp:css) / [[JavaScript]](wp:javascript) / [[jQuery]](wp:jquery) / [[Node.js]](wp:node)  ｜  [[資料庫]](db:home)  |
+|  [[媒體]](book:mm)  |  [[Blender 動畫]](3d:home)   ｜ [[電影製作]](mm:movie)  ｜  [[遊戲程式]](mm:game) ｜ [[電子出版]](mm:epub)  |
+|  [[智慧]](book:ai)  |  [[人工智慧]](ai:home) ｜  [[電腦下棋]](ai:chess) ｜   [[專家系統]](ai:logic) ｜   [[神經網路]](ai:neural)  ｜   [[機器學習]](ai:machinelearning)  ｜   [[語言處理]](cl:home)    |
+|  [[電腦]](book:oc)  |  [[NandToTetris]] ｜ [[處理器]](co:cpu) : [[cpu0]](co:cpu0) / [[mcu0]](co:mcu0)  ｜ [[組譯器]](ss:assembler) : [[as0]](ss:as0mc)  ｜ [[編譯器]](ss:compiler) : [[j0c]](ss:j0c)  ｜ [[虛擬機]](ss:vm) : [[vm0]](ss:vm0mc)  |
+

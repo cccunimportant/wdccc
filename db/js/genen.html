@@ -1,0 +1,33 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="/gospa.js"></script>
+<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[JavaScript 語言]](js:home) </title>
+
+<p><a href="/db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="/db/book/home.html"" class="innerLink">教科書</a>  / <a href="/db/js/home.html"" class="innerLink">JavaScript 語言</a>  </p>
+
+<h1 id="">習題：自動產生英文語句</h1>
+
+<p>提示：先用簡單的幾個字加上基本語法就行了，不用一下企圖心太大。</p>
+
+<p>簡易語法</p>
+
+<pre><code>S = NP VP
+NP = DET N
+VP = V NP
+N = dog | cat
+V = chase | eat
+DET = a | the
+</code></pre>
+
+<p>產生過程的範例</p>
+
+<pre><code>S = NP VP = (DET N) (V NP) 
+  = (a dog) (chase DET N) 
+  = a dog chase a cat
+</code></pre>
+
+</body>
+</html>

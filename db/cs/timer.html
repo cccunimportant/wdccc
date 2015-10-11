@@ -1,0 +1,118 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="/gospa.js"></script>
+<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[C# 語言]](cs:home) </title>
+
+<p><a href="/db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="/db/book/home.html"" class="innerLink">教科書</a>  / <a href="/db/cs/home.html"" class="innerLink">C# 語言</a>  </p>
+
+<h1 id="c">C# 視窗程式：時間驅動</h1>
+
+<h2 id="">碼表</h2>
+
+<p>教學錄影：C# Timer 與碼錶 -- <a href="http://youtu.be/UA0rizekLow">http://youtu.be/UA0rizekLow</a></p>
+
+<p>專案下載：</p>
+
+<ul>
+<li><a href="https://dl.dropbox.com/u/101584453/cs/code/TimerDemo.zip">https://dl.dropbox.com/u/101584453/cs/code/TimerDemo.zip</a></li>
+<li><a href="https://dl.dropbox.com/u/101584453/cs/code/TimerClock.zip">https://dl.dropbox.com/u/101584453/cs/code/TimerClock.zip</a></li>
+</ul>
+
+<div class="figure"><img src="db/cs/TimerCounter.png"/><p class="caption">碼表畫面</p></div>
+
+<pre><code class="CS">using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+
+namespace WindowsFormsApplication1
+{
+    public partial class Form1 : Form
+    {
+        int counter = 0;
+
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            counter++;
+            labelTimer.Text = ""+counter;
+        }
+
+        private void buttonStart_Click(object sender, EventArgs e)
+        {
+            timer.Enabled = true;
+        }
+
+        private void buttonStop_Click(object sender, EventArgs e)
+        {
+            timer.Enabled = false;
+        }
+    }
+}
+</code></pre>
+
+<h2 id="">小時鐘</h2>
+
+<p>教學錄影：C# Timer 與小時鐘 -- <a href="http://youtu.be/NJ6B5-vO_88">http://youtu.be/NJ6B5-vO_88</a></p>
+
+<p>專案下載：<a href="https://dl.dropbox.com/u/101584453/cs/code/Clock.zip">https://dl.dropbox.com/u/101584453/cs/code/Clock.zip</a></p>
+
+<p>執行畫面：</p>
+
+<div class="figure"><img src="db/cs/ClockRun.png"/><p class="caption">小時鐘</p></div>
+
+<p>介面設計</p>
+
+<p>請從工具箱中拉出一個 label 與一個 Timer，如下圖所示。</p>
+
+<div class="figure"><img src="db/cs/ClockDesign.png"/><p class="caption">小時鐘介面設計</p></div>
+
+<pre><code class="CS">using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Windows.Forms;
+
+namespace TimerDemo
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+            timer1_Tick(this, null);
+            timer1.Interval = 1000; // 設定每秒觸發一次
+            timer1.Enabled = true; // 啟動 Timer
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            DateTime time = DateTime.Now;
+//            label1.Text = time.TimeOfDay.ToString();
+//            label1.Text = time.Hour + ":" + time.Minute + ":" + time.Second;
+            label1.Text = String.Format("{0:00}:{1:00}:{2:00}", 
+                                                   time.Hour, time.Minute, time.Second);
+        }
+    }
+}
+</code></pre>
+
+<h2 id="timer">用 Timer 控制動畫</h2>
+
+<p>教學錄影：C# Timer 與移動球 -- <a href="http://youtu.be/6Gs4MPzt6q4">http://youtu.be/6Gs4MPzt6q4</a></p>
+
+</body>
+</html>

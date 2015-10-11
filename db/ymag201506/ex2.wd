@@ -1,0 +1,187 @@
+## Nand2Tetris 第二週 -- 布林算術
+
+課程網址： <https://class.coursera.org/nand2tetris1-001/wiki/week_2>
+
+Nand2tetris 課程的 HDL 的語法請參考： [HDL Survival Guide](http://www.nand2tetris.org/software/HDL%20Survival%20Guide.html)
+
+
+在 HDL 的輸入裏不能使用 0, 1, 但是可以使用 false, true.
+
+注意下列範例，您可以將某些線路分別輸出或輸入
+
+### Sub-busing
+
+Sub-busing can only be used on buses that are named in the IN and OUT statements of an HDL file, or inputs and outputs of the chip-parts used in the PARTS section. If you need a sub-bus of an internal bus, you must create the narrower bus as an output from a chip-part. For example:
+
+```
+	CHIP Foo {
+	   IN in[16];
+	   OUT out;
+	PARTS:
+	   Something16 (in=in, out=notIn);
+	   Or8Way (in=notIn[4..11], out=out);
+	}
+```
+
+This implementation causes an error on the Or8Way statement. This needs to be coded as:
+
+```
+	   Something16 (in=in, out[4..11]=notIn);
+	   Or8Way (in=notIn, out=out);
+```
+
+Multiple Outputs
+
+Sometimes you need more than one sub-bus connected to the output of a chip-part. Simply add more than one out= connection to the chip-part definition.
+
+```
+	CHIP Foo {
+	   IN in[16];
+	   OUT out[8];
+	   PARTS:
+	       Not16 (in=in, out[0..7]=low8, out[8..15]=high8);
+	       Something8 (a=low8, b=high8, out=out);
+	}
+```
+
+This also works if you want to use an output of a chip in further computations.
+
+```
+	CHIP Foo {
+	IN a, b, c;
+	OUT out1, out2;
+	PARTS:
+	   Something (a=a, b=b, out=x, out=out1);
+	   Whatever (a=x, b=c, out=out2);
+	}
+```
+
+### 加法
+@[[HalfAdder.hdl]](nand2tetris/projects/02/HalfAdder.hdl)
+
+```
+CHIP HalfAdder {
+    IN a, b;    // 1-bit inputs
+    OUT sum,    // Right bit of a + b 
+        carry;  // Left bit of a + b
+
+    PARTS:
+    Xor(a=a, b=b, out=sum);
+    And(a=a, b=b, out=carry);
+}
+```
+
+@[[FullAdder.hdl]](nand2tetris/projects/02/FullAdder.hdl)
+
+```
+CHIP FullAdder {
+    IN a, b, c;  // 1-bit inputs
+    OUT sum,     // Right bit of a + b + c
+        carry;   // Left bit of a + b + c
+
+    PARTS:
+    Xor(a=a, b=b, out=s1);
+    Xor(a=s1, b=c, out=sum);
+    And(a=a, b=b, out=c1);
+    And(a=s1, b=c, out=c2);
+    Xor(a=c2, b=c1, out=carry);
+}
+```
+
+@[[Add16.hdl]](nand2tetris/projects/02/Add16.hdl)
+
+```
+CHIP Add16 {
+    IN a[16], b[16];
+    OUT out[16];
+
+    PARTS:
+    FullAdder(a=a[0], b=b[0], c=false,  sum=out[0], carry=c0);
+    FullAdder(a=a[1], b=b[1], c=c0, sum=out[1], carry=c1);
+    FullAdder(a=a[2], b=b[2], c=c1, sum=out[2], carry=c2);
+    FullAdder(a=a[3], b=b[3], c=c2, sum=out[3], carry=c3);
+    FullAdder(a=a[4], b=b[4], c=c3, sum=out[4], carry=c4);
+    FullAdder(a=a[5], b=b[5], c=c4, sum=out[5], carry=c5);
+    FullAdder(a=a[6], b=b[6], c=c5, sum=out[6], carry=c6);
+    FullAdder(a=a[7], b=b[7], c=c6, sum=out[7], carry=c7);
+    FullAdder(a=a[8], b=b[8], c=c7, sum=out[8], carry=c8);
+    FullAdder(a=a[9], b=b[9], c=c8, sum=out[9], carry=c9);
+    FullAdder(a=a[10], b=b[10], c=c9, sum=out[10], carry=c10);    
+    FullAdder(a=a[11], b=b[11], c=c10, sum=out[11], carry=c11);   
+    FullAdder(a=a[12], b=b[12], c=c11, sum=out[12], carry=c12);   
+    FullAdder(a=a[13], b=b[13], c=c12, sum=out[13], carry=c13);   
+    FullAdder(a=a[14], b=b[14], c=c13, sum=out[14], carry=c14);   
+    FullAdder(a=a[15], b=b[15], c=c14, sum=out[15], carry=c15);
+}
+```
+
+@[[Inc16.hdl]](nand2tetris/projects/02/Inc16.hdl)
+
+```
+CHIP Inc16 {
+    IN in[16];
+    OUT out[16];
+
+    PARTS:
+    Add16(a=in, b[0]=true, out=out);
+}
+```
+
+注意： HardwareSimulator 對沒有設定值的位元自動設為 0，所以上述 b[0]=k1 代表 b[1..15] 均為 0。
+
+@[[ALU.hdl]](nand2tetris/projects/02/ALU.hdl)
+
+```
+CHIP ALU {
+    IN  
+        x[16], y[16],  // 16-bit inputs        
+        zx, // zero the x input?
+        nx, // negate the x input?
+        zy, // zero the y input?
+        ny, // negate the y input?
+        f,  // compute out = x + y (if 1) or x & y (if 0)
+        no; // negate the out output?
+
+    OUT 
+        out[16];
+
+    PARTS:
+    Mux16(a=x,  b=false,  sel=zx, out=x1);    // if (zx == 1) set x = 0  
+    Not16(in=x1,out=notx1);
+    Mux16(a=x1, b=notx1, sel=nx, out=x2);   // if (nx == 1) set x = !x
+    
+    Mux16(a=y,  b=false,  sel=zy, out=y1);    // if (zy == 1) set y = 0
+    Not16(in=y1,out=noty1);
+    Mux16(a=y1, b=noty1, sel=ny, out=y2);   // if (ny == 1) set y = !y
+    
+    Add16(a=x2, b=y2, out=addxy);           // addxy = x + y
+    And16(a=x2, b=y2, out=andxy);           // andxy = x & y
+    
+    Mux16(a=andxy, b=addxy, sel=f, out=o1); // if (f == 1)  set out = x + y else set out = x & y
+    Not16(in=o1, out=noto1);
+    
+    Mux16(a=o1, b=noto1, sel=no, out=o2);  // if (no == 1) set out = !out
+    
+    // o2 就是 out, 但必須中間節點才能再次當作輸入，所以先用 o2。
+    And16(a=o2, b=o2, out[0..7]=outLow, out[8..15]=outHigh); 
+    Or8Way(in=outLow, out=orLow);      // orLow = Or(out[0..7]);
+    Or8Way(in=outHigh, out=orHigh);    // orHigh = Or(out[8..15]);
+    Or(a=orLow, b=orHigh, out=notzr);  // nzr = Or(out[0..15]);
+    Not(in=notzr, out=zr);             // zr = !nzr
+    And16(a=o2, b=o2, out[15]=ng);     // ng = out[15]
+    And16(a=o2, b=o2, out=out);
+}
+
+```
+
+### 結語
+
+終於把第二週的功課做完了！
+
+由於對 Nand2tetris 課程的 HDL 的語法不瞭解，還著實吃了一些苦頭，除錯了很久！
+
+雖然如此， Nand2tetris 已經做得很好了，這些時間花得還是很值得！
+
+
+
+

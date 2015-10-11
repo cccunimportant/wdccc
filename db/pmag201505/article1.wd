@@ -1,0 +1,251 @@
+## 簡單留言系統 -- 使用多頁技術
+
+### 簡介
+
+在 koa 的 github 官方專案上，提供了一個簡單的網誌留言系統 （說是網誌，但比較像留言），這個系統設計得非常簡單，因此是學習 koa 很好的入門材料，以下是該專案的原始碼網址。
+
+* 原始碼： <https://github.com/koajs/examples/tree/master/blog>
+
+安裝執行過程如下：
+
+```
+D:\git\koa-ex>npm install swig
+swig@1.4.2 node_modules\swig
+├── optimist@0.6.1 (wordwrap@0.0.2, minimist@0.0.10)
+└── uglify-js@2.4.19 (uglify-to-browserify@1.0.2, async@0.2.10, yargs@3.5.4,
+source-map@0.1.34)
+
+D:\git\koa-ex>cd blog
+
+D:\git\koa-ex\blog>iojs index
+listening on port 3000
+  <-- GET /post
+  --> GET /post 404 23ms -
+  <-- GET /
+  --> GET / 200 116ms -
+  <-- GET /post/new
+  --> GET /post/new 200 18ms -
+  <-- POST /post
+  --> POST /post 302 47ms -
+  <-- GET /
+  --> GET / 200 10ms -
+  <-- GET /post/new
+  --> GET /post/new 200 40ms -
+  <-- POST /post
+  --> POST /post 302 32ms -
+  <-- GET /
+  --> GET / 200 25ms -
+  <-- GET /post/0
+  --> GET /post/0 200 8ms -
+  <-- GET /post/1
+  --> GET /post/1 200 7ms -
+  <-- GET /post/new
+  --> GET /post/new 200 5ms -
+
+```
+
+執行結果如下
+
+![[]](koa_blog.jpg)
+
+這個專案除了採用 koa 框架撰寫伺服端之外，還採用了 swig 這個樣板引擎來呈現網頁，首先讓我們來看伺服端的寫法。
+
+### 伺服端主程式
+
+檔案： index.js
+
+```javascript
+
+/**
+ * Module dependencies.
+ */
+
+var render = require('./lib/render');
+var logger = require('koa-logger');
+var route = require('koa-route');
+var parse = require('co-body');
+var koa = require('koa');
+var app = koa();
+
+// "database"
+
+var posts = [];
+
+// middleware
+
+app.use(logger());
+
+// route middleware
+
+app.use(route.get('/', list));
+app.use(route.get('/post/new', add));
+app.use(route.get('/post/:id', show));
+app.use(route.post('/post', create));
+
+// route definitions
+
+/**
+ * Post listing.
+ */
+
+function *list() {
+  this.body = yield render('list', { posts: posts });
+}
+
+/**
+ * Show creation form.
+ */
+
+function *add() {
+  this.body = yield render('new');
+}
+
+/**
+ * Show post :id.
+ */
+
+function *show(id) {
+  var post = posts[id];
+  if (!post) this.throw(404, 'invalid post id');
+  this.body = yield render('show', { post: post });
+}
+
+/**
+ * Create a post.
+ */
+
+function *create() {
+  var post = yield parse(this);
+  var id = posts.push(post) - 1;
+  post.created_at = new Date;
+  post.id = id;
+  this.redirect('/');
+}
+
+// listen
+
+app.listen(3000);
+console.log('listening on port 3000');
+```
+
+您可以看到伺服端的 list 功能之處理，大致如下所示。
+
+```javascript
+app.use(route.get('/', list));
+...
+function *list() {
+  this.body = yield render('list', { posts: posts });
+}
+```
+
+這代表當您訪問網址為根目錄時，會呼叫樣板引擎去呈現 list.html 這個樣板，並將貼文 posts 傳入到樣板中。
+
+但是、主程式裏並沒有指定使用哪個樣板引擎，指定的工作是在 [[lib/render.js]] 這個檔案裏設定的。(https://github.com/koajs/examples/blob/master/blog/lib/render.js)
+
+```javascript
+var views = require('co-views');
+
+// setup views mapping .html
+// to the swig template engine
+
+module.exports = views(__dirname + '/../views', {
+  map: { html: 'swig' }
+});
+```
+
+您可以看到其中設定使用 swig 樣板引擎，還有其樣板的置放目錄為 views 。
+
+
+接著讓我們看看樣板到底長甚麼樣？ 以下是 list.html 的內容。
+
+檔案： list.html
+
+```html
+{% extends 'layout.html' %}
+
+{% block title %}Posts{% endblock %}
+
+{% block content %}
+  <h1>Posts</h1>
+  <p>You have <strong>{{ posts.length }}</strong> posts!</p>
+  <p><a href="/post/new">Create a Post</a></p>
+  <ul id="posts">
+    {% for post in posts %}
+      <li>
+        <h2>{{ post.title }}</h2>
+        <p><a href="/post/{{ post.id }}">Read post</a></p>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}
+```
+
+其中第一行又引入了一個 layout.html 的樣板，其內容如下：
+
+```html
+<html>
+<head>
+  <title>{% block title %}Blog{% endblock %}</title>
+  <style>
+    body {
+      padding: 80px;
+      font: 16px Helvetica, Arial;
+    }
+    h1 {
+      font-size: 2em;
+    }
+    h2 {
+      font-size: 1.2em;
+    }
+    #posts {
+      margin: 0;
+      padding: 0;
+    }
+    #posts li {
+      margin: 40px 0;
+      padding: 0;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #eee;
+      list-style: none;
+    }
+    #posts li:last-child {
+      border-bottom: none;
+    }
+    textarea {
+      width: 500px;
+      height: 300px;
+    }
+    input[type=text],
+    textarea {
+      border: 1px solid #eee;
+      border-top-color: #ddd;
+      border-left-color: #ddd;
+      border-radius: 2px;
+      padding: 15px;
+      font-size: .8em;
+    }
+    input[type=text] {
+      width: 500px;
+    }
+  </style>
+</head>
+<body>
+  <section id="content">
+    {% block content %}
+      <p>Missing content!</p>
+    {% endblock %}
+  </section>
+</body>
+</html>
+```
+
+您可以看到 swig 的樣板有類似繼承的架構，可以透過子樣板中的標記將母樣板的內容修改掉，而這也正是使用樣板引擎的好處之一。
+
+### 結語
+
+如果還有不清楚的地方，請各位讀者直接參考該專案的原始碼，網址如下：
+
+* <https://github.com/koajs/examples/tree/master/blog/views>
+
+
+

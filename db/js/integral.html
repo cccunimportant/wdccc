@@ -1,0 +1,42 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="/gospa.js"></script>
+<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[JavaScript 語言]](js:home) </title>
+
+<p><a href="/db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="/db/book/home.html"" class="innerLink">教科書</a>  / <a href="/db/js/home.html"" class="innerLink">JavaScript 語言</a>  </p>
+
+<h1 id="">積分</h1>
+
+<p>檔案： <a href="db/js/code/integral.js" class="innerLink">integral.js</a></p>
+
+<pre><code>var c = console;
+
+function integral(f, a, b) {
+  var dx = 0.001;
+  var area = 0.0;
+  for (var x=a; x&lt;b; x=x+dx) {
+    area = area + f(x)*dx;
+  }
+  return area;
+}
+
+function square(x) {
+  return x*x;
+}
+
+c.log('integral(x^2,0,1)='+integral(square,0,1));
+c.log('integral(sin(x),0,pi)='+integral(Math.sin,0,3.14159));
+</code></pre>
+
+<p>執行結果</p>
+
+<pre><code>D:\Dropbox\cccweb\db\js\code&gt;node integral.js
+integral(x^2,0,1)=0.33283350000000095
+integral(sin(x),0,pi)=1.9999999540411524
+</code></pre>
+
+</body>
+</html>

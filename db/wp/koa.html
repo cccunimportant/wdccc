@@ -1,0 +1,102 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="/gospa.js"></script>
+<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[Web 程式設計]](wp:home) </title>
+
+<p><a href="/db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="/db/book/home.html"" class="innerLink">教科書</a>  / <a href="/db/wp/home.html"" class="innerLink">Web 程式設計</a>  </p>
+
+<h1 id="koaweb">koa -- 建構 web 網站的核心框架</h1>
+
+<h2 id="">簡介</h2>
+
+<ul>
+<li><p>說明：  express 原班人馬創造支援 ES6 新語法 yield 的套件</p></li>
+<li><p>官網專案： <a href="https://github.com/koajs/koa">https://github.com/koajs/koa</a></p></li>
+<li><p>推薦文章：<a href="http://weblogs.asp.net/shijuvarghese/a-simple-crud-demo-with-koa-js?hc_location=ufi">A Simple CRUD Demo with Koa.js
+Sunday, January 12, 2014</a></p></li>
+<li><p>推薦影片： James Moore (共十集） -- <a href="http://knowthen.com/category/node-js/">http://knowthen.com/category/node-js/</a></p></li>
+<li><p>官方範例： <a href="https://github.com/koajs/examples">https://github.com/koajs/examples</a></p></li>
+<li><p>相關套件： <a href="https://github.com/koajs/koa/wiki">https://github.com/koajs/koa/wiki</a></p></li>
+</ul>
+
+<h2 id="">官方範例</h2>
+
+<p>請先安裝 git, io.js 並用下列指令下載 koa.js 官方範例後，再開始執行後面給的例子。</p>
+
+<pre><code>$ git clone https://github.com/koajs/examples.git
+$ cd examples
+$ ren examples koa-ex
+$ npm install
+$ npm install swig
+</code></pre>
+
+<h2 id="helloworld">範例: Hello World</h2>
+
+<ul>
+<li>原始碼： <a href="https://github.com/koajs/examples/tree/master/hello-world">https://github.com/koajs/examples/tree/master/hello-world</a></li>
+<li>使用方法：執行 iojs app 之後看 http://localhost:3000/</li>
+</ul>
+
+<h2 id="">範例:</h2>
+
+<ul>
+<li>原始碼： <a href="https://github.com/koajs/examples/tree/master/stream-file">https://github.com/koajs/examples/tree/master/stream-file</a></li>
+<li>使用方法：執行 iojs app 之後看 http://localhost:3000/README.md</li>
+</ul>
+
+<h2 id="templates">範例: templates</h2>
+
+<ul>
+<li>原始碼： <a href="https://github.com/koajs/examples/tree/master/templates">https://github.com/koajs/examples/tree/master/templates</a></li>
+<li>使用方法： 執行 iojs index 之後看 http://localhost:4000/</li>
+</ul>
+
+<h2 id="">範例: 網誌</h2>
+
+<ul>
+<li>原始碼： <a href="https://github.com/koajs/examples/tree/master/blog">https://github.com/koajs/examples/tree/master/blog</a></li>
+</ul>
+
+<pre><code>D:\git\koa-ex&gt;npm install swig
+swig@1.4.2 node_modules\swig
+├── optimist@0.6.1 (wordwrap@0.0.2, minimist@0.0.10)
+└── uglify-js@2.4.19 (uglify-to-browserify@1.0.2, async@0.2.10, yargs@3.5.4,
+source-map@0.1.34)
+
+D:\git\koa-ex&gt;cd blog
+
+D:\git\koa-ex\blog&gt;iojs index
+listening on port 3000
+  &lt;-- GET /post
+  --&gt; GET /post 404 23ms -
+  &lt;-- GET /
+  --&gt; GET / 200 116ms -
+  &lt;-- GET /post/new
+  --&gt; GET /post/new 200 18ms -
+  &lt;-- POST /post
+  --&gt; POST /post 302 47ms -
+  &lt;-- GET /
+  --&gt; GET / 200 10ms -
+  &lt;-- GET /post/new
+  --&gt; GET /post/new 200 40ms -
+  &lt;-- POST /post
+  --&gt; POST /post 302 32ms -
+  &lt;-- GET /
+  --&gt; GET / 200 25ms -
+  &lt;-- GET /post/0
+  --&gt; GET /post/0 200 8ms -
+  &lt;-- GET /post/1
+  --&gt; GET /post/1 200 7ms -
+  &lt;-- GET /post/new
+  --&gt; GET /post/new 200 5ms -
+</code></pre>
+
+<p>執行結果</p>
+
+<div class="figure"><img src="db/wp/koa_blog.jpg"/><p class="caption"></p></div>
+
+</body>
+</html>

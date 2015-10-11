@@ -1,0 +1,7 @@
+# 開放電腦計畫 
+
+| 書籍  | 實作組件 (程式)  | 
+|--------|-----------|
+| [[計算機結構]](co:home)  |  [[處理器]](co:cpu) : [[cpu0]](co:cpu0) / [[mcu0]](co:mcu0)   | 
+| [[系統程式]](ss:home)   |  [[組譯器]](ss:assembler) : [[as0]](ss:as0mc)  ｜ [[編譯器]](ss:compiler) : [[j0c]](ss:j0c)  ｜ [[虛擬機]](ss:vm) : [[vm0]](ss:vm0mc)  |
+

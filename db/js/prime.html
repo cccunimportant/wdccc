@@ -1,0 +1,67 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="/gospa.js"></script>
+<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[JavaScript 語言]](js:home) </title>
+
+<p><a href="/db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="/db/book/home.html"" class="innerLink">教科書</a>  / <a href="/db/js/home.html"" class="innerLink">JavaScript 語言</a>  </p>
+
+<h1 id="100">質數測試, 印出&lt;100的所有質數</h1>
+
+<p>檔案： <a href="db/js/code/prime.js" class="innerLink">prime.js</a></p>
+
+<pre><code>function isPrime(n) {
+  for (var i=2; i&lt;n; i++) {
+    if (n%i === 0)
+      return false;
+  }
+  return true;
+}
+
+console.log("isPrime(33)="+isPrime(33));
+console.log("isPrime(17)="+isPrime(17));
+
+for (var p=1; p&lt;=100; p++) {
+  if (isPrime(p))
+    console.log("isPrime("+p+")");
+}
+</code></pre>
+
+<p>執行結果</p>
+
+<pre><code>nqu-192-168-61-142:code mac020$ node prime.js
+isPrime(33)=false
+isPrime(17)=true
+isPrime(1)
+isPrime(2)
+isPrime(3)
+isPrime(5)
+isPrime(7)
+isPrime(11)
+isPrime(13)
+isPrime(17)
+isPrime(19)
+isPrime(23)
+isPrime(29)
+isPrime(31)
+isPrime(37)
+isPrime(41)
+isPrime(43)
+isPrime(47)
+isPrime(53)
+isPrime(59)
+isPrime(61)
+isPrime(67)
+isPrime(71)
+isPrime(73)
+isPrime(79)
+isPrime(83)
+isPrime(89)
+isPrime(97)
+nqu-192-168-61-142:code mac020$ 
+</code></pre>
+
+</body>
+</html>

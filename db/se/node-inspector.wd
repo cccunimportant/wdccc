@@ -1,0 +1,65 @@
+# 使用 node-inspector 除錯 javascript 程式
+
+## 參考
+
+* [Node.js 系列學習日誌 #26 - 調校 Debug 工具 node-inspector](http://ithelp.ithome.com.tw/question/10161382)
+* [YouTube: Debugging node.js w/node-inspector](https://www.youtube.com/watch?v=03qGA-GJXjI)
+ * <http://stackoverflow.com/questions/23340968/debugging-node-js-with-node-inspector>
+
+## 使用方法
+
+```
+node debug <your-program>
+node-inspector 
+// 然後打開 http://127.0.0.1:8080/debug?ws=127.0.0.1:8080&port=5858
+```
+
+## 使用範例
+
+程式: madd.js
+
+```
+var add = function(a,b){
+	var r = [];
+	for(var i = 0; i < a.length; i++){
+		r[i] = [];
+		for(var j = 0; j < a[i].length; j++){
+			r[i][j] = a[i][j] + b[i][j];
+		}
+	}
+	return r;
+}
+
+var a = [[3,2,1],[1,2,3]];
+var b = add(a,a);
+
+console.log("a = %j", a);
+console.log("b = %j", b);
+```
+
+先執行 node debug madd.js
+
+```
+D:\git\matrix>node debug madd.js
+< Debugger listening on port 5858
+connecting to port 5858... ok
+break in D:\git\matrix\madd.js:1
+> 1 var add = function(a,b){
+  2     var r = [];
+  3     for(var i = 0; i < a.length; i++){
+```
+
+接著執行 node-inspector
+
+```
+C:\Users\user>node-inspector
+Node Inspector v0.10.0
+Visit http://127.0.0.1:8080/debug?ws=127.0.0.1:8080&port=5858 to start debugging
+```
+
+然後打開 http://127.0.0.1:8080/debug?ws=127.0.0.1:8080&port=5858 就會看到下列畫面。
+
+![[]](node-inspector-run.jpg)
+
+另外、如果您的程式有印出訊息的話，也會出現在 console 視窗當中。
+

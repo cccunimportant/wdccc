@@ -1,0 +1,145 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="/gospa.js"></script>
+<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[JavaScript 語言]](js:home) </title>
+
+<p><a href="/db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="/db/book/home.html"" class="innerLink">教科書</a>  / <a href="/db/js/home.html"" class="innerLink">JavaScript 語言</a>  </p>
+
+<h1 id="">向量 （數值陣列）</h1>
+
+<h2 id="">向量相加的標準寫法</h2>
+
+<p>在習題中我們已經寫過兩個向量的加法，其程式碼與執行結果如下：</p>
+
+<p>檔案： <a href="db/js/code/add.js" class="innerLink">add.js</a></p>
+
+<pre><code>a=[1,2,3]
+b=[2,2,2]
+
+function add(x,y) {
+  var r=[];
+  for (var i=0; i&lt;x.length; i++)
+    r[i] = x[i]+y[i];
+  return r;
+}
+
+c=add(a,b);
+
+console.log("a="+a);
+console.log("b="+b);
+console.log("c="+c);
+</code></pre>
+
+<p>執行結果</p>
+
+<pre><code>nqu-192-168-61-142:code mac020$ node add.js
+a=1,2,3
+b=2,2,2
+c=3,4,5
+</code></pre>
+
+<h2 id="vadd">向量相加的函數變數 vadd</h2>
+
+<p>上述結果乃是用標準函數的寫法，假如我們採用『將函數塞入到變數中』的寫法，可以改寫如下：</p>
+
+<pre><code>a=[1,2,3]
+b=[2,2,2]
+
+function add(x,y) {
+  var r=[];
+  for (var i=0; i&lt;x.length; i++)
+    r[i] = x[i]+y[i];
+  return r;
+}
+
+var vadd = add;
+
+c=add(a,b);
+d=vadd(a,b);
+
+console.log("a="+a);
+console.log("b="+b);
+console.log("c="+c);
+console.log("d="+d);
+</code></pre>
+
+<p>您可以看到其中的 vadd 變數其實就是 add 函數，因此呼叫的方法也都一模一樣，其執行結果如下：</p>
+
+<pre><code>nqu-192-168-61-142:code mac020$ node add2.js
+a=1,2,3
+b=2,2,2
+c=3,4,5
+d=3,4,5
+</code></pre>
+
+<h2 id="">向量相加的匿名函數寫法</h2>
+
+<p>假如我們採用匿名函數的寫法，然後塞給某變數之後再執行，那麼程式將可改寫如下：</p>
+
+<pre><code>a=[1,2,3]
+b=[2,2,2]
+
+var vadd = function(x,y) {
+  var r=[];
+  for (var i=0; i&lt;x.length; i++)
+    r[i] = x[i]+y[i];
+  return r;
+}
+
+d=vadd(a,b);
+
+console.log("a="+a);
+console.log("b="+b);
+console.log("d="+d);
+</code></pre>
+
+<p>執行結果</p>
+
+<pre><code>nqu-192-168-61-142:code mac020$ node add3.js
+a=1,2,3
+b=2,2,2
+d=3,4,5
+</code></pre>
+
+<h2 id="1">向量的物件寫法 1</h2>
+
+<pre><code>a=[1,2,3]
+b=[2,2,2]
+
+var Vector={};
+
+Vector.add = function(x,y) {
+  var r=[];
+  for (var i=0; i&lt;x.length; i++)
+    r[i] = x[i]+y[i];
+  return r;
+}
+
+d=Vector.add(a,b);
+
+console.log("a="+a);
+console.log("b="+b);
+console.log("d="+d);
+</code></pre>
+
+<p>執行結果</p>
+
+<pre><code>nqu-192-168-61-142:code mac020$ node vector1.js
+a=1,2,3
+b=2,2,2
+d=3,4,5
+</code></pre>
+
+<p>您可以看到執行結果大致是相同的，只是我們將函數 add 放入了物件 vector 當中而已。</p>
+
+<h2 id="2">向量的物件寫法 2</h2>
+
+<p>但是如果我們試圖將 x 參數直接包入 vector 物件中，那麼會怎麼樣呢？</p>
+
+<p>關於這點，牽涉到物件導向的寫法，我們將於後面探討物件導向時再來說明！</p>
+
+</body>
+</html>

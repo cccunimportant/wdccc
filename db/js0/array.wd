@@ -1,0 +1,16 @@
+# 陣列容器
+
+| 標題  |  說明  |  影片  |
+|--------|-----------|-------|
+| [[一維陣列]](array1) | 1D array | |
+| -- [[範例：每個月天數加總]](arrayMonthDays) |  | |
+| -- [[範例：向量相加]](vectorAdd) |  | |
+| -- [[範例：向量相乘]](vectorMul) |  | |
+| [[二維陣列]](array2) | 2D array | |
+| -- [[範例：銷售報表]](arraySales) |  | |
+| -- [[範例：矩陣相加]](matrixAdd) |  | |
+| -- [[範例：向量相乘]](matrixMul) |  | |
+| [[高維陣列]](arrayN)  | 3D array | |
+| -- [[範例：銷售統計表]](arraySalesStatistics) |  | |
+
+  ｜   ｜  |

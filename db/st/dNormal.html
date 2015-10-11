@@ -1,0 +1,87 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="/gospa.js"></script>
+<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[機率統計]](st:home) </title>
+
+<p><a href="/db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="/db/book/home.html"" class="innerLink">教科書</a>  / <a href="/db/st/home.html"" class="innerLink">機率統計</a>  </p>
+
+<h2 id="normaldistribution">常態分布 (Normal Distribution)</h2>
+
+<p>意義：有誤差的對稱性分布形式，中央高兩邊低的形式。</p>
+
+<p>繪圖：用 R 繪製標準差為 1, 2, 3, 的常態分布。</p>
+
+<pre><code class="R">curve(dnorm(x), -5, 5, col="black")
+curve(dnorm(x, sd=2), -5, 5, col="blue", add=T)
+curve(dnorm(x, sd=3), -5, 5, col="green", add=T)
+</code></pre>
+
+<div class="figure"><img src="db/st/normal3.jpg"/><p class="caption"></p></div>
+
+<p>R 函數：<a href="http://stat.ethz.ch/R-manual/R-patched/library/stats/html/Normal.html">norm(mean, sd)</a></p>
+
+<p>公式：$\frac{1}{\sqrt{2\pi} \sigma} e^{- \frac{1}{2} [(x-\mu)/\sigma]^2}$</p>
+
+<p>R 的公式：f(x) = 1/(√(2 π) σ) e^-((x - μ)^2/(2 σ^2))</p>
+
+<p>重要性：根據中央極限定理，任何 n 個獨立樣本的平均值趨近於常態分布。</p>
+
+<p>中央極限定理： $x_1+x_2+...+x_n \rightarrow N(\mu, \delta/\sqrt{n})$</p>
+
+<h3 id="">標準差</h3>
+
+<p>1 標準差： $P[-1 \sigma &lt; X-\mu &lt; 1 \sigma] \simeq 0.68$ .</p>
+
+<p>2 標準差： $P[-2 \sigma &lt; X-\mu &lt; 2 \sigma] \simeq 0.95$ .</p>
+
+<p>3 標準差： $P[-3 \sigma &lt; X-\mu &lt; 3 \sigma] \simeq 0.997$ .</p>
+
+<pre><code class="R">&gt; pnorm(1)-pnorm(-1)
+[1] 0.6826895
+&gt; pnorm(2)-pnorm(-2)
+[1] 0.9544997
+&gt; pnorm(3)-pnorm(-3)
+[1] 0.9973002
+&gt; pnorm(4)-pnorm(-4)
+[1] 0.9999367
+&gt; pnorm(5)-pnorm(-5)
+[1] 0.9999994
+&gt; pnorm(6)-pnorm(-6)
+[1] 1
+</code></pre>
+
+<p>所以現在大家應該知道「工業管理學」上「六標準差」的要求，是很嚴苛的了吧！</p>
+
+<h3 id="r">R 程式範例</h3>
+
+<pre><code class="R">&gt; dnorm(0)
+[1] 0.3989423
+&gt; dnorm(0.5)
+[1] 0.3520653
+&gt; dnorm(2.5)
+[1] 0.0175283
+&gt; curve(dnorm(x), from = -3.5, to = 3.5, ylab="pdf", main="N(0,1)")
+&gt; 
+</code></pre>
+
+<div class="figure"><img src="db/st/norm_curve.jpg"/><p class="caption"></p></div>
+
+<pre><code class="R">&gt; x = rnorm(100)
+&gt; hist(x, nclass=8)
+&gt; 
+</code></pre>
+
+<div class="figure"><img src="db/st/norm_hist.jpg"/><p class="caption"></p></div>
+
+<pre><code class="R">&gt; x = rnorm(1000)
+&gt; hist(x, nclass=50)
+&gt; 
+</code></pre>
+
+<div class="figure"><img src="db/st/norm_hist2.jpg"/><p class="caption"></p></div>
+
+</body>
+</html>

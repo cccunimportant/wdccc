@@ -1,0 +1,158 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="/gospa.js"></script>
+<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[C 語言]](c:home) </title>
+
+<p><a href="/db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="/db/book/home.html"" class="innerLink">教科書</a>  / <a href="/db/c/home.html"" class="innerLink">C 語言</a>  </p>
+
+<h1 id="">字串的格式化</h1>
+
+<p>在 C 語言當中，輸出格式化依賴 printf() 類的指令，而輸入的格式化則仰賴 scanf 類的指令。這兩個函數都用到的 format 字串，這是 C 語言字串輸出入的核心。</p>
+
+<p>事實上，這兩類指令當中最重要的函數是 sscanf() 與 sprintf()，sprintf() 可以將複雜的參數格式化成字串，而 sscanf() 函數則是 C 語言版本的正規表達式，幾乎可以做到大部分 Regular Expression 能做到的功能。</p>
+
+<p>在這些函數當中，都會有一個 char *format 這樣的格式化參數，其中以 % 開頭的稱為格式描述區 (Format specifiers)，格式描述區有複雜的參數型態，稱為描述元 (specifier)，下表說明了描述元當中符號的意義，並列出其使用範例。</p>
+
+<table>
+<thead>
+<tr>
+<th id="符號" style="text-align:left;"> 符號 </th>
+<th id="說明" style="text-align:left;"> 說明    </th>
+<th id="範例" style="text-align:left;"> 範例 </th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align:left;"><p>c </p></td>
+<td style="text-align:left;"><p>字元 (char)    </p></td>
+<td style="text-align:left;"><p>a </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>d </p></td>
+<td style="text-align:left;"><p>整數 (Decimal integer)    </p></td>
+<td style="text-align:left;"><p>372 </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>i </p></td>
+<td style="text-align:left;"><p>整數 (Decimal integer) (同 d)    </p></td>
+<td style="text-align:left;"><p>372 </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>f </p></td>
+<td style="text-align:left;"><p>浮點數 (Floating Point)    </p></td>
+<td style="text-align:left;"><p>372.56 </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>e    </p></td>
+<td style="text-align:left;"><p>科學記號 (Scientific notation)    </p></td>
+<td style="text-align:left;"><p>3.7256e+2 </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>E    </p></td>
+<td style="text-align:left;"><p>科學記號 (Scientific notation)    </p></td>
+<td style="text-align:left;"><p>3.7256E+2 </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>g    </p></td>
+<td style="text-align:left;"><p>取浮點數或科學記號當中短的那個   </p></td>
+<td style="text-align:left;"><p>372.56 </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>G    </p></td>
+<td style="text-align:left;"><p>取浮點數或科學記號當中短的那個   </p></td>
+<td style="text-align:left;"><p>372.56 </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>o    </p></td>
+<td style="text-align:left;"><p>八進位 (Octal Integer)   </p></td>
+<td style="text-align:left;"><p>735 </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>s    </p></td>
+<td style="text-align:left;"><p>字串 (String)   </p></td>
+<td style="text-align:left;"><p>372 </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>u    </p></td>
+<td style="text-align:left;"><p>無號數 (unsigned integer)    </p></td>
+<td style="text-align:left;"><p>372 </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>x    </p></td>
+<td style="text-align:left;"><p>十六進位 (Hexadecimal integer)    </p></td>
+<td style="text-align:left;"><p>3fb </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>X    </p></td>
+<td style="text-align:left;"><p>十六進位 (Hexadecimal integer)    </p></td>
+<td style="text-align:left;"><p>3FB </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>p    </p></td>
+<td style="text-align:left;"><p>指標位址  </p></td>
+<td style="text-align:left;"><p>B800:0000 </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>n    </p></td>
+<td style="text-align:left;"><p>不列印, 用來取得目前輸出長度   </p></td>
+<td style="text-align:left;"><p>%n </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>%    </p></td>
+<td style="text-align:left;"><p>印出 % 符號   </p></td>
+<td style="text-align:left;"><p>%% </p></td>
+</tr>
+
+</tbody>
+</table>
+
+<p>另外，有時在格式描述區當中還會指定變數長度欄位，說明取出後的變數長度，數字類型的欄位才會需要這樣指定，欄位的內容可能為 h, l 或 L，其意義如下所示。</p>
+
+<table>
+<thead>
+<tr>
+<th id="長度符號" style="text-align:left;"> 長度符號 </th>
+<th id="說明" style="text-align:left;"> 說明 </th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align:left;"><p>h    </p></td>
+<td style="text-align:left;"><p>2 byte 短整數 short int (針對 i, d, o, u, x and X) </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>l    </p></td>
+<td style="text-align:left;"><p>4 byte 長整數 int , long (針對 i, d, o, u, x and X) </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>L    </p></td>
+<td style="text-align:left;"><p>8 byte 浮點數 double (e, E, f, g and G) </p></td>
+</tr>
+
+</tbody>
+</table>
+
+</body>
+</html>

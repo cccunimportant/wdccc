@@ -1,0 +1,26 @@
+## Nand2Tetris 硬體部份 -- 從邏輯閘到處理器
+
+在 nand2tetris 的硬體部份，也就是課程 Part I 的作業上面，企圖導引學員從一個 nand 閘開始，一路經過 and, or, not, mux, dmux, adder, ALU, register, memory, CPU 到整台電腦，以便讓學習者能完整的理解一台電腦，並且自己動手實作出來。
+
+以下是nand2tetris 的硬體部份的作業內容安排。
+
+![[圖、nand2tetris 硬體部份的作業內容]](Part1Projects.jpg)
+
+Nand2tetris 課程中採用的硬體描述語言是課程專用的 HackHDL，其軟體也是為該課程專門設計的 HardEmulator，但是在本期雜誌中，我們將改用 Verilog 來實作。
+
+如果您想瞭解如何用 HackHDL 實作，您可以參考以下這位修過 nand2tetris 的 havivha 同學在 github 上公佈的作業解答。
+
+* <https://github.com/havivha/Nand2Tetris>
+
+如果您想要先瞭解 nand2tetrix 課程背後所需要的基本知識，請參考上個月的少年科技人雜誌。
+
+* [NandToTetrix 慕課記 -- 從邏輯閘到方塊遊戲](http://ccc.nqu.edu.tw/web/wikidown.html#ymag201506:home) 
+
+如果您想學習 verilog 語法，或者瞭解如何用 verilog 設計其他處理器，也可以參考筆者的下列書籍與網頁。
+
+* [陳鍾誠 / 教科書 / 計算機結構](http://ccc.nqu.edu.tw/db/co/home.html)
+* [免費電子書：Verilog 電路設計](http://ccckmit.wikidot.com/ve:main)
+
+在本期雜誌中，我們將學習如何用 verilog 設計出 nand2tetris 中的處理器 HackCPU 與整台電腦 HackComputer 。
+
+現在、請跟著我一起重新體會『如何用 Verilog 重新詮釋 nand2tetris 硬體部份的課程』 吧！

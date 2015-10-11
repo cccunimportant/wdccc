@@ -1,0 +1,40 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="/gospa.js"></script>
+<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[C 語言]](c:home) </title>
+
+<p><a href="/db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="/db/book/home.html"" class="innerLink">教科書</a>  / <a href="/db/c/home.html"" class="innerLink">C 語言</a>  </p>
+
+<h2 id="c">C語言 -- 目錄管理函式庫</h2>
+
+<h3 id="">程式範例</h3>
+
+<pre><code class="CPP">#include &lt;stdio.h&gt;
+#include &lt;sys/stat.h&gt;
+
+int main() {
+  char path[100];
+  size_t size;
+  getcwd(path, sizeof(path));
+  printf("path=%s\n", path);
+  mkdir("/temp1", S_IWRITE);
+  chdir("/temp1");
+  getcwd(path);
+  printf("path=%s\n", path);  
+}
+</code></pre>
+
+<h3 id="">執行結果</h3>
+
+<pre><code>D:\ccc\ca&gt;gcc dirapi.c -o dirapi
+
+D:\ccc\ca&gt;dirapi
+path=D:\ccc\ca
+path=D:\temp1
+</code></pre>
+
+</body>
+</html>

@@ -1,0 +1,95 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="/gospa.js"></script>
+<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[機率統計]](st:home) </title>
+
+<p><a href="/db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="/db/book/home.html"" class="innerLink">教科書</a>  / <a href="/db/st/home.html"" class="innerLink">機率統計</a>  </p>
+
+<h2 id="gammadistribution">伽瑪分布 (Gamma distribution)</h2>
+
+<p>$f(x) =  \frac{1}{\Gamma(\alpha) \beta^{\alpha}} x^{\alpha-1} e^{-x/\beta}$</p>
+
+<p>R 的寫法: $gamma(shape=a, rate=s) =  \frac{1}{\Gamma(a) s^a } x^{a-1} e^{-x/s}$</p>
+
+<p>Ｒ函數：Gamma(shape, rate) </p>
+
+<ul>
+<li>公式： f(x)= 1/(s^a Gamma(a)) x^(a-1) e^-(x/s)</li>
+<li>對應：[[$ shape = a = \alpha; scale = s = \beta  $]]</li>
+<li>意義：指數分布與卡方分布都是 Gamma 分布的特例</li>
+<li>網址：http://stat.ethz.ch/R-manual/R-patched/library/stats/html/GammaDist.html</li>
+</ul>
+
+<p>Gamma 函數的定義: $\Gamma(k) = \int_{0}^{\infty} z^{k-1} e^{-z} dz$</p>
+
+<p>特性:</p>
+
+<ol>
+<li>$E(X) =  \alpha \beta$</li>
+<li>$Var(X) = \alpha \beta^2$</li>
+</ol>
+
+<p>動差生成函數: $m_x(t) = (1-\beta t)^{-\alpha}$</p>
+
+<p>R 程式範例一</p>
+
+<pre><code class="R">op=par(mfrow=c(2,2))
+curve(dgamma(x, 1,1), 0, 10)
+curve(dgamma(x, 1,5), 0, 10)
+curve(dgamma(x, 5,1), 0, 10)
+curve(dgamma(x, 5,5), 0, 10)
+</code></pre>
+
+<p><a href="#st:=image dgammaCurve4.jpg size="medium"" class="innerLink">=image dgammaCurve4.jpg size="medium"</a></p>
+
+<p>R 程式範例二</p>
+
+<pre><code class="R">-log(dgamma(1:4, shape=1))
+p &lt;- (1:9)/10
+pgamma(qgamma(p,shape=2), shape=2)
+1 - 1/exp(qgamma(p, shape=1))
+
+# even for shape = 0.001 about half the mass is on numbers
+# that cannot be represented accurately (and most of those as zero)
+pgamma(.Machine$double.xmin, 0.001)
+pgamma(5e-324, 0.001)  # on most machines 5e-324 is the smallest
+                       # representable non-zero number
+table(rgamma(1e4, 0.001) == 0)/1e4
+</code></pre>
+
+<p>執行結果：</p>
+
+<pre><code class="R">&gt; -log(dgamma(1:4, shape=1))
+[1] 1 2 3 4
+&gt; p &lt;- (1:9)/10
+&gt; pgamma(qgamma(p,shape=2), shape=2)
+[1] 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9
+&gt; 1 - 1/exp(qgamma(p, shape=1))
+[1] 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9
+&gt; 
+&gt; # even for shape = 0.001 about half the mass is on numbers
+&gt; # that cannot be represented accurately (and most of those as zero)
+&gt; pgamma(.Machine$double.xmin, 0.001)
+[1] 0.4927171
+&gt; pgamma(5e-324, 0.001)  # on most machines 5e-324 is the smallest
+[1] 0.4752741
+&gt;                        # representable non-zero number
+&gt; table(rgamma(1e4, 0.001) == 0)/1e4
+
+ FALSE   TRUE 
+0.5188 0.4812 
+&gt; 
+</code></pre>
+
+<h3 id="">參考文獻</h3>
+
+<ul>
+<li><a href="http://zh.wikipedia.org/wiki/%E4%BC%BD%E7%8E%9B%E5%88%86%E5%B8%83">Wikipedia:伽瑪分布</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Gamma_distribution">Wikipedia:Gamma_distribution</a></li>
+</ul>
+
+</body>
+</html>

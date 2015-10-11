@@ -1,0 +1,51 @@
+# 平方根
+
+檔案: @[[squareRoot.js]](code/squareRoot.js)
+
+```
+function squareRoot(n) {
+  if (n<=1) 
+    throw "Error: n should > 1, n="+n+" now!";
+  else {
+    var low = 1;
+    var high = n;
+    var mid;
+    while (true) {
+      mid = (low+high)/2;
+      console.log("mid=%d", mid);
+      if (Math.abs(mid*mid-n) < 0.01) {
+        return mid;
+      }
+      if (mid*mid > n)
+        high = mid;
+      else
+        low = mid;
+    }
+  }
+}
+
+console.log("squareRoot(5)=%d", squareRoot(5));
+
+console.log("squareRoot(0.2)=%d", squareRoot(0.2));
+```
+
+執行結果
+
+```
+D:\Dropbox\cccweb\db\js\code>node squareRoot.js
+mid=3
+mid=2
+mid=2.5
+mid=2.25
+mid=2.125
+mid=2.1875
+mid=2.21875
+mid=2.234375
+squareRoot(5)=2.234375
+
+D:\Dropbox\cccweb\db\js\code\squareRoot.js:4
+    throw "Error: n should > 1, n="+n+" now!";
+    ^
+Error: n should > 1, n=0.2 now!
+
+```

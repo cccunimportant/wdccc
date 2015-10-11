@@ -1,0 +1,66 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="/gospa.js"></script>
+<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[機率統計]](st:home) </title>
+
+<p><a href="/db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="/db/book/home.html"" class="innerLink">教科書</a>  / <a href="/db/st/home.html"" class="innerLink">機率統計</a>  </p>
+
+<h2 id="multinomialdistribution">多項分布 (Multinomial Distribution)</h2>
+
+<p>$\frac{n!}{x_1!...x_k!}  p_1^{x_1} p_2^{x_2}...p_k^{x_k}$</p>
+
+<ul>
+<li>意義：n 次試驗中各種情況分別出現 x1, x2, ..., xk 次的機率 </li>
+<li>範圍：x1, x2, ..., xk=0,1,2,...,n ; 0<p[i]&lt;1</li>
+<li>R 函數：multinom(size, prob) ; n:size:樣本數, p:prob:各種情況的機率
+<ul><li>http://stat.ethz.ch/R-manual/R-patched/library/stats/html/Multinom.html</li></ul></li>
+</ul>
+
+<h3 id="r">R 函數範例</h3>
+
+<pre><code class="R">rmultinom(10, size = 12, prob=c(0.1,0.2,0.8))
+
+pr &lt;- c(1,3,6,10) # normalization not necessary for generation
+rmultinom(10, 20, prob = pr)
+
+## all possible outcomes of Multinom(N = 3, K = 3)
+X &lt;- t(as.matrix(expand.grid(0:3, 0:3))); X &lt;- X[, colSums(X) &lt;= 3]
+X &lt;- rbind(X, 3:3 - colSums(X)); dimnames(X) &lt;- list(letters[1:3], NULL)
+X
+round(apply(X, 2, function(x) dmultinom(x, prob = c(1,2,5))), 3)
+</code></pre>
+
+<p>執行結果：</p>
+
+<pre><code>&gt; rmultinom(10, size = 12, prob=c(0.1,0.2,0.8))
+     [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
+[1,]    1    1    1    0    2    0    1    1    0     2
+[2,]    1    2    3    0    3    0    2    1    1     2
+[3,]   10    9    8   12    7   12    9   10   11     8
+&gt; 
+&gt; pr &lt;- c(1,3,6,10) # normalization not necessary for generation
+&gt; rmultinom(10, 20, prob = pr)
+     [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
+[1,]    1    1    2    2    1    1    2    1    1     2
+[2,]    2    2    2    2    6    7    3    5    4     4
+[3,]    9    4    8    4    8    8    4    7    3     6
+[4,]    8   13    8   12    5    4   11    7   12     8
+&gt; 
+&gt; ## all possible outcomes of Multinom(N = 3, K = 3)
+&gt; X &lt;- t(as.matrix(expand.grid(0:3, 0:3))); X &lt;- X[, colSums(X) &lt;= 3]
+&gt; X &lt;- rbind(X, 3:3 - colSums(X)); dimnames(X) &lt;- list(letters[1:3], NULL)
+&gt; X
+  [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
+a    0    1    2    3    0    1    2    0    1     0
+b    0    0    0    0    1    1    1    2    2     3
+c    3    2    1    0    2    1    0    1    0     0
+&gt; round(apply(X, 2, function(x) dmultinom(x, prob = c(1,2,5))), 3)
+ [1] 0.244 0.146 0.029 0.002 0.293 0.117 0.012 0.117 0.023 0.016
+&gt; 
+</code></pre>
+
+</body>
+</html>

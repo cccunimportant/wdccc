@@ -1,0 +1,130 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="/gospa.js"></script>
+<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[機率統計]](st:home) </title>
+
+<p><a href="/db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="/db/book/home.html"" class="innerLink">教科書</a>  / <a href="/db/st/home.html"" class="innerLink">機率統計</a>  </p>
+
+<h1 id="">機率分布 (連續型)</h1>
+
+<h2 id="">簡介</h2>
+
+<table>
+<thead>
+<tr>
+<th id="連續機率模型" style="text-align:left;"> 連續機率模型 </th>
+<th id="密度函數" style="text-align:left;"> 密度函數 </th>
+<th id="r_函數" style="text-align:left;"> R 函數 </th>
+<th id="說明" style="text-align:left;"> 說明 </th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align:left;"><p>常態分布(Normal) </p></td>
+<td style="text-align:left;"><p>$\frac{1}{\sqrt{2\pi} \sigma} e^{- \frac{1}{2} [(x-\mu)/\sigma]^2}$ </p></td>
+<td style="text-align:left;"><p>norm(mean, sd) </p></td>
+<td style="text-align:left;"><p>中央極限定理：x1+x2+...+xk; 當 k 越大就越接近常態分布 </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>伽瑪分布 (Gamma) </p></td>
+<td style="text-align:left;"><p>$\frac{1}{\Gamma(a) b^{a}} x^{a-1} e^{-x/b}$ </p></td>
+<td style="text-align:left;"><p>gamma(shape, rate = 1, scale = 1/rate) </p></td>
+<td style="text-align:left;"><p>$\Gamma(k) = \int_{0}^{\infty} z^{k-1} e^{-z} dz$ <br/>  指數分布與卡方分布都是 Gamma 分布的特例 </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>指數分布    (Exponential)</p></td>
+<td style="text-align:left;"><p>$\frac{1}{b} e^{-x/b}$ </p></td>
+<td style="text-align:left;"><p>exp(rate) </p></td>
+<td style="text-align:left;"><p>伽瑪分布($a=1, b=\frac{1}{\lambda}$) <br/> 布瓦松過程中，第一次事件出現的時間 W </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>卡方分布 (Chi-Square) </p></td>
+<td style="text-align:left;"><p>$\frac{1}{2^{\gamma/2}\Gamma(\gamma/2)}\,x^{\gamma/2 - 1} e^{-x/2}$ </p></td>
+<td style="text-align:left;"><p>chisq(df, ncp) </p></td>
+<td style="text-align:left;"><p>伽瑪分布( $b=2, a=\gamma/2$ ) <br/> 利用樣本推斷母體變異數 </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>均勻分布 (Uniform) </p></td>
+<td style="text-align:left;"><p>$\frac{1}{b-a}$ </p></td>
+<td style="text-align:left;"><p>unif(a:min, b:max) </p></td>
+<td style="text-align:left;"><p>a:範圍下限, b: 上限 <br/> 出現機會均等 </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>柯西分布 (Cauchy) </p></td>
+<td style="text-align:left;"><p>$\frac{1}{\pi} \frac{a}{a^2 + (x-b)^2}$ </p></td>
+<td style="text-align:left;"><p>cauchy(b:location, a:scale)  </p></td>
+<td style="text-align:left;"></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>威布爾分布 (Weibull)</p></td>
+<td style="text-align:left;"><p>$a b x^{b-1} e^{-a x^{b}}$ </p></td>
+<td style="text-align:left;"><p>weibull(a:shape, b:scale) </p></td>
+<td style="text-align:left;"><p>$\rho(t)=\frac{f(t)}{R(t)}$ <br/> 可靠度工程：f(x) 失敗時間, R(t) 可靠度,$\rho(t)$ 失敗率 </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>T 分布 (T)    </p></td>
+<td style="text-align:left;"><p>$\frac{Z}{\sqrt{X_{\gamma}^2/\gamma}}$ </p></td>
+<td style="text-align:left;"><p>t(df, ncp) </p></td>
+<td style="text-align:left;"><p>估計變異數時使用的分布 </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>F 分布 (F)    </p></td>
+<td style="text-align:left;"><p>$\frac{X_{\gamma_1}^2 / \gamma_1}{X_{\gamma_2}^2/\gamma_2}$ </p></td>
+<td style="text-align:left;"><p>f(df1, df2, ncp) </p></td>
+<td style="text-align:left;"><p>等變異數 F 檢定時使用 </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>貝塔分布 (Beta) </p></td>
+<td style="text-align:left;"><p>$f(x)= \frac{Γ(a+b)}{Γ(a) Γ(b)} x^{a-1}(1-x)^{b-1}$  </p></td>
+<td style="text-align:left;"><p>beta(a:shape1, b:shape2, ncp) </p></td>
+<td style="text-align:left;"></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>對數常態分布     (Log Normal) </p></td>
+<td style="text-align:left;"></td>
+<td style="text-align:left;"><p>lnorm(meanlog, sdlog) </p></td>
+<td style="text-align:left;"></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>邏輯分布    </p></td>
+<td style="text-align:left;"></td>
+<td style="text-align:left;"><p>logis(location, scale)  </p></td>
+<td style="text-align:left;"></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>Signrank    </p></td>
+<td style="text-align:left;"></td>
+<td style="text-align:left;"><p>signrank(n) </p></td>
+<td style="text-align:left;"></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>威爾斯    </p></td>
+<td style="text-align:left;"></td>
+<td style="text-align:left;"><p>wilcox(m, n) </p></td>
+<td style="text-align:left;"><p>a,b 為兩組樣本 </p></td>
+</tr>
+
+</tbody>
+</table>
+
+<h2 id="t">T 分布</h2>
+
+</body>
+</html>

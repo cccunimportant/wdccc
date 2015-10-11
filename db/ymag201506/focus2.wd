@@ -1,0 +1,127 @@
+## Nand2Tetris 第 0 週 -- 課程簡介與的軟體安裝
+
+### 課程簡介
+
+From Nand to Tetris / Part I 這門課總共有七週，分為第 0 週到第 6 週，第 0 週的內容是課程簡介和軟體安裝，真正的實作還是從第 1 週開始的。
+
+您可以從 nand2tetris 的網站上取得大部份的教材以及全部的軟體，即使沒有購買教科書，應該也不會有太大問題才對！
+
+教材與投影片的網址如下。
+
+* <http://www.nand2tetris.org/course.php>
+
+其中包含 lecture 投影片，習題 project 1..12 ，以及教科書的 1..6 章與附錄 Ａ，這些內容至少可以讓我們修完 [From Nand to Tetris / Part I](https://www.coursera.org/course/nand2tetris1) 了。
+
+如果您真的想學習這門課，一定要動手做習題，因為這是整門課最精彩的一部分。
+
+### 軟體安裝
+
+要能完成這些習題，我們必須安裝 Nand2Tetris 專門為課程所設計的軟體，包含 Hardware Simulator, CPU Emulator, VM Emulator, Assembler, Compiler, Operating system, Text Comparer 等等，您可以從以下網址取得這些以 GPL 方式授權的開放原始碼軟體。
+
+* <http://www.nand2tetris.org/software.php>
+
+其中 Hardware Simulator, CPU Emulator, VM Emulator, Assembler 等軟體是有圖形化界面的，而 Compiler, Operating system, Text Comparer 則是命令列程式。
+
+您可以點選其中的 [Download the Nand2tetris Software Suite](http://www.nand2tetris.org/software/nand2tetris.zip) 連結下載所有程式，下載後會發現是一個名為 nand2tetris.zip 的壓縮檔，解開後會得到 tools 與 projects 等兩個資料夾，其中的 tools 裡包含了所有的工具軟體，在 Part I 裡我們需要使用 HardwareSimulator , CPUEmulator 等兩個工具。
+
+```
+nqu-192-168-61-142:nand2tetris mac020$ cd tools
+nqu-192-168-61-142:tools mac020$ ls
+Assembler.bat		JackCompiler.bat	VMEmulator.sh
+Assembler.sh		JackCompiler.sh		bin
+CPUEmulator.bat		OS			builtInChips
+CPUEmulator.sh		TextComparer.bat	builtInVMCode
+HardwareSimulator.bat	TextComparer.sh
+HardwareSimulator.sh	VMEmulator.bat
+```
+
+HardwareSimulator 是用來測試我們所寫的『 HDL 硬體描述語言』所使用的，此處的『硬體描述語言』 並不是常見的 Verilog 或 VHDL，而是 nand2tetris 團隊所設計出來的『簡易陽春版 HDL』，稱為 HackHDL 。
+
+講到這裡，勢必有人會覺得幹嘛要用這種『陽春版HDL 』，而不用專業的 Verilog 或 VHDL 呢？ 
+
+原本我也有這種想法，但是真正開始做習題之後，才發現這是非常棒的一種做法！
+
+因為『陽春版HDL 』沒有那些高級的 if, for, always 等等語法，只能用元件與線路連接的方式來寫，因此強迫我們必須從頭到尾自己重做一遍，這樣就能很清楚每個元件的原理與設計方法，而不是用一些神奇的語法掩蓋了某些知識上的盲點。
+
+所以，即使您已經會了 Verilog 或 VHDL ，也請耐住性子，退化到最原始的狀態，開始來細細品味這種『陽春版HDL 』的好處，強迫自己重新瞭解數位電路的設計原理。
+
+上述的軟體幾乎 100% 都是用 java 寫的，因此您必須安裝 Java JDK 才能執行這些程式，您可以從下列 Java 的官方網站取得符合您作業系統與處理器的 JDK 軟體來安裝。
+
+* <http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html>
+
+在前面幾週的課程，您主要會用到 HardwareSimulator 來測試寫出來的 HDL 硬體描述檔，HardwareSimulator 的用法可以參考下列的使用手冊。
+
+* [Hardware Simulator Tutorial (PDF)](http://www.nand2tetris.org/tutorials/PDF/Hardware%20Simulator%20Tutorial.pdf)
+
+當您安裝完 JDK 之後，在 windows 底下只需要在對應的 .bat 程式上按兩下就可以啓動該程式了，至於 Linux/Mac 則必須要將 .sh 檔的權限修改為可執行 `(chmod 777 <filename>)` 之後在打入該 .sh 檔名稱去執行它。
+
+至於另一個 projects 資料夾，則是 nand2tetris 為您準備好的習題框架，舉例而言，在 projests/01/And16.hdl 檔案當中的內容如下所示。
+
+```
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: projects/01/And16.hdl
+
+/**
+ * 16-bit bitwise And:
+ * for i = 0..15: out[i] = (a[i] and b[i])
+ */
+
+CHIP And16 {
+    IN a[16], b[16];
+    OUT out[16];
+
+    PARTS:
+    // Put your code here:
+}
+```
+
+您必須在 // Put your code here: 那行後面開始填入程式，用 nand2tetris 的 HDL 語法來設計出 16 位元的 And16 元件，符合描述中所說的下列條件。
+
+```
+for i = 0..15: out[i] = (a[i] and b[i])
+```
+
+雖然第 0 週還沒教我們如何設計電腦硬體，但是為了讓大家都能習慣這些開發工具，老師還是出了一個很簡單的習題，就是要求我們要將位於 nand2tetris/projects/01/ 這個路徑中的 @[[xor.hdl]](nand2tetris/projects/01/xor.hdl) 檔案上傳，以便確定學員都已經下載軟體並且知道如何上傳作業了，該檔案的內容如下。
+
+```
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+
+/**
+ *  Exclusive-or gate: out = !(a == b).
+ */
+
+CHIP Xor {
+
+    IN a, b;
+    OUT out;
+
+    PARTS:
+    Nand (a=a, b=b, out= AnandB);
+    Or   (a=a, b=b, out= AorB);
+    And  (a=AnandB, b=AorB, out=out);
+}
+```
+
+當您準備好這些軟體，並且看完本週的影片之後，就可以前進到第 1 週了。
+
+對了，本來我打算在這期雜誌中將我寫的作業內容放上來，但是後來發現 <http://www.nand2tetris.org/terms.php> 這個網頁中有寫下列這段聲明：
+
+```
+Code Posting Policy
+
+Therefore, we request that you don't post solutions publicly on the web, e.g. in blogs or forums. If your course instructor or organizer creates a private space in which work can be shared outside the public domain, that's fine. Likewise, you can share your work with others using a password-protected space, if it's permitted by the specific course in which you are enrolled.
+```
+
+因此我決定遵守 nand2tetris 的要求，不要把解答放上網，讓大家自己去體會學習與設計的樂趣，我想這樣應該會學得更好。
+
+我想，我就是給學生太多答案了，所以很多學生都沒學好。
+
+學習，應該就像這樣，自己去探索出答案，才能真正享受學習的過程，並且徹底學會這些知識。
+
+下次，我也要改成這樣做！
+
+

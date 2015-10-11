@@ -1,0 +1,137 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="/gospa.js"></script>
+<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[機率統計]](st:home) </title>
+
+<p><a href="/db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="/db/book/home.html"" class="innerLink">教科書</a>  / <a href="/db/st/home.html"" class="innerLink">機率統計</a>  </p>
+
+<h2 id="netativebinomialdistribution">負二項分布 (Netative binomial distribution)</h2>
+
+<p>公式：$f(x) = {x-1 \choose r-1} (1-p)^{x-r} p^r$</p>
+
+<p>範圍：r=1,2,3,.... ; x= r, r+1, r+2, ....</p>
+
+<p>意義：要得到第 r 次成功所需要的試驗次數 x; </p>
+
+<p>R 函數： nbinom(size, prob) ; r:size:成功數, p:prob:成功機率</p>
+
+<ul>
+<li><a href="http://stat.ethz.ch/R-manual/R-patched/library/stats/html/NegBinomial.html">http://stat.ethz.ch/R-manual/R-patched/library/stats/html/NegBinomial.html</a></li>
+</ul>
+
+<p>特性</p>
+
+<ol>
+<li>$E(X) = r/p$</li>
+<li>$Var(X) = r (1-p)/p^2 = r q/p^2$</li>
+</ol>
+
+<p>動差生成函數：$m_x(t) = \frac{(pe^t)^r}{(1-(1-p) e^t)^r} = \frac{(p e^t)^r}{(1-q e^t)^r}$</p>
+
+<h3 id="">習題</h3>
+
+<ol>
+<li><p>請問丟公平的銅板時，在得到第三次正面的要求下，其投擲次數 x 的機率分布為何？該分布的期望值為何？</p></li>
+<li><p>請問丟公平的銅板時，在得到第 r 次正面的要求下，其投擲次數 x 的機率分布為何？該分布的期望值為何？</p></li>
+</ol>
+
+<h3 id="r">R 程式範例：負二項分布曲線圖</h3>
+
+<pre><code class="R">&gt; n=20; p=0.4; k=seq(0,50)
+&gt; plot(k, dnbinom(k,n,p), type='h', main='dnbinom(k,n=20,p=0.4)', xlab='k')
+&gt;  
+</code></pre>
+
+<div class="figure"><img src="db/st/dnbinomPlot.jpg"/><p class="caption"></p></div>
+
+<pre><code class="R">&gt; x = rnbinom(100000, 100, 0.8)
+&gt; hist(x, nclass=max(x)-min(x)+1)
+&gt; 
+</code></pre>
+
+<div class="figure"><img src="db/st/rnbinomHist.jpg"/><p class="caption"></p></div>
+
+<h3 id="r">R 程式範例 (進階)</h3>
+
+<pre><code class="R">require(graphics)
+x &lt;- 0:11
+dnbinom(x, size = 1, prob = 1/2) * 2^(1 + x) # == 1
+126 /  dnbinom(0:8, size  = 2, prob  = 1/2) #- theoretically integer
+
+## Cumulative ('p') = Sum of discrete prob.s ('d');  Relative error :
+summary(1 - cumsum(dnbinom(x, size = 2, prob = 1/2)) /
+                  pnbinom(x, size  = 2, prob = 1/2))
+
+x &lt;- 0:15
+size &lt;- (1:20)/4
+persp(x,size, dnb &lt;- outer(x, size, function(x,s) dnbinom(x,s, prob= 0.4)),
+      xlab = "x", ylab = "s", zlab="density", theta = 150)
+title(tit &lt;- "negative binomial density(x,s, pr = 0.4)  vs.  x &amp; s")
+
+image  (x,size, log10(dnb), main= paste("log [",tit,"]"))
+contour(x,size, log10(dnb),add=TRUE)
+
+## Alternative parametrization
+x1 &lt;- rnbinom(500, mu = 4, size = 1)
+x2 &lt;- rnbinom(500, mu = 4, size = 10)
+x3 &lt;- rnbinom(500, mu = 4, size = 100)
+h1 &lt;- hist(x1, breaks = 20, plot = FALSE)
+h2 &lt;- hist(x2, breaks = h1$breaks, plot = FALSE)
+h3 &lt;- hist(x3, breaks = h1$breaks, plot = FALSE)
+barplot(rbind(h1$counts, h2$counts, h3$counts),
+        beside = TRUE, col = c("red","blue","cyan"),
+        names.arg = round(h1$breaks[-length(h1$breaks)]))
+</code></pre>
+
+<p>執行結果：</p>
+
+<pre><code class="R">&gt; require(graphics)
+&gt; x &lt;- 0:11
+&gt; dnbinom(x, size = 1, prob = 1/2) * 2^(1 + x) # == 1
+ [1] 1 1 1 1 1 1 1 1 1 1 1 1
+&gt; 126 /  dnbinom(0:8, size  = 2, prob  = 1/2) #- theoretically integer
+[1]   504.0   504.0   672.0  1008.0  1612.8  2688.0  4608.0  8064.0 14336.0
+&gt; 
+&gt; ## Cumulative ('p') = Sum of discrete prob.s ('d');  Relative error :
+&gt; summary(1 - cumsum(dnbinom(x, size = 2, prob = 1/2)) /
++                   pnbinom(x, size  = 2, prob = 1/2))
+     Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+-2.22e-16 -2.22e-16 -2.22e-16 -1.48e-16  0.00e+00  0.00e+00 
+&gt; 
+&gt; x &lt;- 0:15
+&gt; size &lt;- (1:20)/4
+&gt; persp(x,size, dnb &lt;- outer(x, size, function(x,s) dnbinom(x,s, prob= 0.4)),
++       xlab = "x", ylab = "s", zlab="density", theta = 150)
+&gt; title(tit &lt;- "negative binomial density(x,s, pr = 0.4)  vs.  x &amp; s")
+&gt; 
+&gt; image  (x,size, log10(dnb), main= paste("log [",tit,"]"))
+&gt; contour(x,size, log10(dnb),add=TRUE)
+&gt; 
+&gt; ## Alternative parametrization
+&gt; x1 &lt;- rnbinom(500, mu = 4, size = 1)
+&gt; x2 &lt;- rnbinom(500, mu = 4, size = 10)
+&gt; x3 &lt;- rnbinom(500, mu = 4, size = 100)
+&gt; h1 &lt;- hist(x1, breaks = 20, plot = FALSE)
+&gt; h2 &lt;- hist(x2, breaks = h1$breaks, plot = FALSE)
+&gt; h3 &lt;- hist(x3, breaks = h1$breaks, plot = FALSE)
+&gt; barplot(rbind(h1$counts, h2$counts, h3$counts),
++         beside = TRUE, col = c("red","blue","cyan"),
++         names.arg = round(h1$breaks[-length(h1$breaks)]))
+</code></pre>
+
+<p>繪圖結果：</p>
+
+<div class="figure"><img src="db/st/nbinom.jpg"/><p class="caption"></p></div>
+
+<h3 id="">參考文獻</h3>
+
+<ul>
+<li><a href="http://zh.wikipedia.org/wiki/%E8%B2%A0%E4%BA%8C%E9%A0%85%E5%88%86%E4%BD%88">Wikipedia:負二項分布</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Negative_binomial_distribution">Wikipedia:Negative<em>binomial</em>distribution</a></li>
+</ul>
+
+</body>
+</html>

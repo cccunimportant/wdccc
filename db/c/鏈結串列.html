@@ -1,0 +1,53 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="/gospa.js"></script>
+<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[C 語言]](c:home) </title>
+
+<p><a href="/db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="/db/book/home.html"" class="innerLink">教科書</a>  / <a href="/db/c/home.html"" class="innerLink">C 語言</a>  </p>
+
+<h2 id="">鏈結串列 - (基礎版) 最簡單的單向鏈結串列實作</h2>
+
+<h3 id="">範例程式：鏈結串列</h3>
+
+<p>檔案：LinkedList.c</p>
+
+<pre><code class="CPP">#include &lt;stdio.h&gt;
+
+typedef struct lnode { 
+  struct lnode *next;
+} ListNode;
+
+void ListNodePrint(ListNode *node) {
+  ListNode *p;
+  for (p = node; p != NULL; p=p-&gt;next)
+    printf("%p--&gt;", p);
+}
+
+int main() {
+  ListNode node1, node2, node3;
+  node1.next = &amp;node2;
+  node2.next = &amp;node3;
+  node3.next = NULL;
+  ListNodePrint(&amp;node1);
+}
+</code></pre>
+
+<h3 id="">執行結果</h3>
+
+<pre><code>D:\cp&gt;gcc LinkedList.c -o LinkedList
+
+D:\cp&gt;LinkedList
+0022FF74--&gt;0022FF70--&gt;0022FF6C--&gt;
+</code></pre>
+
+<h3 id="">參考文獻</h3>
+
+<ul>
+<li>深入分析 Linux 内核链表 -- http://www.ibm.com/developerworks/cn/linux/kernel/l-chain/index.html</li>
+</ul>
+
+</body>
+</html>

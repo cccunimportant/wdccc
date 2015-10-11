@@ -1,0 +1,35 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="/gospa.js"></script>
+<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[JavaScript 語言]](js:home) </title>
+
+<p><a href="/db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="/db/book/home.html"" class="innerLink">教科書</a>  / <a href="/db/js/home.html"" class="innerLink">JavaScript 語言</a>  </p>
+
+<h1 id="">查字典程式</h1>
+
+<p>檔案： <a href="db/js/code/dlook.js" class="innerLink">dlook.js</a></p>
+
+<pre><code>var e2c = { dog:"狗", cat:"貓", a: "一隻", chase:"追", eat:"吃" };
+
+function look(e) {
+  return e2c[e];
+}
+
+e = process.argv[2]; // 從 process.argv 這個陣列取出第二個元素
+c = look(e);
+console.log(e+"="+c); 
+</code></pre>
+
+<p>執行結果</p>
+
+<pre><code>nqu-192-168-61-142:code mac020$ node dlook.js cat
+cat=貓
+nqu-192-168-61-142:code mac020$ node dlook.js snoopy
+snoopy=undefined
+</code></pre>
+
+</body>
+</html>

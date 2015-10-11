@@ -1,0 +1,98 @@
+% 我該學甚麼程式語言呢？
+% 陳鍾誠
+% 2013 年 9 月 13 日
+
+# 話說
+- 一樣米養百樣人
+- 程式語言也差不多
+
+# 自從
+- Fortran 發明開始
+- 大家以為
+- 從此就可以擺脫那麼多種
+- 組合語言的糾纏
+
+# 但是、後來卻發現
+- 程式語言可能
+- 比組合語言更多種
+	
+# 於是、我們有了
+- LISP
+- BASIC
+- Smalltalk
+- Prolog
+- Scheme
+
+# 還有
+- SQL
+- Pascal
+- Ada
+- C++
+- Foxpro
+
+# 然後是
+- MATLAB
+- Tcl
+- Haskell
+- Python
+- dBase
+
+# 接著是
+- Ruby
+- Perl
+- Java
+- PHP
+- JavaScript
+
+# 甚至、那些我從來沒用過的
+- 像是
+- Algol
+- APL
+- COBOL
+- Cocoa
+
+# 以及、那些才剛剛被發明出來的
+- 例如
+- D
+- Go
+- F#
+- ....
+
+# 族繁不及備載！
+
+# 有興趣請參考 
+- [Wikipedia:List_of_programming_languages](http://en.wikipedia.org/wiki/List_of_programming_languages)
+- [The Hello World Collection](http://www.roesler-ac.de/wolfram/hello.htm)
+
+# 那麼
+- 我們到底應該
+- 學習哪些程式語言呢？
+
+# 這個
+- 真是個令人困擾
+- 的好問題
+
+# 以下
+- 我將用自己的經驗
+- 武斷的、不公正的
+- 說給大家聽！
+
+# 對於一個
+- 剛進入大學資工系
+- 的新生而言
+
+# 我的建議如下
+- 大一：用 Python 或 C 學基礎程式
+- 大二：用 C# 學視窗程式與 Socket Programming
+- 大三：用 JavaScript+Node.js 學 Web 程式
+- 大四：用 R 學機率統計、人工智慧與機器學習
+
+# 當然
+- 這個建議完全不客觀
+- 只不過是
+- 我碰巧現在用來教學生
+- 的組合罷了！
+
+# 希望
+- 這樣的建議
+- 各位會覺得有參考價值！

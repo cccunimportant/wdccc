@@ -1,0 +1,23 @@
+## 柯西分布 (Cauchy Distribution)
+
+公式： $\frac{1}{\pi} \frac{a}{a^2 + (x-b)^2}$
+
+Ｒ函數：cauchy(location = 0, scale = 1)
+
+* 公式：f(x) = 1 / (π s (1 + ((x-l)/s)^2))
+* 說明：location=l , scale=s 
+* 網址：http://stat.ethz.ch/R-manual/R-patched/library/stats/html/Cauchy.html
+
+R 程式範例一
+
+```R
+op=par(mfrow=c(2,2))
+curve(dcauchy(x, 1,1), 0, 10)
+curve(dcauchy(x, 1,5), 0, 10)
+curve(dcauchy(x, 5,1), 0, 10)
+curve(dcauchy(x, 5,5), 0, 10)
+```
+
+![[]](dcauchyCurve4.jpg)
+
+

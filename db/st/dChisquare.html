@@ -1,0 +1,150 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="/gospa.js"></script>
+<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[機率統計]](st:home) </title>
+
+<p><a href="/db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="/db/book/home.html"" class="innerLink">教科書</a>  / <a href="/db/st/home.html"" class="innerLink">機率統計</a>  </p>
+
+<h2 id="chisquaredistribution">卡方分布 (Chi-Square distribution)</h2>
+
+<p>公式： $\frac{1}{2^{\gamma/2}\Gamma(\gamma/2)}\,x^{\gamma/2 - 1} e^{-x/2}$</p>
+
+<p>R 的公式： $chisq(df=n > 0) =  f_n(x) = \frac{1}{(2^{n/2} \Gamma(n/2)} x^{n/2-1} e^{-x/2}$</p>
+
+<p>Ｒ函數：chisq(df=n, ncp=λ)</p>
+
+<ul>
+<li>公式： f(x) = exp(-λ/2) SUM_{r=0}^∞ ((λ/2)^r / r!) dchisq(x, df + 2r)</li>
+<li>網址：http://stat.ethz.ch/R-manual/R-patched/library/stats/html/Chisquare.html</li>
+</ul>
+
+<p>特性</p>
+
+<p>卡方分配主要用途是在「利用樣本推斷母體變異數」時使用的。</p>
+
+<p>卡方分配是伽瑪分布的特例，只要將 Gamma 分配中設定 $b=2, a=\gamma/2$ 就是卡方分布了。</p>
+
+<p>R 程式範例</p>
+
+<pre><code class="R">op=par(mfrow=c(2,2))
+curve(dchisq(x, 1), 0, 100)
+curve(dchisq(x, 5), 0, 100)
+curve(dchisq(x, 10), 0, 100)
+curve(dchisq(x, 50), 0, 100)
+</code></pre>
+
+<div class="figure"><img src="db/st/dChisquare.jpg"/><p class="caption"></p></div>
+
+<p>R 程式範例二</p>
+
+<pre><code class="R">dchisq(1, df=1:3)
+pchisq(1, df= 3)
+pchisq(1, df= 3, ncp = 0:4)# includes the above
+
+x &lt;- 1:10
+## Chi-squared(df = 2) is a special exponential distribution
+all.equal(dchisq(x, df=2), dexp(x, 1/2))
+all.equal(pchisq(x, df=2), pexp(x, 1/2))
+
+## non-central RNG -- df=0 with ncp &gt; 0:  Z0 has point mass at 0!
+Z0 &lt;- rchisq(100, df = 0, ncp = 2.)
+graphics::stem(Z0)
+
+## Not run: ## visual testing
+## do P-P plots for 1000 points at various degrees of freedom
+L &lt;- 1.2; n &lt;- 1000; pp &lt;- ppoints(n)
+op &lt;- par(mfrow = c(3,3), mar= c(3,3,1,1)+.1, mgp= c(1.5,.6,0),
+          oma = c(0,0,3,0))
+for(df in 2^(4*rnorm(9))) {
+  plot(pp, sort(pchisq(rr &lt;- rchisq(n,df=df, ncp=L), df=df, ncp=L)),
+       ylab="pchisq(rchisq(.),.)", pch=".")
+  mtext(paste("df = ",formatC(df, digits = 4)), line= -2, adj=0.05)
+  abline(0,1,col=2)
+}
+mtext(expression("P-P plots : Noncentral  "*
+                 chi^2 *"(n=1000, df=X, ncp= 1.2)"),
+      cex = 1.5, font = 2, outer=TRUE)
+par(op)
+## End(Not run)
+
+## "analytical" test
+lam &lt;- seq(0,100, by=.25)
+p00 &lt;- pchisq(0,      df=0, ncp=lam)
+p.0 &lt;- pchisq(1e-300, df=0, ncp=lam)
+stopifnot(all.equal(p00, exp(-lam/2)),
+          all.equal(p.0, exp(-lam/2)))
+</code></pre>
+
+<p>執行結果：</p>
+
+<pre><code class="R">&gt; dchisq(1, df=1:3)
+[1] 0.2419707 0.3032653 0.2419707
+&gt; pchisq(1, df= 3)
+[1] 0.198748
+&gt; pchisq(1, df= 3, ncp = 0:4)# includes the above
+[1] 0.19874804 0.13229855 0.08787311 0.05824691 0.03853592
+&gt; 
+&gt; x &lt;- 1:10
+&gt; ## Chi-squared(df = 2) is a special exponential distribution
+&gt; all.equal(dchisq(x, df=2), dexp(x, 1/2))
+[1] TRUE
+&gt; all.equal(pchisq(x, df=2), pexp(x, 1/2))
+[1] TRUE
+&gt; 
+&gt; ## non-central RNG -- df=0 with ncp &gt; 0:  Z0 has point mass at 0!
+&gt; Z0 &lt;- rchisq(100, df = 0, ncp = 2.)
+&gt; graphics::stem(Z0)
+
+  The decimal point is at the |
+
+   0 | 0000000000000000000000000000001122334455668903344577888899999
+   2 | 1345667788899234689
+   4 | 14813556
+   6 | 2477733
+   8 | 047
+  10 | 3
+  12 | 
+  14 | 
+  16 | 6
+
+&gt; 
+&gt; ## Not run: ## visual testing
+&gt; ## do P-P plots for 1000 points at various degrees of freedom
+&gt; L &lt;- 1.2; n &lt;- 1000; pp &lt;- ppoints(n)
+&gt; op &lt;- par(mfrow = c(3,3), mar= c(3,3,1,1)+.1, mgp= c(1.5,.6,0),
++           oma = c(0,0,3,0))
+&gt; for(df in 2^(4*rnorm(9))) {
++   plot(pp, sort(pchisq(rr &lt;- rchisq(n,df=df, ncp=L), df=df, ncp=L)),
++        ylab="pchisq(rchisq(.),.)", pch=".")
++   mtext(paste("df = ",formatC(df, digits = 4)), line= -2, adj=0.05)
++   abline(0,1,col=2)
++ }
+&gt; mtext(expression("P-P plots : Noncentral  "*
++                  chi^2 *"(n=1000, df=X, ncp= 1.2)"),
++       cex = 1.5, font = 2, outer=TRUE)
+&gt; par(op)
+&gt; ## End(Not run)
+&gt; 
+&gt; ## "analytical" test
+&gt; lam &lt;- seq(0,100, by=.25)
+&gt; p00 &lt;- pchisq(0,      df=0, ncp=lam)
+&gt; p.0 &lt;- pchisq(1e-300, df=0, ncp=lam)
+&gt; stopifnot(all.equal(p00, exp(-lam/2)),
++           all.equal(p.0, exp(-lam/2)))
+&gt; 
+</code></pre>
+
+<div class="figure"><img src="db/st/ChisqPPlot.jpg"/><p class="caption"></p></div>
+
+<h3 id="">參考文獻</h3>
+
+<ul>
+<li><a href="http://zh.wikipedia.org/wiki/%E5%8D%A1%E6%96%B9%E5%88%86%E4%BD%88">Wikipedia:卡方分布</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Chi-squared_distribution">Wikipedia:Chi-squared_distribution</a></li>
+</ul>
+
+</body>
+</html>

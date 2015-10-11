@@ -1,0 +1,56 @@
+# 質數測試, 印出<100的所有質數
+
+檔案： @[[prime.js]](code/prime.js)
+
+```
+function isPrime(n) {
+  for (var i=2; i<n; i++) {
+    if (n%i === 0)
+      return false;
+  }
+  return true;
+}
+
+console.log("isPrime(33)="+isPrime(33));
+console.log("isPrime(17)="+isPrime(17));
+
+for (var p=1; p<=100; p++) {
+  if (isPrime(p))
+    console.log("isPrime("+p+")");
+}
+```
+
+執行結果
+
+```
+nqu-192-168-61-142:code mac020$ node prime.js
+isPrime(33)=false
+isPrime(17)=true
+isPrime(1)
+isPrime(2)
+isPrime(3)
+isPrime(5)
+isPrime(7)
+isPrime(11)
+isPrime(13)
+isPrime(17)
+isPrime(19)
+isPrime(23)
+isPrime(29)
+isPrime(31)
+isPrime(37)
+isPrime(41)
+isPrime(43)
+isPrime(47)
+isPrime(53)
+isPrime(59)
+isPrime(61)
+isPrime(67)
+isPrime(71)
+isPrime(73)
+isPrime(79)
+isPrime(83)
+isPrime(89)
+isPrime(97)
+nqu-192-168-61-142:code mac020$ 
+```

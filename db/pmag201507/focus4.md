@@ -1,0 +1,223 @@
+## Nand2Tetris 第二週 -- 自製算術元件
+
+算術元件部份包含『半加器、全加器、16位元加法器與 ALU 等等』，我們的 verilog 版模組與測試程式如下所示。
+
+程式模組： alu.v 
+
+```verilog
+`include "mux.v"
+
+module HalfAdder(input a,b, output sum, carry);
+  Xor g1(a, b, sum);
+  And g2(a, b, carry);
+endmodule
+
+module FullAdder(input a,b,c, output sum, carry);
+  wire s1, c1, c2;
+  Xor g1(a,  b,  s1);
+  Xor g2(s1, c,  sum);
+  And g3(a,  b,  c1);
+  And g4(s1, c,  c2);
+  Xor g5(c2, c1, carry);
+endmodule
+
+module Add16(input[15:0] a,b, output[15:0] out);
+  wire [15:0] c;
+  FullAdder g01(a[0],  b[0],  1'b0,  out[0],  c[0]);
+  FullAdder g02(a[1],  b[1],  c[0],  out[1],  c[1]);
+  FullAdder g03(a[2],  b[2],  c[1],  out[2],  c[2]);
+  FullAdder g04(a[3],  b[3],  c[2],  out[3],  c[3]);
+  FullAdder g05(a[4],  b[4],  c[3],  out[4],  c[4]);
+  FullAdder g06(a[5],  b[5],  c[4],  out[5],  c[5]);
+  FullAdder g07(a[6],  b[6],  c[5],  out[6],  c[6]);
+  FullAdder g08(a[7],  b[7],  c[6],  out[7],  c[7]);
+  FullAdder g09(a[8],  b[8],  c[7],  out[8],  c[8]);
+  FullAdder g10(a[9],  b[9],  c[8],  out[9],  c[9]);
+  FullAdder g11(a[10], b[10], c[9],  out[10], c[10]);  
+  FullAdder g12(a[11], b[11], c[10], out[11], c[11]);   
+  FullAdder g13(a[12], b[12], c[11], out[12], c[12]);   
+  FullAdder g14(a[13], b[13], c[12], out[13], c[13]);   
+  FullAdder g15(a[14], b[14], c[13], out[14], c[14]);   
+  FullAdder g16(a[15], b[15], c[14], out[15], c[15]);
+endmodule
+
+module Inc16(input[15:0] in, output[15:0] out);
+  Add16 g1(in, 16'h1, out);
+endmodule
+
+//  x[16], y[16],  // 16-bit inputs  
+//  zx, // zero the x input?
+//  nx, // negate the x input?
+//  zy, // zero the y input?
+//  ny, // negate the y input?
+//  f,  // compute out = x + y (if 1) or x & y (if 0)
+//  no; // negate the out output?
+//  out[16], zr, ng;  // zr:zero, ng:negative
+
+module ALU(input[15:0] x, y, input zx,nx,zy,ny,f,no, output[15:0] out, output zr, ng);
+  wire[15:0] x1, notx1, x2, y1, noty1, y2, andxy, addxy, o1, noto1, o2;
+	wire orLow, orHigh, notzr;
+	
+  Mux16 g1(x,  16'b0, zx, x1);   // if (zx == 1) set x = 0  
+  Not16 g2(x1, notx1);
+  Mux16 g3(x1, notx1, nx, x2);   // if (nx == 1) set x = !x
+  
+  Mux16 g4(y,  16'b0, zy, y1);   // if (zy == 1) set y = 0
+  Not16 g5(y1, noty1);
+  Mux16 g6(y1, noty1, ny, y2);   // if (ny == 1) set y = !y
+  
+  Add16 g7(x2, y2, addxy);       // addxy = x + y
+  And16 g8(x2, y2, andxy);       // andxy = x & y
+  
+  Mux16 g9(andxy, addxy, f, o1); // if (f == 1)  set out = x + y else set out = x & y
+  Not16 g10(o1, noto1);
+  
+  Mux16 g11(o1, noto1, no, o2);   // if (no == 1) set out = !out
+  
+  // o2 就是 out, 但必須中間節點才能再次當作輸入，所以先用 o2。
+  And16 g12(o2, o2, out); 
+  Or8Way g13(out[7:0],  orLow);  // orLow = Or(out[0..7]);
+  Or8Way g14(out[15:8], orHigh);// orHigh = Or(out[8..15]);
+  Or    g15(orLow, orHigh, notzr);  // nzr = Or(out[0..15]);
+  Not   g16(notzr, zr);            // zr = !nzr
+  And   g17(o2[15], o2[15], ng);   // ng = out[15]
+  And16 g18(o2, o2, out);
+endmodule
+```
+
+測試程式： gate_test.v
+
+```verilog
+`include "alu.v"
+
+module main;
+reg signed[15:0] x, y;
+reg zx,nx,zy,ny,f,no;
+wire signed[15:0] out;
+wire zr, ng;
+
+ALU alu1(x,y, zx,nx,zy,ny,f,no, out, zr,ng);
+
+initial
+begin
+  $monitor("%4dns x=%d y=%d zx=%b nx=%b zy=%b ny=%b f=%b no=%b out=%d zr=%b ng=%b", $stime, x, y, zx, nx, zy, ny, f, no, out, zr, ng);
+	x = 9;
+	y = 15;
+	zx = 0;
+	nx = 0;
+	zy = 0;
+	ny = 0;
+	f  = 0;
+	no = 0;
+end
+
+always #320 begin
+  zx = zx+1;
+end
+
+always #160 begin
+  nx = nx+1;
+end
+
+always #80 begin
+  zy = zy+1;
+end
+
+always #40 begin
+  ny = ny+1;
+end
+
+always #20 begin
+  f = f+1;
+end
+
+always #10 begin
+  no = no+1;
+end
+
+initial #640 $finish;
+
+endmodule
+```
+
+測試結果
+
+```
+D:\Dropbox\cccweb\db\n2t>iverilog alu_test.v -o alu_test
+
+D:\Dropbox\cccweb\db\n2t>vvp alu_test
+   0ns x=     9 y=    15 zx=0 nx=0 zy=0 ny=0 f=0 no=0 out=     9 zr=0 ng=0
+  10ns x=     9 y=    15 zx=0 nx=0 zy=0 ny=0 f=0 no=1 out=   -10 zr=0 ng=1
+  20ns x=     9 y=    15 zx=0 nx=0 zy=0 ny=0 f=1 no=0 out=    24 zr=0 ng=0
+  30ns x=     9 y=    15 zx=0 nx=0 zy=0 ny=0 f=1 no=1 out=   -25 zr=0 ng=1
+  40ns x=     9 y=    15 zx=0 nx=0 zy=0 ny=1 f=0 no=0 out=     0 zr=1 ng=0
+  50ns x=     9 y=    15 zx=0 nx=0 zy=0 ny=1 f=0 no=1 out=    -1 zr=0 ng=1
+  60ns x=     9 y=    15 zx=0 nx=0 zy=0 ny=1 f=1 no=0 out=    -7 zr=0 ng=1
+  70ns x=     9 y=    15 zx=0 nx=0 zy=0 ny=1 f=1 no=1 out=     6 zr=0 ng=0
+  80ns x=     9 y=    15 zx=0 nx=0 zy=1 ny=0 f=0 no=0 out=     0 zr=1 ng=0
+  90ns x=     9 y=    15 zx=0 nx=0 zy=1 ny=0 f=0 no=1 out=    -1 zr=0 ng=1
+ 100ns x=     9 y=    15 zx=0 nx=0 zy=1 ny=0 f=1 no=0 out=     9 zr=0 ng=0
+ 110ns x=     9 y=    15 zx=0 nx=0 zy=1 ny=0 f=1 no=1 out=   -10 zr=0 ng=1
+ 120ns x=     9 y=    15 zx=0 nx=0 zy=1 ny=1 f=0 no=0 out=     9 zr=0 ng=0
+ 130ns x=     9 y=    15 zx=0 nx=0 zy=1 ny=1 f=0 no=1 out=   -10 zr=0 ng=1
+ 140ns x=     9 y=    15 zx=0 nx=0 zy=1 ny=1 f=1 no=0 out=     8 zr=0 ng=0
+ 150ns x=     9 y=    15 zx=0 nx=0 zy=1 ny=1 f=1 no=1 out=    -9 zr=0 ng=1
+ 160ns x=     9 y=    15 zx=0 nx=1 zy=0 ny=0 f=0 no=0 out=     6 zr=0 ng=0
+ 170ns x=     9 y=    15 zx=0 nx=1 zy=0 ny=0 f=0 no=1 out=    -7 zr=0 ng=1
+ 180ns x=     9 y=    15 zx=0 nx=1 zy=0 ny=0 f=1 no=0 out=     5 zr=0 ng=0
+ 190ns x=     9 y=    15 zx=0 nx=1 zy=0 ny=0 f=1 no=1 out=    -6 zr=0 ng=1
+ 200ns x=     9 y=    15 zx=0 nx=1 zy=0 ny=1 f=0 no=0 out=   -16 zr=0 ng=1
+ 210ns x=     9 y=    15 zx=0 nx=1 zy=0 ny=1 f=0 no=1 out=    15 zr=0 ng=0
+ 220ns x=     9 y=    15 zx=0 nx=1 zy=0 ny=1 f=1 no=0 out=   -26 zr=0 ng=1
+ 230ns x=     9 y=    15 zx=0 nx=1 zy=0 ny=1 f=1 no=1 out=    25 zr=0 ng=0
+ 240ns x=     9 y=    15 zx=0 nx=1 zy=1 ny=0 f=0 no=0 out=     0 zr=1 ng=0
+ 250ns x=     9 y=    15 zx=0 nx=1 zy=1 ny=0 f=0 no=1 out=    -1 zr=0 ng=1
+ 260ns x=     9 y=    15 zx=0 nx=1 zy=1 ny=0 f=1 no=0 out=   -10 zr=0 ng=1
+ 270ns x=     9 y=    15 zx=0 nx=1 zy=1 ny=0 f=1 no=1 out=     9 zr=0 ng=0
+ 280ns x=     9 y=    15 zx=0 nx=1 zy=1 ny=1 f=0 no=0 out=   -10 zr=0 ng=1
+ 290ns x=     9 y=    15 zx=0 nx=1 zy=1 ny=1 f=0 no=1 out=     9 zr=0 ng=0
+ 300ns x=     9 y=    15 zx=0 nx=1 zy=1 ny=1 f=1 no=0 out=   -11 zr=0 ng=1
+ 310ns x=     9 y=    15 zx=0 nx=1 zy=1 ny=1 f=1 no=1 out=    10 zr=0 ng=0
+ 320ns x=     9 y=    15 zx=1 nx=0 zy=0 ny=0 f=0 no=0 out=     0 zr=1 ng=0
+ 330ns x=     9 y=    15 zx=1 nx=0 zy=0 ny=0 f=0 no=1 out=    -1 zr=0 ng=1
+ 340ns x=     9 y=    15 zx=1 nx=0 zy=0 ny=0 f=1 no=0 out=    15 zr=0 ng=0
+ 350ns x=     9 y=    15 zx=1 nx=0 zy=0 ny=0 f=1 no=1 out=   -16 zr=0 ng=1
+ 360ns x=     9 y=    15 zx=1 nx=0 zy=0 ny=1 f=0 no=0 out=     0 zr=1 ng=0
+ 370ns x=     9 y=    15 zx=1 nx=0 zy=0 ny=1 f=0 no=1 out=    -1 zr=0 ng=1
+ 380ns x=     9 y=    15 zx=1 nx=0 zy=0 ny=1 f=1 no=0 out=   -16 zr=0 ng=1
+ 390ns x=     9 y=    15 zx=1 nx=0 zy=0 ny=1 f=1 no=1 out=    15 zr=0 ng=0
+ 400ns x=     9 y=    15 zx=1 nx=0 zy=1 ny=0 f=0 no=0 out=     0 zr=1 ng=0
+ 410ns x=     9 y=    15 zx=1 nx=0 zy=1 ny=0 f=0 no=1 out=    -1 zr=0 ng=1
+ 420ns x=     9 y=    15 zx=1 nx=0 zy=1 ny=0 f=1 no=0 out=     0 zr=1 ng=0
+ 430ns x=     9 y=    15 zx=1 nx=0 zy=1 ny=0 f=1 no=1 out=    -1 zr=0 ng=1
+ 440ns x=     9 y=    15 zx=1 nx=0 zy=1 ny=1 f=0 no=0 out=     0 zr=1 ng=0
+ 450ns x=     9 y=    15 zx=1 nx=0 zy=1 ny=1 f=0 no=1 out=    -1 zr=0 ng=1
+ 460ns x=     9 y=    15 zx=1 nx=0 zy=1 ny=1 f=1 no=0 out=    -1 zr=0 ng=1
+ 470ns x=     9 y=    15 zx=1 nx=0 zy=1 ny=1 f=1 no=1 out=     0 zr=1 ng=0
+ 480ns x=     9 y=    15 zx=1 nx=1 zy=0 ny=0 f=0 no=0 out=    15 zr=0 ng=0
+ 490ns x=     9 y=    15 zx=1 nx=1 zy=0 ny=0 f=0 no=1 out=   -16 zr=0 ng=1
+ 500ns x=     9 y=    15 zx=1 nx=1 zy=0 ny=0 f=1 no=0 out=    14 zr=0 ng=0
+ 510ns x=     9 y=    15 zx=1 nx=1 zy=0 ny=0 f=1 no=1 out=   -15 zr=0 ng=1
+ 520ns x=     9 y=    15 zx=1 nx=1 zy=0 ny=1 f=0 no=0 out=   -16 zr=0 ng=1
+ 530ns x=     9 y=    15 zx=1 nx=1 zy=0 ny=1 f=0 no=1 out=    15 zr=0 ng=0
+ 540ns x=     9 y=    15 zx=1 nx=1 zy=0 ny=1 f=1 no=0 out=   -17 zr=0 ng=1
+ 550ns x=     9 y=    15 zx=1 nx=1 zy=0 ny=1 f=1 no=1 out=    16 zr=0 ng=0
+ 560ns x=     9 y=    15 zx=1 nx=1 zy=1 ny=0 f=0 no=0 out=     0 zr=1 ng=0
+ 570ns x=     9 y=    15 zx=1 nx=1 zy=1 ny=0 f=0 no=1 out=    -1 zr=0 ng=1
+ 580ns x=     9 y=    15 zx=1 nx=1 zy=1 ny=0 f=1 no=0 out=    -1 zr=0 ng=1
+ 590ns x=     9 y=    15 zx=1 nx=1 zy=1 ny=0 f=1 no=1 out=     0 zr=1 ng=0
+ 600ns x=     9 y=    15 zx=1 nx=1 zy=1 ny=1 f=0 no=0 out=    -1 zr=0 ng=1
+ 610ns x=     9 y=    15 zx=1 nx=1 zy=1 ny=1 f=0 no=1 out=     0 zr=1 ng=0
+ 620ns x=     9 y=    15 zx=1 nx=1 zy=1 ny=1 f=1 no=0 out=    -2 zr=0 ng=1
+ 630ns x=     9 y=    15 zx=1 nx=1 zy=1 ny=1 f=1 no=1 out=     1 zr=0 ng=0
+ 640ns x=     9 y=    15 zx=0 nx=0 zy=0 ny=0 f=0 no=0 out=     9 zr=0 ng=0
+
+```
+
+### 結語
+
+算術邏輯單元的原理請參考下列文件：
+
+* [少年科技人雜誌 / 2015年6月號 / Nand2Tetris 第二週 -- 布林算術](http://ccc.nqu.edu.tw/db/ymag201506/focus4.html)
+
+

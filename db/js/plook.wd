@@ -1,0 +1,15 @@
+# 通訊錄查詢
+
+請設計一個通訊錄查詢程式 plook.js 可以用來查詢通訊錄，舉例而言：
+
+$ node plook 陳鍾誠
+
+姓名： 陳鍾誠
+年齡： 46
+電話： 082313534
+email : ccckmit@gmail.com
+
+ 
+$ node plook 張曉芳
+
+查不到！

@@ -1,0 +1,56 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="/gospa.js"></script>
+<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[JavaScript 前端技術]](jsb:home) </title>
+
+<p><a href="/db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="/db/book/home.html"" class="innerLink">教科書</a>  / <a href="/db/jsb/home.html"" class="innerLink">JavaScript 前端技術</a>  </p>
+
+<h1 id="google">Google 地圖</h1>
+
+<ul>
+<li>參考： <a href="https://developers.google.com/maps/documentation/javascript/examples/map-simple">https://developers.google.com/maps/documentation/javascript/examples/map-simple</a></li>
+</ul>
+
+<p>檔案： <a href="http://ccc.nqu.edu.tw/db/jsb/code/googlemap1.html">googlemap1.html</a> </p>
+
+<pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Simple Map&lt;/title&gt;
+    &lt;meta name="viewport" content="initial-scale=1.0"&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;style&gt;
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        height: 100%;
+      }
+    &lt;/style&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="map"&gt;&lt;/div&gt;
+    &lt;script&gt;
+
+var map;
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: 121.564099, lng: 25.033408},
+    zoom: 8
+  });
+}
+
+    &lt;/script&gt;
+    &lt;script src="https://maps.googleapis.com/maps/api/js?callback=initMap"
+        async defer&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+</body>
+</html>

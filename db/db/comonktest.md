@@ -1,0 +1,43 @@
+# comonktest -- 測試 co-monk 的用法
+
+```javascript
+// 參考： https://github.com/tj/co-monk
+var co = require('co');
+var monk = require('monk');
+var wrap = require('co-monk');
+var db = monk('localhost/examdb');
+var Q = wrap(db.get('Q'));
+
+co(function* () {
+	yield Q.remove({});
+	
+	var docs = 
+	[{ _id:"he", type:"word", q:"he=他"}, 
+	 { _id:"she", type:"word", q:"she=她"}, 
+	 { _id:"it", type:"word", q:"it=它"} 
+	];
+	 
+	yield Q.insert(docs);
+	
+//	var she = yield Q.finOne({ _id:"she"});
+//	console.log("she=%j", she);
+	
+	var objs = yield Q.find({});
+	console.log("objs=%j", objs);
+	
+	db.close(); 
+}).then(function (value) {
+//  console.log(value);
+}, function (err) {
+  console.error(err.stack);
+});
+```
+
+執行結果
+
+```
+nqu-192-168-61-142:KoaExam mac020$ iojs comonktest.js 
+[Error: Module did not self-register.]
+js-bson: Failed to load c++ bson extension, using pure JS version
+objs=[{"_id":"he","type":"word","q":"he=他"},{"_id":"she","type":"word","q":"she=她"},{"_id":"it","type":"word","q":"it=它"}]
+```

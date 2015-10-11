@@ -1,0 +1,66 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="/gospa.js"></script>
+<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[R 軟體]](r:home) </title>
+
+<p><a href="/db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="/db/book/home.html"" class="innerLink">教科書</a>  / <a href="/db/r/home.html"" class="innerLink">R 軟體</a>  </p>
+
+<h1 id="">條件語句</h1>
+
+<h2 id="">範例：及格與否</h2>
+
+<p>程式：</p>
+
+<pre><code class="R">x=61
+
+if (x&lt;60) pass=F else pass=T
+
+pass
+</code></pre>
+
+<p>執行結果：</p>
+
+<pre><code class="r">&gt; x=61
+&gt; 
+&gt; if (x&lt;60) pass=F else pass=T
+&gt; 
+&gt; pass
+[1] TRUE
+</code></pre>
+
+<h2 id="">範例：等第</h2>
+
+<pre><code class="r">&gt; x=61
+&gt; 
+&gt; if (x&lt;60) pass=F else pass=T
+&gt; 
+&gt; pass
+[1] TRUE
+</code></pre>
+
+<p>執行結果：</p>
+
+<pre><code class="r">&gt; x=71
+&gt; 
+&gt; if (x&gt;90) {
++   degree = 'A+'
++ } else if (x&gt;80) {
++   degree = 'A'
++ } else if (x&gt;70) {
++   degree = 'B'
++ } else if (x&gt;60) {
++   degree = 'C'
++ } else {
++   degree = 'D'
++ }
+&gt; 
+&gt; degree
+[1] "B"
+&gt; 
+</code></pre>
+
+</body>
+</html>

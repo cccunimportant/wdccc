@@ -1,0 +1,55 @@
+# mongonote -- 測試 mongodb 的用法
+
+程式： mongoNoteTest.js
+
+```
+// 參考： https://github.com/tj/co-monk
+var co = require('co');
+var monk = require('monk');
+var wrap = require('co-monk');
+var db = monk('localhost/test');
+var notes = wrap(db.get('notes'));
+
+co(function* () {
+    yield notes.remove({}); // 清空 notes collecton
+
+    var docs = [
+	 { title:"title1", body:"body1"}, 
+	 { title:"title2", body:"body2"}, 
+	 { title:"title3", body:"body3"} 
+    ];
+
+    yield notes.insert(docs); // 新增三筆記事
+
+    var objs = yield notes.find({}); // 查出所有記事
+    console.log("objs=%j", objs);    // 印出所有記事
+
+    var objs = yield notes.update({title:"title2"}, {title:"title2 new", body:"body 2 new"}); // 修改記事
+
+    yield notes.remove({title:"title3"}); // 移除記事
+	
+    var objs = yield notes.find({}); // 再查出所有記事
+    console.log("objs=%j", objs);    // 再印出所有記事
+
+    db.close(); 
+}).then(function (value) {
+//  console.log(value);
+}, function (err) {
+  console.error(err.stack);
+});
+```
+
+## 執行結果
+
+先啟動 mongod (可加 --dbpath 參數設定資料庫路徑，例如： mongod --dbpath /db/mongodb），安裝好 co, monk, co-monk 套件後，執行時得到下列結果。
+
+```
+D:\git\mongodb>iojs notetest
+{ [Error: Cannot find module '../build/Release/bson'] code: 'MODULE_NOT_FOUND' }
+
+js-bson: Failed to load c++ bson extension, using pure JS version
+objs=[{"_id":"554aa42df3c1bc9410e2fcd4","title":"title1","body":"body1"},{"_id":"554aa42df3c1bc9410e2fcd5","title":"title2","body":"body2"},{"_id":"554aa42df3c1
+bc9410e2fcd6","title":"title3","body":"body3"}]
+objs=[{"_id":"554aa42df3c1bc9410e2fcd4","title":"title1","body":"body1"},{"_id":"554aa42df3c1bc9410e2fcd5","title":"title2 new","body":"body 2 new"}]
+
+```

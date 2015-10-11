@@ -1,0 +1,32 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="/gospa.js"></script>
+<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[JavaScript 語言]](js:home) </title>
+
+<p><a href="/db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="/db/book/home.html"" class="innerLink">教科書</a>  / <a href="/db/js/home.html"" class="innerLink">JavaScript 語言</a>  </p>
+
+<h1 id="">習題：中翻英系統</h1>
+
+<p>這題和 <a href="/db/js/mt.html"" class="innerLink">英翻中系統</a> 有個差別，因為中文的詞彙間沒有空白，因此要查詢詞彙需要一些技巧。</p>
+
+<p>由於中文詞彙通常在四個字以下，所以可以嘗試從 4 字，3 字，2 字，1 字 這樣一直查下來，查到就進行翻譯動作。</p>
+
+<p>這種方法隱含了長詞優先規則。</p>
+
+<p>用法範例：</p>
+
+<p>$ node c2e.js 一隻狗追一隻貓</p>
+
+<p>a dog chase a cat</p>
+
+<p>解答 1： <a href="db/js/code/c2e.js" class="innerLink">c2e.js</a></p>
+
+<p>上面版本會列出所有詞的翻譯，但有可能重疊，所以我又改成了下列版本:</p>
+
+<p>解答 2： <a href="db/js/code/c2e2.js" class="innerLink">c2e2.js</a></p>
+
+</body>
+</html>

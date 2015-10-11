@@ -1,0 +1,137 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="/gospa.js"></script>
+<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[機率統計]](st:home) </title>
+
+<p><a href="/db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="/db/book/home.html"" class="innerLink">教科書</a>  / <a href="/db/st/home.html"" class="innerLink">機率統計</a>  </p>
+
+<h2 id="binomialdistribution">二項分布 (Binomial distribution)</h2>
+
+<h3 id="">伯努力試驗</h3>
+
+<p>伯努利試驗(Bernoulli trial) 一種只有兩種可能結果的隨機試驗，可以用下列機率分布描述：</p>
+
+<p>$Pr[X=1] = p \\ Pr[X=0] = 1-p$</p>
+
+<p>換句話說、伯努力試驗是一種 YES or NO (1 or 0) 的試驗。舉例而言，像是「丟銅版、生男生女、
+一地區某天最高溫是否超過 30 度」等等，都可以用伯努力實驗描述。</p>
+
+<h3 id="">二項分布的意義</h3>
+
+<p>如果我們進行 n 次的伯努力試驗，而且這些試驗之間是獨立的，那麼我們就可以用二項分布來描述
+n 次實驗的可能機率分布。</p>
+
+<h3 id="">二項分布公式</h3>
+
+<p>分布公式：$f(x) =  {n \choose x} p^x (1-p)^{n-x}$</p>
+
+<p>意義：dbinom(x; n, p)：在 n 次柏努力試驗中有 x 次成功的機率 (已知單次試驗成功機率為 p)。</p>
+
+<p>R 的公式：dbinom(x; n, p) = p(x) = choose(n,x) p^x (1-p)^(n-x)</p>
+
+<ul>
+<li>R 函數：binom(size=n:樣本數, prob=p:成功機率)</li>
+<li><a href="http://stat.ethz.ch/R-manual/R-patched/library/stats/html/Binomial.html">http://stat.ethz.ch/R-manual/R-patched/library/stats/html/Binomial.html</a></li>
+</ul>
+
+<p>二項定理： $(a+b)^n = \sum^{n}_{k=0} {n \choose k} a^k b^{n-k}$</p>
+
+<p>特性</p>
+
+<ol>
+<li>$E(X) = \mu = np$</li>
+<li>$Var(X) = \sigma^2 = np (1-p) = npq$</li>
+</ol>
+
+<p>動差生成函數： $m_x(t) = ((1-p)+pe^t)^n = (q+pe^t)^n$</p>
+
+<h3 id="">習題</h3>
+
+<ol>
+<li>請問丟 10 個公平的銅板，有三個正面的機會是多少？</li>
+<li>請問丟 n 個公平的銅板，正面次數 &lt;= k 的機率是多少？</li>
+<li>請問丟 10 個公平的銅板，得到正面次數的期望值為何？</li>
+</ol>
+
+<h3 id="r">R 程式範例：伯努力試驗</h3>
+
+<pre><code class="R">&gt; y &lt;- rbinom(50, 25, .4)
+&gt; m1 &lt;- mean(y)
+&gt; m2 &lt;- sum(y) / 25
+&gt; y
+ [1] 12  9  9  9 12 11 10 11  5  7  8  7 16  6 12 13  9 12  9 13  7 12 15  8
+[25]  9  7 10  4 10 10  9 10 13  8 10 14  8 11 11 10 10  9  7 13  5  5 11 13
+[49]  9  8
+&gt; m1
+[1] 9.72
+&gt; m2
+[1] 19.44
+&gt; m3 &lt;- sum ( (y-m1)^2 ) / 50
+&gt; m3
+[1] 6.8816
+&gt; 
+</code></pre>
+
+<p>說明： y 中的每個數字，代表模擬投擲 25 次白努力試驗後，成功的次數有幾次。因此  rbinom(50, 25, .4) 總共進行了 50*25 次白努力試驗。</p>
+
+<h3 id="r">R 程式範例：二項分布曲線圖</h3>
+
+<pre><code class="R">&gt; n=10; p=0.3; k=seq(0,n)
+&gt; plot(k, dbinom(k,n,p), type='h', main='dbinom(0:20, n=10, p=0.3)', xlab='k')
+&gt; 
+</code></pre>
+
+<div class="figure"><img src="db/st/dbinomPlot.jpg"/><p class="caption">二項分布的圖形</p></div>
+
+<h3 id="r">R 程式範例：(定理) 常態分配可用來逼近二項分布</h3>
+
+<p>假如 n 夠大的話，通常只要 n*min(p, 1-p) > 5 就可以採用下列逼近方式</p>
+
+<p>$binom(n, p) \rightarrow norm(np, np(1-p))$</p>
+
+<p>原始程式：</p>
+
+<pre><code class="R">op=par(mfrow=c(2,2))
+n=3; p=0.3; k=seq(0,n)
+plot(k, dbinom(k,n,p), type='h', main='dbinom(n=3, p=0.3)', xlab='k')
+curve(dnorm(x,n*p,sqrt(n*p*(1-p))), add=T, col='blue')
+
+n=5; p=0.3; k=seq(0,n)
+plot(k, dbinom(k,n,p), type='h', main='dbinom(n=5, p=0.3)', xlab='k')
+curve(dnorm(x,n*p,sqrt(n*p*(1-p))), add=T, col='blue')
+
+n=10; p=0.3; k=seq(0,n)
+plot(k, dbinom(k,n,p), type='h', main='dbinom(n=10, p=0.3)', xlab='k')
+curve(dnorm(x,n*p,sqrt(n*p*(1-p))), add=T, col='blue')
+
+n=100; p=0.3; k=seq(0,n)
+plot(k, dbinom(k,n,p), type='h', main='dbinom(n=100, p=0.3)', xlab='k')
+curve(dnorm(x,n*p,sqrt(n*p*(1-p))), add=T, col='blue')
+</code></pre>
+
+<p>輸出圖形：</p>
+
+<div class="figure"><img src="db/st/dbinomPlot4.jpg"/><p class="caption"></p></div>
+
+<h3 id="r">R 程式範例：二項分布統計圖</h3>
+
+<pre><code class="R">&gt; x = rbinom(100000, 100, 0.8)
+&gt; hist(x, nclas=max(x)-min(x)+1)
+&gt; 
+</code></pre>
+
+<div class="figure"><img src="db/st/rbinomHist.jpg"/><p class="caption"></p></div>
+
+<h3 id="">參考文獻</h3>
+
+<ul>
+<li>Distributions in the stats package -- <a href="http://stat.ethz.ch/R-manual/R-patched/library/stats/html/Distributions.html">http://stat.ethz.ch/R-manual/R-patched/library/stats/html/Distributions.html</a></li>
+<li>Wikipedia:二項分佈 -- <a href="http://zh.wikipedia.org/wiki/%E4%BA%8C%E9%A0%85%E5%88%86%E4%BD%88">http://zh.wikipedia.org/wiki/%E4%BA%8C%E9%A0%85%E5%88%86%E4%BD%88</a></li>
+<li>Wikipedia:Binomial_distribution -- <a href="http://en.wikipedia.org/wiki/Binomial_distribution">http://en.wikipedia.org/wiki/Binomial_distribution</a></li>
+</ul>
+
+</body>
+</html>

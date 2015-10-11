@@ -1,0 +1,130 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="/gospa.js"></script>
+<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[JavaScript 語言]](js:home) </title>
+
+<p><a href="/db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="/db/book/home.html"" class="innerLink">教科書</a>  / <a href="/db/js/home.html"" class="innerLink">JavaScript 語言</a>  </p>
+
+<h1 id="javascript">JavaScript 的函數與參數</h1>
+
+<h2 id="">取大值</h2>
+
+<p>檔案： <a href="db/js/code/max.js" class="innerLink">max.js</a></p>
+
+<pre><code>function max(a,b) {
+  if (a&gt;b)
+    return a;
+  else
+    return b;
+}
+
+m = max(9,5);
+console.log("max(9,5)="+m);
+</code></pre>
+
+<p>執行結果：</p>
+
+<pre><code>nqu-192-168-61-142:code mac020$ node max.js
+max(9,5)=9
+</code></pre>
+
+<p>在此必須說明一點，函數呼叫時，參數的傳遞與名稱無關，而是與參數的位置有關。</p>
+
+<p>舉例而言，上面我們用 max(9,5) 呼叫 max 函數，此時 a, b 分別會帶入 a=9, b=5 的值進去，因此判斷式會得到 if (9>5) return 9; 於是會傳回 9.</p>
+
+<p>但是如果我們用下列的呼叫方式，那麼就會得到 z=7。</p>
+
+<pre><code>x=3; y=7;
+z = max(x,y); // 此時 x 會代入 a, y 會代入 b 於是得到 max(x,y) = max(3,7) = 7
+</code></pre>
+
+<p>假如呼叫時有 a, b 等變數，也不會因為名稱相同而代入，而是按照位置填入，舉例而言，在以下程式中，</p>
+
+<pre><code>a=8; b=2;
+c = max(b,a); // 此時 b=2 會代入參數 a, 而 a=8 會代入參數 b 於是得到 max(b,a) = max(2,8) = 8
+</code></pre>
+
+<p>總而言之，函數是根據呼叫時的位置代入的，而非根據名字。</p>
+
+<h2 id="">計算總和</h2>
+
+<p>檔案： <a href="db/js/code/fsum.js" class="innerLink">fsum.js</a></p>
+
+<pre><code>function sum(n) {
+  s=0;
+  for (i=1; i&lt;=n; i++) {
+    s = s+i;
+  }
+  return s;
+}
+
+sum10 = sum(10);
+console.log("1+...+10="+sum10);
+</code></pre>
+
+<p>執行結果：</p>
+
+<pre><code>nqu-192-168-61-142:code mac020$ node max.js
+max(9,5)=9
+</code></pre>
+
+<h2 id="">質數測試</h2>
+
+<p>檔案： <a href="db/js/code/prime.js" class="innerLink">prime.js</a></p>
+
+<pre><code>function isPrime(n) {
+  for (var i=2; i&lt;n; i++) {
+    if (n%i === 0)
+      return false;
+  }
+  return true;
+}
+
+console.log("isPrime(33)="+isPrime(33));
+console.log("isPrime(17)="+isPrime(17));
+
+for (var p=1; p&lt;=100; p++) {
+  if (isPrime(p))
+    console.log("isPrime("+p+")");
+}
+</code></pre>
+
+<p>執行結果</p>
+
+<pre><code>nqu-192-168-61-142:code mac020$ node prime.js
+isPrime(33)=false
+isPrime(17)=true
+isPrime(1)
+isPrime(2)
+isPrime(3)
+isPrime(5)
+isPrime(7)
+isPrime(11)
+isPrime(13)
+isPrime(17)
+isPrime(19)
+isPrime(23)
+isPrime(29)
+isPrime(31)
+isPrime(37)
+isPrime(41)
+isPrime(43)
+isPrime(47)
+isPrime(53)
+isPrime(59)
+isPrime(61)
+isPrime(67)
+isPrime(71)
+isPrime(73)
+isPrime(79)
+isPrime(83)
+isPrime(89)
+isPrime(97)
+nqu-192-168-61-142:code mac020$ 
+</code></pre>
+
+</body>
+</html>

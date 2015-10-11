@@ -1,0 +1,78 @@
+## 閉包 (Closure)
+
+對於很多 C/C++、Java、C#、VB 等語言的「程式人」而言，「閉包」是個很奇特而難以理解的概念，但對於 JavaScript、Lua、Python、Ruby 等動態語言來說，「閉包」卻是個很自然的用法，一點都不神秘。
+
+其實、是「閉包」 (Closure) 這個詞給人的感覺太深奧了，我們不需要迷惑於這個名詞的神秘感，請讓我們先來看一個範例。
+
+檔案： closure.js
+
+```javascript
+function sub(a,b) {         
+  return a-b;
+}
+
+function sub5(a) {
+  return sub(a, 5);
+}
+
+function fsub5(a) {
+  return function() {
+    return sub(a, 5);
+  };
+}
+
+console.log("sub(8,5)="+sub(8, 5));
+console.log("sub5(8)="+sub5(8));
+console.log("fsub5(8)="+fsub5(8));
+console.log("fsub5(sub,8)()="+fsub5(8)());
+```
+
+執行結果：
+
+```
+D:\Dropbox\Public\web\js\code>node closure
+sub(8,5)=3
+sub5(8)=3
+fsub5(8)=function () {
+    return sub(a, 5);
+  }
+fsub5(sub,8)()=3
+```
+
+在上述範例中，我們看到 sub(a,b) 是個很正常的函數，當我們呼叫 sub(8,5) 時會傳回 3。
+
+如果我們運用 sub(a,b) 定義一個傳回 sub(a,5) 的函數為 sub5(a)，那麼 sub5(8) 同樣也會傳回 3。
+
+上述程是最後的 fsub5 函數，則不像前面的 sub5 一樣傳回一個值，而是傳回一個函數，這個函數的內容如下：
+
+```javascript
+  return function() {
+    return sub(a, 5);
+  }
+```
+
+這下問題就來了，fsub5 所傳回的是一個函數，而這個函數裏的 a 到底是什麼東西呢？
+
+這時，請讓我們把眼光放大一點點：
+
+```javascript
+function fsub5(a) {
+  return function() {
+    return sub(a, 5);
+  };
+}
+```
+
+您會發現，原來所傳回來的那個函數裏的 a ，應該就是 fsub5(a) 的參數 a，這種「把外層變數一起包進來」的機制，就稱為「閉包」。
+
+換句話說、只要直接在函數裏引用外層的變數，然後當我們將「函數」封閉起來傳回時，該函數仍然可以正常使用，這就是閉包的概念了。
+
+## 結語
+
+JavaScript 當中的函數，可以被塞進變數裏，然後再將變數當作函數來呼叫。也可以放在參數裏，拿來傳遞給另一個函數使用，這種方式有點像 C 語言當中的函數指標，只是感覺更精簡，更有彈性而已。
+
+而那個感覺有點神祕的「閉包」觀念，也只不過是「在傳回一整個函數時、順便把外層的變數給包進來而已」，並不真的那麼神祕啊！
+
+
+
+

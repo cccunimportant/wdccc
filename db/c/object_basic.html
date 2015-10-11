@@ -1,0 +1,79 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="/gospa.js"></script>
+<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[C 語言]](c:home) </title>
+
+<p><a href="/db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="/db/book/home.html"" class="innerLink">教科書</a>  / <a href="/db/c/home.html"" class="innerLink">C 語言</a>  </p>
+
+<h2 id="">物件導向的基本概念 -- 封裝，繼承，多型</h2>
+
+<p>C 語言雖然不是一種物件導向的語言，但是由於具有函數指標 (function pointer) 與結構 (struct)，因此可以讓我們模擬出類似物件導向的語法。在本章中，我們將說明如何用 C 語言設計物件導向的程式。</p>
+
+<p>物件導向語言大致上具有三個主要的特徵 -- 「封裝、繼承與多型」，以下是這三種特徵的基本描述與範例。</p>
+
+<p>封裝：將資料與函數放在一種稱為物件的結構中。</p>
+
+<p>繼承：子物件可以繼承父物件的所有欄位與屬性，並且可以新增欄位或修改函數。</p>
+
+<p>多型：多種不同的子物件繼承同一種上層物件時，我們可以用上層物件容納之，在呼叫時仍然會根據真實物件型態呼叫對應的子物件函數。</p>
+
+<h3 id="">物件導向的三種基本特徵</h3>
+
+<p>封裝：</p>
+
+<pre><code class="java">class Shape {
+  double area() { return 0.0; }
+}
+</code></pre>
+
+<p>繼承：</p>
+
+<pre><code class="java">class Circle extends Shape {
+  public double r;
+  Circle(double pr) { r = pr; }
+  double area() { return 3.14*r*r; }
+}
+</code></pre>
+
+<p>多型：</p>
+
+<pre><code class="java">    Shape s[] = { new Shape(), new Circle(3.0) };
+    for (int i=0; i&lt;s.length; i++)
+      System.out.println("area()="+s[i].area());
+</code></pre>
+
+<h3 id="">完整程式範例</h3>
+
+<pre><code class="java">class Shape {
+  double area() { return 0.0; }
+
+  public static void main(String[] argv) {
+    Shape s[] = { new Shape(), new Circle(3.0) };
+    for (int i=0; i&lt;s.length; i++)
+      System.out.println("area()="+s[i].area());
+  }
+}
+
+class Circle extends Shape {
+  public double r;
+  Circle(double pr) { r = pr; }
+  double area() { return 3.14*r*r; }
+}
+</code></pre>
+
+<h3 id="">執行結果</h3>
+
+<pre><code>D:\cp&gt;javac Shape.java
+
+D:\cp&gt;java Shape
+area()=0.0
+area()=28.259999999999998
+</code></pre>
+
+<p>在本文中，我們介紹了如何實作封裝、繼承、多型等三種物件導向的基本特性，在本章的後續小節中，我們將同樣以 Shape 這個範例，說明如何用 C 語言實作出這些物件導向功能。</p>
+
+</body>
+</html>

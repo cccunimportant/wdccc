@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="client-nojs">
+<head>
+<meta charset="UTF-8" />
+<title>File:4-bit ripple carry adder.svg - Wikipedia, the free encyclopedia</title>
+<meta name="generator" content="MediaWiki 1.26wmf5" />
+<link rel="apple-touch-icon" href="/static/apple-touch/wikipedia.png" />
+<link rel="shortcut icon" href="/static/favicon/wikipedia.ico" />
+<link rel="search" type="application/opensearchdescription+xml" href="/w/opensearch_desc.php" title="Wikipedia (en)" />
+<link rel="EditURI" type="application/rsd+xml" href="//en.wikipedia.org/w/api.php?action=rsd" />
+<link rel="alternate" hreflang="x-default" href="/wiki/File:4-bit_ripple_carry_adder.svg" />
+<link rel="copyright" href="//creativecommons.org/licenses/by-sa/3.0/" />
+<link rel="alternate" type="application/atom+xml" title="Wikipedia Atom feed" href="/w/index.php?title=Special:RecentChanges&amp;feed=atom" />
+<link rel="canonical" href="http://commons.wikimedia.org/wiki/File:4-bit_ripple_carry_adder.svg" />
+<link rel="stylesheet" href="//en.wikipedia.org/w/load.php?debug=false&amp;lang=en&amp;modules=ext.gadget.DRN-wizard%2CReferenceTooltips%2Ccharinsert%2Cfeatured-articles-links%2CrefToolbar%2Cswitcher%2Cteahouse%7Cext.uls.nojs%7Cext.visualEditor.viewPageTarget.noscript%7Cext.wikihiero%2CwikimediaBadges%7Cmediawiki.legacy.commonPrint%2Cshared%7Cmediawiki.sectionAnchor%7Cmediawiki.skinning.interface%7Cmediawiki.ui.button%7Cskins.vector.styles&amp;only=styles&amp;skin=vector&amp;*" />
+<link rel="stylesheet" href="//commons.wikimedia.org/w/index.php?title=MediaWiki:Filepage.css&amp;action=raw&amp;maxage=2678400&amp;usemsgcache=yes&amp;ctype=text%2Fcss&amp;smaxage=2678400" /><meta name="ResourceLoaderDynamicStyles" content="" />
+<link rel="stylesheet" href="//en.wikipedia.org/w/load.php?debug=false&amp;lang=en&amp;modules=site&amp;only=styles&amp;skin=vector&amp;*" />
+<style>a:lang(ar),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}
+/* cache key: enwiki:resourceloader:filter:minify-css:7:3904d24a08aa08f6a68dc338f9be277e */</style>
+<script src="//en.wikipedia.org/w/load.php?debug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=vector&amp;*"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"File","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":6,"wgPageName":"File:4-bit_ripple_carry_adder.svg","wgTitle":"4-bit ripple carry adder.svg","wgCurRevisionId":0,"wgRevisionId":0,"wgArticleId":0,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"File:4-bit_ripple_carry_adder.svg","wgRelevantArticleId":0,"wgIsProbablyEditable":false,"wgRestrictionCreate":[],"wgRestrictionUpload":[],"wgWikiEditorEnabledModules":{"toolbar":true,"dialogs":true,"hidesig":true,"preview":false,"publish":false},"wgMediaViewerOnClick":true,"wgMediaViewerEnabledByDefault":true,"wgVisualEditor":{"pageLanguageCode":"en","pageLanguageDir":"ltr","usePageImages":true,"usePageDescriptions":true},"wikilove-recipient":"","wikilove-anon":0,"wgPoweredByHHVM":true,"wgULSAcceptLanguageList":["zh-tw","zh","en-us","en"],"wgULSCurrentAutonym":"English","wgBetaFeaturesFeatures":[],"wgGatherShouldShowTutorial":true,"wgFlaggedRevsParams":{"tags":{"status":{"levels":1,"quality":2,"pristine":3}}},"wgStableRevisionId":null,"wgCategoryTreePageCategoryOptions":"{\"mode\":0,\"hideprefix\":20,\"showcount\":true,\"namespaces\":false}","wgNoticeProject":"wikipedia"});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function($,jQuery){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens",function($,jQuery){mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\"});});
+/* cache key: enwiki:resourceloader:filter:minify-js:7:a5c52c063dc436c1ca7c9f456936a5e9 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax","ext.centralauth.centralautologin","mmv.head","ext.imageMetrics.head","ext.visualEditor.viewPageTarget.init","ext.uls.init","ext.uls.interface","ext.centralNotice.bannerController","skins.vector.js"]);
+}</script>
+<link rel="dns-prefetch" href="//meta.wikimedia.org" />
+<!--[if lt IE 7]><style type="text/css">body{behavior:url("/w/static/1.26wmf5/skins/Vector/csshover.min.htc")}</style><![endif]-->
+</head>
+<body class="mediawiki ltr sitedir-ltr ns-6 ns-subject page-File_4-bit_ripple_carry_adder_svg skin-vector action-view">
+		<div id="mw-page-base" class="noprint"></div>
+		<div id="mw-head-base" class="noprint"></div>
+		<div id="content" class="mw-body" role="main">
+			<a id="top"></a>
+
+							<div id="siteNotice"><!-- CentralNotice --></div>
+						<div class="mw-indicators">
+<div id="mw-indicator-commons-icon" class="mw-indicator"><a href="//commons.wikimedia.org/wiki/File:4-bit_ripple_carry_adder.svg" title="This is a file from the Wikimedia Commons"><img alt="This is a file from the Wikimedia Commons" src="//upload.wikimedia.org/wikipedia/en/thumb/4/4a/Commons-logo.svg/15px-Commons-logo.svg.png" width="15" height="20" srcset="//upload.wikimedia.org/wikipedia/en/thumb/4/4a/Commons-logo.svg/22px-Commons-logo.svg.png 1.5x, //upload.wikimedia.org/wikipedia/en/thumb/4/4a/Commons-logo.svg/30px-Commons-logo.svg.png 2x" data-file-width="1024" data-file-height="1376" /></a></div>
+</div>
+			<h1 id="firstHeading" class="firstHeading" lang="en">File:4-bit ripple carry adder.svg</h1>
+						<div id="bodyContent" class="mw-body-content">
+									<div id="siteSub">From Wikipedia, the free encyclopedia</div>
+								<div id="contentSub"></div>
+												<div id="jump-to-nav" class="mw-jump">
+					Jump to:					<a href="#mw-head">navigation</a>, 					<a href="#p-search">search</a>
+				</div>
+				<div id="mw-content-text"><ul id="filetoc"><li><a href="#file">File</a></li>
+<li><a href="#filehistory">File history</a></li>
+<li><a href="#filelinks">File usage</a></li>
+<li><a href="#globalusage">Global file usage</a></li></ul><div class="fullImageLink" id="file"><a href="//upload.wikimedia.org/wikipedia/commons/5/5d/4-bit_ripple_carry_adder.svg"><img alt="File:4-bit ripple carry adder.svg" src="//upload.wikimedia.org/wikipedia/commons/thumb/5/5d/4-bit_ripple_carry_adder.svg/500px-4-bit_ripple_carry_adder.svg.png" width="500" height="200" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/5/5d/4-bit_ripple_carry_adder.svg/750px-4-bit_ripple_carry_adder.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/5/5d/4-bit_ripple_carry_adder.svg/1000px-4-bit_ripple_carry_adder.svg.png 2x" data-file-width="500" data-file-height="200" /></a><div class="mw-filepage-resolutioninfo">Size of this preview: <a href="//upload.wikimedia.org/wikipedia/commons/thumb/5/5d/4-bit_ripple_carry_adder.svg/500px-4-bit_ripple_carry_adder.svg.png" class="mw-thumbnail-link">500 × 200 pixels</a>. <span class="mw-filepage-other-resolutions">Other resolutions: <a href="//upload.wikimedia.org/wikipedia/commons/thumb/5/5d/4-bit_ripple_carry_adder.svg/320px-4-bit_ripple_carry_adder.svg.png" class="mw-thumbnail-link">320 × 128 pixels</a> | <a href="//upload.wikimedia.org/wikipedia/commons/thumb/5/5d/4-bit_ripple_carry_adder.svg/640px-4-bit_ripple_carry_adder.svg.png" class="mw-thumbnail-link">640 × 256 pixels</a> | <a href="//upload.wikimedia.org/wikipedia/commons/thumb/5/5d/4-bit_ripple_carry_adder.svg/800px-4-bit_ripple_carry_adder.svg.png" class="mw-thumbnail-link">800 × 320 pixels</a> | <a href="//upload.wikimedia.org/wikipedia/commons/thumb/5/5d/4-bit_ripple_carry_adder.svg/1024px-4-bit_ripple_carry_adder.svg.png" class="mw-thumbnail-link">1,024 × 410 pixels</a> | <a href="//upload.wikimedia.org/wikipedia/commons/thumb/5/5d/4-bit_ripple_carry_adder.svg/1280px-4-bit_ripple_carry_adder.svg.png" class="mw-thumbnail-link">1,280 × 512 pixels</a>.</span></div></div>
+<div class="fullMedia"><a href="//upload.wikimedia.org/wikipedia/commons/5/5d/4-bit_ripple_carry_adder.svg" class="internal" title="4-bit ripple carry adder.svg">Original file</a> &#8206;<span class="fileInfo">(SVG file, nominally 500 × 200 pixels, file size: 39 KB)</span>
+</div>
+<div class="sharedUploadNotice">
+<table id="mw-sharedupload" class="plainlinks fmbox fmbox-system" role="presentation"><tr><td class="mbox-image"><a href="/wiki/File:Commons-logo.svg" class="image" title="Wikimedia Commons logo"><img alt="" src="//upload.wikimedia.org/wikipedia/en/thumb/4/4a/Commons-logo.svg/30px-Commons-logo.svg.png" width="30" height="40" class="noviewer" srcset="//upload.wikimedia.org/wikipedia/en/thumb/4/4a/Commons-logo.svg/45px-Commons-logo.svg.png 1.5x, //upload.wikimedia.org/wikipedia/en/thumb/4/4a/Commons-logo.svg/59px-Commons-logo.svg.png 2x" data-file-width="1024" data-file-height="1376" /></a></td><td class="mbox-text" style="text-align: center;">This is a file from the <a href="//commons.wikimedia.org/wiki/Main_Page" class="extiw" title="commons:Main Page">Wikimedia Commons</a>. Information from its <b><a href="//commons.wikimedia.org/wiki/File:4-bit_ripple_carry_adder.svg" class="extiw" title="commons:File:4-bit ripple carry adder.svg">description page there</a></b> is shown below.<br/><span style="font-size: smaller;">Commons is a freely licensed media file repository. <a href="//commons.wikimedia.org/wiki/Commons:Welcome" class="extiw" title="commons:Commons:Welcome">You can help</a>.</span></td></tr></table>
+</div>
+<div id="shared-image-desc"><h2><span class="mw-headline" id="Summary">Summary</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="//commons.wikimedia.org/w/index.php?title=File:4-bit_ripple_carry_adder.svg&amp;action=edit&amp;section=1" title="Edit section: Summary">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<div class="hproduct commons-file-information-table">
+<table class="fileinfotpl-type-information toccolours vevent mw-content-ltr" style="width: 100%; direction: ltr;" cellpadding="4">
+<tr style="vertical-align: top">
+<td id="fileinfotpl_desc" class="fileinfo-paramfield" lang="en">Description<span class="summary fn" style="display:none">4-bit ripple carry adder.svg</span></td>
+<td class="description">
+<div class="description mw-content-ltr en" dir="ltr" lang="en" style=""><span class="language en" title=""><b>English:</b></span> 4-bit ripple carry adder made up of four 1-bit full adders</div>
+</td>
+</tr>
+<tr style="vertical-align: top">
+<td id="fileinfotpl_date" class="fileinfo-paramfield" lang="en">Date</td>
+<td lang="en"><span style="white-space:nowrap"><time class="dtstart" datetime="2006-12-19">19 December 2006</time></span></td>
+</tr>
+<tr style="vertical-align: top">
+<td id="fileinfotpl_src" class="fileinfo-paramfield" lang="en">Source</td>
+<td><span class="int-own-work" lang="en">Own work</span>
+<div class="mw-content-ltr">
+<table cellspacing="0" style="color:#000;background:#DDD;border:1px solid #BBB;margin:.1em;width:;" class="createdwithtemplate layouttemplate">
+<tr>
+<td style="width:1.2em;height:1.2em;padding:.2em;">
+<div class="center">
+<div class="floatnone"><a href="//commons.wikimedia.org/wiki/File:Inkscape_Logo.svg" title="File:Inkscape Logo.svg"><img alt="Inkscape Logo.svg" src="//upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Inkscape_Logo.svg/20px-Inkscape_Logo.svg.png" width="20" height="20" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Inkscape_Logo.svg/30px-Inkscape_Logo.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Inkscape_Logo.svg/40px-Inkscape_Logo.svg.png 2x" data-file-width="128" data-file-height="128" /></a></div>
+</div>
+</td>
+<td style="font-size:.85em;padding:.2em;vertical-align:middle;">This <a href="//en.wikipedia.org/wiki/Vector_images" class="extiw" title="w:Vector images">vector image</a> was created with <a href="//commons.wikimedia.org/wiki/Help:Inkscape" title="Help:Inkscape">Inkscape</a>.</td>
+</tr>
+</table>
+</div>
+</td>
+</tr>
+<tr style="vertical-align: top">
+<td id="fileinfotpl_aut" class="fileinfo-paramfield" lang="en">Author</td>
+<td><a href="//en.wikipedia.org/wiki/User:Cburnett" class="extiw" title="en:User:Cburnett">en:User:Cburnett</a></td>
+</tr>
+<tr style="vertical-align: top">
+<td id="fileinfotpl_perm" class="fileinfo-paramfield" lang="en">Permission<br />
+<small>(<a href="//commons.wikimedia.org/wiki/Commons:Reusing_content_outside_Wikimedia" title="Commons:Reusing content outside Wikimedia">Reusing this file</a>)</small></td>
+<td>
+<p>GFDL</p>
+</td>
+</tr>
+</table>
+</div>
+<h2><span class="mw-headline" id="Licensing">Licensing</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="//commons.wikimedia.org/w/index.php?title=File:4-bit_ripple_carry_adder.svg&amp;action=edit&amp;section=2" title="Edit section: Licensing">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<table cellspacing="8" cellpadding="0" style="clear:both; margin:0.5em auto; background-color:#f0f0f0; border:2px solid #e0e0e0; direction: ltr;" class="licensetpl_wrapper">
+<tr>
+<td>
+<div class="center"><b><span lang="en" class="description en">I, the copyright holder of this work, hereby publish it under the following license:</span></b></div>
+<table cellspacing="8" cellpadding="0" style="width:100%; clear:both; margin:0.5em auto; background-color:#f9f9f9; border:2px solid #e0e0e0; direction: ltr;" lang="en" class="layouttemplate licensetpl">
+<tr>
+<td><a href="//commons.wikimedia.org/wiki/File:Heckert_GNU_white.svg" class="image" title="GNU head"><img alt="GNU head" src="//upload.wikimedia.org/wikipedia/commons/thumb/2/22/Heckert_GNU_white.svg/64px-Heckert_GNU_white.svg.png" width="64" height="63" class="noviewer" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/2/22/Heckert_GNU_white.svg/96px-Heckert_GNU_white.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/2/22/Heckert_GNU_white.svg/128px-Heckert_GNU_white.svg.png 2x" data-file-width="535" data-file-height="523" /></a></td>
+<td>Permission is granted to copy, distribute and/or modify this document under the terms of the <b><a href="//en.wikipedia.org/wiki/en:GNU_Free_Documentation_License" class="extiw" title="w:en:GNU Free Documentation License">GNU Free Documentation License</a></b>, Version 1.2 or any later version published by the <a href="//en.wikipedia.org/wiki/en:Free_Software_Foundation" class="extiw" title="w:en:Free Software Foundation">Free Software Foundation</a>; with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A copy of the license is included in the section entitled <i><a href="//commons.wikimedia.org/wiki/Commons:GNU_Free_Documentation_License,_version_1.2" title="Commons:GNU Free Documentation License, version 1.2">GNU Free Documentation License</a></i>.
+<p><span class="licensetpl_link" style="display:none;">http://www.gnu.org/copyleft/fdl.html</span><span class="licensetpl_short" style="display:none;">GFDL</span><span class="licensetpl_long" style="display:none;">GNU Free Documentation License</span><span class="licensetpl_link_req" style="display:none;">true</span><span class="licensetpl_attr_req" style="display:none;">true</span></p>
+</td>
+</tr>
+</table>
+<table style="width:100%; clear:both; text-align:center; margin:0.5em auto; background-color:#f9f9f9; border:2px solid #e0e0e0; padding: 0; border-spacing: 8px;" class="layouttemplate licensetpl mw-content-ltr" lang="en">
+<tr>
+<td style="width:90px;" rowspan="4"><img alt="w:en:Creative Commons" src="//upload.wikimedia.org/wikipedia/commons/thumb/7/79/CC_some_rights_reserved.svg/90px-CC_some_rights_reserved.svg.png" title="w:en:Creative Commons" width="90" height="36" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/7/79/CC_some_rights_reserved.svg/135px-CC_some_rights_reserved.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/7/79/CC_some_rights_reserved.svg/180px-CC_some_rights_reserved.svg.png 2x" data-file-width="744" data-file-height="300" /><br />
+<img alt="attribution" src="//upload.wikimedia.org/wikipedia/commons/thumb/1/11/Cc-by_new_white.svg/24px-Cc-by_new_white.svg.png" title="attribution" width="24" height="24" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/1/11/Cc-by_new_white.svg/36px-Cc-by_new_white.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/1/11/Cc-by_new_white.svg/48px-Cc-by_new_white.svg.png 2x" data-file-width="64" data-file-height="64" /> <img alt="share alike" src="//upload.wikimedia.org/wikipedia/commons/thumb/2/29/Cc-sa.svg/24px-Cc-sa.svg.png" title="share alike" width="24" height="24" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/2/29/Cc-sa.svg/36px-Cc-sa.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/2/29/Cc-sa.svg/48px-Cc-sa.svg.png 2x" data-file-width="64" data-file-height="64" /></td>
+<td>This file is licensed under the <a href="//en.wikipedia.org/wiki/en:Creative_Commons" class="extiw" title="w:en:Creative Commons">Creative Commons</a> <a rel="nofollow" class="external text" href="//creativecommons.org/licenses/by-sa/3.0/deed.en">Attribution-Share Alike 3.0 Unported</a> license.</td>
+<td style="width:90px;" rowspan="4"></td>
+</tr>
+<tr style="text-align:center;">
+<td></td>
+</tr>
+<tr style="text-align:left;">
+<td>
+<dl>
+<dd>You are free:
+<ul>
+<li><b>to share</b> – to copy, distribute and transmit the work</li>
+<li><b>to remix</b> – to adapt the work</li>
+</ul>
+</dd>
+<dd>Under the following conditions:
+<ul>
+<li><b>attribution</b> – You must attribute the work in the manner specified by the author or licensor (but not in any way that suggests that they endorse you or your use of the work).</li>
+<li><b>share alike</b> – If you alter, transform, or build upon this work, you may distribute the resulting work only under the same or similar license to this one.</li>
+</ul>
+</dd>
+</dl>
+</td>
+</tr>
+<tr style="text-align:center;">
+<td><span style="font-size:90%;">This licensing tag was added to this file as part of the GFDL <a href="//meta.wikimedia.org/wiki/Licensing_update" class="extiw" title="meta:Licensing update">licensing update</a>.</span><span class="licensetpl_link" style="display:none;">http://creativecommons.org/licenses/by-sa/3.0/</span><span class="licensetpl_short" style="display:none;">CC-BY-SA-3.0</span><span class="licensetpl_long" style="display:none;">Creative Commons Attribution-Share Alike 3.0</span>
+<p><span class="licensetpl_link_req" style="display:none;">true</span><span class="licensetpl_attr_req" style="display:none;">true</span></p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+
+<!-- 
+NewPP limit report
+Parsed by mw1253
+CPU time usage: 0.098 seconds
+Real time usage: 0.137 seconds
+Preprocessor visited node count: 1211/1000000
+Preprocessor generated node count: 0/1500000
+Post‐expand include size: 31516/2097152 bytes
+Template argument size: 4321/2097152 bytes
+Highest expansion depth: 15/40
+Expensive parser function count: 2/500
+Lua time usage: 0.020/10.000 seconds
+Lua memory usage: 849 KB/50 MB
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%  113.043      1 - -total
+ 70.83%   80.071      1 - Template:Information
+ 28.79%   32.541      1 - Template:Self
+ 22.27%   25.169      1 - Template:ISOdate
+ 21.51%   24.321      1 - Template:GFDL
+ 21.09%   23.841      1 - Template:Created_with_Inkscape
+ 13.61%   15.386      1 - Template:Autotranslate
+ 13.41%   15.164      1 - Template:License_migration
+  9.05%   10.233      1 - Template:License_migration_complete
+  7.94%    8.981      1 - Template:Created_with/en
+-->
+
+<!-- Saved in parser cache with key commonswiki:pcache:idhash:1477488-1!*!0!!en!4!* and timestamp 20150520080430 and revision id 116127555
+ -->
+</div>
+<h2 id="filehistory">File history</h2>
+<div id="mw-imagepage-section-filehistory">
+<p>Click on a date/time to view the file as it appeared at that time.
+</p>
+<table class="wikitable filehistory">
+<tr><th></th><th>Date/Time</th><th>Thumbnail</th><th>Dimensions</th><th>User</th><th>Comment</th></tr>
+<tr><td>current</td><td class='filehistory-selected' style='white-space: nowrap;'><a href="//upload.wikimedia.org/wikipedia/commons/5/5d/4-bit_ripple_carry_adder.svg">13:54, 3 January 2010</a></td><td><a href="//upload.wikimedia.org/wikipedia/commons/5/5d/4-bit_ripple_carry_adder.svg"><img alt="Thumbnail for version as of 13:54, 3 January 2010" src="//upload.wikimedia.org/wikipedia/commons/thumb/5/5d/4-bit_ripple_carry_adder.svg/120px-4-bit_ripple_carry_adder.svg.png" width="120" height="48" data-file-width="500" data-file-height="200" /></a></td><td>500 × 200 <span style="white-space: nowrap;">(39 KB)</span></td><td>MichaelFrey</td><td dir="ltr">try to fix</td></tr>
+<tr><td></td><td  style='white-space: nowrap;'><a href="//upload.wikimedia.org/wikipedia/commons/archive/5/5d/20100103135422%214-bit_ripple_carry_adder.svg">19:00, 7 January 2009</a></td><td><a href="//upload.wikimedia.org/wikipedia/commons/archive/5/5d/20100103135422%214-bit_ripple_carry_adder.svg"><img alt="Thumbnail for version as of 19:00, 7 January 2009" src="//upload.wikimedia.org/wikipedia/commons/thumb/archive/5/5d/20100103135422%214-bit_ripple_carry_adder.svg/120px-4-bit_ripple_carry_adder.svg.png" width="120" height="48" data-file-width="500" data-file-height="200" /></a></td><td>500 × 200 <span style="white-space: nowrap;">(39 KB)</span></td><td>MichaelFrey</td><td dir="ltr">Reverted to version as of 03:26, 20 December 2006</td></tr>
+<tr><td></td><td  style='white-space: nowrap;'><a href="//upload.wikimedia.org/wikipedia/commons/archive/5/5d/20090107190040%214-bit_ripple_carry_adder.svg">18:59, 7 January 2009</a></td><td><a href="//upload.wikimedia.org/wikipedia/commons/archive/5/5d/20090107190040%214-bit_ripple_carry_adder.svg"><img alt="Thumbnail for version as of 18:59, 7 January 2009" src="//upload.wikimedia.org/wikipedia/commons/thumb/archive/5/5d/20090107190040%214-bit_ripple_carry_adder.svg/120px-4-bit_ripple_carry_adder.svg.png" width="120" height="48" data-file-width="500" data-file-height="200" /></a></td><td>500 × 200 <span style="white-space: nowrap;">(63 KB)</span></td><td>MichaelFrey</td><td dir="ltr">Fill to black</td></tr>
+<tr><td></td><td  style='white-space: nowrap;'><a href="//upload.wikimedia.org/wikipedia/commons/archive/5/5d/20090107185910%214-bit_ripple_carry_adder.svg">18:57, 7 January 2009</a></td><td><a href="//upload.wikimedia.org/wikipedia/commons/archive/5/5d/20090107185910%214-bit_ripple_carry_adder.svg"><img alt="Thumbnail for version as of 18:57, 7 January 2009" src="//upload.wikimedia.org/wikipedia/commons/thumb/archive/5/5d/20090107185910%214-bit_ripple_carry_adder.svg/120px-4-bit_ripple_carry_adder.svg.png" width="120" height="48" data-file-width="500" data-file-height="200" /></a></td><td>500 × 200 <span style="white-space: nowrap;">(62 KB)</span></td><td>MichaelFrey</td><td dir="ltr">objects -&gt; paths</td></tr>
+<tr><td></td><td  style='white-space: nowrap;'><a href="//upload.wikimedia.org/wikipedia/commons/archive/5/5d/20090107185758%214-bit_ripple_carry_adder.svg">18:54, 7 January 2009</a></td><td><a href="//upload.wikimedia.org/wikipedia/commons/archive/5/5d/20090107185758%214-bit_ripple_carry_adder.svg"><img alt="Thumbnail for version as of 18:54, 7 January 2009" src="//upload.wikimedia.org/wikipedia/commons/thumb/archive/5/5d/20090107185758%214-bit_ripple_carry_adder.svg/120px-4-bit_ripple_carry_adder.svg.png" width="120" height="48" data-file-width="500" data-file-height="200" /></a></td><td>500 × 200 <span style="white-space: nowrap;">(62 KB)</span></td><td>MichaelFrey</td><td dir="ltr">objects -&gt; paths</td></tr>
+<tr><td></td><td  style='white-space: nowrap;'><a href="//upload.wikimedia.org/wikipedia/commons/archive/5/5d/20090107185435%214-bit_ripple_carry_adder.svg">03:26, 20 December 2006</a></td><td><a href="//upload.wikimedia.org/wikipedia/commons/archive/5/5d/20090107185435%214-bit_ripple_carry_adder.svg"><img alt="Thumbnail for version as of 03:26, 20 December 2006" src="//upload.wikimedia.org/wikipedia/commons/thumb/archive/5/5d/20090107185435%214-bit_ripple_carry_adder.svg/120px-4-bit_ripple_carry_adder.svg.png" width="120" height="48" data-file-width="500" data-file-height="200" /></a></td><td>500 × 200 <span style="white-space: nowrap;">(39 KB)</span></td><td>Cburnett</td><td dir="ltr">One...last...time</td></tr>
+<tr><td></td><td  style='white-space: nowrap;'><a href="//upload.wikimedia.org/wikipedia/commons/archive/5/5d/20061220032645%214-bit_ripple_carry_adder.svg">03:25, 20 December 2006</a></td><td><a href="//upload.wikimedia.org/wikipedia/commons/archive/5/5d/20061220032645%214-bit_ripple_carry_adder.svg"><img alt="Thumbnail for version as of 03:25, 20 December 2006" src="//upload.wikimedia.org/wikipedia/commons/thumb/archive/5/5d/20061220032645%214-bit_ripple_carry_adder.svg/120px-4-bit_ripple_carry_adder.svg.png" width="120" height="48" data-file-width="500" data-file-height="200" /></a></td><td>500 × 200 <span style="white-space: nowrap;">(38 KB)</span></td><td>Cburnett</td><td dir="ltr">Bah, get all arrows fixed</td></tr>
+<tr><td></td><td  style='white-space: nowrap;'><a href="//upload.wikimedia.org/wikipedia/commons/archive/5/5d/20061220032552%214-bit_ripple_carry_adder.svg">03:24, 20 December 2006</a></td><td><a href="//upload.wikimedia.org/wikipedia/commons/archive/5/5d/20061220032552%214-bit_ripple_carry_adder.svg"><img alt="Thumbnail for version as of 03:24, 20 December 2006" src="//upload.wikimedia.org/wikipedia/commons/thumb/archive/5/5d/20061220032552%214-bit_ripple_carry_adder.svg/120px-4-bit_ripple_carry_adder.svg.png" width="120" height="48" data-file-width="500" data-file-height="200" /></a></td><td>500 × 200 <span style="white-space: nowrap;">(38 KB)</span></td><td>Cburnett</td><td dir="ltr">Fix arrows</td></tr>
+<tr><td></td><td  style='white-space: nowrap;'><a href="//upload.wikimedia.org/wikipedia/commons/archive/5/5d/20061220032433%214-bit_ripple_carry_adder.svg">03:23, 20 December 2006</a></td><td><a href="//upload.wikimedia.org/wikipedia/commons/archive/5/5d/20061220032433%214-bit_ripple_carry_adder.svg"><img alt="Thumbnail for version as of 03:23, 20 December 2006" src="//upload.wikimedia.org/wikipedia/commons/thumb/archive/5/5d/20061220032433%214-bit_ripple_carry_adder.svg/120px-4-bit_ripple_carry_adder.svg.png" width="120" height="48" data-file-width="500" data-file-height="200" /></a></td><td>500 × 200 <span style="white-space: nowrap;">(30 KB)</span></td><td>Cburnett</td><td dir="ltr">{{Information |Description=&#039;&#039;&#039;en:&#039;&#039;&#039; 4-bit ripple carry adder made up of four 1-bit full adders |Source=Own work with Inkscape |Date=<a href="/wiki/December_19" title="December 19">December 19</a>, <a href="/wiki/2006" title="2006">2006</a> |Author=<a href="/wiki/User:Cburnett" title="User:Cburnett">en:User:Cburnett</a> |Permission=GFDL |other_versions= }}</td></tr>
+</table>
+
+</div>
+<h2 id="filelinks">File usage</h2>
+<div id='mw-imagepage-section-linkstoimage'>
+<div class="linkstoimage" id="linkstoimage">The following pages on the English Wikipedia link to this file (pages on other projects are not listed):</div>
+<ul class="mw-imagepage-linkstoimage">
+<li class="mw-imagepage-linkstoimage-ns0"><a href="/wiki/Adder_(electronics)" title="Adder (electronics)">Adder (electronics)</a></li>
+<li class="mw-imagepage-linkstoimage-ns2"><a href="/wiki/User:Cburnett/GFDL_images" title="User:Cburnett/GFDL images">User:Cburnett/GFDL images</a></li>
+</ul>
+</div>
+<h2 id="globalusage">Global file usage</h2>
+<div id="mw-imagepage-section-globalusage"><p>The following other wikis use this file:
+</p><ul>
+<li class='mw-gu-onwiki-en_wikibooks_org'>Usage on en.wikibooks.org
+<ul>	<li><a class="external" href="//en.wikibooks.org/wiki/Microprocessor_Design/Add_and_Subtract_Blocks">Microprocessor Design/Add and Subtract Blocks</a></li>
+	<li><a class="external" href="//en.wikibooks.org/wiki/Microprocessor_Design/Print_Version">Microprocessor Design/Print Version</a></li>
+	<li><a class="external" href="//en.wikibooks.org/wiki/A-level_Computing/AQA/Computer_Components,_The_Stored_Program_Concept_and_the_Internet/Fundamental_Hardware_Elements_of_Computers/Uses_of_gates">A-level Computing/AQA/Computer Components, The Stored Program Concept and the Internet/Fundamental Hardware Elements of Computers/Uses of gates</a></li>
+</ul></li>
+<li class='mw-gu-onwiki-es_wikibooks_org'>Usage on es.wikibooks.org
+<ul>	<li><a class="external" href="//es.wikibooks.org/wiki/Dise%C3%B1o_de_circuitos_digitales_y_tecnolog%C3%ADa_de_computadores/Sumadores">Diseño de circuitos digitales y tecnología de computadores/Sumadores</a></li>
+</ul></li>
+<li class='mw-gu-onwiki-hu_wikipedia_org'>Usage on hu.wikipedia.org
+<ul>	<li><a class="external" href="//hu.wikipedia.org/wiki/%C3%96sszead%C3%B3_(elektronika)">Összeadó (elektronika)</a></li>
+</ul></li>
+<li class='mw-gu-onwiki-id_wikipedia_org'>Usage on id.wikipedia.org
+<ul>	<li><a class="external" href="//id.wikipedia.org/wiki/Penjumlah_biner">Penjumlah biner</a></li>
+</ul></li>
+<li class='mw-gu-onwiki-it_wikipedia_org'>Usage on it.wikipedia.org
+<ul>	<li><a class="external" href="//it.wikipedia.org/wiki/Full-adder">Full-adder</a></li>
+</ul></li>
+<li class='mw-gu-onwiki-it_wikibooks_org'>Usage on it.wikibooks.org
+<ul>	<li><a class="external" href="//it.wikibooks.org/wiki/Reti_logiche/Componenti">Reti logiche/Componenti</a></li>
+</ul></li>
+<li class='mw-gu-onwiki-ko_wikipedia_org'>Usage on ko.wikipedia.org
+<ul>	<li><a class="external" href="//ko.wikipedia.org/wiki/%EA%B0%80%EC%82%B0%EA%B8%B0">가산기</a></li>
+</ul></li>
+<li class='mw-gu-onwiki-sk_wikipedia_org'>Usage on sk.wikipedia.org
+<ul>	<li><a class="external" href="//sk.wikipedia.org/wiki/Bin%C3%A1rna_s%C4%8D%C3%ADta%C4%8Dka">Binárna sčítačka</a></li>
+</ul></li>
+<li class='mw-gu-onwiki-sr_wikipedia_org'>Usage on sr.wikipedia.org
+<ul>	<li><a class="external" href="//sr.wikipedia.org/wiki/%D0%A1%D0%B0%D0%B1%D0%B8%D1%80%D0%B0%D1%87_(%D0%B5%D0%BB%D0%B5%D0%BA%D1%82%D1%80%D0%BE%D0%BD%D0%B8%D0%BA%D0%B0)">Сабирач (електроника)</a></li>
+</ul></li>
+<li class='mw-gu-onwiki-zh_wikipedia_org'>Usage on zh.wikipedia.org
+<ul>	<li><a class="external" href="//zh.wikipedia.org/wiki/%E5%8A%A0%E6%B3%95%E5%99%A8">加法器</a></li>
+</ul></li>
+</ul>
+</div><noscript><img src="//en.wikipedia.org/wiki/Special:CentralAutoLogin/start?type=1x1" alt="" title="" width="1" height="1" style="border: none; position: absolute;" /></noscript></div>									<div class="printfooter">
+						Retrieved from "<a dir="ltr" href="http://en.wikipedia.org/wiki/File:4-bit_ripple_carry_adder.svg">http://en.wikipedia.org/wiki/File:4-bit_ripple_carry_adder.svg</a>"					</div>
+													<div id='catlinks' class='catlinks catlinks-allhidden'></div>												<div class="visualClear"></div>
+							</div>
+		</div>
+		<div id="mw-navigation">
+			<h2>Navigation menu</h2>
+
+			<div id="mw-head">
+									<div id="p-personal" role="navigation" class="" aria-labelledby="p-personal-label">
+						<h3 id="p-personal-label">Personal tools</h3>
+						<ul>
+							<li id="pt-createaccount"><a href="/w/index.php?title=Special:UserLogin&amp;returnto=File%3A4-bit+ripple+carry+adder.svg&amp;type=signup" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="/w/index.php?title=Special:UserLogin&amp;returnto=File%3A4-bit+ripple+carry+adder.svg" title="You're encouraged to log in; however, it's not mandatory. [o]" accesskey="o">Log in</a></li>						</ul>
+					</div>
+									<div id="left-navigation">
+										<div id="p-namespaces" role="navigation" class="vectorTabs" aria-labelledby="p-namespaces-label">
+						<h3 id="p-namespaces-label">Namespaces</h3>
+						<ul>
+															<li  id="ca-nstab-image" class="selected"><span><a href="/wiki/File:4-bit_ripple_carry_adder.svg"  title="View the file page [c]" accesskey="c">File</a></span></li>
+															<li  id="ca-talk" class="new"><span><a href="/w/index.php?title=File_talk:4-bit_ripple_carry_adder.svg&amp;action=edit&amp;redlink=1"  title="Discussion about the content page [t]" accesskey="t">Talk</a></span></li>
+													</ul>
+					</div>
+										<div id="p-variants" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-variants-label">
+												<h3 id="p-variants-label"><span>Variants</span><a href="#"></a></h3>
+
+						<div class="menu">
+							<ul>
+															</ul>
+						</div>
+					</div>
+									</div>
+				<div id="right-navigation">
+										<div id="p-views" role="navigation" class="vectorTabs" aria-labelledby="p-views-label">
+						<h3 id="p-views-label">Views</h3>
+						<ul>
+															<li id="ca-view" class="selected"><span><a href="/wiki/File:4-bit_ripple_carry_adder.svg" >Read</a></span></li>
+															<li id="ca-view-foreign" class="collapsible"><span><a href="//commons.wikimedia.org/wiki/File:4-bit_ripple_carry_adder.svg" >View on Wikimedia Commons</a></span></li>
+													</ul>
+					</div>
+										<div id="p-cactions" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-cactions-label">
+						<h3 id="p-cactions-label"><span>More</span><a href="#"></a></h3>
+
+						<div class="menu">
+							<ul>
+															</ul>
+						</div>
+					</div>
+										<div id="p-search" role="search">
+						<h3>
+							<label for="searchInput">Search</label>
+						</h3>
+
+						<form action="/w/index.php" id="searchform">
+														<div id="simpleSearch">
+															<input type="search" name="search" placeholder="Search" title="Search Wikipedia [f]" accesskey="f" id="searchInput" /><input type="hidden" value="Special:Search" name="title" /><input type="submit" name="fulltext" value="Search" title="Search Wikipedia for this text" id="mw-searchButton" class="searchButton mw-fallbackSearchButton" /><input type="submit" name="go" value="Go" title="Go to a page with this exact name if one exists" id="searchButton" class="searchButton" />								</div>
+						</form>
+					</div>
+									</div>
+			</div>
+			<div id="mw-panel">
+				<div id="p-logo" role="banner"><a class="mw-wiki-logo" href="/wiki/Main_Page"  title="Visit the main page"></a></div>
+						<div class="portal" role="navigation" id='p-navigation' aria-labelledby='p-navigation-label'>
+			<h3 id='p-navigation-label'>Navigation</h3>
+
+			<div class="body">
+									<ul>
+													<li id="n-mainpage-description"><a href="/wiki/Main_Page" title="Visit the main page [z]" accesskey="z">Main page</a></li>
+													<li id="n-contents"><a href="/wiki/Portal:Contents" title="Guides to browsing Wikipedia">Contents</a></li>
+													<li id="n-featuredcontent"><a href="/wiki/Portal:Featured_content" title="Featured content – the best of Wikipedia">Featured content</a></li>
+													<li id="n-currentevents"><a href="/wiki/Portal:Current_events" title="Find background information on current events">Current events</a></li>
+													<li id="n-randompage"><a href="/wiki/Special:Random" title="Load a random article [x]" accesskey="x">Random article</a></li>
+													<li id="n-sitesupport"><a href="https://donate.wikimedia.org/wiki/Special:FundraiserRedirector?utm_source=donate&amp;utm_medium=sidebar&amp;utm_campaign=C13_en.wikipedia.org&amp;uselang=en" title="Support us">Donate to Wikipedia</a></li>
+													<li id="n-shoplink"><a href="//shop.wikimedia.org" title="Visit the Wikimedia Shop">Wikipedia store</a></li>
+											</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id='p-interaction' aria-labelledby='p-interaction-label'>
+			<h3 id='p-interaction-label'>Interaction</h3>
+
+			<div class="body">
+									<ul>
+													<li id="n-help"><a href="/wiki/Help:Contents" title="Guidance on how to use and edit Wikipedia">Help</a></li>
+													<li id="n-aboutsite"><a href="/wiki/Wikipedia:About" title="Find out about Wikipedia">About Wikipedia</a></li>
+													<li id="n-portal"><a href="/wiki/Wikipedia:Community_portal" title="About the project, what you can do, where to find things">Community portal</a></li>
+													<li id="n-recentchanges"><a href="/wiki/Special:RecentChanges" title="A list of recent changes in the wiki [r]" accesskey="r">Recent changes</a></li>
+													<li id="n-contactpage"><a href="//en.wikipedia.org/wiki/Wikipedia:Contact_us">Contact page</a></li>
+											</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id='p-tb' aria-labelledby='p-tb-label'>
+			<h3 id='p-tb-label'>Tools</h3>
+
+			<div class="body">
+									<ul>
+													<li id="t-whatlinkshere"><a href="/wiki/Special:WhatLinksHere/File:4-bit_ripple_carry_adder.svg" title="List of all English Wikipedia pages containing links to this page [j]" accesskey="j">What links here</a></li>
+													<li id="t-upload"><a href="/wiki/Wikipedia:File_Upload_Wizard" title="Upload files [u]" accesskey="u">Upload file</a></li>
+													<li id="t-specialpages"><a href="/wiki/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li>
+													<li id="t-info"><a href="/w/index.php?title=File:4-bit_ripple_carry_adder.svg&amp;action=info" title="More information about this page">Page information</a></li>
+											</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id='p-lang' aria-labelledby='p-lang-label'>
+			<h3 id='p-lang-label'>Languages</h3>
+
+			<div class="body">
+									<ul>
+													<li class="uls-p-lang-dummy"><a href="#"></a></li>
+											</ul>
+							</div>
+		</div>
+				</div>
+		</div>
+		<div id="footer" role="contentinfo">
+							<ul id="footer-places">
+											<li id="footer-places-privacy"><a href="//wikimediafoundation.org/wiki/Privacy_policy" title="wikimedia:Privacy policy">Privacy policy</a></li>
+											<li id="footer-places-about"><a href="/wiki/Wikipedia:About" title="Wikipedia:About">About Wikipedia</a></li>
+											<li id="footer-places-disclaimer"><a href="/wiki/Wikipedia:General_disclaimer" title="Wikipedia:General disclaimer">Disclaimers</a></li>
+											<li id="footer-places-contact"><a href="//en.wikipedia.org/wiki/Wikipedia:Contact_us">Contact Wikipedia</a></li>
+											<li id="footer-places-developers"><a href="https://www.mediawiki.org/wiki/Special:MyLanguage/How_to_contribute">Developers</a></li>
+											<li id="footer-places-mobileview"><a href="//en.m.wikipedia.org/w/index.php?title=File:4-bit_ripple_carry_adder.svg&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li>
+									</ul>
+										<ul id="footer-icons" class="noprint">
+											<li id="footer-copyrightico">
+															<a href="//wikimediafoundation.org/"><img src="/static/images/wikimedia-button.png" srcset="/static/images/wikimedia-button-1.5x.png 1.5x, /static/images/wikimedia-button-2x.png 2x" width="88" height="31" alt="Wikimedia Foundation"/></a>
+													</li>
+											<li id="footer-poweredbyico">
+															<a href="//www.mediawiki.org/"><img src="//en.wikipedia.org/static/1.26wmf5/resources/assets/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" srcset="//en.wikipedia.org/static/1.26wmf5/resources/assets/poweredby_mediawiki_132x47.png 1.5x, //en.wikipedia.org/static/1.26wmf5/resources/assets/poweredby_mediawiki_176x62.png 2x" width="88" height="31" /></a>
+													</li>
+									</ul>
+						<div style="clear:both"></div>
+		</div>
+		<script>if(window.jQuery)jQuery.ready();</script><script>if(window.mw){
+mw.loader.state({"ext.globalCssJs.site":"ready","ext.globalCssJs.user":"ready","site":"loading","user":"ready","user.groups":"ready"});
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.cirrusSearch.loggingSchema","mmv.bootstrap.autostart","ext.imageMetrics.loader","ext.visualEditor.targetLoader","ext.eventLogging.subscriber","ext.wikimediaEvents.statsd","ext.navigationTiming","schema.UniversalLanguageSelector","ext.uls.eventlogger","ext.uls.interlanguage","ext.gadget.teahouse","ext.gadget.ReferenceTooltips","ext.gadget.DRN-wizard","ext.gadget.charinsert","ext.gadget.refToolbar","ext.gadget.switcher","ext.gadget.featured-articles-links","ext.wikigrok.startup"],null,true);
+}</script>
+<script>if(window.mw){
+document.write("\u003Cscript src=\"//en.wikipedia.org/w/load.php?debug=false\u0026amp;lang=en\u0026amp;modules=site\u0026amp;only=scripts\u0026amp;skin=vector\u0026amp;*\"\u003E\u003C/script\u003E");
+}</script>
+<script>if(window.mw){
+mw.config.set({"wgBackendResponseTime":431,"wgHostname":"mw1219"});
+}</script>
+	</body>
+</html>

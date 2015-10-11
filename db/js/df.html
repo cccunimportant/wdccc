@@ -1,0 +1,41 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="/gospa.js"></script>
+<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[JavaScript 語言]](js:home) </title>
+
+<p><a href="/db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="/db/book/home.html"" class="innerLink">教科書</a>  / <a href="/db/js/home.html"" class="innerLink">JavaScript 語言</a>  </p>
+
+<h1 id="">微分</h1>
+
+<p>檔案： <a href="db/js/code/df.js" class="innerLink">df.js</a></p>
+
+<pre><code>var c = console;
+
+function df(f, x) {
+  var dx = 0.001;
+  var dy = f(x+dx) - f(x);
+  return dy/dx;
+}
+
+function square(x) {
+  return x*x;
+}
+
+c.log('df(x^2,2)='+df(square, 2));
+c.log('df(x^2,2)='+df(function(x){ return x*x; }, 2));
+c.log('df(sin(x/4),pi/4)='+df(Math.sin, 3.14159/4));
+</code></pre>
+
+<p>執行結果</p>
+
+<pre><code>D:\Dropbox\cccweb\db\js\code&gt;node df.js
+df(x^2,2)=4.000999999999699
+df(x^2,2)=4.000999999999699
+df(sin(x/4),pi/4)=0.7067535793015001
+</code></pre>
+
+</body>
+</html>

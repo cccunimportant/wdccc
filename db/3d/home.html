@@ -1,0 +1,89 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="/gospa.js"></script>
+<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[Blender動畫]](3d:home) </title>
+
+<p><a href="/db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="/db/book/home.html"" class="innerLink">教科書</a>  / <a href="/db/3d/home.html"" class="innerLink">Blender動畫</a>  </p>
+
+<table>
+<thead>
+<tr>
+<th id="主題" style="text-align:left;"> 主題                                                          </th>
+<th id="說明" style="text-align:left;">   說明       </th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align:left;"><p><a href="/db/3d/blender.html"" class="innerLink">入門:如何透過 Blender 學習 3D 動畫設計</a>  </p></td>
+<td style="text-align:left;"><p>入門需要知道的所有事情都在這裡  </p></td>
+</tr>
+
+</tbody>
+</table>
+
+<ul>
+<li><p><a href="http://3dtutorials.net/tutorials/blender-2-74-cycles-texture-reducer-for-gpu-rendering.html">http://3dtutorials.net/tutorials/blender-2-74-cycles-texture-reducer-for-gpu-rendering.html</a></p></li>
+<li><p>用 weight paint 更細緻的調整關節骨架的影響範圍 （讚！）</p>
+
+<ul><li><a href="http://youtu.be/rkT92aoMpP0">http://youtu.be/rkT92aoMpP0</a></li></ul></li>
+<li><p>草地</p>
+
+<ul><li><a href="http://www.blendswap.com/blends/view/78937">http://www.blendswap.com/blends/view/78937</a></li></ul></li>
+<li><p>Simple Guidance for blender users (一張圖學會 blender) </p>
+
+<ul><li><a href="http://blenderaid.com/post/110665754844/from-giudansky-com">http://blenderaid.com/post/110665754844/from-giudansky-com</a></li></ul></li>
+<li><p>Cycle Render 入門</p>
+
+<ul><li><a href="https://youtu.be/Heg89K3ZMDo">YouTube: Blender 2.7 Tutorial #10 : Intro to Materials &amp; Nodes in Cycles #b3d</a></li>
+<li><a href="https://www.youtube.com/watch?v=gTMORaEygRE">YouTube: Blender 2.7 Tutorial #11 : Intro to Lighting &amp; Rendering in Cycles #b3d</a></li>
+<li><a href="https://www.youtube.com/watch?v=NeWTTINkUG0">YouTube: Blender 2.7 Tutorial #12 : Image Textures &amp; Bump Maps #b3d</a></li>
+<li><a href="http://blender.stackexchange.com/questions/8697/how-do-i-put-an-image-texture-on-a-material-in-cycles">http://blender.stackexchange.com/questions/8697/how-do-i-put-an-image-texture-on-a-material-in-cycles</a></li></ul></li>
+<li><p>逼真的材質</p>
+
+<ul><li><a href="http://www.blenderguru.com/tutorials/basics-realistic-texturing/">http://www.blenderguru.com/tutorials/basics-realistic-texturing/</a></li>
+<li>重點是，Material/Surface/Color 要選 Image Texture，然後選好圖片後進 edit mode 按 u 選 UV mapping/unwrap 即可。</li></ul></li>
+<li><p>連接兩點 -- 選兩點後按 f</p>
+
+<ul><li>合併兩點 -- 選兩點後按 alt-M</li>
+<li><a href="http://blenderartists.org/forum/showthread.php?126252-connecting-vertices">http://blenderartists.org/forum/showthread.php?126252-connecting-vertices</a></li></ul></li>
+<li><p>人物建模的好影片</p>
+
+<ul><li><a href="https://www.facebook.com/alon.peled.16/videos/10153127774524003/">https://www.facebook.com/alon.peled.16/videos/10153127774524003/</a></li></ul></li>
+<li><p>骨架</p>
+
+<ul><li>設定型態： （小人）object data / display / B-bone</li>
+<li>骨架寬度： http://wiki.blender.org/index.php/Doc:2.6/Manual/Rigging/Armatures/Editing/Properties</li>
+<li>Ctrl-Alt-S 可設定寬度</li></ul></li>
+<li><p>海洋功能</p>
+
+<ul><li><a href="http://wiki.blender.org/index.php/Doc:2.6/Manual/Modifiers/Simulate/Ocean">http://wiki.blender.org/index.php/Doc:2.6/Manual/Modifiers/Simulate/Ocean</a></li></ul></li>
+<li><p>船浮在水上跑 -- Blender 2.7: Ship floating on the ocean (tutorial) </p>
+
+<ul><li><a href="https://www.youtube.com/watch?v=sfi7HW8qHAo">https://www.youtube.com/watch?v=sfi7HW8qHAo</a></li></ul></li>
+<li><p>如何做出草</p>
+
+<ul><li>可用透明貼圖後，設定花紋 (texture) 中的 image/use alpha 的方式，讓多邊形看起來只有草的部分留下來。</li>
+<li>參考：  low poly grass patches -- <a href="http://www.blendswap.com/blends/view/71002">http://www.blendswap.com/blends/view/71002</a></li></ul></li>
+<li><p>山水樹景</p>
+
+<ul><li><a href="http://www.blendswap.com/blends/view/72058">http://www.blendswap.com/blends/view/72058</a></li>
+<li>樹是用樹幹加上多邊形透明貼圖做成的，請看上面模型中的 object - tree</li>
+<li>您可以用 append 匯入整個場景後，再用 ctrl-c 將樹複製到自己的場景，然後用 ctrl-v 貼到場景內，記得要用 cycle render 才看得到。</li>
+<li>匯入後結果請參考： <a href="db/3d/copytree.zip" class="innerLink">copytree.zip</a></li></ul></li>
+<li><p>叢林湖面</p>
+
+<ul><li><a href="http://www.blendswap.com/blends/view/77903">http://www.blendswap.com/blends/view/77903</a></li>
+<li>叢林是用貼圖，但是加了兩棵較近的樹枝</li>
+<li>湖面是用有點微微凹凸的平面，然後加上 Glossy BSDF 和 Glass BSDF 兩者用 Mix Shader 合成的效果。</li>
+<li>樹枝則是加上了surface 和 displacement.</li></ul></li>
+<li><p>Cycle Render 的物件如何被使用</p>
+
+<ul><li>Combining Blender Internal and Cycles in one render -- <a href="http://urchn.org/post/combining-blender-internal-and-cycles-in-one-render">http://urchn.org/post/combining-blender-internal-and-cycles-in-one-render</a></li></ul></li>
+</ul>
+
+</body>
+</html>

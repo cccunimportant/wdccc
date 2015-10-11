@@ -1,0 +1,67 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="/gospa.js"></script>
+<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[JavaScript 前端技術]](jsb:home) </title>
+
+<p><a href="/db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="/db/book/home.html"" class="innerLink">教科書</a>  / <a href="/db/jsb/home.html"" class="innerLink">JavaScript 前端技術</a>  </p>
+
+<h1 id="">網頁手繪板</h1>
+
+<p>本程式簡化自以下文章中的範例，該範例可選顏色與粗細，但為了讓初學整更容易懂，筆者將顏色固定為黑色，粗細固定為 3，並去除了相關的程式碼。</p>
+
+<ul>
+<li><a href="#http://blog.darkthread.net/post-2011-10-30-html5-canvas-sktechpad.aspx" class="innerLink">黑暗執行緒 -- 用100行實現HTML5可存檔塗鴉版</a></li>
+</ul>
+
+<p>檔案： <a href="http://ccc.nqu.edu.tw/db/jsb/code/painter.html">painter.html</a></p>
+
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;範例 -- 手寫板&lt;/title&gt;
+    &lt;script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.4.js"&gt;
+    &lt;/script&gt;
+    &lt;script&gt;
+        var p_color = "black";
+        var p_width = 3;
+        $(function () {
+            //取得canvas context
+            var $canvas = $("#cSketchPad");
+            var ctx = $canvas[0].getContext("2d");
+            ctx.lineCap = "round";
+            ctx.fillStyle = "white"; //整個canvas塗上白色背景避免PNG的透明底色效果
+            ctx.fillRect(0, 0, $canvas.width(), $canvas.height());
+            var drawMode = false;
+            //canvas點選、移動、放開按鍵事件時進行繪圖動作
+            $canvas.mousedown(function (e) {
+                ctx.beginPath();
+                ctx.strokeStyle = p_color;
+                ctx.lineWidth = p_width;
+                ctx.moveTo(e.pageX - $canvas.position().left, e.pageY - $canvas.position().top);
+                drawMode = true;
+            })
+            .mousemove(function (e) {
+                if (drawMode) {
+                    ctx.lineTo(e.pageX - $canvas.position().left, e.pageY - $canvas.position().top);
+                    ctx.stroke();
+                }
+            })
+            .mouseup(function (e) {
+                drawMode = false;
+            });
+        });
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+ &lt;div id="dCanvas"&gt;
+  &lt;canvas id="cSketchPad" width="300" height="300" style="border: 2px solid gray" /&gt;
+ &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+</body>
+</html>

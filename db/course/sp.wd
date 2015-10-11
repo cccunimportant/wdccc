@@ -1,0 +1,21 @@
+# 系統程式
+
+* 開放課程： [coursera:nand2tetris](https://www.coursera.org/course/nand2tetris1) 。
+ * 官方網站： <http://nand2tetris.org/>
+ * 課本： <http://nand2tetris.org/book.php>
+ * 講義： <http://nand2tetris.org/course.php>
+ * 軟體： <http://nand2tetris.org/software.php>
+* 補充教材： 
+ * 教科書： [[計算機結構]](co:home) , 陳鍾誠。
+ * [少年科技人雜誌/2015年6月/NandToTetris 慕課記 -- 從邏輯閘到方塊遊戲](http://programmermagazine.github.io/mag/ymag201506/home.html)
+ * [程式人雜誌/2015年7月/向 Nand2Tetris 學習電腦硬體設計](http://programmermagazine.github.io/mag/pmag201507/home.html)
+ * [少年科技人雜誌/2015年6月/NandToTetris Part II 自學記 -- 虛擬機、編譯器與作業系統](http://programmermagazine.github.io/mag/ymag201508/home.html)
+ * [程式人雜誌/2015年9月/向 Nand2Tetris 學習系統軟體設計](http://programmermagazine.github.io/mag/pmag201509/home.html)
+ * [[HackALU 的設計原理]](n2t:HackALU)
+
+## 修課方法
+
+1. 您可以選擇以 nand2tetris 為主，或者自行提出其他方案。
+2. 以 nand2tetris 為主者，請看其官網並做習題。
+3. 提出其他方案者，請在 2015/10/2 前將方案提交給老師。
+4. 上課時我們將採用 [[楚河漢界教學法]](ccc:riverTeachingMethod) 。

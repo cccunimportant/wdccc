@@ -1,0 +1,251 @@
+# 物件
+
+## 封裝
+
+範例一：人的體重
+
+```java
+class Object1 {
+    public static void main(String args[]) {
+    	Person1 p1, p2;
+    	p1 = new Person1("大雄", 50);
+    	p2 = new Person1("胖虎", 80);
+    	p1.checkWeight();
+    	p2.checkWeight();
+    	p2.weight = 68;
+    	p1.checkWeight();
+    	p2.checkWeight();
+    }
+}
+
+class Person1 {
+    String name;
+    int weight;
+    
+    Person1(String pName, int pWeight) {
+    	name   = pName;
+    	weight = pWeight;
+    }
+    
+    void checkWeight() {
+    	System.out.print(name+"體重 "+weight+" 公斤,");
+    	if (weight < 70) 
+    	System.out.println("很苗條!");
+    	else
+    	System.out.println("很穩重!");
+    }
+}
+```
+
+
+
+## 繼承
+
+
+## 多型
+
++ 範例程式：Zoo.java
+```java
+abstract class Animal {
+  abstract void speak();
+}
+ 
+class Cat extends Animal {
+  void speak() {
+     System.out.println("喵喵!");
+  }
+}
+ 
+class Dog extends Animal {
+  void speak() {
+     System.out.println("汪汪!");
+  }
+}
+ 
+class Zoo {
+  public static void main(String[] args) {
+    Cat c1 = new Cat();
+    Animal[] animals = new Animal[] { new Cat(), 
+     new Dog(), new Dog(), new Cat(), new Dog() };
+    for (int i=0; i<animals.length; i++) {
+      animals[i].speak();
+    }	
+  }
+}
+```
+
+執行結果
+
+```
+D:\ccc\JA>javac Zoo.java
+
+D:\ccc\JA>java Zoo
+喵喵!
+汪汪!
+汪汪!
+喵喵!
+汪汪!
+```
+
+## 延伸
+
+```java
+abstract class Animal {
+  String name="";
+  abstract void speak(); 
+/*  {
+     System.out.println("未定義！");
+  } */
+}
+
+interface Printable {
+  void print();
+}
+ 
+class Cat extends Animal implements Printable {
+  public Cat() {
+      name = "貓";
+  }
+  
+  public void speak() {
+     System.out.println("喵喵!");
+  }
+  
+  public void print() {
+     System.out.print(name+"：");
+     speak();
+  }
+}
+ 
+class Dog extends Animal implements Printable {
+  public Dog() {
+      name = "狗";
+  }
+  
+  public void speak() {
+     System.out.println("汪汪!");
+  }
+
+  public void print() {
+    	System.out.print(name+"：");
+    	speak();
+  }
+}
+ 
+class Zoo {
+  public static void main(String[] args) {
+//	Animal a = new Animal();
+//	a.speak();
+    Cat c1 = new Cat();
+    System.out.println("=============c1.speak()===============");
+    c1.speak();
+    System.out.println("=============Dogs, Cats, speak()======");
+    Animal[] animals = new Animal[] { new Cat(), new Dog(), 
+           new Dog(), new Cat(), new Dog() };
+    for (int i=0; i<animals.length; i++) {
+      animals[i].speak();
+    }    
+    System.out.println("=============Dogs, Cats, print()======");
+    Printable[] pa = new Printable[] { new Cat(), new Dog(), 
+       new Dog(), new Cat(), new Dog() };
+    for (int i=0; i<animals.length; i++) {
+    	pa[i].print();
+    }    
+  }
+}
+```
+
+
+## 範例：矩陣物件
+
+```java
+class Matrix2 {
+  public static void main(String[] args) {
+    double A[][] = {{1,2}, {3,4}};
+    double B[][] = {{5,6}, {7,8}};
+    double C[][] = new double[2][2];
+    double D[][] = new double[2][2];
+    add(A, B, C);
+    System.out.println("========C========");
+    print(C);
+    dot(A, B, D);
+    System.out.println("========D========");
+    print(D);
+    double sum = sum(D);
+    System.out.println("sum(D)="+sum);
+    not(D);
+    System.out.println("========not(D)========");
+    print(D);
+  }
+
+  public static void print(double A[][]) 
+  {
+    for (int i=0; i<A.length; i++) 
+    {
+      for (int j=0; j<A[0].length; j++) 
+         System.out.print(A[i][j]+" ");
+      System.out.println();
+    }
+  }
+
+  public static void not(double A[][]) 
+  {
+    for (int i=0; i<A.length; i++) 
+      for (int j=0; j<A[0].length; j++) 
+        A[i][j] = -A[i][j];
+  }
+
+  public static double sum(double A[][]) 
+  {
+    double total = 0;
+    for (int i=0; i<A.length; i++) 
+      for (int j=0; j<A[0].length; j++) 
+        total += A[i][j];
+    return total;
+  }
+
+  public static void add(double A[][], double B[][], double C[][]) 
+  {
+    for (int i=0; i<A.length; i++) 
+      for (int j=0; j<A[0].length; j++) 
+        C[i][j] = A[i][j] + B[i][j];
+  }
+
+  public static void dot(double A[][], double B[][], double C[][]) 
+  {
+    for (int i=0; i<C.length; i++) 
+      for (int j=0; j<C[0].length; j++) 
+      {
+        double sum = 0;
+        for (int k=0; k<2; k++) 
+            sum = sum+A[i][k]*B[k][j];
+        C[i][j] = sum;
+      }
+  }
+}
+```
+
+## 習題：物件導向練習
+
+[[code ]]
+  1. 定義一個人(Person)的類別，具有姓名(name),電話(tel),郵件(email)等三個欄位.
+  2. 定義一個學生(Student)的類別，學生類別繼承人的類別，並具有 學校、科系與學號.
+  3. 寫一個主程式，將 Person("路人甲"), Student("學生乙"), Person("路人丙"), Student("學生丁")
+     存入 persons 陣列中，並將該陣列印出來.
+
+參考 :
+
+  class Person {
+    ...
+    String toString() {
+       ...
+    }
+  }
+
+  class Student {
+    ...
+    String toString() {
+      ...
+    }
+  }
+```

@@ -1,0 +1,1040 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="2015 年 9 月" />
+  <title>程式人雜誌</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
+  <link rel="stylesheet" href="../epub.css" type="text/css" />
+</head>
+<body>
+<div id="header_wrap">
+   <h1>wikidown 電子書</h1>
+</div>
+<div id="content">
+<div id="header">
+<h1 class="title"><a href="http://programmermagazine.github.com/home/">程式人雜誌</a></h1>
+<h2 class="author">2015 年 9 月</h2>
+<h3 class="date">本期焦點：向 Nand2Tetris 學習系統軟體設計</h3>
+</div>
+<div id="TOC">
+<ul>
+<li><a href="#前言">前言</a><ul>
+<li><a href="#編輯小語">編輯小語</a></li>
+<li><a href="#授權聲明">授權聲明</a></li>
+</ul></li>
+<li><a href="#本期焦點向-nand2tetris-學習系統軟體設計">本期焦點：向 Nand2Tetris 學習系統軟體設計</a><ul>
+<li><a href="#nand2tetris-第-6-週----自製組譯器">Nand2Tetris 第 6 週 -- 自製組譯器</a></li>
+<li><a href="#nand2tetris-第-7-8-週----中間碼轉組合語言">Nand2Tetris 第 7-8 週 -- 中間碼轉組合語言</a></li>
+<li><a href="#nand2tetris-第-9-11-週----編譯器">Nand2Tetris 第 9-11 週 -- 編譯器</a></li>
+<li><a href="#nand2tetris-第-12-週----作業系統">Nand2Tetris 第 12 週 -- 作業系統</a></li>
+</ul></li>
+<li><a href="#雜誌訊息">雜誌訊息</a><ul>
+<li><a href="#讀者訂閱">讀者訂閱</a></li>
+<li><a href="#投稿須知">投稿須知</a></li>
+<li><a href="#參與編輯">參與編輯</a></li>
+<li><a href="#公益資訊">公益資訊</a></li>
+</ul></li>
+</ul>
+</div>
+<h1 id="前言">前言</h1>
+<h2 id="編輯小語">編輯小語</h2>
+<p>最近小編發現了一個很棒的網路公開課，是 coursera 課程網站上的 <a href="https://www.coursera.org/course/nand2tetris1">From Nand to Tetris / Part I</a> 這門課，於是我去修了這門課並作了習題，這是我真正修習的第一門網路公開課。</p>
+<p>這門課程是教授學生如何從一個最基礎的 nand 邏輯閘開始，一路往上建構出所有基礎元件，像是 and, or, xor, not, MUX, DMUX, Adder, Memory 等等，接著建構出 CPU 與整台電腦，然後再學習如何在建構出這台電腦上的『組譯器、編譯器、作業系統』等等，最後在這個具備軟硬體的電腦上寫一個小型的方塊遊戲。</p>
+<p>我覺得這門課非常棒，因此小編將整個修課的過程與心得分享給大家，也利用這個機會將這門『神級課程』介紹給大家認識。</p>
+<p>---- （「少年科技人雜誌」與「程式人雜誌」編輯 - 陳鍾誠）</p>
+<h2 id="授權聲明">授權聲明</h2>
+<p>本雜誌許多資料修改自維基百科，採用 創作共用：<a href="http://creativecommons.org/licenses/by-sa/3.0/tw/">姓名標示、相同方式分享</a> 授權，若您想要修改本書產生衍生著作時，至少應該遵守下列授權條件：</p>
+<ol style="list-style-type: decimal">
+<li>標示原作者姓名 (包含該文章作者，若有來自維基百科的部份也請一併標示)。</li>
+<li>採用 創作共用：<a href="http://creativecommons.org/licenses/by-sa/3.0/tw/">姓名標示、相同方式分享</a> 的方式公開衍生著作。</li>
+</ol>
+<p>另外、當本雜誌中有文章或素材並非採用 <a href="http://creativecommons.org/licenses/by-sa/3.0/tw/">姓名標示、相同方式分享</a> 時，將會在該文章或素材後面標示其授權，此時該文章將以該標示的方式授權釋出，請修改者注意這些授權標示，以避免產生侵權糾紛。</p>
+<p>例如有些文章可能不希望被作為「商業性使用」，此時就可能會採用創作共用：[姓名標示、非商業性、相同方式分享] 的授權，此時您就不應當將該文章用於商業用途上。</p>
+<p>最後、懇請勿移除公益捐贈的相關描述，以便讓愛心得以持續散播！</p>
+<h1 id="本期焦點向-nand2tetris-學習系統軟體設計">本期焦點：向 Nand2Tetris 學習系統軟體設計</h1>
+<h2 id="nand2tetris-第-6-週----自製組譯器">Nand2Tetris 第 6 週 -- 自製組譯器</h2>
+<p>本文程式修改自下列 github 網址，使用時請注意遵守開源授權。</p>
+<ul>
+<li><a href="https://github.com/havivha/Nand2Tetris/tree/master/6" class="uri">https://github.com/havivha/Nand2Tetris/tree/master/6</a></li>
+</ul>
+<p>關於 nand2tetris 第 6 週的內容與解說，請參考下列文章。</p>
+<ul>
+<li><a href="http://ccc.nqu.edu.tw/db/ymag201506/focus8.html">少年科技人雜誌 / 2015年6月號 / Nand2Tetris 第 6 週 -- 組譯器</a></li>
+</ul>
+<p>在本文中，我們主要補充的是實作的方法。我們採用 JavaScript 撰寫，並用 node.js 環境進行測試。</p>
+<p>由於 HackCPU 的獨特設計方式，讓組譯器牽涉到比較多的表格，以下是這些表格的內容。</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> dtable = {
+  <span class="st">&quot;&quot;</span>   :0b000,
+  <span class="st">&quot;M&quot;</span>  :0b001,
+  <span class="st">&quot;D&quot;</span>  :0b010,
+  <span class="st">&quot;MD&quot;</span> :0b011,
+  <span class="st">&quot;A&quot;</span>  :0b100,
+  <span class="st">&quot;AM&quot;</span> :0b101,
+  <span class="st">&quot;AD&quot;</span> :0b110,
+  <span class="st">&quot;AMD&quot;</span>:0b111
+}
+
+<span class="kw">var</span> jtable = {
+  <span class="st">&quot;&quot;</span>   :0b000,
+  <span class="st">&quot;JGT&quot;</span>:0b001,
+  <span class="st">&quot;JEQ&quot;</span>:0b010,
+  <span class="st">&quot;JGE&quot;</span>:0b011,
+  <span class="st">&quot;JLT&quot;</span>:0b100,
+  <span class="st">&quot;JNE&quot;</span>:0b101,
+  <span class="st">&quot;JLE&quot;</span>:0b110,
+  <span class="st">&quot;JMP&quot;</span>:0b111
+}
+
+<span class="kw">var</span> ctable = {
+  <span class="st">&quot;0&quot;</span>   :0b0101010,
+  <span class="st">&quot;1&quot;</span>   :0b0111111,
+  <span class="st">&quot;-1&quot;</span>  :0b0111010,
+  <span class="st">&quot;D&quot;</span>   :0b0001100,
+  <span class="st">&quot;A&quot;</span>   :0b0110000, 
+  <span class="st">&quot;M&quot;</span>   :0b1110000,
+  <span class="st">&quot;!D&quot;</span>  :0b0001101,
+  <span class="st">&quot;!A&quot;</span>  :0b0110001, 
+  <span class="st">&quot;!M&quot;</span>  :0b1110001,
+  <span class="st">&quot;-D&quot;</span>  :0b0001111,
+  <span class="st">&quot;-A&quot;</span>  :0b0110011,
+  <span class="st">&quot;-M&quot;</span>  :0b1110011,
+  <span class="st">&quot;D+1&quot;</span> :0b0011111,
+  <span class="st">&quot;A+1&quot;</span> :0b0110111,
+  <span class="st">&quot;M+1&quot;</span> :0b1110111,
+  <span class="st">&quot;D-1&quot;</span> :0b0001110,
+  <span class="st">&quot;A-1&quot;</span> :0b0110010,
+  <span class="st">&quot;M-1&quot;</span> :0b1110010,
+  <span class="st">&quot;D+A&quot;</span> :0b0000010,
+  <span class="st">&quot;D+M&quot;</span> :0b1000010,
+  <span class="st">&quot;D-A&quot;</span> :0b0010011,
+  <span class="st">&quot;D-M&quot;</span> :0b1010011,
+  <span class="st">&quot;A-D&quot;</span> :0b0000111,
+  <span class="st">&quot;M-D&quot;</span> :0b1000111,
+  <span class="st">&quot;D&amp;A&quot;</span> :0b0000000,
+  <span class="st">&quot;D&amp;M&quot;</span> :0b1000000,
+  <span class="st">&quot;D|A&quot;</span> :0b0010101,
+  <span class="st">&quot;D|M&quot;</span> :0b1010101
+}
+
+<span class="kw">var</span> symTable = {
+  <span class="st">&quot;R0&quot;</span>  :<span class="dv">0</span>,
+  <span class="st">&quot;R1&quot;</span>  :<span class="dv">1</span>,
+  <span class="st">&quot;R2&quot;</span>  :<span class="dv">2</span>,
+  <span class="st">&quot;R3&quot;</span>  :<span class="dv">3</span>,
+  <span class="st">&quot;R4&quot;</span>  :<span class="dv">4</span>,
+  <span class="st">&quot;R5&quot;</span>  :<span class="dv">5</span>,
+  <span class="st">&quot;R6&quot;</span>  :<span class="dv">6</span>,
+  <span class="st">&quot;R7&quot;</span>  :<span class="dv">7</span>,
+  <span class="st">&quot;R8&quot;</span>  :<span class="dv">8</span>,
+  <span class="st">&quot;R9&quot;</span>  :<span class="dv">9</span>,
+  <span class="st">&quot;R10&quot;</span> :<span class="dv">10</span>,
+  <span class="st">&quot;R11&quot;</span> :<span class="dv">11</span>,
+  <span class="st">&quot;R12&quot;</span> :<span class="dv">12</span>,
+  <span class="st">&quot;R13&quot;</span> :<span class="dv">13</span>,
+  <span class="st">&quot;R14&quot;</span> :<span class="dv">14</span>,
+  <span class="st">&quot;R15&quot;</span> :<span class="dv">15</span>,
+  <span class="st">&quot;SP&quot;</span>  :<span class="dv">0</span>,
+  <span class="st">&quot;LCL&quot;</span> :<span class="dv">1</span>,
+  <span class="st">&quot;ARG&quot;</span> :<span class="dv">2</span>,
+  <span class="st">&quot;THIS&quot;</span>:<span class="dv">3</span>, 
+  <span class="st">&quot;THAT&quot;</span>:<span class="dv">4</span>,
+  <span class="st">&quot;KBD&quot;</span> :<span class="dv">24576</span>,
+  <span class="st">&quot;SCREEN&quot;</span>:<span class="dv">16384</span>
+};</code></pre>
+<p>然後和傳統的組譯器一樣，我們可以採用兩階段的組譯方式，第一階段紀錄每個符號的位址，第二階段則進行編碼的動作。</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">function</span> <span class="fu">pass1</span>(lines) {
+  <span class="co">// 對於每一行程式碼</span>
+  <span class="co">//   計算該行的位址</span>
+  <span class="co">//   如果有符號，紀錄符號的位址</span>
+}
+
+<span class="kw">function</span> <span class="fu">pass2</span>(lines, objFile) {
+  <span class="co">// 對於每一行程式碼</span>
+  <span class="co">//   將指令轉為機器碼 (查表，編碼，輸出)</span>
+}
+
+<span class="co">// 轉換指令為程式碼的主要程式如下。</span>
+<span class="kw">function</span> <span class="fu">toCode</span>(p) {
+  <span class="kw">var</span> address; 
+  <span class="kw">if</span> (<span class="ot">p</span>.<span class="fu">type</span> === <span class="st">&quot;A&quot;</span>) {
+    <span class="kw">if</span> (<span class="ot">p</span>.<span class="ot">arg</span>.<span class="fu">match</span>(<span class="ot">/</span><span class="fl">^</span><span class="bn">\d</span><span class="fl">+$</span><span class="ot">/</span>)) {
+      address = <span class="fu">parseInt</span>(<span class="ot">p</span>.<span class="fu">arg</span>);
+    } <span class="kw">else</span> {
+      address = symTable[<span class="ot">p</span>.<span class="fu">arg</span>]; 
+      <span class="kw">if</span> (<span class="kw">typeof</span> address === <span class="st">&#39;undefined&#39;</span>) {
+        address = symTop;
+        <span class="fu">addSymbol</span>(<span class="ot">p</span>.<span class="fu">arg</span>, address);        
+      }
+    }
+    <span class="kw">return</span> address; 
+  } <span class="kw">else</span> { <span class="co">// if (p.type === &quot;C&quot;)</span>
+    <span class="kw">var</span> d = dtable[<span class="ot">p</span>.<span class="fu">d</span>];
+    <span class="kw">var</span> cx = ctable[<span class="ot">p</span>.<span class="fu">c</span>];
+    <span class="kw">var</span> j = jtable[<span class="ot">p</span>.<span class="fu">j</span>];
+    <span class="kw">return</span> 0b111&lt;&lt;<span class="dv">13</span>|cx&lt;&lt;<span class="dv">6</span>|d&lt;&lt;<span class="dv">3</span>|j;
+  }
+}</code></pre>
+<p>只要搞清楚指令格式，並且把表格寫出來， HackCPU 的組譯器算是相當容易撰寫的一個程式。</p>
+<h2 id="nand2tetris-第-7-8-週----中間碼轉組合語言">Nand2Tetris 第 7-8 週 -- 中間碼轉組合語言</h2>
+<p>本文程式修改自下列 github 網址，使用時請注意遵守開源授權。</p>
+<ul>
+<li><a href="https://github.com/havivha/Nand2Tetris/tree/master/7" class="uri">https://github.com/havivha/Nand2Tetris/tree/master/7</a></li>
+<li><a href="https://github.com/havivha/Nand2Tetris/tree/master/8" class="uri">https://github.com/havivha/Nand2Tetris/tree/master/8</a></li>
+</ul>
+<p>關於 nand2tetris 第 7-8 週的內容與解說，請參考下列文章。</p>
+<ul>
+<li><a href="http://localhost/db/ymag201508/focus2.html">少年科技人雜誌 / 2015年8月號 / Nand2Tetris 第 7 週 -- VM I: Stack Arithmetic</a></li>
+<li><a href="http://localhost/db/ymag201508/focus2.html">少年科技人雜誌 / 2015年8月號 / Nand2Tetris 第 8 週 -- VM II: Program Control</a></li>
+</ul>
+<p>在本文中，我們主要補充的是實作的方法。我們採用 JavaScript 撰寫，並用 node.js 環境進行測試。</p>
+<p>以下是筆者 Nand2Tetris 第 7-8 週習題實作中，程式的主要架構部分。</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">function</span> <span class="fu">vm2asm</span>(vmFile) {
+  ...
+  <span class="fu">pass1</span>(lines);
+} 
+
+<span class="kw">function</span> <span class="fu">pass1</span>(lines, asmFile) {
+  <span class="ot">c</span>.<span class="fu">log</span>(<span class="st">&quot;============== pass1 ================&quot;</span>);
+  <span class="kw">for</span> (<span class="kw">var</span> i=<span class="dv">0</span>; i&lt;<span class="ot">lines</span>.<span class="fu">length</span>; i++) {
+    <span class="kw">var</span> p = <span class="fu">parse</span>(lines[i], i);
+    <span class="kw">if</span> (p===<span class="kw">null</span>) <span class="kw">continue</span>;
+    <span class="fu">comment</span>(lines[i]);
+    <span class="fu">translate</span>(p);
+  }
+}
+
+<span class="kw">function</span> <span class="fu">parse</span>(line, i) {
+  ...
+}
+
+<span class="kw">function</span> <span class="fu">translate</span>(p) {
+  <span class="kw">var</span> p1 = <span class="ot">p</span>.<span class="fu">tokens</span>[<span class="dv">1</span>];
+  <span class="kw">var</span> p2 = <span class="ot">p</span>.<span class="fu">tokens</span>[<span class="dv">2</span>];
+  <span class="kw">switch</span> (<span class="ot">p</span>.<span class="fu">op</span>) {
+    <span class="kw">case</span> <span class="st">&quot;push&quot;</span>: <span class="fu">cmdPush</span>(p1, <span class="fu">parseInt</span>(p2)); <span class="kw">break</span>;
+    <span class="kw">case</span> <span class="st">&quot;pop&quot;</span>:  <span class="fu">cmdPop</span>(p1, <span class="fu">parseInt</span>(p2)); <span class="kw">break</span>;
+    <span class="kw">case</span> <span class="st">&quot;add&quot;</span>:  <span class="fu">cmdBinary</span>(<span class="st">&quot;D+A&quot;</span>); <span class="kw">break</span>;
+    <span class="kw">case</span> <span class="st">&quot;sub&quot;</span>:  <span class="fu">cmdBinary</span>(<span class="st">&quot;A-D&quot;</span>); <span class="kw">break</span>;
+    <span class="kw">case</span> <span class="st">&quot;and&quot;</span>:  <span class="fu">cmdBinary</span>(<span class="st">&quot;D&amp;A&quot;</span>); <span class="kw">break</span>;
+    <span class="kw">case</span> <span class="st">&quot;or&quot;</span> :  <span class="fu">cmdBinary</span>(<span class="st">&quot;D|A&quot;</span>); <span class="kw">break</span>;
+    <span class="kw">case</span> <span class="st">&quot;not&quot;</span>:  <span class="fu">cmdUnary</span>(<span class="st">&quot;!D&quot;</span>); <span class="kw">break</span>;
+    <span class="kw">case</span> <span class="st">&quot;neg&quot;</span>:  <span class="fu">cmdUnary</span>(<span class="st">&quot;-D&quot;</span>); <span class="kw">break</span>;
+    <span class="kw">case</span> <span class="st">&quot;eq&quot;</span> :  <span class="fu">cmdCompare</span>(<span class="st">&quot;JEQ&quot;</span>); <span class="kw">break</span>;
+    <span class="kw">case</span> <span class="st">&quot;gt&quot;</span> :  <span class="fu">cmdCompare</span>(<span class="st">&quot;JGT&quot;</span>); <span class="kw">break</span>;
+    <span class="kw">case</span> <span class="st">&quot;lt&quot;</span> :  <span class="fu">cmdCompare</span>(<span class="st">&quot;JLT&quot;</span>); <span class="kw">break</span>;
+    <span class="kw">case</span> <span class="st">&quot;goto&quot;</span>: <span class="fu">cmdGoto</span>(p1); <span class="kw">break</span>;
+    <span class="kw">case</span> <span class="st">&quot;if-goto&quot;</span>: <span class="fu">cmdIfGoto</span>(p1); <span class="kw">break</span>;
+    <span class="kw">case</span> <span class="st">&quot;label&quot;</span>: <span class="fu">cmdLabel</span>(p1); <span class="kw">break</span>;
+    <span class="kw">case</span> <span class="st">&quot;function&quot;</span>: <span class="fu">cmdFunction</span>(p1, <span class="fu">parseInt</span>(p2)); <span class="kw">break</span>;
+    <span class="kw">case</span> <span class="st">&quot;call&quot;</span>  : <span class="fu">cmdCall</span>(p1, <span class="fu">parseInt</span>(p2)); <span class="kw">break</span>;
+    <span class="kw">case</span> <span class="st">&quot;return&quot;</span>: <span class="fu">cmdReturn</span>(); <span class="kw">break</span>;
+    <span class="kw">default</span>: <span class="fu">error</span>();
+  }
+}</code></pre>
+<p>接著就是每個指令轉換的實作部份，為了避免公佈解答，我們僅顯示部份程式碼，以便讓讀者知道整體架構。</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">function</span> <span class="fu">cmdGoto</span>(label) {
+  <span class="fu">A</span>(label);
+  <span class="fu">C</span>(<span class="st">&quot;0;JMP&quot;</span>);
+}
+
+<span class="kw">function</span> <span class="fu">cmdIfGoto</span>(label) {
+  <span class="fu">popToDest</span>(<span class="st">&#39;D&#39;</span>);
+  <span class="fu">A</span>(label);
+  <span class="fu">C</span>(<span class="st">&#39;D;JNE&#39;</span>);
+}
+
+<span class="kw">function</span> <span class="fu">cmdUnary</span>(comp) {
+  <span class="fu">decSp</span>();               <span class="co">// --SP</span>
+  <span class="fu">stackToDest</span>(<span class="st">&#39;D&#39;</span>);      <span class="co">// D=*SP</span>
+  <span class="fu">C</span>(<span class="st">&#39;D=&#39;</span>+comp);          <span class="co">// D=COMP</span>
+  <span class="fu">compToStack</span>(<span class="st">&#39;D&#39;</span>);      <span class="co">// *SP=D</span>
+  <span class="fu">incSp</span>();               <span class="co">// ++SP</span>
+}
+
+<span class="kw">function</span> <span class="fu">cmdCompare</span>(j) {
+  <span class="fu">decSp</span>();               <span class="co">// --SP</span>
+  <span class="fu">stackToDest</span>(<span class="st">&#39;D&#39;</span>);      <span class="co">// D=*SP</span>
+  <span class="fu">decSp</span>();               <span class="co">// --SP</span>
+  <span class="fu">stackToDest</span>(<span class="st">&#39;A&#39;</span>);      <span class="co">// A=*SP</span>
+  <span class="fu">C</span>(<span class="st">&#39;D=A-D&#39;</span>);            <span class="co">// D=A-D</span>
+  <span class="kw">var</span> label_eq = <span class="fu">jump</span>(<span class="st">&#39;D&#39;</span>, j);  <span class="co">// D;jump to label_eq</span>
+  <span class="fu">compToStack</span>(<span class="st">&#39;0&#39;</span>);      <span class="co">// *SP=0</span>
+  <span class="kw">var</span> label_ne = <span class="fu">jump</span>(<span class="st">&#39;0&#39;</span>, <span class="st">&#39;JMP&#39;</span>); <span class="co">// 0;JMP to label_ne</span>
+  <span class="fu">cmdLabel</span>(label_eq);    <span class="co">// (label_eq)</span>
+  <span class="fu">compToStack</span>(<span class="st">&#39;-1&#39;</span>);     <span class="co">// *SP=-1</span>
+  <span class="fu">cmdLabel</span>(label_ne);       <span class="co">// (label_ne)</span>
+  <span class="fu">incSp</span>();               <span class="co">// ++SP</span>
+}
+
+<span class="kw">function</span> <span class="fu">cmdBinary</span>(comp) {
+  <span class="fu">decSp</span>();           <span class="co">// --SP</span>
+  <span class="fu">stackToDest</span>(<span class="st">&#39;D&#39;</span>);  <span class="co">// D=*SP</span>
+  <span class="fu">decSp</span>();           <span class="co">// --SP</span>
+  <span class="fu">stackToDest</span>(<span class="st">&#39;A&#39;</span>);  <span class="co">// A=*SP</span>
+  <span class="fu">C</span>(<span class="st">&#39;D=&#39;</span>+comp);      <span class="co">// D=comp</span>
+  <span class="fu">compToStack</span>(<span class="st">&#39;D&#39;</span>);  <span class="co">// *SP=D</span>
+  <span class="fu">incSp</span>();
+}
+
+<span class="kw">function</span> <span class="fu">cmdLabel</span>(name) {
+  <span class="fu">asm</span>(<span class="st">&quot;(&quot;</span>+name+<span class="st">&quot;)&quot;</span>);
+}
+
+<span class="kw">function</span> <span class="fu">cmdFunction</span>(name, n) {
+  <span class="fu">cmdLabel</span>(name);
+  <span class="kw">for</span> (<span class="kw">var</span> i=<span class="dv">0</span>; i&lt;n; i++) {
+    <span class="fu">cmdPush</span>(<span class="st">&quot;constant&quot;</span>, <span class="dv">0</span>);
+  }
+}
+
+<span class="kw">function</span> <span class="fu">cmdCall</span>(name, n) {
+  <span class="kw">var</span> returnAddress = <span class="fu">newLabel</span>();
+  <span class="fu">cmdPush</span>(<span class="st">&quot;constant&quot;</span>, returnAddress); <span class="co">// push return_address</span>
+  <span class="fu">cmdPush</span>(<span class="st">&quot;reg&quot;</span>, R_LCL);              <span class="co">// push LCL</span>
+  <span class="fu">cmdPush</span>(<span class="st">&quot;reg&quot;</span>, R_ARG);              <span class="co">// push ARG</span>
+  <span class="fu">cmdPush</span>(<span class="st">&quot;reg&quot;</span>, R_THIS);             <span class="co">// push THIS</span>
+  <span class="fu">cmdPush</span>(<span class="st">&quot;reg&quot;</span>, R_THAT);             <span class="co">// push THAT</span>
+  <span class="fu">loadSeg</span>(<span class="st">&quot;R&quot;</span>+R_SP, -n<span class="dv">-5</span>, <span class="kw">true</span>);
+  <span class="fu">compToReg</span>(R_ARG, <span class="st">&#39;D&#39;</span>);              <span class="co">// ARG=SP-n-5</span>
+  <span class="fu">regToReg</span>(R_LCL, R_SP);              <span class="co">// LCL=SP</span>
+  <span class="fu">A</span>(name);                            <span class="co">// A=function_name</span>
+  <span class="fu">C</span>(<span class="st">&#39;0;JMP&#39;</span>);                         <span class="co">// 0;JMP</span>
+  <span class="fu">cmdLabel</span>(returnAddress);            <span class="co">// (return_address)</span>
+}
+
+<span class="kw">function</span> <span class="fu">regToReg</span>(dest, src) {
+  <span class="fu">regToDest</span>(<span class="st">&#39;D&#39;</span>, src);
+  <span class="fu">compToReg</span>(dest, <span class="st">&#39;D&#39;</span>);        <span class="co">// Rdest = Rsrc</span>
+}
+
+<span class="kw">function</span> <span class="fu">prevFrameToReg</span>(reg) {
+  <span class="fu">regToDest</span>(<span class="st">&#39;D&#39;</span>, R_FRAME);     <span class="co">// D=FRAME</span>
+  <span class="fu">C</span>(<span class="st">&#39;D=D-1&#39;</span>);                  <span class="co">// D=FRAME-1</span>
+  <span class="fu">compToReg</span>(R_FRAME, <span class="st">&#39;D&#39;</span>);     <span class="co">// FRAME=FRAME-1</span>
+  <span class="fu">C</span>(<span class="st">&#39;A=D&#39;</span>);                    <span class="co">// A=FRAME-1</span>
+  <span class="fu">C</span>(<span class="st">&#39;D=M&#39;</span>);                    <span class="co">// D=*(FRAME-1)</span>
+  <span class="fu">compToReg</span>(reg, <span class="st">&#39;D&#39;</span>);         <span class="co">// reg=D</span>
+}
+
+<span class="kw">function</span> <span class="fu">cmdReturn</span>() {
+  <span class="fu">regToReg</span>(R_FRAME, R_LCL);   <span class="co">// R_FRAME = R_LCL</span>
+  <span class="fu">A</span>(<span class="st">&quot;5&quot;</span>);                     <span class="co">// A=5 ??</span>
+  <span class="fu">C</span>(<span class="st">&quot;A=D-A&quot;</span>);                 <span class="co">// A=FRAME-5</span>
+  <span class="fu">C</span>(<span class="st">&quot;D=M&quot;</span>);                   <span class="co">// D=M</span>
+  <span class="fu">compToReg</span>(R_RET, <span class="st">&#39;D&#39;</span>);      <span class="co">// RET=*(FRAME-5)</span>
+  <span class="fu">cmdPop</span>(<span class="st">&quot;argument&quot;</span>, <span class="dv">0</span>);      <span class="co">// *ARG=return value</span>
+  <span class="fu">regToDest</span>(<span class="st">&#39;D&#39;</span>, R_ARG);      <span class="co">// D=ARG</span>
+  <span class="fu">compToReg</span>(R_SP, <span class="st">&#39;D+1&#39;</span>);     <span class="co">// SP=ARG+1</span>
+  <span class="fu">prevFrameToReg</span>(R_THAT);     <span class="co">// THAT=*(FRAME-1)</span>
+  <span class="fu">prevFrameToReg</span>(R_THIS);     <span class="co">// THIS=*(FRAME-2)</span>
+  <span class="fu">prevFrameToReg</span>(R_ARG);      <span class="co">// ARG=*(FRAME-3)</span>
+  <span class="fu">prevFrameToReg</span>(R_LCL);      <span class="co">// LCL=*(FRAME-4)</span>
+  <span class="fu">regToDest</span>(<span class="st">&#39;A&#39;</span>, R_RET);      <span class="co">// A=RET</span>
+  <span class="fu">C</span>(<span class="st">&quot;0;JMP&quot;</span>);                 <span class="co">// goto RET</span>
+}
+
+<span class="kw">function</span> <span class="fu">jump</span>(comp, j) {
+  <span class="kw">var</span> label = <span class="fu">newLabel</span>();
+  <span class="fu">A</span>(label);
+  <span class="fu">C</span>(<span class="st">&quot;&quot;</span>+comp+<span class="st">&quot;;&quot;</span>+j);
+  <span class="kw">return</span> label;
+}
+
+<span class="kw">function</span> <span class="fu">init</span>() {
+  <span class="fu">comment</span>(<span class="st">&quot;init&quot;</span>);
+  <span class="fu">A</span>(<span class="st">&#39;256&#39;</span>);
+  <span class="fu">C</span>(<span class="st">&#39;D=A&#39;</span>);
+  <span class="fu">compToReg</span>(R_SP, <span class="st">&#39;D&#39;</span>);    <span class="co">// SP=256</span>
+  <span class="fu">cmdCall</span>(<span class="st">&#39;Sys.init&#39;</span>, <span class="dv">0</span>);  <span class="co">// call Sys.init()</span>
+}</code></pre>
+<p>當您了解了上述的主架構之後，應該就能開始自己重新打造完整的程式了。</p>
+<h2 id="nand2tetris-第-9-11-週----編譯器">Nand2Tetris 第 9-11 週 -- 編譯器</h2>
+<p>本文程式修改自下列 github 網址，使用時請注意遵守開源授權。</p>
+<ul>
+<li><a href="https://github.com/havivha/Nand2Tetris/tree/master/10" class="uri">https://github.com/havivha/Nand2Tetris/tree/master/10</a></li>
+<li><a href="https://github.com/havivha/Nand2Tetris/tree/master/11" class="uri">https://github.com/havivha/Nand2Tetris/tree/master/11</a></li>
+</ul>
+<p>關於 nand2tetris 第 9-11 週的內容與解說，請參考下列文章。</p>
+<ul>
+<li><a href="http://ccc.nqu.edu.tw/db/ymag201508/focus4.html">少年科技人雜誌 / 2015年8月號 / Nand2Tetris 第 9 週 -- High-Level Language</a></li>
+<li><a href="http://ccc.nqu.edu.tw/db/ymag201508/focus5.html">少年科技人雜誌 / 2015年8月號 /Nand2Tetris 第 10 週 -- Compiler I: Syntax Analysis</a></li>
+<li><a href="http://ccc.nqu.edu.tw/db/ymag201508/focus6.html">少年科技人雜誌 / 2015年8月號 / Nand2Tetris 第 11 週 -- Compiler II: Code Generation</a></li>
+</ul>
+<p>在本文中，我們主要補充的是實作的方法。我們採用 JavaScript 撰寫，並用 node.js 環境進行測試。</p>
+<p>我們的編譯器主要分成兩個部分，詞彙切分 (Lexer) 和語法剖析 (Parser) ，然後當語法剖析完成後，我們在 Parser 當中插入產生中間碼的程式，將 Parser 擴充為一個編譯器 Compiler 。</p>
+<p>為了避免公布解答，我們在此僅列出部分程式碼以供參考!</p>
+<h3 id="詞彙切分-lexer">詞彙切分 (Lexer)</h3>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> lexer = {
+  <span class="dt">tokens </span>: [],
+  <span class="dt">tokenIdx </span>: <span class="dv">0</span>
+}
+
+<span class="ot">lexer</span>.<span class="fu">scanFile</span>=<span class="kw">function</span>(path) {
+  <span class="co">// 讀取 *.jack 程式檔，並且切分成一個一個的詞彙放入 tokens 陣列中。</span>
+  ...
+  <span class="kw">var</span> text = <span class="ot">fs</span>.<span class="fu">readFileSync</span>(path, <span class="st">&quot;utf8&quot;</span>);
+  ...
+  <span class="co">// 接著用一個 regular expression 就能進行詞彙切分的動作。</span>
+  <span class="kw">var</span> re = <span class="ot">/</span><span class="fl">\/\*(</span><span class="bn">[</span><span class="fl">\s\S</span><span class="bn">]</span><span class="fl">*?)\*\/|\/\/(</span><span class="bn">[</span><span class="fl">^\r\n</span><span class="bn">]</span><span class="fl">*)</span><span class="bn">[</span><span class="fl">\r\n</span><span class="bn">]</span><span class="fl">|</span><span class="ot">&quot;</span><span class="fl">(</span><span class="ot">.</span><span class="fl">*?)</span><span class="ot">&quot;</span><span class="fl">|(</span><span class="bn">\d</span><span class="fl">+)|(</span><span class="bn">[a-zA-Z]\w</span><span class="fl">*)|(</span><span class="bn">[&gt;=&lt;!</span><span class="fl">\+\-\*\/</span><span class="bn">&amp;%|</span><span class="fl">\.\(\)\{\}</span><span class="bn">\[\];,]</span><span class="fl">)|(</span><span class="bn">\s</span><span class="fl">+)|(</span><span class="ot">.</span><span class="fl">)</span><span class="ot">/gm</span>;
+  <span class="kw">var</span> types = [ <span class="st">&quot;&quot;</span>, <span class="st">&quot;comment&quot;</span>, <span class="st">&quot;comment&quot;</span>, <span class="st">&quot;stringConstant&quot;</span>, <span class="st">&quot;integerConstant&quot;</span>, <span class="st">&quot;identifier&quot;</span>, <span class="st">&quot;symbol&quot;</span>, <span class="st">&quot;space&quot;</span>, <span class="st">&quot;ch&quot;</span> ];
+  ...
+  tokens = [];
+  tokenIdx = <span class="dv">0</span>;
+  ...
+  <span class="kw">while</span>((m = <span class="ot">re</span>.<span class="fu">exec</span>(text)) !== <span class="kw">null</span>) {
+    ...
+  }
+  <span class="kw">return</span> tokens;
+}
+...</code></pre>
+<h3 id="語法剖析-parser">語法剖析 (Parser)</h3>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> compileFile=<span class="kw">function</span>(path) {
+  ...
+  tokens = <span class="ot">lexer</span>.<span class="fu">scanFile</span>(path);
+  ...
+  <span class="fu">Class</span>();
+  ...
+}
+
+<span class="co">// class : &#39;class&#39; VarName &#39;{&#39; classVarDec* subroutineDec* &#39;}&#39;</span>
+<span class="kw">var</span> Class=<span class="kw">function</span>() {
+  <span class="fu">pushNT</span>(<span class="st">&quot;class&quot;</span>);
+  <span class="fu">next</span>(<span class="st">&quot;class&quot;</span>);
+  varKind = <span class="st">&quot;class&quot;</span>;
+  className = <span class="fu">VarName</span>();
+  classStaticList=[]; classFieldList=[]; classSubroutineList=[]; classSymTable={};
+  <span class="fu">next</span>(<span class="st">&quot;{&quot;</span>);
+  <span class="kw">while</span> (<span class="fu">isNext</span>(<span class="st">&quot;static&quot;</span>) || <span class="fu">isNext</span>(<span class="st">&quot;field&quot;</span>)) {
+    <span class="fu">ClassVarDec</span>();
+  }
+  <span class="kw">while</span> (!<span class="fu">isNext</span>(<span class="st">&#39;}&#39;</span>)) {
+    <span class="fu">SubroutineDec</span>();
+  }
+  <span class="fu">popNT</span>(<span class="st">&quot;class&quot;</span>);
+  <span class="ot">console</span>.<span class="fu">log</span>(<span class="st">&quot;classStaticList=%j&quot;</span>, classStaticList);
+  <span class="ot">console</span>.<span class="fu">log</span>(<span class="st">&quot;classFieldList=%j&quot;</span>, classFieldList);
+  <span class="ot">console</span>.<span class="fu">log</span>(<span class="st">&quot;classSubroutineList=%j&quot;</span>, classSubroutineList);
+}
+
+<span class="co">// classVarDec: {&#39;static&#39;|&#39;field&#39;} type varList &#39;;&#39; </span>
+<span class="kw">var</span> ClassVarDec=<span class="kw">function</span>() {
+  <span class="fu">pushNT</span>(<span class="st">&quot;classVarDec&quot;</span>);
+  varKind = <span class="fu">next</span>(); <span class="co">// {&#39;static&#39;|&#39;field&#39;}</span>
+  <span class="fu">Type</span>();
+  <span class="fu">VarList</span>();
+  <span class="fu">next</span>(<span class="st">&quot;;&quot;</span>);
+  <span class="fu">popNT</span>(<span class="st">&quot;classVarDec&quot;</span>);
+}
+
+<span class="co">// varList: varName (&#39;,&#39; varName)*</span>
+<span class="kw">var</span> VarList=<span class="kw">function</span>() {
+  <span class="kw">var</span> list = [];
+  <span class="kw">var</span> name=<span class="fu">VarName</span>();
+  <span class="kw">while</span> (<span class="fu">isNext</span>(<span class="st">&quot;,&quot;</span>)) {
+    <span class="fu">next</span>(<span class="st">&quot;,&quot;</span>);
+    name = <span class="fu">VarName</span>();
+  }
+}
+
+<span class="co">// subroutineDec: (&#39;constructor&#39;|&#39;function&#39;|&#39;method&#39;) (&#39;void&#39;|type) varName &#39;(&#39; parameterList? &#39;)&#39; subroutineBody</span>
+<span class="kw">var</span> SubroutineDec=<span class="kw">function</span>() {
+  <span class="fu">pushNT</span>(<span class="st">&quot;subroutineDec&quot;</span>);
+  ...
+  <span class="kw">var</span> tag = <span class="fu">next</span>(<span class="ot">/</span><span class="fl">(</span><span class="ot">constructor</span><span class="fl">)|(</span><span class="ot">function</span><span class="fl">)|(</span><span class="ot">method</span><span class="fl">)</span><span class="ot">/</span>); <span class="co">// (&#39;constructor&#39;|&#39;function&#39;|&#39;method&#39;)</span>
+  <span class="kw">if</span> (<span class="fu">isType</span>() || <span class="fu">isNext</span>(<span class="st">&quot;void&quot;</span>)) {
+    <span class="kw">var</span> vtype = <span class="fu">next</span>();
+    ...
+    <span class="fu">next</span>(<span class="st">&quot;(&quot;</span>);
+    <span class="kw">if</span> (!<span class="fu">isNext</span>(<span class="st">&quot;)&quot;</span>)) {
+      <span class="fu">ParameterList</span>();
+    }
+    <span class="fu">next</span>(<span class="st">&quot;)&quot;</span>);
+    <span class="fu">SubroutineBody</span>();
+  }
+  <span class="fu">popNT</span>(<span class="st">&quot;subroutineDec&quot;</span>);
+}
+
+<span class="co">// parameterList: (parameter (&#39;,&#39; parameter)*)?</span>
+<span class="kw">var</span> ParameterList=<span class="kw">function</span>() {
+  <span class="fu">pushNT</span>(<span class="st">&quot;parameterList&quot;</span>);
+  <span class="fu">Parameter</span>();
+  <span class="kw">while</span> (<span class="fu">isNext</span>(<span class="st">&quot;,&quot;</span>)) {
+    <span class="fu">next</span>(<span class="st">&quot;,&quot;</span>);
+    <span class="fu">Parameter</span>();
+  }
+  <span class="fu">popNT</span>(<span class="st">&quot;parameterList&quot;</span>);
+}
+
+...
+
+<span class="co">// subroutineBody: &#39;{&#39; varDec* statements &#39;}&#39;</span>
+<span class="kw">var</span> SubroutineBody=<span class="kw">function</span>() {
+  <span class="fu">pushNT</span>(<span class="st">&quot;subroutineBody&quot;</span>);
+  <span class="fu">next</span>(<span class="st">&quot;{&quot;</span>);
+  <span class="kw">while</span> (<span class="fu">isNext</span>(<span class="st">&quot;var&quot;</span>)) {
+    <span class="fu">VarDec</span>();
+  }
+  <span class="fu">Statements</span>(); 
+  <span class="fu">next</span>(<span class="st">&quot;}&quot;</span>);
+  <span class="fu">popNT</span>(<span class="st">&quot;subroutineBody&quot;</span>);
+}
+
+<span class="co">// varDec: &#39;var&#39; type varList &#39;;&#39;</span>
+<span class="kw">var</span> VarDec=<span class="kw">function</span>() {
+  <span class="fu">pushNT</span>(<span class="st">&quot;varDec&quot;</span>);
+  <span class="fu">next</span>(<span class="st">&quot;var&quot;</span>);
+  varKind = <span class="st">&quot;var&quot;</span>;
+  <span class="fu">Type</span>();
+  <span class="fu">VarList</span>();
+  <span class="fu">next</span>(<span class="st">&quot;;&quot;</span>);
+  <span class="fu">popNT</span>(<span class="st">&quot;varDec&quot;</span>);
+}
+
+<span class="co">// statements : statement*</span>
+<span class="kw">var</span> Statements=<span class="kw">function</span>() {
+  <span class="fu">pushNT</span>(<span class="st">&quot;statements&quot;</span>);
+  <span class="kw">while</span> (!<span class="fu">isNext</span>(<span class="st">&quot;}&quot;</span>)) {
+    <span class="fu">Statement</span>();
+  }
+  <span class="fu">popNT</span>(<span class="st">&quot;statements&quot;</span>);
+}
+
+<span class="co">// statement: letStatement | ifStatement | whileStatement | doStatement | returnStatement</span>
+<span class="kw">var</span> Statement=<span class="kw">function</span>() {
+  <span class="kw">if</span> (<span class="fu">isNext</span>(<span class="st">&quot;let&quot;</span>)) {
+    <span class="fu">LetStatement</span>();
+  } <span class="kw">else</span> <span class="kw">if</span> (<span class="fu">isNext</span>(<span class="st">&quot;if&quot;</span>)) {
+    <span class="fu">IfStatement</span>();
+  } <span class="kw">else</span> <span class="kw">if</span> (<span class="fu">isNext</span>(<span class="st">&quot;while&quot;</span>)) {
+    <span class="fu">WhileStatement</span>();
+  } <span class="kw">else</span> <span class="kw">if</span> (<span class="fu">isNext</span>(<span class="st">&quot;do&quot;</span>)) {
+    <span class="fu">DoStatement</span>();
+  } <span class="kw">else</span> <span class="kw">if</span> (<span class="fu">isNext</span>(<span class="st">&quot;return&quot;</span>)) {
+    <span class="fu">ReturnStatement</span>();
+  } <span class="kw">else</span> {
+    <span class="fu">error</span>(<span class="st">&quot;STATEMENT=&gt;&quot;</span>);
+  }
+}
+
+<span class="co">// letStatement: &#39;let&#39; varName ( arraySubscript )? &#39;=&#39; expression &#39;;&#39;</span>
+<span class="kw">var</span> LetStatement=<span class="kw">function</span>() {
+  <span class="fu">pushNT</span>(<span class="st">&quot;letStatement&quot;</span>);
+  <span class="fu">next</span>(<span class="st">&quot;let&quot;</span>);
+  ...
+  <span class="fu">VarName</span>();
+  <span class="kw">if</span> (<span class="fu">isNext</span>(<span class="st">&quot;[&quot;</span>)) {
+    <span class="fu">ArraySubscript</span>();
+  }
+  <span class="fu">next</span>(<span class="st">&quot;=&quot;</span>);
+  <span class="fu">Expression</span>();
+  <span class="fu">next</span>(<span class="st">&quot;;&quot;</span>);
+  <span class="fu">popNT</span>(<span class="st">&quot;letStatement&quot;</span>);
+}
+
+<span class="co">// arraySubscript: &#39;[&#39; expression &#39;]&#39;</span>
+<span class="kw">var</span> ArraySubscript=<span class="kw">function</span>() {
+  <span class="fu">next</span>(<span class="st">&quot;[&quot;</span>);
+  <span class="fu">Expression</span>();
+  <span class="fu">next</span>(<span class="st">&quot;]&quot;</span>);
+}
+
+<span class="co">// block = &#39;{&#39; statements &#39;}&#39;</span>
+<span class="kw">var</span> Block=<span class="kw">function</span>() {
+  <span class="fu">next</span>(<span class="st">&quot;{&quot;</span>);
+  <span class="fu">Statements</span>();
+  <span class="fu">next</span>(<span class="st">&quot;}&quot;</span>);
+}
+
+<span class="co">// ifStatement : &#39;if&#39; &#39;(&#39; expression &#39;)&#39; block &#39;(&#39;else&#39; block)?</span>
+<span class="kw">var</span> IfStatement=<span class="kw">function</span>() {
+  <span class="fu">pushNT</span>(<span class="st">&quot;ifStatement&quot;</span>);
+  <span class="fu">next</span>(<span class="st">&quot;if&quot;</span>);
+  <span class="fu">next</span>(<span class="st">&quot;(&quot;</span>);
+  <span class="fu">Expression</span>();
+  <span class="fu">next</span>(<span class="st">&quot;)&quot;</span>);
+  <span class="fu">Block</span>();
+  <span class="kw">if</span> (<span class="fu">isNext</span>(<span class="st">&quot;else&quot;</span>)) {
+    <span class="fu">next</span>(<span class="st">&quot;else&quot;</span>);
+    <span class="fu">Block</span>();
+  }
+  <span class="fu">popNT</span>(<span class="st">&quot;ifStatement&quot;</span>);
+}
+
+<span class="co">// whileStatement: &#39;while&#39; &#39;(&#39; expression &#39;)&#39; block</span>
+<span class="kw">var</span> WhileStatement=<span class="kw">function</span>() {
+  <span class="fu">pushNT</span>(<span class="st">&quot;whileStatement&quot;</span>);
+  <span class="fu">next</span>(<span class="st">&quot;while&quot;</span>);
+  <span class="fu">next</span>(<span class="st">&quot;(&quot;</span>);
+  <span class="fu">Expression</span>();
+  <span class="fu">next</span>(<span class="st">&quot;)&quot;</span>);
+  <span class="fu">Block</span>();
+  <span class="fu">popNT</span>(<span class="st">&quot;whileStatement&quot;</span>);  
+}
+
+<span class="co">// doStatement: &#39;do&#39; call &#39;;&#39;</span>
+<span class="kw">var</span> DoStatement=<span class="kw">function</span>() {
+  <span class="fu">pushNT</span>(<span class="st">&quot;doStatement&quot;</span>);
+  <span class="fu">next</span>(<span class="st">&quot;do&quot;</span>);
+  <span class="fu">Call</span>();
+  <span class="fu">next</span>(<span class="st">&quot;;&quot;</span>);
+  <span class="fu">popNT</span>(<span class="st">&quot;doStatement&quot;</span>);
+}
+
+<span class="co">// returnStatement: &#39;return&#39; expression? &#39;;&#39;</span>
+<span class="kw">var</span> ReturnStatement=<span class="kw">function</span>() {
+  <span class="fu">pushNT</span>(<span class="st">&quot;returnStatement&quot;</span>);
+  <span class="fu">next</span>(<span class="st">&quot;return&quot;</span>);
+  <span class="kw">if</span> (!<span class="fu">isNext</span>(<span class="st">&quot;;&quot;</span>))
+    <span class="fu">Expression</span>();
+  <span class="fu">next</span>(<span class="st">&quot;;&quot;</span>)
+  <span class="fu">popNT</span>(<span class="st">&quot;returnStatement&quot;</span>);
+}
+
+<span class="co">// expression: term (op term)* </span>
+<span class="kw">var</span> Expression=<span class="kw">function</span>() {
+  <span class="fu">pushNT</span>(<span class="st">&quot;expression&quot;</span>);
+  <span class="fu">Term</span>();
+  <span class="kw">while</span> (<span class="fu">isNext</span>(<span class="ot">/</span><span class="bn">[</span><span class="fl">\+\-\*\/\&amp;</span><span class="bn">&lt;&gt;=]</span><span class="ot">/</span>)) { <span class="co">// op in &quot;+/-*&amp;&lt;&gt;=&quot;</span>
+    <span class="kw">var</span> op = <span class="fu">next</span>();
+    <span class="fu">Term</span>();
+  }
+  <span class="fu">popNT</span>(<span class="st">&quot;expression&quot;</span>);
+}
+
+...
+
+<span class="co">// call: subroutineName &#39;(&#39; expressionList &#39;)&#39; | (className | varName) &#39;.&#39; subroutineName &#39;(&#39; expressionList &#39;)&#39;</span>
+<span class="kw">var</span> Call=<span class="kw">function</span>() {
+  <span class="kw">var</span> name = <span class="fu">nextType</span>(ID);
+  <span class="kw">if</span> (<span class="fu">isNext</span>(<span class="st">&quot;(&quot;</span>)) {
+    <span class="fu">next</span>(<span class="st">&quot;(&quot;</span>);
+    <span class="fu">ExpressionList</span>();
+    <span class="fu">next</span>(<span class="st">&quot;)&quot;</span>);
+  } <span class="kw">else</span> <span class="kw">if</span> (<span class="fu">isNext</span>(<span class="st">&quot;.&quot;</span>)) {
+    <span class="fu">next</span>(<span class="st">&quot;.&quot;</span>);
+    <span class="kw">var</span> subName = <span class="fu">nextType</span>(ID);
+    <span class="fu">next</span>(<span class="st">&quot;(&quot;</span>)
+    <span class="fu">ExpressionList</span>();
+    <span class="fu">next</span>(<span class="st">&quot;)&quot;</span>);
+  }
+}
+
+<span class="co">// expressionList: (expression (&#39;,&#39; expression)*)?</span>
+<span class="kw">var</span> ExpressionList=<span class="kw">function</span>() {
+  <span class="fu">pushNT</span>(<span class="st">&quot;expressionList&quot;</span>);
+  <span class="fu">Expression</span>();
+  <span class="kw">while</span> (<span class="fu">isNext</span>(<span class="st">&quot;,&quot;</span>)) {
+    <span class="fu">next</span>(<span class="st">&quot;,&quot;</span>);
+    <span class="fu">Expression</span>();
+  }
+  <span class="fu">popNT</span>(<span class="st">&quot;expressionList&quot;</span>);
+}</code></pre>
+<h3 id="中間碼產生-code-generation">中間碼產生 (Code Generation)</h3>
+<p>產生中間碼的動作直接嵌入在語法剖析動作中執行，例如以下的程式碼中，有 gen.command(...) 之類的動作就是用來產生中間碼的。</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">// subroutineBody: &#39;{&#39; varDec* statements &#39;}&#39;</span>
+<span class="kw">var</span> SubroutineBody=<span class="kw">function</span>() {
+  <span class="fu">pushNT</span>(<span class="st">&quot;subroutineBody&quot;</span>);
+  <span class="fu">next</span>(<span class="st">&quot;{&quot;</span>);
+  varCount = <span class="dv">0</span>;
+  <span class="kw">while</span> (<span class="fu">isNext</span>(<span class="st">&quot;var&quot;</span>)) {
+    <span class="fu">VarDec</span>();
+  }
+  <span class="ot">gen</span>.<span class="fu">method</span>(methodTag, className+<span class="st">&quot;.&quot;</span>+methodName, varCount);
+  <span class="kw">if</span> (methodTag === <span class="st">&quot;method&quot;</span>) { <span class="co">// method 函數預設第一個參數為 this</span>
+    <span class="ot">gen</span>.<span class="fu">command</span>(<span class="st">&#39;push argument 0&#39;</span>);
+    <span class="ot">gen</span>.<span class="fu">command</span>(<span class="st">&#39;pop pointer &#39;</span>+POINTER_THIS); <span class="co">// set up &#39;this&#39; pointer</span>
+  } <span class="kw">else</span> <span class="kw">if</span> (methodTag === <span class="st">&quot;constructor&quot;</span>) {
+    <span class="fu">genPush</span>(<span class="ot">classFieldList</span>.<span class="fu">length</span>);
+    <span class="ot">gen</span>.<span class="fu">command</span>(<span class="st">&#39;call Memory.alloc 1&#39;</span>);
+    <span class="ot">gen</span>.<span class="fu">command</span>(<span class="st">&#39;pop pointer &#39;</span>+POINTER_THIS); <span class="co">// set up &#39;this&#39; pointer</span>
+  }
+  <span class="fu">Statements</span>(); 
+  <span class="fu">next</span>(<span class="st">&quot;}&quot;</span>);
+  <span class="fu">popNT</span>(<span class="st">&quot;subroutineBody&quot;</span>);
+}
+
+<span class="co">// varName: ID</span>
+<span class="kw">var</span> VarName=<span class="kw">function</span>() {
+  <span class="kw">var</span> name=<span class="fu">nextType</span>(ID);
+  <span class="kw">if</span> (varKind == <span class="st">&quot;let&quot;</span>) <span class="kw">return</span> name;
+  <span class="kw">var</span> symbol = { <span class="dt">name</span>:name, <span class="dt">type</span>:varType, <span class="dt">kind</span>:varKind };
+  <span class="kw">switch</span> (varKind) {
+    <span class="kw">case</span> <span class="st">&quot;class&quot;</span>: <span class="kw">break</span>;
+    <span class="kw">case</span> <span class="st">&quot;static&quot;</span>: <span class="fu">addSymbol</span>(classSymTable, classStaticList, symbol); <span class="kw">break</span>;
+    <span class="kw">case</span> <span class="st">&quot;field&quot;</span>: <span class="ot">symbol</span>.<span class="fu">kind</span>=<span class="st">&quot;this&quot;</span>; <span class="fu">addSymbol</span>(classSymTable, classFieldList, symbol); <span class="kw">break</span>;
+    <span class="kw">case</span> <span class="st">&quot;subroutine&quot;</span>:<span class="fu">addSymbol</span>(classSymTable, classSubroutineList, symbol); <span class="kw">break</span>;
+    <span class="kw">case</span> <span class="st">&quot;argument&quot;</span>: <span class="fu">addSymbol</span>(methodSymTable, methodArgList, symbol); <span class="kw">break</span>;
+    <span class="kw">case</span> <span class="st">&quot;var&quot;</span>: <span class="ot">symbol</span>.<span class="fu">kind</span>=<span class="st">&quot;local&quot;</span>; <span class="fu">addSymbol</span>(methodSymTable, methodVarList, symbol); <span class="kw">break</span>;
+    <span class="kw">default</span>:
+      <span class="fu">error</span>(<span class="st">&quot;VarKind not Found!&quot;</span>);
+  }
+  <span class="kw">return</span> name;
+}
+
+<span class="co">// arraySubscript: &#39;[&#39; expression &#39;]&#39;</span>
+<span class="kw">var</span> ArraySubscript=<span class="kw">function</span>(arrayName) {
+  <span class="fu">genPush</span>(arrayName);
+  <span class="fu">next</span>(<span class="st">&quot;[&quot;</span>);
+  <span class="fu">Expression</span>();
+  <span class="fu">next</span>(<span class="st">&quot;]&quot;</span>);
+  <span class="ot">gen</span>.<span class="fu">command</span>(<span class="st">&quot;add&quot;</span>);
+  <span class="ot">gen</span>.<span class="fu">command</span>(<span class="st">&quot;pop pointer &quot;</span>+POINTER_THAT); <span class="co">// pop into that ptr</span>
+  <span class="ot">gen</span>.<span class="fu">command</span>(<span class="st">&quot;push that 0&quot;</span>); <span class="co">//  push *(base+index) onto stack</span>
+}
+
+<span class="co">// condExpression = ( expression ) block</span>
+<span class="kw">var</span> CondExpression=<span class="kw">function</span>(gotoLabel) {
+  <span class="fu">next</span>(<span class="st">&quot;(&quot;</span>);
+  <span class="fu">Expression</span>();
+  <span class="fu">next</span>(<span class="st">&quot;)&quot;</span>);
+  <span class="ot">gen</span>.<span class="fu">command</span>(<span class="st">&quot;not&quot;</span>); <span class="co">// ~(cond)</span>
+  <span class="kw">var</span> notifLabel = <span class="fu">newLabel</span>();
+  <span class="ot">gen</span>.<span class="fu">command</span>(<span class="st">&quot;if-goto &quot;</span>+notifLabel);
+  <span class="fu">Block</span>();
+  <span class="ot">gen</span>.<span class="fu">command</span>(<span class="st">&quot;goto &quot;</span>+gotoLabel);
+  <span class="ot">gen</span>.<span class="fu">label</span>(notifLabel);
+}</code></pre>
+<p>而 gen 這個用來輸出中間碼的物件，其部分程式碼如下：</p>
+<pre><code>gen.stringConstant=function(str) {
+  command(&#39;push constant &#39;+str.length);
+  gen.call(&quot;String.new&quot;, 1);
+  for (var i=0; i&lt;str.length; i++) {
+    command(&#39;push constant &#39;+str.charCodeAt(i));
+    gen.call(&quot;String.appendChar&quot;, 2);
+  }
+}
+
+gen.keywordConstant=function(str) {
+  switch (str) {
+    case &quot;this&quot; : gen.command(&quot;push pointer 0&quot;); break;
+    case &quot;true&quot; : gen.command(&quot;push constant 1&quot;); gen.command(&quot;neg&quot;); break;
+    case &quot;false&quot;: gen.command(&quot;push constant 0&quot;); break;
+    case &quot;null&quot; : gen.command(&quot;push constant 0&quot;); break;
+    default: throw Error(&quot;keywordConstant not found :&quot;+str);
+  }
+}
+
+gen.command = function(cmd) {
+  command(cmd);
+}</code></pre>
+<p>以上用程式碼片段說明了我們的編譯器實作方法，您可以看到這個編譯器的設計方式採用的是遞迴下降法，也就是直接用遞迴程式剖析 EBNF 語法的方式，來處理 JACK 這個程式語言的語法。</p>
+<h2 id="nand2tetris-第-12-週----作業系統">Nand2Tetris 第 12 週 -- 作業系統</h2>
+<p>本文程式來自 <a href="https://github.com/havivha/Nand2Tetris/tree/master/12" class="uri">https://github.com/havivha/Nand2Tetris/tree/master/12</a> ，使用時請注意遵守開源授權。</p>
+<p>關於 nand2tetris 第 12 週的內容與解說，請參考下列文章。</p>
+<ul>
+<li><a href="http://ccc.nqu.edu.tw/db/ymag201508/focus7.html">少年科技人雜誌 / 2015年8月號 / Nand2Tetris 第 12 週 -- Operating System</a></li>
+</ul>
+<p>在本文中，我們主要補充的是實作的方法。我們採用 JavaScript 撰寫，並用 node.js 環境進行測試。 檔案: Array.jack</p>
+<pre><code>// Represents an array. Can be used to hold any type of object.
+class Array {
+
+    // Constructs a new Array of the given size.
+    function Array new(int size) {
+        return Memory.alloc(size);
+    }
+
+    // De-allocates the array and frees its space.
+    method void dispose() {
+        do Memory.deAlloc(this);
+        return;
+    }
+}</code></pre>
+<p>檔案: Memory.jack</p>
+<pre><code>class Memory {
+    static Array memory;
+    static Array freeList;
+    static Array NO_BLOCK;
+    
+    // Free block structure:
+    // word 0: free block size including 2 header words
+    // word 1: Next free block ptr
+    static int FL_LENGTH; // freeList.length index
+    static int FL_NEXT;   // freeList.next index
+    
+    // Alloc block structure:
+    // word 0: alloc block size including 1 header word
+    // word 1..size: allocated block
+    static int ALLOC_SIZE;// alloc block size index relative to start of allocated block
+    
+    /** Initializes memory parameters. */
+    function void init() {
+        let memory = 0;
+        let freeList = 2048;
+        let NO_BLOCK = 16384;   // means no block found
+        let FL_LENGTH = 0;
+        let FL_NEXT = 1;
+        let ALLOC_SIZE = -1;
+        let freeList[FL_LENGTH] = 16384-2048;
+        let freeList[FL_NEXT] = null;
+        return;
+    }
+
+    /** Returns the value of the main memory at the given address. */
+    function int peek(int address) {
+        return memory[address];
+    }
+
+    /** Sets the value of the main memory at this address
+     *  to the given value. */
+    function void poke(int address, int value) {
+        let memory[address] = value;
+        return;
+    }
+
+    /** finds and allocates from the heap a memory block of the 
+     *  specified size and returns a reference to its base address. */
+    function Array alloc(int size) {
+        var Array prev_block;
+        var Array found_block;
+        
+        let prev_block = Memory.best_fit(size);             // prev_block is the block before the found block
+        if( prev_block = NO_BLOCK ) {
+            let found_block = null;    // none found
+        }
+        else {
+            if( prev_block = null ) {
+                let found_block = freeList;                 // New block is at the beginning of the freeList
+                let freeList = Memory.do_alloc(found_block, size); // Free list now starts a new first free block
+            }
+            else {
+                let found_block = prev_block[FL_NEXT];
+                let prev_block[FL_NEXT] = Memory.do_alloc(found_block, size);
+            }
+        }
+        return found_block+1;
+    }
+    ....
+}</code></pre>
+<p>檔案: String.jack</p>
+<pre><code>class String {
+  constructor String new(int maxLength)
+  method void dispose()
+  method int length()
+  method char charAt(int j)
+  method void setCharAt(int j, char c)
+  method String appendChar(char c)
+  method void eraseLastChar()
+  method int intValue()
+  method void setInt(int j)
+  function char backSpace()
+  function char doubleQuote()
+  function char newLine()
+}</code></pre>
+<p>檔案: Screen.jack</p>
+<pre><code>class Screen {
+    static Array screen;
+    static boolean cur_colour;
+    static int white_pixel;
+    static int black_pixel;
+    static boolean white;
+    static boolean black;
+    
+    /** Initializes the Screen. */
+    function void init() {
+        let screen = 16384;
+        let white = false;
+        let black = true;
+        let white_pixel = 0;
+        let black_pixel = 1;
+        let cur_colour = black;
+        return;
+    }
+
+
+    /** Erases the whole screen. */
+    function void clearScreen() {
+        var int i;
+        let i = 0;
+        while( i &lt; 8192 ) {
+            let screen[i] = white;
+        }
+        return;
+    }
+
+    /** Sets the color to be used in further draw commands
+     *  where white = false, black = true. */
+    function void setColor(boolean b) {
+        let cur_colour = b;
+        return;
+    }
+
+  function void clearScreen()
+  function void setColor(boolean b)
+  function void drawPixel(int x, int y)
+  function void drawLine(int x1, int y1, int x2, int y2)
+  function void drawRectangle(int x1, int y1,int x2, int y2)
+  function void drawCircle(int x, int y, int r)
+}</code></pre>
+<p>檔案: Output.jack</p>
+<pre><code>class Output {
+    /** Initializes the screen and locates the cursor at the screen&#39;s top-left. */
+    function void init() {
+        let screen = 16384;
+        let cursor_x = 0;
+        let cursor_y = 0;
+        let charMasks = Array.new(2);
+        let charMasks[0] = 255;
+        let charMasks[1] = -1 &amp; 255;
+        do Output.initMap();
+        return;
+    }
+
+    // Initalizes the character map array
+    function void initMap() {
+        var int i;
+    
+        let charMaps = Array.new(127);
+        
+        // black square (used for non printable characters)
+        do Output.create(0,63,63,63,63,63,63,63,63,63,0,0);
+
+        // Assigns the bitmap for each character in the charachter set.
+        do Output.create(32,0,0,0,0,0,0,0,0,0,0,0);          //
+        do Output.create(33,12,30,30,30,12,12,0,12,12,0,0);  // !
+        do Output.create(34,54,54,20,0,0,0,0,0,0,0,0);       // &quot;
+        do Output.create(35,0,18,18,63,18,18,63,18,18,0,0);  // #
+...
+  function void moveCursor(int i, int j)
+  function void printChar(char c)
+  function void printString(String s)
+  function void printInt(int i)
+  function void println()
+  function void backSpace()
+}</code></pre>
+<p>檔案: Keyboard.jack</p>
+<pre><code>class Keyboard {
+    static Array keyboard;
+    
+    /** Initializes the keyboard. */
+    function void init() {
+        let keyboard = 24576;
+        return;
+    } 
+    /**                             
+     * Reads the next character from the keyboard.
+     * waits until a key is pressed and then released, then echoes
+     * the key to the screen, and returns the value of the pressed key.
+     */
+    function char readChar() {
+        var char key;
+        while( Keyboard.keyPressed() = 0 ) {}
+        let key = Keyboard.keyPressed();
+        while( ~(Keyboard.keyPressed() = 0) ) {}
+        do Output.printChar(key);
+        return key;
+    }
+
+  function char keyPressed()
+  function String readLine(String message)
+  function int readInt(String message)
+}</code></pre>
+<p>檔案: Math.jack</p>
+<pre><code>class Math {
+  function void init()
+  function int abs(int x)
+  function int multiply(int x, int y)
+  function int divide(int x, int y)
+  function int min(int x, int y)
+  function int max(int x, int y)
+  function int sqrt(int x)
+}</code></pre>
+<p>檔案: Sys.jack</p>
+<pre><code>class Sys {
+
+    /** Performs all the initializations required by the OS. */
+    function void init() {
+        do Math.init();
+        do Output.init();
+        do Screen.init();
+        do Keyboard.init();
+        do Memory.init();
+        do Main.main();
+        do Sys.halt();
+        return;
+    }
+
+    /** Halts execution. */
+    function void halt() {
+        while(true){}
+        return;
+    }
+  function void error(int errorCode)
+  function void wait(int duration)
+}</code></pre>
+<p>一旦完成這些作業之後，您就從頭到尾實作出了一台完整的電腦。</p>
+<p>現在，在您的腦海中，整台電腦應該是鉅細靡遺，一覽無遺的了。</p>
+<p>您有沒有發現，電腦對您而言，開始變得很透明呢？</p>
+<h1 id="雜誌訊息">雜誌訊息</h1>
+<h2 id="讀者訂閱">讀者訂閱</h2>
+<p>程式人雜誌是一個結合「開放原始碼與公益捐款活動」的雜誌，簡稱「開放公益雜誌」。開放公益雜誌本著「讀書做善事、寫書做公益」的精神，我們非常歡迎程式人認養專欄、或者捐出您的網誌，如果您願意成為本雜誌的專欄作家，請加入 <a href="https://www.facebook.com/groups/programmerMagazine/">程式人雜誌社團</a> 一同共襄盛舉。</p>
+<p>我們透過發行這本雜誌，希望讓大家可以讀到想讀的書，學到想學的技術，同時也讓寫作的朋友的作品能產生良好價值 – 那就是讓讀者根據雜誌的價值捐款給慈善團體。 讀雜誌做公益也不需要有壓力，您不需要每讀一本就急著去捐款，您可以讀了十本再捐，或者使用固定的月捐款方式，當成是雜誌訂閱費，或者是季捐款、一年捐一次等都 OK ! 甚至是單純當個讀者我們也都很歡迎！</p>
+<p>本雜誌每期參考價：NT 50 元，如果您喜歡本雜誌，請將書款捐贈公益團體。例如可捐贈給「羅慧夫顱顏基金會 彰化銀行(009) 帳號：5234-01-41778-800」。(若匯款要加註可用「程式人雜誌」五個字)</p>
+<h2 id="投稿須知">投稿須知</h2>
+<p><em>給專欄寫作者：</em> 做公益不需要有壓力。如果您願意撰寫專欄，您可以輕鬆的寫，如果當月的稿件出不來，我們會安排其他稿件上場。</p>
+<p><em>給網誌捐贈者：</em> 如果您沒時間寫專欄或投稿，沒關係，只要將您的網誌以 [創作共用的「姓名標示、非商業性、相同方式分享」授權] 並通知我們，我們會自動從中選取需要的文章進行編輯，放入適當的雜誌當中出刊。</p>
+<p><em>給文章投稿者：</em> 程式人雜誌非常歡迎您加入作者的行列，如果您想撰寫任何文章或投稿，請用 markdown 或 LibreOffice 編輯好您的稿件，並於每個月 25 日前投稿到<a href="https://www.facebook.com/groups/programmerMagazine/">程式人雜誌社團</a> 的檔案區，我們會盡可能將稿件編入隔月1號出版程式人雜誌當中，也歡迎您到社團中與我們一同討論。</p>
+<p>如果您要投稿給程式人雜誌，我們最希望的格式是採用 markdown 的格式撰寫，然後將所有檔按壓縮為 zip 上傳到社團檔案區給我們， 如您想學習 markdown 的撰寫出版方式，可以參考 [看影片學 markdown 編輯出版流程] 一文。</p>
+<p>如果您無法採用 markdown 的方式撰寫，也可以直接給我們您的稿件，像是 MS. Word 的 doc 檔或 LibreOffice 的 odt 檔都可以，我們 會將這些稿件改寫為 markdown 之後編入雜誌當中。</p>
+<h2 id="參與編輯">參與編輯</h2>
+<p>您也可以擔任程式人雜誌的編輯，甚至創造一個全新的公益雜誌，我們誠摯的邀請您加入「開放公益出版」的行列，如果您想擔任編輯或創造新雜誌，也歡迎到 <a href="https://www.facebook.com/groups/programmerMagazine/">程式人雜誌社團</a> 來與我們討論相關事宜。</p>
+<h2 id="公益資訊">公益資訊</h2>
+<table>
+<thead>
+<tr class="header">
+<th align="left">公益團體</th>
+<th align="left">聯絡資訊</th>
+<th align="left">服務對象</th>
+<th align="left">捐款帳號</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">財團法人羅慧夫顱顏基金會</td>
+<td align="left"><a href="http://www.nncf.org/" class="uri">http://www.nncf.org/</a> <br/> <script type="text/javascript">
+<!--
+h='&#110;&#110;&#x63;&#102;&#46;&#x6f;&#114;&#x67;';a='&#64;';n='&#108;&#x79;&#110;&#110;';e=n+a+h;
+document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail">'+e+'<\/'+'a'+'>');
+// -->
+</script><noscript>&#108;&#x79;&#110;&#110;&#32;&#x61;&#116;&#32;&#110;&#110;&#x63;&#102;&#32;&#100;&#x6f;&#116;&#32;&#x6f;&#114;&#x67;</noscript> <br/> 02-27190408分機 232</td>
+<td align="left">顱顏患者 (如唇顎裂、小耳症或其他罕見顱顏缺陷）</td>
+<td align="left">銀行：009 彰化銀行民生分行 <br/> 帳號：5234-01-41778-800</td>
+</tr>
+<tr class="even">
+<td align="left">社團法人台灣省兒童少年成長協會</td>
+<td align="left"><a href="http://www.cyga.org/" class="uri">http://www.cyga.org/</a> <br/> <script type="text/javascript">
+<!--
+h='&#x67;&#x6d;&#x61;&#x69;&#108;&#46;&#x63;&#x6f;&#x6d;';a='&#64;';n='&#x63;&#x79;&#x67;&#x61;&#x39;&#x39;';e=n+a+h;
+document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail">'+e+'<\/'+'a'+'>');
+// -->
+</script><noscript>&#x63;&#x79;&#x67;&#x61;&#x39;&#x39;&#32;&#x61;&#116;&#32;&#x67;&#x6d;&#x61;&#x69;&#108;&#32;&#100;&#x6f;&#116;&#32;&#x63;&#x6f;&#x6d;</noscript> <br/> 04-23058005</td>
+<td align="left">單親、隔代教養.弱勢及一般家庭之兒童青少年</td>
+<td align="left">銀行：新光銀行 <br/> 戶名：台灣省兒童少年成長協會 <br/> 帳號：103-0912-10-000212-0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="footer">wikidown 電子書</div>
+</body>
+</html>

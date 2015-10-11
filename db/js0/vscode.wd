@@ -1,0 +1,102 @@
+# 以 Visual Studio Code 編輯 JavaScript 程式並除錯
+
+## 簡介
+
+Visual Studio Code 是微軟 2015 年釋出的程式編輯器，支援 node.js 且有 Intellisense 。
+
+我試用了，覺得不錯用，重要的是連 javascript 都有 intellsense, 這是我用 Notepad++ 和 sublime 好像都沒有的....
+
+下載點： <https://code.visualstudio.com/>
+
+## 立即提示的 IntelliSence 用法
+
+要開專案，然後在有小虫線的未知字上按下去，選 add /// reference to node/node.d.ts 才會有 node.js 的 intellisense
+
+安裝完成後，使用 File/Open Folder 開啟專案資料夾，然後在一些有 node.js 關鍵字或函數，有紅色小蟲號的符號底下按下去，然後選 add /// reference to node/node.d.ts 才會有 node.js 的 intellisense。
+
+```
+  this.body = fs.createReadStream(__dirname+this.path);
+```
+
+用法請參考下列文章。
+
+* <https://code.visualstudio.com/Docs/nodejs>
+
+
+## 使用 Visual Studio Code 除錯
+
+若您要使用 Visual Studio Code 除錯，必須按銀幕上那個像蟑螂一樣的東西，然後按上方的齒輪圖示。
+
+但經我 2015/5/8 實測發現還不行，會出現『Unable to create 'launch.json' file inside the '.settings' folder.』的訊息。根據 <http://stackoverflow.com/questions/30027201/how-can-we-debug-web-application-on-visual-studio-code> 這篇中的說法，也有人有同樣的問題。
+
+我的解決辦法式自己在該資料夾下建立一個 .setting 的資料夾，然後放入 launch.json 檔案，然後再按蟑螂後按齒輪，接著將 launch.jason 當中的除錯程式改為您的目標程式。舉例而言，當我要除錯 madd.js 這個程式的時候，我就將 "program" 欄位設為 "madd.js" ，這樣才能開始除錯。
+
+```
+{
+    "version": "0.1.0",
+    // List of configurations. Add new configurations or edit existing ones.  
+    // ONLY "node" and "mono" are supported, change "type" to switch.
+    "configurations": [
+        {
+            // Name of configuration; appears in the launch configuration drop down menu.
+            "name": "Launch madd.js",
+            // Type of configuration. Possible values: "node", "mono".
+            "type": "node",
+            // Workspace relative or absolute path to the program.
+            "program": "madd.js",
+            // Automatically stop program after launch.
+            "stopOnEntry": true,
+            // Command line arguments passed to the program.
+            "args": [],
+            // Workspace relative or absolute path to the working directory of the program being debugged. Default is the current workspace.
+            "cwd": ".",
+            // Workspace relative or absolute path to the runtime executable to be used. Default is the runtime executable on the PATH.
+            "runtimeExecutable": null,
+            // Environment variables passed to the program.
+            "env": { }
+        },      
+        {
+            "name": "Launch server on port",
+            "type": "node",
+            "program": "src/server/server.js",
+            "args": ["--port=8080"]
+        },
+        {
+            "name": "Attach",
+            "type": "node",
+            // TCP/IP address. Default is "localhost".
+            "address": "localhost",
+            // Port to attach to.
+            "port": 5858
+        }
+    ]
+}
+```
+
+以下是我在除錯 madd.js 這個檔案的一個畫面，
+
+![[]](vscode_debug.jpg)
+
+如果您想試試看 VSCODE 的除錯功能，可以下載下列專案試試，我已經設定好相關檔案了。
+
+* @[[madd.zip]]
+
+可惜的是，目前我使用的預覽版 VSCODE 好像沒有加入觀察變數的功能，這部份感覺還是 node-inspector 好用！
+
+
+<!--
+雖然展示版有說可以除錯 node.js 的程式，如下文件中說明的內容。
+
+* <https://code.visualstudio.com/Docs/nodejs>
+* <https://code.visualstudio.com/Docs/debugging>
+
+但經我 2015/5/8 實測發現還不行，會出現『Unable to create 'launch.json' file inside the '.settings' folder.』的訊息。根據 <http://stackoverflow.com/questions/30027201/how-can-we-debug-web-application-on-visual-studio-code> 這篇中的說法，也有人有同樣的問題。
+
+另根據 <https://code.visualstudio.com/Docs/aspnet5> 一文最下面的說法，ASP.NET 5 的除錯也還沒好。
+
+Debugging
+
+Visual Studio Code and ASP.NET 5 are in preview and at this time debugging ASP.NET 5 is not supported in Visual Studio Code (on any platform). Rest assured, we are working hard to bring these experiences to you in the near future.
+
+-->
+

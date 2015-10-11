@@ -1,0 +1,10 @@
+# 字串處理
+
+| 標題  |  說明  |  影片  |
+|--------|-----------|-------|
+| [[字串物件]](stringObject) | string | |
+| -- [[範例：字串函數範例]](stringEx) |  | |
+| [[正規表達式]](regexp) | regular expression | |
+| -- [[範例：取出電話]](regexGetTel) |  | |
+| -- [[範例：取出超連結]](regexGetLink) |  | |
+| -- [[範例：加上超連結]](regexReplaceLink) |  | |

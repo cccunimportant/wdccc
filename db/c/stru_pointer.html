@@ -1,0 +1,103 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="/gospa.js"></script>
+<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[C 語言]](c:home) </title>
+
+<p><a href="/db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="/db/book/home.html"" class="innerLink">教科書</a>  / <a href="/db/c/home.html"" class="innerLink">C 語言</a>  </p>
+
+<h2 id="c">C 語言結構中的指標算術</h2>
+
+<p>在 C 語言當中，指標的內容就是記憶體位址，於是我們可以利用指標的算術，計算出某些具有特殊價值的數字，然後進行位址操作，以便定址到我們想要的內容上。</p>
+
+<p>舉例而言，在 Linux 的鏈結串列中，就定義了下列的 offsetof() 巨集函數，可以讓我們計算出一個結構與其欄位間的距離，</p>
+
+<pre><code class="CPP">#define offsetof(TYPE, MEMBER) ((size_t) &amp;((TYPE *)0)-&gt;MEMBER)
+</code></pre>
+
+<p>事實上，offsetof() 這個巨集已經被納入到 ANSI C 的 <stddef.h> 表頭中，您也可以引用該表頭，而不需要自己實作。</p>
+
+<p>如果我們要從欄位指標反求其母結構位址，則可參考下列 Linux 核心中的原始碼，使用 container_of() 函數</p>
+
+<pre><code class="CPP">#define container_of(ptr, type, member) ({    \
+        const typeof( ((type *)0)-&gt;member ) *__mptr = (ptr);    \
+        (type *)( (char *)__mptr - offsetof(type,member) );})
+</code></pre>
+
+<p>這樣的巨集函數要如何使用呢？請參考下列範例。</p>
+
+<h3 id="">程式範例：結構中的指標運算</h3>
+
+<p>檔案：structptr.c</p>
+
+<pre><code class="CPP">#include &lt;stdio.h&gt;
+
+#define offsetof(TYPE, MEMBER) ((size_t) &amp;((TYPE *)0)-&gt;MEMBER)
+
+#define container_of(ptr, type, member) ({    \
+        const typeof( ((type *)0)-&gt;member ) *__mptr = (ptr);    \
+        (type *)( (char *)__mptr - offsetof(type,member) );})
+
+typedef struct {
+  char name[20];
+  int age;
+} Person;
+
+// 以 Person 中的 age 欄位為例，說明 container_of() 函數的作法
+//  container_of(&amp;p.age, Person, age)
+//    typeof( ((Person *)0)-&gt;age ) is int
+//    int *__mptr = (&amp;p.age); 
+//    (Person *) ((char *) __mptr - offsetof(Person, age))
+
+int main() {
+  Person p = {
+    .name="John",
+    .age=40
+  };
+
+  size_t offset = offsetof(Person, age);
+  printf("offset=0x%x\n", offset);
+  printf("offsetof(Person,age)=0x%x\n", offsetof(Person, age));
+  printf("&amp;p=%p\n", &amp;p);
+  printf("&amp;p.age=%p\n", &amp;p.age);
+  printf("p.age=%d\n", *(&amp;p.age));
+  printf("&amp;p+1=%p\n", &amp;p+1);
+  printf("&amp;((Person*)&amp;p)[1]=%p\n", &amp;((Person*)&amp;p)[1]);
+  char *cptr = (char*) &amp;p;
+  printf("cptr+1=%p\n", cptr+1);
+  printf("cptr+20=%p\n", cptr+20);
+  printf("*(int *)(cptr+20)=%d\n", *(int *)(cptr+20));
+  int *mptr = (&amp;p.age);
+  Person *pptr = (Person *) ((char *) mptr-20);
+  printf("*pptr=%p\n", pptr);
+//  int **agePtr;
+//  agePtr  = (int**) (&amp;p+offset);
+//  printf("agePtr=%p\n", agePtr);
+//  printf("*(&amp;p+offset)=%d\n", *agePtr);
+//  printf("&amp;p+offsetof(Person,age)=%p\n", &amp;p+offset);
+//  printf("container_of(&amp;p.age,Person,age)=%p\n", container_of(&amp;p.age, Person, age));
+}
+</code></pre>
+
+<h3 id="">執行結果</h3>
+
+<pre><code>D:\cp&gt;gcc structptr.c -o structptr
+
+D:\cp&gt;structptr
+offset=0x14
+offsetof(Person,age)=0x14
+&amp;p=0022FF50
+&amp;p.age=0022FF64
+p.age=40
+&amp;p+1=0022FF68
+&amp;((Person*)&amp;p)[1]=0022FF68
+cptr+1=0022FF51
+cptr+20=0022FF64
+*(int *)(cptr+20)=40
+*pptr=0022FF50
+</code></pre>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+### 關於本書
+
+本書是金門大學陳鍾誠的「視窗程式設計、網路程式設計、遊戲程式設計」等課程的上課教材匯總，原稿採用 markdown+pandoc 的方式編排。
+
+### 本書內容
+
+1. [[簡介與開發環境]](csharp)
+2. [[變數與運算式]](varexp)
+3. [[流程控制]](ifloop)
+4. [[陣列]](array)
+5. [[函數]](function)
+6. [[物件]](object)
+7. [[例外處理]](exception)
+8. [[檔案處理]](file)
+9. [[資料結構]](datastructure)
+10. [[正規表達式]](regexp)
+11. [[作業系統與 Thread]](thread)
+12. [[視窗程式簡介]](window)
+13. [[時間驅動]](timer)
+14. [[設計文字編輯器]](editor)
+15. [[DataGridView 與 ListView 元件]](gridview)
+16. [[網路程式簡介]](net)
+17. [[UDP 程式設計]](udp)
+18. [[TCP 程式設計]](tcp)
+19. [[HTTP 程式設計 (1) – Server]](http)
+20. [[HTTP 程式設計 (2) – Client]](web)
+21. [[XNA 遊戲引擎]](game)
+22. [[結語]](end)

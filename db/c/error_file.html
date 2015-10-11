@@ -1,0 +1,79 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="/gospa.js"></script>
+<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[C 語言]](c:home) </title>
+
+<p><a href="/db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="/db/book/home.html"" class="innerLink">教科書</a>  / <a href="/db/c/home.html"" class="innerLink">C 語言</a>  </p>
+
+<h2 id="cferror">C 語言 -- 檔案錯誤 ferror()</h2>
+
+<h3 id="">程式範例</h3>
+
+<pre><code class="CPP">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main(int argc, char *argv[]) {
+  FILE *in, *out;
+  char ch;
+
+  if((in=fopen(argv[1], "rb")) == NULL) {
+    perror("Error");
+    exit(1);
+  }
+
+  while(!feof(in)) {
+    ch = getc(in);
+    if(ferror(in)) {
+      perror("Error");
+      clearerr(in);
+      break;
+    }
+    putchar(ch);
+  }
+  fclose(in);
+  return 0;
+}
+</code></pre>
+
+<h3 id="">執行結果</h3>
+
+<pre><code>D:\cp&gt;gcc ferror.c -o ferror
+
+D:\cp&gt;ferror
+Error: No such file or directory
+
+D:\cp&gt;ferror exist.not
+Error: No such file or directory
+
+D:\cp&gt;ferror ferror.c
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main(int argc, char *argv[]) {
+  FILE *in, *out;
+  char ch;
+
+  if((in=fopen(argv[1], "rb")) == NULL) {
+    perror("Error");
+    exit(1);
+  }
+
+  while(!feof(in)) {
+    ch = getc(in);
+    if(ferror(in)) {
+      perror("Error");
+      clearerr(in);
+      break;
+    }
+    putchar(ch);
+  }
+  fclose(in);
+  return 0;
+}
+</code></pre>
+
+</body>
+</html>

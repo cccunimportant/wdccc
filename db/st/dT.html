@@ -1,0 +1,58 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="/gospa.js"></script>
+<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[機率統計]](st:home) </title>
+
+<p><a href="/db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="/db/book/home.html"" class="innerLink">教科書</a>  / <a href="/db/st/home.html"" class="innerLink">機率統計</a>  </p>
+
+<h2 id="ttdistribution">T 分布 (T distribution)</h2>
+
+<p>T 分配：Z 為標準常態分布，$X_\gamma^2$ 為自由度 $\gamma$ 的卡方分布。</p>
+
+<p>公式： $T = \frac{Z}{\sqrt{X_\gamma^2/\gamma}}$</p>
+
+<p>T 分布公式： $f(t) = \frac{\Gamma{(\gamma+1)}/2}{\Gamma(\gamma/2) \sqrt{\pi \gamma}} (1+\frac{t^2}{\gamma})^{-(\gamma+1)/2}$ ; 範圍：$-\infty &lt; t &lt; \infty$</p>
+
+<p>圖形：用 R 程式繪製 T 分布的圖形 (與常態分布 Z 比較)</p>
+
+<pre><code class="R">curve(dnorm(x), -5, 5, col="black")
+curve(dt(x, df=10), -5, 5, col="green", add=T)
+curve(dt(x, df=2), -5, 5, col="red", add=T)
+</code></pre>
+
+<div class="figure"><img src="db/st/T3.jpg"/><p class="caption"></p></div>
+
+<p>Ｒ函數：t(df, Del)</p>
+
+<ul>
+<li>公式：T(df=n) := f(x) = Γ((n+1)/2) / (√(n π) Γ(n/2)) (1 + x^2/n)^-((n+1)/2)</li>
+<li>擴充：T(df, Del) := (U + Del) / √(V/df) ; U ~ N(0,1) , V ~ χ^2(df) 且 (U,V) 獨立。</li>
+<li>網址：http://stat.ethz.ch/R-manual/R-patched/library/stats/html/TDist.html</li>
+</ul>
+
+<p>用途：可用來描述 n 個常態分布樣本平均值的分布。</p>
+
+<p>描述：令 $X_1, X_2, ..., X_n$ 為一組來自常態分布 $N(\mu, \sigma^2)$ 的隨機樣本，則下列算式服從自由度 n-1 的 T 分布。</p>
+
+<p>$\frac{\bar{X} - \mu }{S/\sqrt{n}}$</p>
+
+<p>估計：當 $\sigma$ 未知時，$\mu$ 的 $100 (1-\alpha \%)$ 信賴區間如下</p>
+
+<p>$\bar{x} \pm t_{\alpha/2} (s/\sqrt{n})$</p>
+
+<p>R 程式範例一</p>
+
+<pre><code class="R">op=par(mfrow=c(2,2))
+curve(dt(x, 1), -10, 10)
+curve(dt(x, 5), -10, 10)
+curve(dt(x, 10), -10, 10)
+curve(dt(x, 100), -10, 10)
+</code></pre>
+
+<div class="figure"><img src="db/st/dtCurve4.jpg"/><p class="caption"></p></div>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="/gospa.js"></script>
+<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[機率統計]](st:home) </title>
+
+<p><a href="/db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="/db/book/home.html"" class="innerLink">教科書</a>  / <a href="/db/st/home.html"" class="innerLink">機率統計</a>  </p>
+
+<h2 id="uniformdistribution">均勻分布 (Uniform distribution)</h2>
+
+<p>意義：在範圍 (a,b) 內的出現機會均等。</p>
+
+<p>R 函數：<a href="http://sites.stat.psu.edu/~dhunter/R/html/stats/html/Uniform.html">unif(a:min, b:max)</a></p>
+
+<p>課本公式：$f(x) = \frac{1}{b-a}$</p>
+
+<p>R 的公式：f(x) = 1/(max-min)</p>
+
+<p>變數意義：a:min 範圍下限, b:max 上限</p>
+
+<h3 id="r">R 程式範例</h3>
+
+<pre><code class="R">&gt; op=par(mfrow=c(2,2))
+&gt; curve(dunif(x, 0, 1), -2, 10)
+&gt; curve(dunif(x, 1, 5), -2, 10)
+&gt; curve(dunif(x, -1, 9), -2, 10)
+&gt; curve(dunif(x, 10, 110), 0, 200)
+&gt;
+</code></pre>
+
+<div class="figure"><img src="db/st/dunifCurve4.jpg"/><p class="caption"></p></div>
+
+</body>
+</html>

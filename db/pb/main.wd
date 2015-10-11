@@ -1,0 +1,17 @@
+# 程式設計的第一門課
+
+| 主題                             |  JavaScript | C/C++ 語言 | C# 語言 | Java 語言 |  R 語言 |
+|----------------------------------|-------------|-----------|---------|-----------|---------|
+| [[目錄]](pb:main)    |  [[JavaScript]](js:home)  | [[C/C++]](c:home) | [[C#]](cs:home) | [[Java]](ja:home) | [[R]](r:home) |
+| [[簡介]](basic)    |  [[basic.js]](js:history)  | [[basic.c]](c:basic)   | [[basic.cs]](cs:csharp)  | [[basic.java]](ja:basic)  | [[basic.r]](r:basic)  |
+| [[命令列執行環境]](shell)        | [[node.js]](js:basic) | [[gcc]]   | [[csc]](cs:csharp) | [[javac]] | [[rscript]]((r:basic) |
+| [[整合開發工具]](IDE)            | [[WebStorm]] | [[Dev C++]] | [[Visual Studio]](cs:csharp) | [[Eclipse]] | [[RStudio]](r:basic) |
+| [[變數]](var)                    | [[var.js]](js:basic)  | [[var.c]]  | [[var.cs]](cs:varexp) | [[var.java]](ja:var) | [[var.r]](r:var) |
+| [[運算式]](exp)                  | [[exp.js]](js:basic)  | [[exp.c]]  | [[exp.cs]](cs:varexp) | [[exp.java]](ja:exp) | [[exp.r]](r:exp)  |
+| [[條件語句]](if)                 | [[if.js]](js:control)   | [[if.c]]   | [[if.cs]](cs:ifloop)  | [[if.java]](ja:if)  | [[if.r]](r:if)  |
+| [[迴圈]](loop)                   | [[loop.js]](js:control) | [[loop.c]] | [[loop.cs]](cs:ifloop) | [[loop.java]](ja:var) | [[loop.r]](r:loop)  |
+| [[陣列]](array)                  | [[array.js]](js:control) | [[array.c]]| [[array.cs]](cs:array) | [[array.java]](ja:array) | [[array.r]](r:array) |
+| [[函數]](function)               | [[func.js]](js:function) | [[func.c]] | [[func.cs]](cs:function) | [[func.java]](ja:function)  | [[func.r]](r:function)  |
+| [[物件]](array)                  | [[obj.js]](js:objectoriented)  | [[obj.c]]  | [[obj.cs]](cs:object) | [[obj.java]](ja:object) | [[obj.r]](r:object)  |
+| [[特色語法]](special)            | [[spec.js]] | [[spec.c]]  | [[spec.cs]] | [[spec.java]] | [[spec.r]] |
+| [[應用專長]](app)                | [[網站]](app.js) | [[系統]](app.c) | [[視窗]](app.cs) | [[手機]](spec.java) | [[科學計算]](app.r) |

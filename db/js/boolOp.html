@@ -1,0 +1,116 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="/gospa.js"></script>
+<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[JavaScript 語言]](js:home) </title>
+
+<p><a href="/db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="/db/book/home.html"" class="innerLink">教科書</a>  / <a href="/db/js/home.html"" class="innerLink">JavaScript 語言</a>  </p>
+
+<h1 id="">布林判斷</h1>
+
+<pre><code>C:\Users\user&gt;node
+&gt; 3=5
+3=5
+ReferenceError: Invalid left-hand side in assignment
+    at Object.exports.createScript (vm.js:24:10)
+    at REPLServer.defaultEval (repl.js:137:25)
+    at bound (domain.js:250:14)
+    at REPLServer.runBound [as eval] (domain.js:263:12)
+    at REPLServer. (repl.js:392:12)
+    at emitOne (events.js:82:20)
+    at REPLServer.emit (events.js:169:7)
+    at REPLServer.Interface._onLine (readline.js:210:10)
+    at REPLServer.Interface._line (readline.js:546:8)
+    at REPLServer.Interface._ttyWrite (readline.js:823:14)
+&gt; 3==5
+false
+&gt; 3===5
+false
+&gt; 3="3"
+ReferenceError: Invalid left-hand side in assignment
+    at Object.exports.createScript (vm.js:24:10)
+    at REPLServer.defaultEval (repl.js:137:25)
+    at bound (domain.js:250:14)
+    at REPLServer.runBound [as eval] (domain.js:263:12)
+    at REPLServer. (repl.js:392:12)
+    at emitOne (events.js:82:20)
+    at REPLServer.emit (events.js:169:7)
+    at REPLServer.Interface._onLine (readline.js:210:10)
+    at REPLServer.Interface._line (readline.js:546:8)
+    at REPLServer.Interface._ttyWrite (readline.js:823:14)
+&gt; 3=="3"
+true
+&gt; 3==="3"
+false
+&gt; x=3
+3
+&gt; 3===x
+true
+&gt; 3==x
+true
+&gt; 3&gt;3
+false
+&gt; 3&gt;=3
+true
+&gt; 3false
+&gt; 3true
+&gt; true &amp;&amp; true
+true
+&gt; true &amp;&amp; false
+false
+&gt; false &amp;&amp; false
+false
+&gt; true || true
+true
+&gt; false || true
+true
+&gt; false || false
+false
+&gt; (3&gt;2) &amp;&amp; (3&gt;1)
+true
+&gt; (3&gt;2) &amp;&amp; (3&gt;4)
+false
+&gt; (3&gt;2) || (3&gt;4)
+true
+&gt; !(3&gt;2)
+false
+&gt; !(3&gt;4)
+true
+&gt; 3 != "3"
+false
+&gt; 3 !== "3"
+true
+&gt; !true
+false
+&gt; !false
+true
+&gt; "hello"=="hello"
+true
+&gt; "hello"="hi"
+ReferenceError: Invalid left-hand side in assignment
+    at Object.exports.createScript (vm.js:24:10)
+    at REPLServer.defaultEval (repl.js:137:25)
+    at bound (domain.js:250:14)
+    at REPLServer.runBound [as eval] (domain.js:263:12)
+    at REPLServer. (repl.js:392:12)
+    at emitOne (events.js:82:20)
+    at REPLServer.emit (events.js:169:7)
+    at REPLServer.Interface._onLine (readline.js:210:10)
+    at REPLServer.Interface._line (readline.js:546:8)
+    at REPLServer.Interface._ttyWrite (readline.js:823:14)
+&gt; "hello"=="hi"
+false
+&gt; true==true
+true
+&gt; true==false
+false
+&gt; true==(1&gt;3)
+false
+&gt; true==(1true
+&gt;
+</code></pre>
+
+</body>
+</html>

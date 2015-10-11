@@ -1,0 +1,38 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="/gospa.js"></script>
+<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[人工智慧]](ai:home) </title>
+
+<p><a href="/db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="/db/book/home.html"" class="innerLink">教科書</a>  / <a href="/db/ai/home.html"" class="innerLink">人工智慧</a>  </p>
+
+<h2 id="emgmmgaussianmixturemodel">使用 EM 演算法進行分群 - GMM (Gaussian mixture model)</h2>
+
+<h3 id="r3">使用 R 產生 3 群高斯樣本，然後混合起來</h3>
+
+<pre><code class="r">&gt; x1=rnorm(1000, mean=10, sd=2)
+&gt; y1=rnorm(1000, mean=10, sd=2)
+&gt; x2=rnorm(1000, mean=2, sd=1)
+&gt; y2=rnorm(1000, mean=2, sd=1)
+&gt; x3=rnorm(1000, mean=10, sd=2)
+&gt; y3=rnorm(1000, mean=0, sd=1)
+&gt; plot(c(x1,x2,x3), c(y1,y2,y3))
+</code></pre>
+
+<p>顯示結果</p>
+
+<p><img src="../img/gmm_data_plot.jpg" alt="" title="" /></p>
+
+<h3 id="em">EM 演算法的程式</h3>
+
+<h3 id="">參考文獻</h3>
+
+<ul>
+<li><a href="http://www.cs.nccu.edu.tw/~whliao/acv2008/08gmm.pdf">GMM：高斯混合模型</a></li>
+<li><a href="http://blog.pluskid.org/?p=39">漫谈 Clustering (3): Gaussian Mixture Model</a></li>
+</ul>
+
+</body>
+</html>

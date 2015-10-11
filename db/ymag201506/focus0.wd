@@ -1,0 +1,78 @@
+## 慕課記 -- Nand2Tetris 這門課
+
+### 慕課 MOOC 是什麼？
+
+Massive open online course 簡稱 [MOOC](http://en.wikipedia.org/wiki/Massive_open_online_course) ，這是一個從 2008 年 Dave Cormier 提出來的新名詞，其內涵是運用網路技術讓大家可以共同學習一門課程，我們曾經在下列的程式人雜誌文章當中介紹過這個主題。
+
+* [2013 年 8 月號：線上教育 MOOC 的新發展](http://programmermagazine.github.io/201308/htm/message1.html)
+
+MOOC 這個名詞在台灣通常翻譯成『磨課師』，而在中國則翻譯成『慕課』，我本身比較喜歡『慕課』這個譯法。因為『慕課』感覺就像『很羨慕的來上課』的樣子，而『磨課師』則要由老師磨來磨去，聽起來就不太開心。
+
+目前、全世界最大型的 MOOC 網站，應該是 [Coursera](https://www.coursera.org/) 、 [Udacity](https://www.udacity.com/) 和 [edX](https://www.edx.org/) 了，這三個網站的風格不太相同，其中的 Coursera 和 Udacity 源自於史丹佛大學 (Stanford University)，而 edX 則來自麻省理工 MIT。
+
+Coursera 是由史丹佛大學的計算機科學教授吳恩達 （Andrew Ng） 和 Daphne Koller 聯合創建的，目前台灣大學也有一些課程在 Coursera 開設，像是葉丙成老師的機率，還有呂世浩老師的秦始皇等等，都是相當受歡迎的課程。
+
+### 令人心動的 From Nand to Tetris 課程
+
+雖然我經常上這些網站看看資料和影片，但是卻從來沒有完整的修完過一門課程。 之前曾經聽說過真正修課和光是看看，會有很不一樣的感受，於是在看到下列這門非常讓我心動的課程之後，我決定要從頭到尾修完這門課。
+
+* 課程： [From Nand to Tetris / Part I](https://www.coursera.org/course/nand2tetris1), by Shimon Schocken, Noam Nisan
+
+為甚麼這門課會讓我心動呢？ 原因是在一年前我就曾看到過下列這個網站，知道 nand2tetris 這門課程是教授學生如何從一個最基礎的 nand 邏輯閘開始，一路往上建構出所有基礎元件，像是 and, or, xor, not, MUX, DMUX, Adder, Memory 等等，接著建構出 CPU 與整台電腦，然後再學習如何在建構出這台電腦上的『組譯器、編譯器、作業系統』等等，最後在這個具備軟硬體的電腦上寫一個小型的方塊遊戲。
+
+* Nand2tetris 網站： <http://nand2tetris.org/>
+
+這樣的『神級課程』，又怎麼能讓學電腦技術的人不心動呢？
+
+下圖顯示了 From Nand to Tetris 這門課程的架構，大約就是一路從上層的『編譯器與作業系統』開始，經過『虛擬機、組譯器、機器語言』，然後開始拆解整個硬體，從 CPU 一路拆解到邏輯閘。
+
+![[圖、nand2tetris 整門課的基本架構]](nand2tetris_overview.jpg)
+
+但是學習的時候，則是從下層邏輯閘一路建構上來，每一步都是透過寫程式的方式自己動手做，其中包含撰寫硬體描述語言 (HDL) ，組合語言 (ASM) 與高階語言 (java) 等等，真的是涵蓋非常完整的一門課。
+
+當然，一門涵蓋這麼廣的課程必須要有所取捨， Nand2tetris 既然採用了簡化並實作的概念，就無法在理論上著墨太多，也無法在實作上採用太過深入的技巧，因此高深的理論和複雜的實作都被捨去了。
+
+這種取向正好是我所最想要的，因為我本身從大學一路念到博士班，不知修過幾次『計算機結構』與『作業系統』的課程，但是卻沒有設計過任何一顆處理器和作業系統，於是課本上的那些理論根本就是空談，只知道電腦一直加快取就會讓速度變快，而且還很會計算電腦效能的數學公式，但是我卻一顆 CPU 都沒設計過，一個作業系統沒寫過。
+
+所以在這幾年，我開始用 verilog 設計處理器，並且用 C, JavaScript 等語言撰寫『編譯器，組譯器，虛擬機』等等程式，還因此寫了以下列出的一本紙本書和一堆電子書，其實就是為了完成『從頭到尾』設計一台電腦的這個夢想，我將這個夢想稱為『開放電腦計劃』。
+
+* [紙本書：系統程式](http://sp1.wikidot.com/)
+* [電子書：計算機結構 -- 使用 Verilog 實作](http://ccc.nqu.edu.tw/db/co/home.html)
+* [電子書：系統軟體 -- 使用 JavaScript , C 兩種版本實作](http://ccc.nqu.edu.tw/db/ss/home.html)
+
+現在，有了 Nand2tetris ，基本上這個團隊已經完成了我的夢想，我只要好好的去上課把它學起來就行了，那我又怎麼能不花時間去把這門課修好呢？
+
+### 開始修課吧！
+
+您只要按下 [From Nand to Tetris / Part I](https://www.coursera.org/course/nand2tetris1) 這個連結，就可以進到課程首頁，您必須先申請 coursera 的賬號之後，才能開始選修課程，這門課是免費的，因此您只要登入後在頁面中按下 join for free 按鈕就可以開始上課了。
+
+如果您的帳號設定是中文，那麼看到的課程名稱會是『從與非門到俄羅斯方塊 / 第1部分』，這個翻譯我覺得怪怪的，因此建議您還是到設定中選回英文設定會比較好。
+
+這個 Part I 的課程共分成七部分，如下所示。
+
+```
+0. From Nand to Tetris
+1. Boolean Functions
+2. Boolean Arithmetic
+3. Memory
+4. Machine Language
+5. Computer Architecture
+6. Assembler
+```
+
+想必之後還會有 Part II 是從『虛擬機，編譯器，作業系統』到『方塊遊戲』的，如果您想先睹為快，那也可以連到下列 nand2tetris 的網址去看看。
+
+* From NAND to Tetris : Course -- <http://www.nand2tetris.org/course.php>
+
+Part II 應該會有下列主題。
+
+```
+7. VM I: Stack Arithmetic
+8. VM II: Program Control
+9. High-Level Language Project
+10. Compiler I: Syntax Analysis Project
+11. Compiler II: Code Generation Project
+12. Operating System
+```
+
+現在，就讓我們一起來學習這門課程吧！

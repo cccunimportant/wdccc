@@ -1,0 +1,88 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="/gospa.js"></script>
+<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[C 語言]](c:home) </title>
+
+<p><a href="/db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="/db/book/home.html"" class="innerLink">教科書</a>  / <a href="/db/c/home.html"" class="innerLink">C 語言</a>  </p>
+
+<h2 id="cgoto">C 語言 -- 短程跳躍 (goto)</h2>
+
+<h3 id="">程式範例</h3>
+
+<pre><code class="CPP">#include &lt;stdio.h&gt;
+
+int main(int argc, char *argv[]) {
+  int a = atoi(argv[1]);
+  int b = atoi(argv[2]);
+  char *fileName = argv[3];
+  if (b == 0) // can't divide by 0
+    goto DivideByZero;
+  int result = a/b;
+  FILE *file;
+  if ((file=fopen(fileName, "w")) == NULL)
+    goto FileError;
+  else {
+    fprintf(file, "%d/%d=%d\n", a, b, result);
+    printf("save to file %s : %d/%d=%d\n", fileName, a, b, result);
+  }
+  fclose(file);
+  goto Exit;
+DivideByZero:
+  printf("Error  : Divide by zero\n");
+  goto Exit;
+FileError:
+  printf("Error : File error\n");
+  goto Exit;
+Exit:
+  return 0;
+}
+</code></pre>
+
+<h3 id="">執行結果</h3>
+
+<pre><code>D:\cp&gt;gcc trygoto.c -o trygoto
+
+D:\cp&gt;trygoto 7 2 div.txt
+save to file div.txt : 7/2=3
+
+D:\cp&gt;trygoto 7 0 div.txt
+Error  : Divide by zero
+
+D:\cp&gt;trygoto 7 2 trygoto.exe
+Error : File error
+</code></pre>
+
+<h3 id="">注意事項</h3>
+
+<p>goto 指令之所以被認為是短程跳躍，是因為 goto 不可以跨越函數，舉例而言，以下的跳躍方式就會出錯。</p>
+
+<pre><code class="CPP">#include &lt;stdio.h&gt;
+
+void div() {
+DivideByZero:
+  printf("Error  : Divide by zero\n");
+}
+
+int main(int argc, char *argv[]) {
+  int a = atoi(argv[1]);
+  int b = atoi(argv[2]);
+  char *fileName = argv[3];
+  if (b == 0) // can't divide by 0
+    goto DivideByZero;
+  int result = a/b;
+  return 0;
+}
+</code></pre>
+
+<p>編譯錯誤</p>
+
+<pre><code>D:\cp&gt;gcc trygotoerror.c -o trygotoerror
+trygotoerror.c: In function `main':
+trygotoerror.c:13: error: label `DivideByZero' used but not defined
+</code></pre>
+
+</body>
+</html>

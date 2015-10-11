@@ -1,0 +1,324 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="/gospa.js"></script>
+<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[計算機結構]](co:home) </title>
+
+<p><a href="/db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="/db/book/home.html"" class="innerLink">教科書</a>  / <a href="/db/co/home.html"" class="innerLink">計算機結構</a>  </p>
+
+<h2 id="mcu0">MCU0 指令集</h2>
+
+<p>MCU0 是一顆 16 位元的 CPU，所有暫存器都是 16 位元的，總共有 (IR, SP, LR, SW, PC, A) 等暫存器，如下所示：</p>
+
+<pre><code>`define A    R[0]      // 累積器
+`define LR   R[1]      // 狀態暫存器
+`define SW   R[2]      // 狀態暫存器
+`define SP   R[3]      // 堆疊暫存器
+`define PC   R[4]      // 程式計數器
+</code></pre>
+
+<p>這些暫存器的功能與說明如下：</p>
+
+<table>
+<thead>
+<tr>
+<th id="暫存器名稱" style="text-align:left;"> 暫存器名稱 </th>
+<th id="功能" style="text-align:left;">功能      </th>
+<th id="說明" style="text-align:left;">說明                                                                                                    </th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align:left;"><p>IR         </p></td>
+<td style="text-align:left;"><p>指令暫存器</p></td>
+<td style="text-align:left;"><p>用來儲存從記憶體載入的機器碼指令                                                                        </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>A =R[0]    </p></td>
+<td style="text-align:left;"><p>累積器    </p></td>
+<td style="text-align:left;"><p>用來儲存計算的結果，像是加減法的結果。                                                                  </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>LR=R[1]    </p></td>
+<td style="text-align:left;"><p>連結暫存器</p></td>
+<td style="text-align:left;"><p>用來儲存函數呼叫的返回位址                                                                              </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>SW=R[2]    </p></td>
+<td style="text-align:left;"><p>狀態暫存器</p></td>
+<td style="text-align:left;"><p>用來儲存 CMP 比較指令的結果旗標，像是負旗標 N 與零旗標 Z 等。作為條件跳躍 JEQ 等指令是否跳躍的判斷依據。</p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>SP=R[3]    </p></td>
+<td style="text-align:left;"><p>堆疊暫存器</p></td>
+<td style="text-align:left;"><p>堆疊指標，PUSH, POP 指令會用到。                                                                        </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>PC=R[4]    </p></td>
+<td style="text-align:left;"><p>程式計數器</p></td>
+<td style="text-align:left;"><p>用來儲存指令的位址 (也就是目前執行到哪個指令的記憶體位址)                                               </p></td>
+</tr>
+
+</tbody>
+</table>
+
+<p>MCU0 的指令暫存器 IR 的前 4 個位元是指令代碼 OP，由於 4 位元只能表達 16 種指令，這數量太少不敷使用，因此當 OP=0xF 時，
+我們繼續用後面的位元作為延伸代碼，以便有更多的指令可以使用，以下是 MCU0 微控制器的完整指令表。</p>
+
+<table>
+<thead>
+<tr>
+<th id="代碼" style="text-align:left;">代碼</th>
+<th id="名稱" style="text-align:left;"> 名稱 </th>
+<th id="格式" style="text-align:left;"> 格式      </th>
+<th id="說明" style="text-align:left;"> 說明            </th>
+<th id="語意" style="text-align:left;"> 語意                                                                                                                      </th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align:left;"><p>0   </p></td>
+<td style="text-align:left;"><p>LD   </p></td>
+<td style="text-align:left;"><p>LD  C     </p></td>
+<td style="text-align:left;"><p>載入            </p></td>
+<td style="text-align:left;"><p>A = [C]                                                                                                                  </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>1   </p></td>
+<td style="text-align:left;"><p>ST   </p></td>
+<td style="text-align:left;"><p>ST  C     </p></td>
+<td style="text-align:left;"><p>儲存            </p></td>
+<td style="text-align:left;"><p>[C] = A                                                                                                                  </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>2   </p></td>
+<td style="text-align:left;"><p>ADD  </p></td>
+<td style="text-align:left;"><p>ADD C     </p></td>
+<td style="text-align:left;"><p>加法            </p></td>
+<td style="text-align:left;"><p>A = A + [C]                                                                                                              </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>3   </p></td>
+<td style="text-align:left;"><p>SUB  </p></td>
+<td style="text-align:left;"><p>SUB C     </p></td>
+<td style="text-align:left;"><p>減法            </p></td>
+<td style="text-align:left;"><p>A = A - [C]                                                                                                              </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>4   </p></td>
+<td style="text-align:left;"><p>MUL  </p></td>
+<td style="text-align:left;"><p>MUL C     </p></td>
+<td style="text-align:left;"><p>乘法            </p></td>
+<td style="text-align:left;"><p>A = A * [C]                                                                                                              </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>5   </p></td>
+<td style="text-align:left;"><p>DIV  </p></td>
+<td style="text-align:left;"><p>DIV C     </p></td>
+<td style="text-align:left;"><p>除法            </p></td>
+<td style="text-align:left;"><p>A = A / [C]                                                                                                              </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>6   </p></td>
+<td style="text-align:left;"><p>AND  </p></td>
+<td style="text-align:left;"><p>AND C     </p></td>
+<td style="text-align:left;"><p>位元 AND 運算   </p></td>
+<td style="text-align:left;"><p>A = A &amp; [C]                                                                                                              </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>7   </p></td>
+<td style="text-align:left;"><p>OR   </p></td>
+<td style="text-align:left;"><p>OR  C     </p></td>
+<td style="text-align:left;"><p>位元 OR  運算   </p></td>
+<td style="text-align:left;"><p>A = A ｜ [C]                                                                                                              </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>8   </p></td>
+<td style="text-align:left;"><p>XOR  </p></td>
+<td style="text-align:left;"><p>XOR C     </p></td>
+<td style="text-align:left;"><p>位元 XOR 運算   </p></td>
+<td style="text-align:left;"><p>A = A ^ [C]                                                                                                              </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>9   </p></td>
+<td style="text-align:left;"><p>CMP  </p></td>
+<td style="text-align:left;"><p>CMP C     </p></td>
+<td style="text-align:left;"><p>比較            </p></td>
+<td style="text-align:left;"><p>SW = A CMP [C] ; N=(A&lt;[C]), Z=(A==[C])                                                                                   </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>A   </p></td>
+<td style="text-align:left;"><p>JMP  </p></td>
+<td style="text-align:left;"><p>JMP C     </p></td>
+<td style="text-align:left;"><p>跳躍            </p></td>
+<td style="text-align:left;"><p>PC = C                                                                                                                   </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>B   </p></td>
+<td style="text-align:left;"><p>JEQ  </p></td>
+<td style="text-align:left;"><p>JEQ C     </p></td>
+<td style="text-align:left;"><p>相等時跳躍      </p></td>
+<td style="text-align:left;"><p>if Z then PC = C                                                                                                         </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>C   </p></td>
+<td style="text-align:left;"><p>JLT  </p></td>
+<td style="text-align:left;"><p>JLT C     </p></td>
+<td style="text-align:left;"><p>小於時跳躍      </p></td>
+<td style="text-align:left;"><p>if N then PC = C                                                                                                         </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>D   </p></td>
+<td style="text-align:left;"><p>JLE  </p></td>
+<td style="text-align:left;"><p>JLE C     </p></td>
+<td style="text-align:left;"><p>小於或等於時跳躍</p></td>
+<td style="text-align:left;"><p>if Z or N then PC = C                                                                                                    </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>E   </p></td>
+<td style="text-align:left;"><p>CALL </p></td>
+<td style="text-align:left;"><p>CALL C    </p></td>
+<td style="text-align:left;"><p>呼叫副程式      </p></td>
+<td style="text-align:left;"><p>LR=PC; PC = C                                                                                                            </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>F   </p></td>
+<td style="text-align:left;"><p>OP8  </p></td>
+<td style="text-align:left;"></td>
+<td style="text-align:left;"><p>OP為8位元的運算 </p></td>
+<td style="text-align:left;"></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>F0  </p></td>
+<td style="text-align:left;"><p>LDI  </p></td>
+<td style="text-align:left;"><p>LDI Ra,C4 </p></td>
+<td style="text-align:left;"><p>載入常數        </p></td>
+<td style="text-align:left;"><p>Ra=C4                                                                                                                    </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>F2  </p></td>
+<td style="text-align:left;"><p>MOV  </p></td>
+<td style="text-align:left;"><p>MOV Ra,Rb </p></td>
+<td style="text-align:left;"><p>暫存器移動      </p></td>
+<td style="text-align:left;"><p>Ra=Rb                                                                                                                    </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>F3  </p></td>
+<td style="text-align:left;"><p>PUSH </p></td>
+<td style="text-align:left;"><p>PUSH Ra   </p></td>
+<td style="text-align:left;"><p>堆疊推入        </p></td>
+<td style="text-align:left;"><p>SP--; [SP] = Ra                                                                                                          </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>F4  </p></td>
+<td style="text-align:left;"><p>POP  </p></td>
+<td style="text-align:left;"><p>POP  Ra   </p></td>
+<td style="text-align:left;"><p>堆疊取出        </p></td>
+<td style="text-align:left;"><p>Ra=[SP]; SP++;                                                                                                           </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>F5  </p></td>
+<td style="text-align:left;"><p>SHL  </p></td>
+<td style="text-align:left;"><p>SHL Ra,C4 </p></td>
+<td style="text-align:left;"><p>左移            </p></td>
+<td style="text-align:left;"><p>Ra = Ra &lt;&lt; C4                                                                                                            </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>F6  </p></td>
+<td style="text-align:left;"><p>SHR  </p></td>
+<td style="text-align:left;"><p>SHL Ra,C4 </p></td>
+<td style="text-align:left;"><p>右移            </p></td>
+<td style="text-align:left;"><p>Ra = Ra >> C4                                                                                                            </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>F7  </p></td>
+<td style="text-align:left;"><p>ADDI </p></td>
+<td style="text-align:left;"><p>ADDI Ra,C4</p></td>
+<td style="text-align:left;"><p>常數加法        </p></td>
+<td style="text-align:left;"><p>Ra = Ra + C4                                                                                                             </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>F8  </p></td>
+<td style="text-align:left;"><p>SUBI </p></td>
+<td style="text-align:left;"><p>SUBI Ra,C4</p></td>
+<td style="text-align:left;"><p>常數減法        </p></td>
+<td style="text-align:left;"><p>Ra = Ra - C4                                                                                                             </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>F9  </p></td>
+<td style="text-align:left;"><p>NEG  </p></td>
+<td style="text-align:left;"><p>NEG Ra    </p></td>
+<td style="text-align:left;"><p>反相            </p></td>
+<td style="text-align:left;"><p>Ra = ~Ra                                                                                                                 </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>FA  </p></td>
+<td style="text-align:left;"><p>SWI  </p></td>
+<td style="text-align:left;"><p>SWI C     </p></td>
+<td style="text-align:left;"><p>軟體中斷        </p></td>
+<td style="text-align:left;"><p>BIOS 中斷呼叫                                                                                                            </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>FD  </p></td>
+<td style="text-align:left;"><p>NSW  </p></td>
+<td style="text-align:left;"><p>NSW       </p></td>
+<td style="text-align:left;"><p>狀態反相        </p></td>
+<td style="text-align:left;"><p>N=~N, Z=~Z; 由於沒有 JGE, JGT, JNE，因此可用此指令將 SW 反相，再用 JLE, JLT, JEQ 完成跳躍動作                            </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>FE  </p></td>
+<td style="text-align:left;"><p>RET  </p></td>
+<td style="text-align:left;"><p>RET       </p></td>
+<td style="text-align:left;"><p>返回            </p></td>
+<td style="text-align:left;"><p>PC = LR                                                                                                                  </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>FF  </p></td>
+<td style="text-align:left;"><p>IRET </p></td>
+<td style="text-align:left;"><p>IRET      </p></td>
+<td style="text-align:left;"><p>從中斷返回      </p></td>
+<td style="text-align:left;"><p>PC = LR; I=0;                                                                                                            </p></td>
+</tr>
+
+</tbody>
+</table>
+
+</body>
+</html>

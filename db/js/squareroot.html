@@ -1,0 +1,61 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="/gospa.js"></script>
+<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[JavaScript 語言]](js:home) </title>
+
+<p><a href="/db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="/db/book/home.html"" class="innerLink">教科書</a>  / <a href="/db/js/home.html"" class="innerLink">JavaScript 語言</a>  </p>
+
+<h1 id="">平方根</h1>
+
+<p>檔案: <a href="db/js/code/squareRoot.js" class="innerLink">squareRoot.js</a></p>
+
+<pre><code>function squareRoot(n) {
+  if (n&lt;=1) 
+    throw "Error: n should &gt; 1, n="+n+" now!";
+  else {
+    var low = 1;
+    var high = n;
+    var mid;
+    while (true) {
+      mid = (low+high)/2;
+      console.log("mid=%d", mid);
+      if (Math.abs(mid*mid-n) &lt; 0.01) {
+        return mid;
+      }
+      if (mid*mid &gt; n)
+        high = mid;
+      else
+        low = mid;
+    }
+  }
+}
+
+console.log("squareRoot(5)=%d", squareRoot(5));
+
+console.log("squareRoot(0.2)=%d", squareRoot(0.2));
+</code></pre>
+
+<p>執行結果</p>
+
+<pre><code>D:\Dropbox\cccweb\db\js\code&gt;node squareRoot.js
+mid=3
+mid=2
+mid=2.5
+mid=2.25
+mid=2.125
+mid=2.1875
+mid=2.21875
+mid=2.234375
+squareRoot(5)=2.234375
+
+D:\Dropbox\cccweb\db\js\code\squareRoot.js:4
+    throw "Error: n should &gt; 1, n="+n+" now!";
+    ^
+Error: n should &gt; 1, n=0.2 now!
+</code></pre>
+
+</body>
+</html>

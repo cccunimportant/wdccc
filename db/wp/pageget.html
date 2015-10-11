@@ -1,0 +1,44 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="/gospa.js"></script>
+<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[Web 程式設計]](wp:home) </title>
+
+<p><a href="/db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="/db/book/home.html"" class="innerLink">教科書</a>  / <a href="/db/wp/home.html"" class="innerLink">Web 程式設計</a>  </p>
+
+<h1 id="">網頁下載 （下載一個網頁）</h1>
+
+<h2 id="">程式</h2>
+
+<p>檔案： pageget.js</p>
+
+<pre><code class="javascript">var http = require('http');
+
+http.get("http://www.nqu.edu.tw/cht/index.php?", function(res) {
+  console.log("Got response: " + res.statusCode);
+  res.on('data', function (chunk) {
+    console.log('BODY: ' + chunk);
+  });
+}).on('error', function(e) {
+  console.log("Got error: " + e.message);
+});
+</code></pre>
+
+<h2 id="">執行結果</h2>
+
+<pre><code>NQU-192-168-60-101:crawler csienqu$ node pageget.js
+Got response: 200
+BODY: &lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
+&lt;html lang="zh-TW"&gt;
+
+&lt;head&gt;
+  &lt;title&gt;國立金門大學-&gt;&lt;/title&gt;
+...
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+</body>
+</html>

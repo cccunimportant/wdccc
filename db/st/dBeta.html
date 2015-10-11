@@ -1,0 +1,35 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="/gospa.js"></script>
+<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[機率統計]](st:home) </title>
+
+<p><a href="/db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="/db/book/home.html"" class="innerLink">教科書</a>  / <a href="/db/st/home.html"" class="innerLink">機率統計</a>  </p>
+
+<h2 id="betadistribution">貝塔分布 (Beta distribution)</h2>
+
+<p>公式： $f(x)= \frac{Γ(a+b)}{Γ(a) Γ(b)} x^{a-1}(1-x)^{b-1}$</p>
+
+<p>Ｒ函數：beta(a, b) </p>
+
+<ul>
+<li>公式： f(x)= Γ(a+b)/(Γ(a)Γ(b))x^(a-1)(1-x)^(b-1)</li>
+<li>對應：[[$ shape1 = a; shape2 = b  $]]</li>
+<li>網址：http://stat.ethz.ch/R-manual/R-patched/library/stats/html/Beta.html</li>
+</ul>
+
+<p>R 程式範例</p>
+
+<pre><code class="R">op=par(mfrow=c(2,2))
+curve(dbeta(x, 1, 1))
+curve(dbeta(x, 1, 5))
+curve(dbeta(x, 5, 1))
+curve(dbeta(x, 5, 5))
+</code></pre>
+
+<div class="figure"><img src="db/st/dbetaCurve4.jpg"/><p class="caption"></p></div>
+
+</body>
+</html>

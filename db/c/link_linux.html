@@ -1,0 +1,80 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="/gospa.js"></script>
+<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[C 語言]](c:home) </title>
+
+<p><a href="/db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="/db/book/home.html"" class="innerLink">教科書</a>  / <a href="/db/c/home.html"" class="innerLink">C 語言</a>  </p>
+
+<h2 id="linux">鏈結串列：外包物件版 — 嵌入式的鏈結串列，是模仿 Linux 核心的作法。</h2>
+
+<p>本範例的實作靈感來自 Linux 核心中的雙向鏈結串列，為了簡單起見，我們改為單向鏈結串列，以便讓讀者容易理解。</p>
+
+<h3 id="">程式範例：</h3>
+
+<p>檔案：LinkedListEmbed.c</p>
+
+<pre><code class="CPP">#include &lt;stdio.h&gt;
+
+#define offsetof(type, member) ((size_t) &amp;((type *)0)-&gt;member)
+#define ListEntry(ptr,type,member) ((type *)((char *)(ptr)-(unsigned long)(&amp;((type *)0)-&gt;member)))
+#define ListNew(head) ((head)-&gt;next=NULL)
+#define ListAdd(head, node) { (node)-&gt;next=(head)-&gt;next; (head)-&gt;next = (node); }
+#define ListEach(head, pos) for (pos = (head)-&gt;next; pos != NULL; pos = pos-&gt;next)
+
+typedef struct listnode { 
+  struct listnode *next;
+} ListNode;
+
+typedef struct {
+    char *name;
+    int age;
+    ListNode node;
+} Person;
+
+void PersonListPrint(ListNode *head) {
+  ListNode *ptr;
+  ListEach(head, ptr) {
+    Person *person = ListEntry(ptr, Person, node);
+    printf("%s is %d years old\n", person-&gt;name, person-&gt;age);
+  }
+}
+
+// 請注意，在本程式中，ListEach 會忽略表頭節點，因此 head 不應該包在 Person 裡面。
+int main() {
+    ListNode head;
+    Person john = {
+      .name = "John",
+      .age = 40,
+    };
+    Person mary = {
+      .name = "Mary",
+      .age = 32,
+    };
+    Person george = {
+      .name = "George",
+      .age = 26,
+    };
+    ListNew(&amp;head);
+    ListAdd(&amp;head, &amp;john.node);
+    ListAdd(&amp;head, &amp;mary.node);
+    ListAdd(&amp;head, &amp;george.node);
+    PersonListPrint(&amp;head);
+    return 0;
+}
+</code></pre>
+
+<h3 id="">執行結果</h3>
+
+<pre><code>D:\cp&gt;gcc LinkedListEmbed.c -o LinkedListEmbed
+
+D:\cp&gt;LinkedListEmbed
+George is 26 years old
+Mary is 32 years old
+John is 40 years old
+</code></pre>
+
+</body>
+</html>

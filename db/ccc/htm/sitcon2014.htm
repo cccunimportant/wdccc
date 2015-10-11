@@ -1,0 +1,1574 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+  <meta name="author" content="(關於「程式人雜誌」的一些經驗分享)" />
+<script>
+function checkRadio(name, i) {
+  if (document.getElementsByName(name)[i].checked) alert('恭喜你，答對了！'); else alert('答錯了，請重選！');
+}
+</script>
+  <title>程式人的寫作與出版</title>
+  <style type="text/css">code{white-space: pre;}</style>
+<style>
+  html { background-color: black; }
+  body { background-color: #ffffcc; border-radius: 12px; }
+  
+  /* A section is a slide. It's size is 800x600, and this will never change */
+  a { color: #3366FF; text-decoration:none; }
+  section {
+      font-family: Arial, serif;
+      font-size: 20pt;
+	  font-family:'Tahoma', '標楷體';  
+  }
+  input {
+      font-size: 20pt;
+	  font-family:'Tahoma', '標楷體';  
+	  margin:10pt 10pt 10pt 10pt;
+  }
+  address, blockquote, dl, fieldset, form, h1, h2, h3, h4, h5, h6, hr, ol, p, pre, table, ul, dl { padding: 10px 20px 10px 20px; }
+  h1, h2, h3 {
+    font-family:'Tahoma', '標楷體'; 
+    text-align: center;
+    margin: 10pt 10pt 10pt 10pt;
+  }
+  ul, ol {
+    margin: 30px 30px 30px 30px;
+  }
+  li { 
+    font-family:'Tahoma', '標楷體';
+    font-size:48px;
+    color: #333333;
+	margin: 20pt 20pt 20pt 20pt;
+  }
+  section.titleslide h1 { margin-top: 200px; }
+  h1.title { margin-top: 150px; }
+  h1 { font-size: 240%; }
+  h2 { font-size: 160%; }
+  h3 { font-size: 120%; }
+  q { quotes: "“" "”" "‘" "’"; }
+  blockquote { font-style: italic }
+  /* Figures are displayed full-page, with the caption on
+     top of the image/video */
+  figure {
+    background-color: black;
+  }
+  figcaption {
+    margin: 40px;
+  }
+  footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 40px;
+    text-align: right;
+    background-color: #F3F4F8;
+    border-top: 1px solid #CCC;
+  }
+
+  /* Transition effect */
+  /* Feel free to change the transition effect for original
+     animations. See here:
+     https://developer.mozilla.org/en/CSS/CSS_transitions
+     How to use CSS3 Transitions: */
+  section {
+      -moz-transition: left 400ms linear 0s;
+      -webkit-transition: left 400ms linear 0s;
+      -ms-transition: left 400ms linear 0s;
+      transition: left 400ms linear 0s;
+  }
+
+  /* Before */
+  section { left: -150%; }
+  /* Now */
+  section[aria-selected] { left: 0; }
+  /* After */
+  section[aria-selected] ~ section { left: +150%; }
+
+  /* Incremental elements */
+
+  /* By default, visible */
+  .incremental > * { opacity: 1; }
+
+  /* The current item */
+  .incremental > *[aria-selected] { color: blue; opacity: 1; }
+
+  /* The items to-be-selected */
+  .incremental > *[aria-selected] ~ * { opacity: 0.2; }
+  .author { font-size:40px; }
+</style>
+</head>
+<body>
+<section class="title">
+  <h1 class="title">程式人的寫作與出版</h1>
+  <h2 class="author">(關於「程式人雜誌」的一些經驗分享)</h2>
+  <h3 class="date">陳鍾誠：2014 年 3 月 15 日</h3>
+</section>
+<section id="話說" class="slide level1">
+<h1>話說</h1>
+<ul class="incremental">
+<li>為何我會想要辦「程式人雜誌」呢？</li>
+</ul>
+</section>
+<section id="原因很簡單" class="slide level1">
+<h1>原因很簡單</h1>
+</section>
+<section id="因為" class="slide level1">
+<h1>因為</h1>
+<ul class="incremental">
+<li>我寫了很多教材</li>
+</ul>
+</section>
+<section id="而這些教材" class="slide level1">
+<h1>而這些教材</h1>
+<ul class="incremental">
+<li>都放在 wikidot 的網站上</li>
+</ul>
+</section>
+<section id="還有些" class="slide level1">
+<h1>還有些</h1>
+<ul class="incremental">
+<li>寫成了書</li>
+</ul>
+</section>
+<section id="然後-..." class="slide level1">
+<h1>然後 ...</h1>
+<ul class="incremental">
+<li>在我上課的時候</li>
+</ul>
+</section>
+<section id="同學們都在-..." class="slide level1">
+<h1>同學們、都在 ...</h1>
+<ul class="incremental">
+<li>看臉書</li>
+<li>上網</li>
+<li>打電動</li>
+</ul>
+</section>
+<section id="還有" class="slide level1">
+<h1>還有</h1>
+<ul class="incremental">
+<li>睡覺</li>
+</ul>
+</section>
+<section id="於是" class="slide level1">
+<h1>於是</h1>
+<ul class="incremental">
+<li>我感到非常的疑惑</li>
+</ul>
+</section>
+<section id="像我這樣一個老師" class="slide level1">
+<h1>像我這樣一個老師</h1>
+<ul class="incremental">
+<li>活在這個世界上</li>
+<li>到底還有甚麼意義</li>
+</ul>
+</section>
+<section id="但是" class="slide level1">
+<h1>但是</h1>
+<ul class="incremental">
+<li>身為一個老師</li>
+</ul>
+</section>
+<section id="絕對是" class="slide level1">
+<h1>絕對是</h1>
+<ul class="incremental">
+<li>不能輕言放棄的</li>
+</ul>
+</section>
+<section id="既然上課時" class="slide level1">
+<h1>既然上課時</h1>
+<ul class="incremental">
+<li>大家都在上網</li>
+</ul>
+</section>
+<section id="那我就" class="slide level1">
+<h1>那我就</h1>
+<ul class="incremental">
+<li>把教材都放上網</li>
+</ul>
+</section>
+<section id="然後" class="slide level1">
+<h1>然後</h1>
+<ul class="incremental">
+<li>把上課實況都錄影下來</li>
+</ul>
+</section>
+<section id="這些錄影" class="slide level1">
+<h1>這些錄影</h1>
+<ul class="incremental">
+<li>也通通都放上網</li>
+</ul>
+</section>
+<section id="這樣" class="slide level1">
+<h1>這樣</h1>
+<ul class="incremental">
+<li>不管我的學生們到哪裡</li>
+</ul>
+</section>
+<section id="我都可以" class="slide level1">
+<h1>我都可以</h1>
+<ul class="incremental">
+<li>陰魂不散</li>
+<li>如影隨形</li>
+</ul>
+</section>
+<section id="其實我很羨慕" class="slide level1">
+<h1>其實、我很羨慕</h1>
+<ul class="incremental">
+<li>那些上課精彩</li>
+<li>同學們都聚精會神聽講</li>
+<li>的老師們</li>
+</ul>
+</section>
+<section id="據說有些老師" class="slide level1">
+<h1>據說、有些老師</h1>
+<ul class="incremental">
+<li>上課非常精彩</li>
+</ul>
+</section>
+<section id="下課時" class="slide level1">
+<h1>下課時</h1>
+<ul class="incremental">
+<li>同學們都會起立鼓掌</li>
+</ul>
+</section>
+<section id="而且" class="slide level1">
+<h1>而且</h1>
+<ul class="incremental">
+<li>encore 聲不斷</li>
+<li>有時長達 30 分鐘</li>
+</ul>
+</section>
+<section id="有時" class="slide level1">
+<h1>有時</h1>
+<ul class="incremental">
+<li>老師們還會被迫</li>
+<li>出來表演「安可秀」</li>
+</ul>
+</section>
+<section id="但是-1" class="slide level1">
+<h1>但是</h1>
+<ul class="incremental">
+<li>這點我很難做到</li>
+</ul>
+</section>
+<section id="因為這種現象" class="slide level1">
+<h1>因為這種現象</h1>
+<ul class="incremental">
+<li>我只有在「安麗」之類的大會上才看過</li>
+</ul>
+</section>
+<section id="既然說的沒人聽" class="slide level1">
+<h1>既然說的沒人聽</h1>
+<ul class="incremental">
+<li>那不如用寫的 ...</li>
+</ul>
+</section>
+<section id="寫的也沒人聽" class="slide level1">
+<h1>寫的也沒人聽</h1>
+<ul class="incremental">
+<li>那就錄下來重複播放 ...</li>
+</ul>
+</section>
+<section id="想當初" class="slide level1">
+<h1>想當初</h1>
+<ul class="incremental">
+<li>可汗學院的薩馬爾先生</li>
+</ul>
+</section>
+<section id="就是因為" class="slide level1">
+<h1>就是因為</h1>
+<ul class="incremental">
+<li>他的表弟告訴他說</li>
+</ul>
+</section>
+<section id="我發現" class="slide level1">
+<h1>我發現</h1>
+<ul class="incremental">
+<li>如果我不看著你的臉</li>
+<li>學習效果會比較好</li>
+</ul>
+</section>
+<section id="於是-1" class="slide level1">
+<h1>於是</h1>
+<ul class="incremental">
+<li>可漢先生決定</li>
+</ul>
+</section>
+<section id="採用螢幕錄影的方式" class="slide level1">
+<h1>採用螢幕錄影的方式</h1>
+<ul class="incremental">
+<li>這樣就絕對不會錄到臉了 ...</li>
+</ul>
+</section>
+<section id="所以" class="slide level1">
+<h1>所以</h1>
+<ul class="incremental">
+<li>這個故事告訴我們</li>
+</ul>
+</section>
+<section id="當上帝關了一扇門" class="slide level1">
+<h1>當上帝關了一扇門</h1>
+<ul class="incremental">
+<li>必然會開啟另一扇 ...</li>
+</ul>
+</section>
+<section id="俗話說" class="slide level1">
+<h1>俗話說</h1>
+<ul class="incremental">
+<li>山不轉路轉</li>
+</ul>
+</section>
+<section id="路不轉呢" class="slide level1">
+<h1>路不轉呢？</h1>
+</section>
+<section id="那" class="slide level1">
+<h1>那</h1>
+<ul class="incremental">
+<li>我就自己轉 ....</li>
+</ul>
+</section>
+<section id="有時候" class="slide level1">
+<h1>有時候</h1>
+<ul class="incremental">
+<li>轉著轉著 ...</li>
+</ul>
+</section>
+<section id="頭就暈了" class="slide level1">
+<h1>頭就暈了</h1>
+</section>
+<section id="但有時候" class="slide level1">
+<h1>但有時候</h1>
+<ul class="incremental">
+<li>轉著轉著 ...</li>
+</ul>
+</section>
+<section id="卻是" class="slide level1">
+<h1>卻是</h1>
+<ul class="incremental">
+<li>柳暗花明又一村啊 ....</li>
+</ul>
+</section>
+<section id="其實我" class="slide level1">
+<h1>其實我</h1>
+<ul class="incremental">
+<li>寫網誌</li>
+<li>寫書</li>
+<li>辦雜誌</li>
+</ul>
+</section>
+<section id="還有另一個原因" class="slide level1">
+<h1>還有另一個原因</h1>
+</section>
+<section id="那就是" class="slide level1">
+<h1>那就是</h1>
+<ul class="incremental">
+<li>我不太喜歡投稿論文</li>
+</ul>
+</section>
+<section id="為何不喜歡" class="slide level1">
+<h1>為何不喜歡</h1>
+</section>
+<section id="因為-1" class="slide level1">
+<h1>因為</h1>
+<ul class="incremental">
+<li>我覺得那麼嚴肅的東西</li>
+<li>寫起來很無趣</li>
+</ul>
+</section>
+<section id="而且-1" class="slide level1">
+<h1>而且</h1>
+<ul class="incremental">
+<li>寫東西還要經過審查</li>
+<li>才可以刊登</li>
+</ul>
+</section>
+<section id="這讓人很不爽" class="slide level1">
+<h1>這讓人很不爽！</h1>
+</section>
+<section id="有時-1" class="slide level1">
+<h1>有時</h1>
+<ul class="incremental">
+<li>還得交錢才可以刊登</li>
+</ul>
+</section>
+<section id="簡直是" class="slide level1">
+<h1>簡直是</h1>
+<ul class="incremental">
+<li>賠了夫人又折兵</li>
+</ul>
+</section>
+<section id="所以-1" class="slide level1">
+<h1>所以</h1>
+<ul class="incremental">
+<li>我真的不懂</li>
+</ul>
+</section>
+<section id="學術界那麼多人" class="slide level1">
+<h1>學術界那麼多人</h1>
+<ul class="incremental">
+<li>為何都喜歡投論文</li>
+</ul>
+</section>
+<section id="我想一個主要的原因" class="slide level1">
+<h1>我想、一個主要的原因</h1>
+<ul class="incremental">
+<li>是可以拿來升等</li>
+</ul>
+</section>
+<section id="於是-2" class="slide level1">
+<h1>於是</h1>
+<ul class="incremental">
+<li>我決定放棄升等</li>
+</ul>
+</section>
+<section id="以便換取" class="slide level1">
+<h1>以便換取</h1>
+<ul class="incremental">
+<li>快樂的寫程式</li>
+<li>快樂的寫文章</li>
+<li>快樂的上課</li>
+</ul>
+</section>
+<section id="這是我想要的" class="slide level1">
+<h1>這是我想要的</h1>
+</section>
+<section id="所以-2" class="slide level1">
+<h1>所以</h1>
+<ul class="incremental">
+<li>我後來想著</li>
+</ul>
+</section>
+<section id="寫給期刊刊登" class="slide level1">
+<h1>寫給期刊刊登</h1>
+<ul class="incremental">
+<li>不如自己辦一個</li>
+</ul>
+</section>
+<section id="而且-2" class="slide level1">
+<h1>而且</h1>
+<ul class="incremental">
+<li>不但不用交錢</li>
+</ul>
+</section>
+<section id="保護費" class="slide level1">
+<h1>保護費?</h1>
+</section>
+<section id="還可以做公益" class="slide level1">
+<h1>還可以做公益</h1>
+</section>
+<section id="做公益" class="slide level1">
+<h1>做公益？</h1>
+</section>
+<section id="是的" class="slide level1">
+<h1>是的</h1>
+<ul class="incremental">
+<li>請看程式人雜誌的封面</li>
+</ul>
+</section>
+<section id="封面" class="slide level1">
+<h1>封面</h1>
+<p><image src="../img/cover.jpg" width="600"></p>
+</section>
+<section id="放大一點" class="slide level1">
+<h1>放大一點</h1>
+<ul class="incremental">
+<li><img src="../img/pmagDonate.jpg" title="fig:" /></li>
+</ul>
+</section>
+<section id="於是-3" class="slide level1">
+<h1>於是</h1>
+<ul class="incremental">
+<li>我把這個訊息放上 facebook</li>
+</ul>
+</section>
+<section id="然後請大家投稿捐網誌" class="slide level1">
+<h1>然後、請大家投稿捐網誌</h1>
+</section>
+<section id="結果在-2012-年底" class="slide level1">
+<h1>結果、在 2012 年底</h1>
+<ul class="incremental">
+<li>我們成立了一個 facebook 社團</li>
+</ul>
+</section>
+<section id="接著" class="slide level1">
+<h1>接著</h1>
+<ul class="incremental">
+<li>在 2013 年 1 月 1 日</li>
+</ul>
+</section>
+<section id="程式人雜誌" class="slide level1">
+<h1>程式人雜誌</h1>
+<ul class="incremental">
+<li>就出刊了</li>
+</ul>
+</section>
+<section id="在第一期的時候" class="slide level1">
+<h1>在第一期的時候</h1>
+<ul class="incremental">
+<li>我用 LibreOffice 編輯雜誌</li>
+</ul>
+</section>
+<section id="後來有人問" class="slide level1">
+<h1>後來有人問</h1>
+<ul class="incremental">
+<li>怎麼沒有 HTML 版本</li>
+</ul>
+</section>
+<section id="我想了想" class="slide level1">
+<h1>我想了想</h1>
+<ul class="incremental">
+<li>也有點道理</li>
+</ul>
+</section>
+<section id="所以就開始研究" class="slide level1">
+<h1>所以就開始研究</h1>
+<ul class="incremental">
+<li>怎樣出版</li>
+</ul>
+</section>
+<section id="於是-4" class="slide level1">
+<h1>於是</h1>
+<ul class="incremental">
+<li>一邊研究</li>
+<li>一邊寫雜誌</li>
+</ul>
+</section>
+<section id="我測試過一些軟體像是" class="slide level1">
+<h1>我測試過一些軟體、像是</h1>
+<ul class="incremental">
+<li>MiKTeX</li>
+<li>Sphinx</li>
+<li>Pandoc</li>
+<li>Calibre</li>
+<li>.....</li>
+</ul>
+</section>
+<section id="後來我就採用了" class="slide level1">
+<h1>後來我就採用了</h1>
+<ul class="incremental">
+<li>Pandoc + Markdown + Calibre</li>
+<li>加上 gcc 的 Make</li>
+</ul>
+</section>
+<section id="流程如下" class="slide level1">
+<h1>流程如下</h1>
+<ul class="incremental">
+<li>撰寫一堆 markdown 稿件</li>
+<li>寫一個 makefile</li>
+<li>呼叫 pandoc 將 markdown 轉為 html 與 epub</li>
+<li>再叫 calibre 將 epub 轉為 pdf</li>
+</ul>
+</section>
+<section id="後來發現" class="slide level1">
+<h1>後來發現</h1>
+<ul class="incremental">
+<li>網頁內的 latex 數學式</li>
+<li>無法顯示在 pdf 裏</li>
+</ul>
+</section>
+<section id="所以我就" class="slide level1">
+<h1>所以我就</h1>
+<ul class="incremental">
+<li>自己寫一個 node.js 程式</li>
+<li>呼叫 mimetex 這個開源程式</li>
+</ul>
+</section>
+<section id="用來將" class="slide level1">
+<h1>用來將</h1>
+<ul class="incremental">
+<li>latex 數學式</li>
+<li>直接轉成圖片</li>
+<li>然後就可以放在 pdf 裏了</li>
+</ul>
+</section>
+<section id="於是我們用了一個" class="slide level1">
+<h1>於是、我們用了一個</h1>
+<ul class="incremental">
+<li>很程式人的方法</li>
+<li>編了這本雜誌</li>
+</ul>
+</section>
+<section id="在這個過程中" class="slide level1">
+<h1>在這個過程中</h1>
+<ul class="incremental">
+<li>我發現</li>
+<li>會寫程式</li>
+<li>真的是不錯</li>
+</ul>
+</section>
+<section id="當我們發現" class="slide level1">
+<h1>當我們發現</h1>
+<ul class="incremental">
+<li>有些工具不適用</li>
+</ul>
+</section>
+<section id="就可以想辦法" class="slide level1">
+<h1>就可以想辦法</h1>
+<ul class="incremental">
+<li>改造一下</li>
+</ul>
+</section>
+<section id="這個經驗" class="slide level1">
+<h1>這個經驗</h1>
+<ul class="incremental">
+<li>讓我感覺到一件事</li>
+</ul>
+</section>
+<section id="當我們把程式能力" class="slide level1">
+<h1>當我們把程式能力</h1>
+<ul class="incremental">
+<li>放到不屬於程式的領域</li>
+<li>其實常常有不錯的結果</li>
+</ul>
+</section>
+<section id="我發現-1" class="slide level1">
+<h1>我發現</h1>
+<ul class="incremental">
+<li>類似的行事風格</li>
+<li>在我的人生中</li>
+<li>常常出現</li>
+</ul>
+</section>
+<section id="什麼行事風格呢" class="slide level1">
+<h1>什麼行事風格呢？</h1>
+</section>
+<section id="那就是-1" class="slide level1">
+<h1>那就是</h1>
+<ul class="incremental">
+<li>轉彎</li>
+</ul>
+</section>
+<section id="轉彎" class="slide level1">
+<h1>轉彎？</h1>
+</section>
+<section id="是的-1" class="slide level1">
+<h1>是的！</h1>
+</section>
+<section id="甚麼時候轉彎呢" class="slide level1">
+<h1>甚麼時候轉彎呢？</h1>
+</section>
+<section id="很多時候像是" class="slide level1">
+<h1>很多時候、像是</h1>
+<ul class="incremental">
+<li>人多很擠的時候</li>
+<li>我就轉彎</li>
+</ul>
+</section>
+<section id="解決不了的時候" class="slide level1">
+<h1>解決不了的時候</h1>
+<ul class="incremental">
+<li>我也轉彎</li>
+</ul>
+</section>
+<section id="沒有興趣的時候" class="slide level1">
+<h1>沒有興趣的時候</h1>
+<ul class="incremental">
+<li>我也轉彎</li>
+</ul>
+</section>
+<section id="所以當我覺得" class="slide level1">
+<h1>所以、當我覺得</h1>
+<ul class="incremental">
+<li>寫論文很無趣</li>
+<li>我轉彎了</li>
+</ul>
+</section>
+<section id="當我發現" class="slide level1">
+<h1>當我發現</h1>
+<ul class="incremental">
+<li>升等不是我想要的</li>
+<li>我轉彎了</li>
+</ul>
+</section>
+<section id="當我瞭解到" class="slide level1">
+<h1>當我瞭解到</h1>
+<ul class="incremental">
+<li>開放原始碼專案超多</li>
+<li>而我又寫不贏那些人時</li>
+<li>我也轉彎了！</li>
+</ul>
+</section>
+<section id="舉例而言" class="slide level1">
+<h1>舉例而言</h1>
+<ul class="incremental">
+<li>如果我去寫作業系統</li>
+<li>那肯定贏不了 Jserv</li>
+</ul>
+</section>
+<section id="如果我去寫網站" class="slide level1">
+<h1>如果我去寫網站</h1>
+<ul class="incremental">
+<li>那應該贏不了 Xdite</li>
+</ul>
+</section>
+<section id="如果我去寫論文" class="slide level1">
+<h1>如果我去寫論文</h1>
+<ul class="incremental">
+<li>那應該贏不了</li>
+<li>那些 paper maker</li>
+</ul>
+</section>
+<section id="如果我去申請國科會" class="slide level1">
+<h1>如果我去申請國科會</h1>
+<ul class="incremental">
+<li>那應該也贏不了</li>
+<li>那些大頭目</li>
+<li>還有福特式論文生產線</li>
+</ul>
+</section>
+<section id="於是我" class="slide level1">
+<h1>於是我</h1>
+<ul class="incremental">
+<li>轉了又轉 ....</li>
+<li>轉了又轉 ....</li>
+</ul>
+</section>
+<section id="那麼" class="slide level1">
+<h1>那麼</h1>
+<ul class="incremental">
+<li>我不就是個魯蛇了 (Loser)</li>
+</ul>
+</section>
+<section id="喔no" class="slide level1">
+<h1>喔！NO!</h1>
+</section>
+<section id="這點我反對" class="slide level1">
+<h1>這點我反對</h1>
+</section>
+<section id="因為-2" class="slide level1">
+<h1>因為</h1>
+<ul class="incremental">
+<li>有些地方人多</li>
+<li>競爭就激烈</li>
+</ul>
+</section>
+<section id="但是-2" class="slide level1">
+<h1>但是</h1>
+<ul class="incremental">
+<li>這個世界很大</li>
+</ul>
+</section>
+<section id="總有些地方" class="slide level1">
+<h1>總有些地方</h1>
+<ul class="incremental">
+<li>人很少</li>
+<li>而且很適合我</li>
+</ul>
+</section>
+<section id="舉例而言-1" class="slide level1">
+<h1>舉例而言</h1>
+<ul class="incremental">
+<li>寫文章的人很多</li>
+<li>寫程式的人也很多</li>
+<li>但是寫「程式文章」的人就比較少了</li>
+</ul>
+</section>
+<section id="如果" class="slide level1">
+<h1>如果</h1>
+<ul class="incremental">
+<li>寫程式文章的人還是很多</li>
+<li>那寫程式電子書的人多嗎？</li>
+</ul>
+</section>
+<section id="如果-1" class="slide level1">
+<h1>如果</h1>
+<ul class="incremental">
+<li>寫程式電子書的人還是很多</li>
+<li>那寫開源程式電子書的人多嗎？</li>
+</ul>
+</section>
+<section id="如果-2" class="slide level1">
+<h1>如果</h1>
+<ul class="incremental">
+<li>寫開源程式電子書的人很多？</li>
+<li>那辦開源程式雜誌的人多嗎？</li>
+</ul>
+</section>
+<section id="這樣-1" class="slide level1">
+<h1>這樣</h1>
+<ul class="incremental">
+<li>排列組合下去</li>
+<li>就會得到 <code>n*n*n*n</code> ....</li>
+</ul>
+</section>
+<section id="於是每個人應該" class="slide level1">
+<h1>於是、每個人應該</h1>
+<ul class="incremental">
+<li>都可以找到自己</li>
+<li>最適合的領域去發展</li>
+</ul>
+</section>
+<section id="我想" class="slide level1">
+<h1>我想</h1>
+<ul class="incremental">
+<li>這就是多元</li>
+</ul>
+</section>
+<section id="在多元的世界裏" class="slide level1">
+<h1>在多元的世界裏</h1>
+<ul class="incremental">
+<li>每個人都能找到</li>
+<li>自己的一片天空</li>
+</ul>
+</section>
+<section id="然後-1" class="slide level1">
+<h1>然後</h1>
+<ul class="incremental">
+<li>在那片天空裏</li>
+<li>好好的努力</li>
+</ul>
+</section>
+<section id="這樣-2" class="slide level1">
+<h1>這樣</h1>
+<ul class="incremental">
+<li>人才就會多元起來</li>
+</ul>
+</section>
+<section id="人才多元了" class="slide level1">
+<h1>人才多元了</h1>
+<ul class="incremental">
+<li>社會就多元了</li>
+</ul>
+</section>
+<section id="社會多元了" class="slide level1">
+<h1>社會多元了</h1>
+<ul class="incremental">
+<li>每個領域都有好人才</li>
+<li>國家自然能發展</li>
+</ul>
+</section>
+<section id="於是-5" class="slide level1">
+<h1>於是</h1>
+<ul class="incremental">
+<li>人們不需要去</li>
+<li>勾心鬥角</li>
+<li>你爭我奪</li>
+</ul>
+</section>
+<section id="這樣-3" class="slide level1">
+<h1>這樣</h1>
+<ul class="incremental">
+<li>我們的社會</li>
+<li>應該會變得更好才對</li>
+</ul>
+</section>
+<section id="這讓我想起" class="slide level1">
+<h1>這讓我想起</h1>
+<ul class="incremental">
+<li>當初蔡元培擔任北大校長時</li>
+<li>曾經說過的幾句話</li>
+</ul>
+</section>
+<section id="蔡元培說" class="slide level1">
+<h1>蔡元培說</h1>
+<ul class="incremental">
+<li>大學者，囊括大典、網羅眾家之學府也。</li>
+<li>無論有何種學派，苟其言之成理，持之有故，尚不達自然淘汰之命運者，雖彼此相反，而悉聽其自由發展。</li>
+</ul>
+</section>
+<section id="我想-1" class="slide level1">
+<h1>我想</h1>
+<ul class="incremental">
+<li>這是蔡元培能把教育辦好的重要原因</li>
+</ul>
+</section>
+<section id="台灣的教育" class="slide level1">
+<h1>台灣的教育</h1>
+<ul class="incremental">
+<li>若能更多元</li>
+<li>我相信應該會更好才對</li>
+</ul>
+</section>
+<section id="在我的理想中" class="slide level1">
+<h1>在我的理想中</h1>
+<ul class="incremental">
+<li>大學之所以大</li>
+<li>是因為能夠容納各式各樣的人才</li>
+</ul>
+</section>
+<section id="在一個多元的大學裏" class="slide level1">
+<h1>在一個多元的大學裏</h1>
+<ul class="incremental">
+<li>有些人很會做研究、寫論文</li>
+<li>有些人很會教書，上課很精彩</li>
+<li>有些人很會實作，技術很好</li>
+</ul>
+</section>
+<section id="還有些人" class="slide level1">
+<h1>還有些人</h1>
+<ul class="incremental">
+<li>很關心學生，像媽媽一樣</li>
+<li>很關心社會，充滿熱情</li>
+</ul>
+</section>
+<section id="我希望" class="slide level1">
+<h1>我希望</h1>
+<ul class="incremental">
+<li>寫論文的，不要排斥做實務的</li>
+<li>做實務的，也能欣賞做理論的</li>
+</ul>
+</section>
+<section id="各個領域" class="slide level1">
+<h1>各個領域</h1>
+<ul class="incremental">
+<li>也都能互相欣賞</li>
+</ul>
+</section>
+<section id="還有-1" class="slide level1">
+<h1>還有</h1>
+<ul class="incremental">
+<li>政府盡量不要來鼓勵我們</li>
+</ul>
+</section>
+<section id="像是用" class="slide level1">
+<h1>像是用</h1>
+<ul class="incremental">
+<li>五年五百億</li>
+<li>或者甚麼大小聯盟方案</li>
+</ul>
+</section>
+<section id="否則" class="slide level1">
+<h1>否則</h1>
+<ul class="incremental">
+<li>將會引發武林浩劫</li>
+</ul>
+</section>
+<section id="然後-2" class="slide level1">
+<h1>然後</h1>
+<ul class="incremental">
+<li>各大門派就會聯手</li>
+<li>圍攻光明頂</li>
+</ul>
+</section>
+<section id="這樣-4" class="slide level1">
+<h1>這樣</h1>
+<ul class="incremental">
+<li>有人就會 gg 了</li>
+</ul>
+</section>
+<section id="因為-3" class="slide level1">
+<h1>因為</h1>
+<ul class="incremental">
+<li>政府總是鼓勵那些</li>
+<li>名門正派</li>
+</ul>
+</section>
+<section id="而我們這些" class="slide level1">
+<h1>而我們這些</h1>
+<ul class="incremental">
+<li>小小武館</li>
+</ul>
+</section>
+<section id="一但不小心" class="slide level1">
+<h1>一但不小心</h1>
+<ul class="incremental">
+<li>得到辟邪劍譜</li>
+</ul>
+</section>
+<section id="那就會像" class="slide level1">
+<h1>那就會像</h1>
+<ul class="incremental">
+<li>林平之他們家一樣</li>
+</ul>
+</section>
+<section id="慘遭滅門之禍" class="slide level1">
+<h1>慘遭滅門之禍</h1>
+</section>
+<section id="然後-3" class="slide level1">
+<h1>然後</h1>
+<ul class="incremental">
+<li>余滄海、左冷蟬、岳不群</li>
+<li>都會相繼出現</li>
+</ul>
+</section>
+<section id="於是武林" class="slide level1">
+<h1>於是武林</h1>
+<ul class="incremental">
+<li>就再也不平靜了</li>
+</ul>
+</section>
+<section id="現在華山派裏" class="slide level1">
+<h1>現在、華山派裏</h1>
+<ul class="incremental">
+<li>氣宗已經壓倒了劍宗</li>
+</ul>
+</section>
+<section id="而且風太師叔" class="slide level1">
+<h1>而且風太師叔</h1>
+<ul class="incremental">
+<li>也已經不知去向了</li>
+</ul>
+</section>
+<section id="劍宗門徒" class="slide level1">
+<h1>劍宗門徒</h1>
+<ul class="incremental">
+<li>幾乎都被消滅殆盡</li>
+</ul>
+</section>
+<section id="所以-3" class="slide level1">
+<h1>所以</h1>
+<ul class="incremental">
+<li>弟子們每天都在蹲馬步</li>
+<li>而不知道劍該怎麼使了</li>
+</ul>
+</section>
+<section id="蹲馬步" class="slide level1">
+<h1>蹲馬步</h1>
+<ul class="incremental">
+<li>雖然大有好處</li>
+<li>但是卻很無聊</li>
+</ul>
+</section>
+<section id="於是-6" class="slide level1">
+<h1>於是</h1>
+<ul class="incremental">
+<li>很多弟子都學不下去了</li>
+</ul>
+</section>
+<section id="如果-3" class="slide level1">
+<h1>如果</h1>
+<ul class="incremental">
+<li>當初政府沒有補助氣宗</li>
+<li>並且制定追殺劍宗的政策</li>
+</ul>
+</section>
+<section id="那麼-1" class="slide level1">
+<h1>那麼</h1>
+<ul class="incremental">
+<li>或許這些弟子還能學些劍招</li>
+</ul>
+</section>
+<section id="等到" class="slide level1">
+<h1>等到</h1>
+<ul class="incremental">
+<li>他們的劍術夠好了</li>
+</ul>
+</section>
+<section id="自然會發現" class="slide level1">
+<h1>自然會發現</h1>
+<ul class="incremental">
+<li>內力不夠，是會吃虧的</li>
+</ul>
+</section>
+<section id="到那時" class="slide level1">
+<h1>到那時</h1>
+<ul class="incremental">
+<li>他們自然會想去練氣</li>
+<li>這樣自然就水到渠成</li>
+<li>殊途同歸了！</li>
+</ul>
+</section>
+<section id="現在" class="slide level1">
+<h1>現在</h1>
+<ul class="incremental">
+<li>劍宗既然滅絕了</li>
+<li>弟子自然全是氣宗的</li>
+</ul>
+</section>
+<section id="更糟的是" class="slide level1">
+<h1>更糟的是</h1>
+<ul class="incremental">
+<li>那些馬步蹲不下去的</li>
+</ul>
+</section>
+<section id="不只氣沒學好" class="slide level1">
+<h1>不只氣沒學好</h1>
+<ul class="incremental">
+<li>劍也不知道怎麼使</li>
+</ul>
+</section>
+<section id="於是-7" class="slide level1">
+<h1>於是</h1>
+<ul class="incremental">
+<li>產業界自然找不到會使劍的人才</li>
+</ul>
+</section>
+<section id="結果" class="slide level1">
+<h1>結果</h1>
+<ul class="incremental">
+<li>外國人就殺進來了</li>
+</ul>
+</section>
+<section id="我們" class="slide level1">
+<h1>我們</h1>
+<ul class="incremental">
+<li>也就只能節節敗退了</li>
+</ul>
+</section>
+<section id="所以拜託政府" class="slide level1">
+<h1>所以、拜託政府</h1>
+<ul class="incremental">
+<li>千萬別再努力了</li>
+</ul>
+</section>
+<section id="你再努力下去" class="slide level1">
+<h1>你再努力下去</h1>
+<ul class="incremental">
+<li>我們就 gg 了</li>
+</ul>
+</section>
+<section id="江湖" class="slide level1">
+<h1>江湖</h1>
+<ul class="incremental">
+<li>不知又會發生</li>
+<li>什麼腥風血雨了</li>
+</ul>
+</section>
+<section id="在此" class="slide level1">
+<h1>在此</h1>
+<ul class="incremental">
+<li>我必須先聲明</li>
+</ul>
+</section>
+<section id="我的手上" class="slide level1">
+<h1>我的手上</h1>
+<ul class="incremental">
+<li>沒有辟邪劍譜</li>
+</ul>
+</section>
+<section id="也沒有" class="slide level1">
+<h1>也沒有</h1>
+<ul class="incremental">
+<li>屠龍刀</li>
+<li>或是</li>
+<li>葵花寶典</li>
+</ul>
+</section>
+<section id="更重要的是" class="slide level1">
+<h1>更重要的是</h1>
+<ul class="incremental">
+<li>我沒有自宮！</li>
+</ul>
+</section>
+<section id="謝謝大家" class="slide level1">
+<h1>謝謝大家！</h1>
+</section>
+<!-- {{{{ dzslides core
+#
+#
+#     __  __  __       .  __   ___  __
+#    |  \  / /__` |    | |  \ |__  /__`
+#    |__/ /_ .__/ |___ | |__/ |___ .__/ core :€
+#
+#
+# The following block of code is not supposed to be edited.
+# But if you want to change the behavior of these slides,
+# feel free to hack it!
+#
+-->
+
+<div id="progress-bar"></div>
+
+<!-- Default Style -->
+<style>
+  * { margin: 0; padding: 0; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+  details { display: none; }
+  body {
+    width: 800px; height: 600px;
+    margin-left: -400px; margin-top: -300px;
+    position: absolute; top: 50%; left: 50%;
+    overflow: hidden;
+  }
+  section {
+    position: absolute;
+    pointer-events: none;
+    width: 100%; height: 100%;
+  }
+  section[aria-selected] { pointer-events: auto; }
+  html { overflow: hidden; }
+  body { display: none; }
+  body.loaded { display: block; }
+  .incremental {visibility: hidden; }
+  .incremental[active] {visibility: visible; }
+  #progress-bar{
+    bottom: 0;
+    position: absolute;
+    -moz-transition: width 400ms linear 0s;
+    -webkit-transition: width 400ms linear 0s;
+    -ms-transition: width 400ms linear 0s;
+    transition: width 400ms linear 0s;
+  }
+  figure {
+    width: 100%;
+    height: 100%;
+  }
+  figure > * {
+    position: absolute;
+  }
+  figure > img, figure > video {
+    width: 100%; height: 100%;
+  }
+</style>
+
+<script>
+  var Dz = {
+    remoteWindows: [],
+    idx: -1,
+    step: 0,
+    slides: null,
+    progressBar : null,
+    params: {
+      autoplay: "1"
+    }
+  };
+
+  Dz.init = function() {
+    document.body.className = "loaded";
+    this.slides = $$("body > section");
+    this.progressBar = $("#progress-bar");
+    this.setupParams();
+    this.onhashchange();
+    this.setupTouchEvents();
+    this.onresize();
+  }
+  
+  Dz.setupParams = function() {
+    var p = window.location.search.substr(1).split('&');
+    p.forEach(function(e, i, a) {
+      var keyVal = e.split('=');
+      Dz.params[keyVal[0]] = decodeURIComponent(keyVal[1]);
+    });
+  // Specific params handling
+    if (!+this.params.autoplay)
+      $$.forEach($$("video"), function(v){ v.controls = true });
+  }
+
+  Dz.onkeydown = function(aEvent) {
+    // Don't intercept keyboard shortcuts
+    if (aEvent.altKey
+      || aEvent.ctrlKey
+      || aEvent.metaKey
+      || aEvent.shiftKey) {
+      return;
+    }
+    if ( aEvent.keyCode == 37 // left arrow
+      || aEvent.keyCode == 38 // up arrow
+      || aEvent.keyCode == 33 // page up
+    ) {
+      aEvent.preventDefault();
+      this.back();
+    }
+    if ( aEvent.keyCode == 39 // right arrow
+      || aEvent.keyCode == 40 // down arrow
+      || aEvent.keyCode == 34 // page down
+    ) {
+      aEvent.preventDefault();
+      this.forward();
+    }
+    if (aEvent.keyCode == 35) { // end
+      aEvent.preventDefault();
+      this.goEnd();
+    }
+    if (aEvent.keyCode == 36) { // home
+      aEvent.preventDefault();
+      this.goStart();
+    }
+    if (aEvent.keyCode == 32) { // space
+      aEvent.preventDefault();
+      this.toggleContent();
+    }
+    if (aEvent.keyCode == 70) { // f
+      aEvent.preventDefault();
+      this.goFullscreen();
+    }
+  }
+
+  /* Touch Events */
+
+  Dz.setupTouchEvents = function() {
+    var orgX, newX;
+    var tracking = false;
+
+    var db = document.body;
+    db.addEventListener("touchstart", start.bind(this), false);
+    db.addEventListener("touchmove", move.bind(this), false);
+
+    function start(aEvent) {
+      aEvent.preventDefault();
+      tracking = true;
+      orgX = aEvent.changedTouches[0].pageX;
+    }
+
+    function move(aEvent) {
+      if (!tracking) return;
+      newX = aEvent.changedTouches[0].pageX;
+      if (orgX - newX > 100) {
+        tracking = false;
+        this.forward();
+      } else {
+        if (orgX - newX < -100) {
+          tracking = false;
+          this.back();
+        }
+      }
+    }
+  }
+
+  /* Adapt the size of the slides to the window */
+
+  Dz.onresize = function() {
+    var db = document.body;
+    var sx = db.clientWidth / window.innerWidth;
+    var sy = db.clientHeight / window.innerHeight;
+    var transform = "scale(" + (1/Math.max(sx, sy)) + ")";
+
+    db.style.MozTransform = transform;
+    db.style.WebkitTransform = transform;
+    db.style.OTransform = transform;
+    db.style.msTransform = transform;
+    db.style.transform = transform;
+  }
+
+
+  Dz.getDetails = function(aIdx) {
+    var s = $("section:nth-of-type(" + aIdx + ")");
+    var d = s.$("details");
+    return d ? d.innerHTML : "";
+  }
+
+  Dz.onmessage = function(aEvent) {
+    var argv = aEvent.data.split(" "), argc = argv.length;
+    argv.forEach(function(e, i, a) { a[i] = decodeURIComponent(e) });
+    var win = aEvent.source;
+    if (argv[0] === "REGISTER" && argc === 1) {
+      this.remoteWindows.push(win);
+      this.postMsg(win, "REGISTERED", document.title, this.slides.length);
+      this.postMsg(win, "CURSOR", this.idx + "." + this.step);
+      return;
+    }
+    if (argv[0] === "BACK" && argc === 1)
+      this.back();
+    if (argv[0] === "FORWARD" && argc === 1)
+      this.forward();
+    if (argv[0] === "START" && argc === 1)
+      this.goStart();
+    if (argv[0] === "END" && argc === 1)
+      this.goEnd();
+    if (argv[0] === "TOGGLE_CONTENT" && argc === 1)
+      this.toggleContent();
+    if (argv[0] === "SET_CURSOR" && argc === 2)
+      window.location.hash = "#" + argv[1];
+    if (argv[0] === "GET_CURSOR" && argc === 1)
+      this.postMsg(win, "CURSOR", this.idx + "." + this.step);
+    if (argv[0] === "GET_NOTES" && argc === 1)
+      this.postMsg(win, "NOTES", this.getDetails(this.idx));
+  }
+
+  Dz.toggleContent = function() {
+    // If a Video is present in this new slide, play it.
+    // If a Video is present in the previous slide, stop it.
+    var s = $("section[aria-selected]");
+    if (s) {
+      var video = s.$("video");
+      if (video) {
+        if (video.ended || video.paused) {
+          video.play();
+        } else {
+          video.pause();
+        }
+      }
+    }
+  }
+
+  Dz.setCursor = function(aIdx, aStep) {
+    // If the user change the slide number in the URL bar, jump
+    // to this slide.
+    aStep = (aStep != 0 && typeof aStep !== "undefined") ? "." + aStep : ".0";
+    window.location.hash = "#" + aIdx + aStep;
+  }
+
+  Dz.onhashchange = function() {
+    var cursor = window.location.hash.split("#"),
+        newidx = 1,
+        newstep = 0;
+    if (cursor.length == 2) {
+      newidx = ~~cursor[1].split(".")[0];
+      newstep = ~~cursor[1].split(".")[1];
+      if (newstep > Dz.slides[newidx - 1].$$('.incremental > *').length) {
+        newstep = 0;
+        newidx++;
+      }
+    }
+    this.setProgress(newidx, newstep);
+    if (newidx != this.idx) {
+      this.setSlide(newidx);
+    }
+    if (newstep != this.step) {
+      this.setIncremental(newstep);
+    }
+    for (var i = 0; i < this.remoteWindows.length; i++) {
+      this.postMsg(this.remoteWindows[i], "CURSOR", this.idx + "." + this.step);
+    }
+  }
+
+  Dz.back = function() {
+    if (this.idx == 1 && this.step == 0) {
+      return;
+    }
+    if (this.step == 0) {
+      this.setCursor(this.idx - 1,
+                     this.slides[this.idx - 2].$$('.incremental > *').length);
+    } else {
+      this.setCursor(this.idx, this.step - 1);
+    }
+  }
+
+  Dz.forward = function() {
+    if (this.idx >= this.slides.length &&
+        this.step >= this.slides[this.idx - 1].$$('.incremental > *').length) {
+        return;
+    }
+    if (this.step >= this.slides[this.idx - 1].$$('.incremental > *').length) {
+      this.setCursor(this.idx + 1, 0);
+    } else {
+      this.setCursor(this.idx, this.step + 1);
+    }
+  }
+
+  Dz.goStart = function() {
+    this.setCursor(1, 0);
+  }
+
+  Dz.goEnd = function() {
+    var lastIdx = this.slides.length;
+    var lastStep = this.slides[lastIdx - 1].$$('.incremental > *').length;
+    this.setCursor(lastIdx, lastStep);
+  }
+
+  Dz.setSlide = function(aIdx) {
+    this.idx = aIdx;
+    var old = $("section[aria-selected]");
+    var next = $("section:nth-of-type("+ this.idx +")");
+    if (old) {
+      old.removeAttribute("aria-selected");
+      var video = old.$("video");
+      if (video) {
+        video.pause();
+      }
+    }
+    if (next) {
+      next.setAttribute("aria-selected", "true");
+      var video = next.$("video");
+      if (video && !!+this.params.autoplay) {
+        video.play();
+      }
+    } else {
+      // That should not happen
+      this.idx = -1;
+      // console.warn("Slide doesn't exist.");
+    }
+  }
+
+  Dz.setIncremental = function(aStep) {
+    this.step = aStep;
+    var old = this.slides[this.idx - 1].$('.incremental > *[aria-selected]');
+    if (old) {
+      old.removeAttribute('aria-selected');
+    }
+    var incrementals = $$('.incremental');
+    if (this.step <= 0) {
+      $$.forEach(incrementals, function(aNode) {
+        aNode.removeAttribute('active');
+      });
+      return;
+    }
+    var next = this.slides[this.idx - 1].$$('.incremental > *')[this.step - 1];
+    if (next) {
+      next.setAttribute('aria-selected', true);
+      next.parentNode.setAttribute('active', true);
+      var found = false;
+      $$.forEach(incrementals, function(aNode) {
+        if (aNode != next.parentNode)
+          if (found)
+            aNode.removeAttribute('active');
+          else
+            aNode.setAttribute('active', true);
+        else
+          found = true;
+      });
+    } else {
+      setCursor(this.idx, 0);
+    }
+    return next;
+  }
+
+  Dz.goFullscreen = function() {
+    var html = $('html'),
+        requestFullscreen = html.requestFullscreen || html.requestFullScreen || html.mozRequestFullScreen || html.webkitRequestFullScreen;
+    if (requestFullscreen) {
+      requestFullscreen.apply(html);
+    }
+  }
+  
+  Dz.setProgress = function(aIdx, aStep) {
+    var slide = $("section:nth-of-type("+ aIdx +")");
+    if (!slide)
+      return;
+    var steps = slide.$$('.incremental > *').length + 1,
+        slideSize = 100 / (this.slides.length - 1),
+        stepSize = slideSize / steps;
+    this.progressBar.style.width = ((aIdx - 1) * slideSize + aStep * stepSize) + '%';
+  }
+  
+  Dz.postMsg = function(aWin, aMsg) { // [arg0, [arg1...]]
+    aMsg = [aMsg];
+    for (var i = 2; i < arguments.length; i++)
+      aMsg.push(encodeURIComponent(arguments[i]));
+    aWin.postMessage(aMsg.join(" "), "*");
+  }
+  
+  function init() {
+    Dz.init();
+    window.onkeydown = Dz.onkeydown.bind(Dz);
+    window.onresize = Dz.onresize.bind(Dz);
+    window.onhashchange = Dz.onhashchange.bind(Dz);
+    window.onmessage = Dz.onmessage.bind(Dz);
+  }
+
+  window.onload = init;
+</script>
+
+
+<script> // Helpers
+  if (!Function.prototype.bind) {
+    Function.prototype.bind = function (oThis) {
+
+      // closest thing possible to the ECMAScript 5 internal IsCallable
+      // function 
+      if (typeof this !== "function")
+      throw new TypeError(
+        "Function.prototype.bind - what is trying to be fBound is not callable"
+      );
+
+      var aArgs = Array.prototype.slice.call(arguments, 1),
+          fToBind = this,
+          fNOP = function () {},
+          fBound = function () {
+            return fToBind.apply( this instanceof fNOP ? this : oThis || window,
+                   aArgs.concat(Array.prototype.slice.call(arguments)));
+          };
+
+      fNOP.prototype = this.prototype;
+      fBound.prototype = new fNOP();
+
+      return fBound;
+    };
+  }
+
+  var $ = (HTMLElement.prototype.$ = function(aQuery) {
+    return this.querySelector(aQuery);
+  }).bind(document);
+
+  var $$ = (HTMLElement.prototype.$$ = function(aQuery) {
+    return this.querySelectorAll(aQuery);
+  }).bind(document);
+
+  $$.forEach = function(nodeList, fun) {
+    Array.prototype.forEach.call(nodeList, fun);
+  }
+
+</script>
+<!-- vim: set fdm=marker: }}} -->
+</body>
+</html>

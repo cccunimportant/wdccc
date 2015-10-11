@@ -1,0 +1,78 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="/gospa.js"></script>
+<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[JavaScript 語言]](js:home) </title>
+
+<p><a href="/db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="/db/book/home.html"" class="innerLink">教科書</a>  / <a href="/db/js/home.html"" class="innerLink">JavaScript 語言</a>  </p>
+
+<h1 id="">遞迴函數</h1>
+
+<pre><code>我，呼叫自己。
+
+在還沒到達盡頭之前，
+
+我，呼叫我自己。
+</code></pre>
+
+<p>範例： <a href="db/js/code/recursive.js" class="innerLink">recursive.js</a></p>
+
+<pre><code>function sum(n) {
+    var s=0;
+    for (var i=1; i&lt;=n; i++)
+        s += i;
+    return s;
+}
+
+function s(n) {
+    if (n==1) return 1;
+    return s(n-1)+n;
+}
+
+function f(n) {
+    if (n==0) return 1;
+    if (n==1) return 1;
+    return f(n-1)+f(n-2);
+}
+
+var log = console.log;
+log("f(5)=%d", f(5));
+log("sum(10)=%d", sum(10));
+log("s(10)=%d", s(10));
+</code></pre>
+
+<p>將函數 s(n) 修改如下以印出中間結果，並觀察執行過程：</p>
+
+<p>檔案： <a href="db/js/code/sum_recursive.js" class="innerLink">sum_recursive.js</a></p>
+
+<pre><code>var log = console.log;
+
+function s(n) {
+    if (n==1) return 1;
+    var sn = s(n-1)+n;
+    log("s(%d)=%d", n, sn);
+    return sn;
+}
+
+log("s(10)=%d", s(10));
+</code></pre>
+
+<p>執行結果：</p>
+
+<pre><code>nqu-192-168-61-142:code mac020$ node sum_recursive
+s(2)=3
+s(3)=6
+s(4)=10
+s(5)=15
+s(6)=21
+s(7)=28
+s(8)=36
+s(9)=45
+s(10)=55
+s(10)=55
+</code></pre>
+
+</body>
+</html>

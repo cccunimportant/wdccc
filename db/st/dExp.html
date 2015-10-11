@@ -1,0 +1,56 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="/gospa.js"></script>
+<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[機率統計]](st:home) </title>
+
+<p><a href="/db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="/db/book/home.html"" class="innerLink">教科書</a>  / <a href="/db/st/home.html"" class="innerLink">機率統計</a>  </p>
+
+<h2 id="exponentialdistribution">指數分布 (Exponential Distribution)</h2>
+
+<p>$P(X=x) = \frac{1}{\beta} e^{-x/\beta} = \lambda {e}^{- \lambda x}$</p>
+
+<ul>
+<li>範圍：x=0,…,k （取出 x 個白球）</li>
+<li>意義：白球有 m 個，黑球 n 個，取出 k 個球，其中有 x 個白球的機率; (取後不放回)</li>
+<li>R 函數： <a href="#st:$ exp(rate)  ;  rate = 1/\beta = \lambda $" class="innerLink">$ exp(rate)  ;  rate = 1/\beta = \lambda $</a>
+<ul><li>http://stat.ethz.ch/R-manual/R-patched/library/stats/html/Hypergeometric.html</li></ul></li>
+</ul>
+
+<p>特性</p>
+
+<ol>
+<li>$E(X) =  k (\frac{m}{m+n})$</li>
+<li>$Var(X) = k (\frac{n}{m+n}) (\frac{m}{m+n}) (\frac{m+n-k}{m+n-1})$</li>
+</ol>
+
+<p>動差生成函數：$m_x(t) = (1-\beta t)^-1$</p>
+
+<p>R 程式範例一</p>
+
+<pre><code class="R">op=par(mfrow=c(2,2))
+curve(dexp(x, 1), 0, 10)
+curve(dexp(x, 5), 0, 10)
+curve(dexp(x, 1/5), 0, 10)
+curve(dexp(x, 1/2), 0, 10)
+</code></pre>
+
+<div class="figure"><img src="db/st/dexpCurve4.jpg"/><p class="caption"></p></div>
+
+<p>R 程式範例二</p>
+
+<pre><code class="R">&gt; dexp(1) - exp(-1) #-&gt; 0
+[1] 0
+</code></pre>
+
+<h3 id="">參考文獻</h3>
+
+<ul>
+<li><a href="http://zh.wikipedia.org/wiki/%E6%8C%87%E6%95%B0%E5%88%86%E5%B8%83">Wikipedia:指數分布</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Hypergeometric_distribution">Wikipedia:Hypergeometric_distribution</a></li>
+</ul>
+
+</body>
+</html>

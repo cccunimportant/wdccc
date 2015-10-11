@@ -1,0 +1,12 @@
+# 重複迴圈
+
+| 標題  |  說明  |  影片  |
+|--------|-----------|-------|
+| [[while 迴圈]](while) |  | |
+| -- [[範例：1+...+10]](ifWhileSum) |  | |
+| [[do ... while]](dowhile) |  | |
+| -- [[範例：1+...+10]](ifDoWhileSum) |  | |
+| [[for (o in set)]](ifForSum) |  | |
+| -- [[範例：1+...+10]](ifForInSum) |  | |
+| [[for (i=0; i < n; i++)]](ifForSum) |  | |
+| -- [[範例：1+...+10]](ifForSum) |  | |
