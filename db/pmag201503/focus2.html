@@ -3,10 +3,10 @@
   <meta charset="utf-8" />
 </head>
 <body>
-<script src="/gospa.js"></script>
+<script src="../../gospa.js"></script>
 <title> [[程式人雜誌]](pmag:home)  / [[2015年3月號]](pmag201503:home) </title>
 
-<p><a href="/db/pmag/home.html"" class="innerLink">程式人雜誌</a>  / <a href="/db/pmag201503/home.html"" class="innerLink">2015年3月號</a>  </p>
+<p><a href="db/pmag/home.html"" class="innerLink">程式人雜誌</a>  / <a href="db/pmag201503/home.html"" class="innerLink">2015年3月號</a>  </p>
 
 <h2 id="wikidown">Wikidown 的原始碼解析</h2>
 
@@ -36,10 +36,10 @@
           &lt;span class="icon-bar"&gt;&lt;/span&gt;
         &lt;/button&gt;
         &lt;div class="navbar-header"&gt;
-          &lt;a class="navbar-brand" href="/db/main/home.html"" style="color:#C0C0C0"&gt;
+          &lt;a class="navbar-brand" href="db/main/home.html"" style="color:#C0C0C0"&gt;
             &lt;span class="glyphicon glyphicon-home"&gt;&lt;/span&gt; &amp;nbsp;
           &lt;/a&gt;
-          &lt;a id="titlelink" class="navbar-brand" href="/db/wikidown/home.html"" style="color:#C0C0C0"&gt;
+          &lt;a id="titlelink" class="navbar-brand" href="db/wikidown/home.html"" style="color:#C0C0C0"&gt;
             &lt;span id="title"&gt;Wikidown&lt;/span&gt; 
           &lt;/a&gt;
         &lt;/div&gt;
@@ -133,15 +133,15 @@ function switchPanel(name) {
 function mdToHtml(md) {
   md  = "\n"+md+"\n"+config.append+"\n"; 
   md  = md.replace(/(\s)\!\[\[([^\]]*?)\]\]\((.*?)\)/gi, '$1&lt;div class="figure"&gt;&lt;img src="db/'+path().domain+'/img/$3"/&gt;&lt;p class="caption"&gt;$2&lt;/p&gt;&lt;/div&gt;'); // 內部圖片 &lt;div class="figure"&gt;&lt;img src="db/pmag201503/file"/&gt;&lt;p class="caption"&gt;text&lt;/p&gt;&lt;/div&gt;
-  md  = md.replace(/(\s)\[\[([^\]]+?)\]\]\(([^:\)]+):([^:\)]+)\)/gi, '$1&lt;a href="#$3:$4" class="innerLink"&gt;$2&lt;/a&gt;'); // 內部連結 &lt;a href="/db/pmag201503/file.html"" class="innerLink"&gt;text&lt;/a&gt;
-  md  = md.replace(/(\s)\[\[([^\]]+?)\]\]\((.*?)\)/gi, '$1&lt;a href="#'+path().domain+':$3" class="innerLink"&gt;$2&lt;/a&gt;'); // 內部連結 &lt;a href="/db/pmag201503/file.html"" class="innerLink"&gt;text&lt;/a&gt;
-  md  = md.replace(/(\s)\[\[([^\]:]+):([^\]:]+)\]\]/gi, '$1&lt;a href="#$2:$3" class="innerLink"&gt;$2:$3&lt;/a&gt;'); // 內部連結 &lt;a href="/db/pmag201503/file.html"" class="innerLink"&gt;file&lt;/a&gt;
-  md  = md.replace(/(\s)\[\[([^\]:]+?)\]\]/gi, '$1&lt;a href="#'+path().domain+':$2" class="innerLink"&gt;$2&lt;/a&gt;'); // 內部連結 &lt;a href="/db/pmag201503/file.html"" class="innerLink"&gt;file&lt;/a&gt;
+  md  = md.replace(/(\s)\[\[([^\]]+?)\]\]\(([^:\)]+):([^:\)]+)\)/gi, '$1&lt;a href="#$3:$4" class="innerLink"&gt;$2&lt;/a&gt;'); // 內部連結 &lt;a href="db/pmag201503/file.html"" class="innerLink"&gt;text&lt;/a&gt;
+  md  = md.replace(/(\s)\[\[([^\]]+?)\]\]\((.*?)\)/gi, '$1&lt;a href="#'+path().domain+':$3" class="innerLink"&gt;$2&lt;/a&gt;'); // 內部連結 &lt;a href="db/pmag201503/file.html"" class="innerLink"&gt;text&lt;/a&gt;
+  md  = md.replace(/(\s)\[\[([^\]:]+):([^\]:]+)\]\]/gi, '$1&lt;a href="#$2:$3" class="innerLink"&gt;$2:$3&lt;/a&gt;'); // 內部連結 &lt;a href="db/pmag201503/file.html"" class="innerLink"&gt;file&lt;/a&gt;
+  md  = md.replace(/(\s)\[\[([^\]:]+?)\]\]/gi, '$1&lt;a href="#'+path().domain+':$2" class="innerLink"&gt;$2&lt;/a&gt;'); // 內部連結 &lt;a href="db/pmag201503/file.html"" class="innerLink"&gt;file&lt;/a&gt;
   md  = md.replace(/(\s)\$\$([^$]+?)\$\$/gi, '$1&lt;script type="math/tex"&gt;$2&lt;/'+'script&gt;');// 數學式 
   return converter.makeHtml(md);
 }
 
-var mdNewFile = '# 標題：文件不存在\n\n您可以編輯後存檔！\n## 語法\n* &lt;a href="/db/pmag201503/innerLink.html"" class="innerLink"&gt;內部連結&lt;/a&gt;\n* [外部連結](link)';
+var mdNewFile = '# 標題：文件不存在\n\n您可以編輯後存檔！\n## 語法\n* &lt;a href="db/pmag201503/innerLink.html"" class="innerLink"&gt;內部連結&lt;/a&gt;\n* [外部連結](link)';
 
 function edit() {
   switchPanel('editPanel');

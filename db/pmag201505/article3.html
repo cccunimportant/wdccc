@@ -3,10 +3,10 @@
   <meta charset="utf-8" />
 </head>
 <body>
-<script src="/gospa.js"></script>
+<script src="../../gospa.js"></script>
 <title> [[程式人雜誌]](pmag:home)  / [[2015年5月號]](pmag201505:home) </title>
 
-<p><a href="/db/pmag/home.html"" class="innerLink">程式人雜誌</a>  / <a href="/db/pmag201505/home.html"" class="innerLink">2015年5月號</a>  </p>
+<p><a href="db/pmag/home.html"" class="innerLink">程式人雜誌</a>  / <a href="db/pmag201505/home.html"" class="innerLink">2015年5月號</a>  </p>
 
 <h2 id="wikidownexpresskoa">讓 wikidown 從 express 進化為 koa 版本</h2>
 
@@ -208,10 +208,10 @@ console.log('Http Server started: http://localhost:'+sslPort);
         &lt;span class="icon-bar"&gt;&lt;/span&gt;
       &lt;/button&gt;
       &lt;div class="navbar-header" style="color:#C0C0C0"&gt;
-&lt;!--        &lt;a class="navbar-brand" href="/db/main/home.html""&gt;
+&lt;!--        &lt;a class="navbar-brand" href="db/main/home.html""&gt;
           &lt;span class="glyphicon glyphicon-home"&gt;&lt;/span&gt; &amp;nbsp;
         &lt;/a&gt; --&gt;
-                &lt;span id="titleHome" class="navbar-nav titleLink"&gt;&lt;p&gt;&lt;a href="/db/main/home.html"" class="innerLink"&gt;首頁&lt;/a&gt; /&lt;/p&gt;&lt;/span&gt;
+                &lt;span id="titleHome" class="navbar-nav titleLink"&gt;&lt;p&gt;&lt;a href="db/main/home.html"" class="innerLink"&gt;首頁&lt;/a&gt; /&lt;/p&gt;&lt;/span&gt;
         &lt;span id="titleHead" class="navbar-nav titleLink"&gt;&lt;/span&gt;
       &lt;/div&gt;
       &lt;div id="navbar" class="navbar-collapse collapse"&gt;
@@ -287,7 +287,7 @@ console.log('Http Server started: http://localhost:'+sslPort);
 $('.panel').css( "display", "none");
 
 var domain, file, converter; // filepath, 
-var wdNewFile = '# 標題：文件不存在\n\n您可以編輯後存檔！\n## 語法\n* &lt;a href="/db/pmag201505/innerLink.html"" class="innerLink"&gt;內部連結&lt;/a&gt;\n* [外部連結](link)';
+var wdNewFile = '# 標題：文件不存在\n\n您可以編輯後存檔！\n## 語法\n* &lt;a href="db/pmag201505/innerLink.html"" class="innerLink"&gt;內部連結&lt;/a&gt;\n* [外部連結](link)';
 
 function isLogin() {
   if (localStorage.wd_login !== "true") { // 注意：sessionStorage 不能跨頁面持續，所以得用 localStorage
@@ -432,13 +432,13 @@ function templateApply(wd) {
 
 function wdToHtml(wd, domain) {
   wd  = '\n'+wd+' ';
-  wd  = wd.replace(/(\s)@\[\[([^\]]*?)\]\]\((.*?)\)/gi, '$1&lt;a href="../db/'+domain+'/$3" class="innerLink"&gt;$2&lt;/a&gt;'); // 內部檔案 &lt;a href="/db/pmag201505/pathToFile.html"" class="innerLink"&gt;text&lt;/a&gt;
-  wd  = wd.replace(/(\s)@\[\[([^\]]*?)\]\]/gi, '$1&lt;a href="../db/'+domain+'/$2" class="innerLink"&gt;$2&lt;/a&gt;'); // 內部檔案 &lt;a href="/db/pmag201505/pathToFile.html"" class="innerLink"&gt;pathToFile&lt;/a&gt;
+  wd  = wd.replace(/(\s)@\[\[([^\]]*?)\]\]\((.*?)\)/gi, '$1&lt;a href="../db/'+domain+'/$3" class="innerLink"&gt;$2&lt;/a&gt;'); // 內部檔案 &lt;a href="db/pmag201505/pathToFile.html"" class="innerLink"&gt;text&lt;/a&gt;
+  wd  = wd.replace(/(\s)@\[\[([^\]]*?)\]\]/gi, '$1&lt;a href="../db/'+domain+'/$2" class="innerLink"&gt;$2&lt;/a&gt;'); // 內部檔案 &lt;a href="db/pmag201505/pathToFile.html"" class="innerLink"&gt;pathToFile&lt;/a&gt;
   wd  = wd.replace(/(\s)\!\[\[([^\]]*?)\]\]\((.*?)\)/gi, '$1&lt;div class="figure"&gt;&lt;img src="../db/'+domain+'/$3"/&gt;&lt;p class="caption"&gt;$2&lt;/p&gt;&lt;/div&gt;'); // 內部圖片 &lt;div class="figure"&gt;&lt;img src="db/pmag201505/file"/&gt;&lt;p class="caption"&gt;text&lt;/p&gt;&lt;/div&gt;
-  wd  = wd.replace(/(\s)\[\[([^\]]+?)\]\]\(([^:\)]+):([^:\)]+)\)/gi, '$1&lt;a href="#$3:$4" class="innerLink"&gt;$2&lt;/a&gt;'); // 內部連結 &lt;a href="/db/domain/file.html"" class="innerLink"&gt;text&lt;/a&gt;
-  wd  = wd.replace(/(\s)\[\[([^\]]+?)\]\]\((.*?)\)/gi, '$1&lt;a href="#'+domain+':$3" class="innerLink"&gt;$2&lt;/a&gt;'); // 內部連結 &lt;a href="/db/pmag201505/file.html"" class="innerLink"&gt;text&lt;/a&gt;
-  wd  = wd.replace(/(\s)\[\[([^\]:]+):([^\]:]+)\]\]/gi, '$1&lt;a href="#$2:$3" class="innerLink"&gt;$2:$3&lt;/a&gt;'); // 內部連結 &lt;a href="/db/domain/file.html"" class="innerLink"&gt;domain:file&lt;/a&gt;
-  wd  = wd.replace(/(\s)\[\[([^\]:]+?)\]\]/gi, '$1&lt;a href="#'+domain+':$2" class="innerLink"&gt;$2&lt;/a&gt;'); // 內部連結 &lt;a href="/db/pmag201505/file.html"" class="innerLink"&gt;file&lt;/a&gt;
+  wd  = wd.replace(/(\s)\[\[([^\]]+?)\]\]\(([^:\)]+):([^:\)]+)\)/gi, '$1&lt;a href="#$3:$4" class="innerLink"&gt;$2&lt;/a&gt;'); // 內部連結 &lt;a href="db/domain/file.html"" class="innerLink"&gt;text&lt;/a&gt;
+  wd  = wd.replace(/(\s)\[\[([^\]]+?)\]\]\((.*?)\)/gi, '$1&lt;a href="#'+domain+':$3" class="innerLink"&gt;$2&lt;/a&gt;'); // 內部連結 &lt;a href="db/pmag201505/file.html"" class="innerLink"&gt;text&lt;/a&gt;
+  wd  = wd.replace(/(\s)\[\[([^\]:]+):([^\]:]+)\]\]/gi, '$1&lt;a href="#$2:$3" class="innerLink"&gt;$2:$3&lt;/a&gt;'); // 內部連結 &lt;a href="db/domain/file.html"" class="innerLink"&gt;domain:file&lt;/a&gt;
+  wd  = wd.replace(/(\s)\[\[([^\]:]+?)\]\]/gi, '$1&lt;a href="#'+domain+':$2" class="innerLink"&gt;$2&lt;/a&gt;'); // 內部連結 &lt;a href="db/pmag201505/file.html"" class="innerLink"&gt;file&lt;/a&gt;
 //  wd  = wd.replace(/(\s)\$([^$\n]+?)\$/gi, '$1\n&lt;script type="math/tex"&gt;$2&lt;/'+'script&gt;\n');// 數學式 $[latex]$,  刻意把 '&lt;/'+'script&gt;' 分開，避免瀏覽器認為是真的 script 區塊
   return md2html(wd);
 }
