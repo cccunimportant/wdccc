@@ -1,0 +1,62 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="../../gospa.js"></script>
+<title>/習題：自然語言理解</title>
+
+
+
+<p>習題：自然語言理解</p>
+
+<p>閱讀: <a href="http://ccc.nqu.edu.tw/db/js/genen.html">習題：自動產生英文語句</a></p>
+
+<p>輸入貓狗世界隨機產生的一個語句，請你寫一個程式推論出是誰被吃了，還有是誰吃了誰。</p>
+
+<p>或者是誰在追誰？</p>
+
+<p>範例：</p>
+
+<pre><code>node understand.js a dog chase a cat
+貓被追
+狗追了貓
+
+
+node understand.js a dog eat the cat
+貓被吃
+狗吃了貓
+</code></pre>
+
+<p>解答：</p>
+
+<pre><code>var e2c={dog:"狗", cat:"貓"};
+
+function understand(s) {
+  var c1 = e2c[s[1]], c4=e2c[s[4]];
+  if (s[2] === "eat") {
+    console.log("%s 被吃了", c4);
+    console.log("%s 吃了 %s", c1, c4);
+      return;
+  } else if (s[2] === "chase") {
+    console.log("%s 被追了", c4);
+    console.log("%s 追了 %s", c1, c4);
+      return;
+  } 
+}
+
+understand(process.argv.slice(2));
+</code></pre>
+
+<p>執行結果</p>
+
+<pre><code>NQU-192-168-60-101:ccc csienqu$ node understand.js a dog chase a cat
+貓 被追了
+狗 追了 貓
+NQU-192-168-60-101:ccc csienqu$ node understand.js a dog eat a cat
+貓 被吃了
+狗 吃了 貓
+</code></pre>
+
+</body>
+</html>

@@ -11,11 +11,13 @@
 |  [[計算理論]](ct:home)  |  程式人觀點    |
 |  [[機率統計]](st:home)  |  使用 R 軟體    |
 |  [[計算機結構]](co:home)  |  使用 Verilog 實作  |
+|  [[微積分]](ca:home)  |  專為電機資訊領域設計的微積分  |
 
 ## 撰寫中的書
 
 | 標題  |  說明  |
 |--------|-----------|
+|  [[邏輯語 (Lojban)]](lojban:home)  | 學習邏輯語的過程與心得  |
 |  [[JavaScript 前端技術]](jsb:home)  | 包含 DOM, jQuery  |
 |  [[JavaScript 軟體工程實戰]](se:home)  | 使用 node.js 實作    |
 |  [[一次學會五種主流程式語言]](pb:home)  |  從 JavaScript / C / C# / Java / R 五路欣賞程式設計 | 

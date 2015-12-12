@@ -1,0 +1,21 @@
+### 取得內容：innerText 與 innerHTML
+
+以下範例會取得 hi 節點的 innerText 與 innerHTML 顯示出來，請觀察其不同點。
+
+檔案: @[[getInner.html]](code/getInner.html)
+
+```html
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <title>節點存取示範</title>
+  </head>
+  <body>
+    <div id ="hi"><b>你好!</b></div>
+    <input type="button" value="hi.innerText" 
+             onclick="alert(document.getElementById('hi').innerText)"/>
+    <input type="button" value="hi.innerHTML" 
+             onclick="alert(document.getElementById('hi').innerHTML)"/>
+  </body>
+</html>
+```

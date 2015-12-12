@@ -1,0 +1,26 @@
+# 最簡單的物件 - circle
+
+範例： circle.js
+
+```
+var circle = {
+  r:3, 
+  area:function() {
+    return 3.14*this.r*this.r;
+  }
+}
+
+console.log("circle.r=%d", circle.r);
+
+console.log("circle.area()=%d", circle.area());
+
+```
+
+執行結果
+
+```
+NQU-192-168-60-101:ccc csienqu$ node circle.js
+circle.r=3
+circle.area()=28.259999999999998
+
+```

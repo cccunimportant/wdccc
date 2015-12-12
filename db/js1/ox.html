@@ -1,0 +1,106 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="../../gospa.js"></script>
+<title> 陳鍾誠  / 教科書  / JavaScript 前端技術 / 專案 -- 井字遊戲</title>
+
+ [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[JavaScript 前端技術]](jsb:home) 
+
+<h1 id="">專案 -- 井字遊戲</h1>
+
+<h2 id="">第一版：沒有輸贏判斷</h2>
+
+<p>檔案： <a href="db/jsb/code/ox/ox_ui.html" class="innerLink">ox_ui.html</a></p>
+
+<p>程式重點</p>
+
+<pre><code>          &lt;table id="ox" class="table table-bordered" style="width:100px"&gt;
+            &lt;tbody&gt;
+              &lt;tr&gt;
+                &lt;td id="11"&gt;&amp;nbsp;&lt;/td&gt;
+                &lt;td id="12"&gt;&amp;nbsp;&lt;/td&gt;
+                &lt;td id="13"&gt;&amp;nbsp;&lt;/td&gt;
+              &lt;/tr&gt;
+              &lt;tr&gt;
+                &lt;td id="21"&gt;&amp;nbsp;&lt;/td&gt;
+                &lt;td id="22"&gt;&amp;nbsp;&lt;/td&gt;
+                &lt;td id="23"&gt;&amp;nbsp;&lt;/td&gt;
+              &lt;/tr&gt;
+              &lt;tr&gt;
+                &lt;td id="31"&gt;&amp;nbsp;&lt;/td&gt;
+                &lt;td id="32"&gt;&amp;nbsp;&lt;/td&gt;
+                &lt;td id="33"&gt;&amp;nbsp;&lt;/td&gt;
+              &lt;/tr&gt;
+            &lt;/tbody&gt;
+          &lt;/table&gt;
+
+...
+
+var turn = 'O';
+var isGameOver = false;
+
+$(document).ready(function() {
+  console.log('ready()');
+  $('#ox td').mousedown(function () {
+    if (isGameOver) return;
+    var id = $(this).attr("id");
+    var v = $('#'+id).html();
+    if (v==='O' || v==='X') return;
+    $(this).html(turn);
+    turn = (turn==='O')?'X':'O';
+  });
+});
+</code></pre>
+
+<h2 id="">第二版：有輸贏判斷</h2>
+
+<p>檔案： <a href="db/jsb/code/ox/ox_check.html" class="innerLink">ox_check.html</a></p>
+
+<p>程式重點</p>
+
+<pre><code>function get(i,j) {
+  return $('#'+i+''+j).html();
+}
+
+var x = [[1,1,1], [2,2,2], [3,3,3], [1,2,3], [1,2,3], [1,2,3], [1,2,3], [1,2,3]];
+var y = [[1,2,3], [1,2,3], [1,2,3], [1,1,1], [2,2,2], [3,3,3], [1,2,3], [3,2,1]];
+
+function check() {
+  for (var i=0; i&lt;x.length; i++) {
+    var first = get(x[i][0], y[i][0]);
+    for (var j=0; j&lt;3; j++) {
+      var cell = get(x[i][j], y[i][j]);
+      if (cell === "&amp;nbsp;") break;
+      if (cell !== first) break;
+      if (j===2)
+        return first+"贏了！";
+    }
+  }  
+  return null;
+}
+
+var turn = 'O';
+var isGameOver = false;
+
+$(document).ready(function() {
+  console.log('ready()');
+  $('#ox td').mousedown(function () {
+    if (isGameOver) return;
+    var id = $(this).attr("id");
+    var v = $('#'+id).html();
+    if (v==='O' || v==='X') return;
+    $(this).html(turn);
+    turn = (turn==='O')?'X':'O';
+    var winMsg = check();
+    if (winMsg !== null) {
+      alert(winMsg);
+      isGameOver = true;
+    }
+  });
+});
+</code></pre>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="../../gospa.js"></script>
+<title> 陳鍾誠  / 課程  / JavaScript 第一門課 / 簡易的 helloServer</title>
+
+ [[陳鍾誠]](ccc:home)  / [[課程]](course:home)  / [[JavaScript 第一門課]](js1:home) 
+
+<h1 id="helloserver">簡易的 helloServer</h1>
+
+<p>檔案： <a href="db/js1/code/server/helloServer.js" class="innerLink">helloServer.js</a></p>
+
+<pre><code class="javascript">var http = require('http');
+http.createServer(function (req, res) {
+  res.writeHead(200, {'Content-Type': 'text/plain'});
+  res.end('Hello Node.js!\n');
+}).listen(3000);
+console.log('Server running at http://127.0.0.1:3000/');
+</code></pre>
+
+<p>執行：</p>
+
+<pre><code>D:\cccwd\db\js1\code\server&gt;node helloServer
+Server running at http://127.0.0.1:3000/
+</code></pre>
+
+<div class="figure"><img src="db/js1/helloServer.jpg"/><p class="caption"></p></div> 
+
+</body>
+</html>

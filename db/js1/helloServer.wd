@@ -1,0 +1,21 @@
+# 簡易的 helloServer
+
+檔案： @[[helloServer.js]](code/server/helloServer.js)
+
+```javascript
+var http = require('http');
+http.createServer(function (req, res) {
+  res.writeHead(200, {'Content-Type': 'text/plain'});
+  res.end('Hello Node.js!\n');
+}).listen(3000);
+console.log('Server running at http://127.0.0.1:3000/');
+```
+
+執行：
+
+```
+D:\cccwd\db\js1\code\server>node helloServer
+Server running at http://127.0.0.1:3000/
+```
+
+![[]](helloServer.jpg)

@@ -1,6 +1,7 @@
 <html>
 <head>
   <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="favicon.ico" rel="icon">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/highlight.default.min.css" rel="stylesheet">
@@ -11,16 +12,18 @@
 <body onload="init()">
   <div id="fb-root"></div>
   <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <div class="navbar-header" style="color:#C0C0C0">
-				<span id="titleHead" class="navbar-nav titleLink"></span>  
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+<!--      <div class="navbar-header" style="color:#C0C0C0">-->
+				<span id="titleHead" class="titleLink"></span>  
       </div>
+      <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right hide" id="menuLogin">
           <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown">登入</a>
@@ -32,7 +35,7 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown">分享</a>
+            <a class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-share"></span>
             <ul class="dropdown-menu" role="menu">
               <li><a onclick="facebookShare()">Facebook</a></li>
 <!--          <li><a onclick="staticShare()">靜態連結</a></li> -->
@@ -55,7 +58,7 @@
     </div>
   </nav>
   
-  <div id="panelShow" class="tab-pane panel"> <!-- 預覽 -->
+  <div id="panelShow" class="tab-pane panel container-fluid"> <!-- 預覽 -->
     <div class="row">
       <div id="sidebar"  class="col-sm-3 col-md-2 sidebar">
         <ul id="side" class="nav nav-sidebar"></ul>
@@ -65,13 +68,13 @@
       </div>
     </div>
   </div>
-  <div id="panelEdit" class="tab-pane panel"> <!-- 編輯 -->
+  <div id="panelEdit" class="tab-pane panel container-fluid"> <!-- 編輯 -->
     <br/>
     <textarea id="wdBox" class="form-control" style="width:100%; height:80%">
     {%=wd%}
     </textarea>
   </div>
-  <div id="panelUpload" class="tab-pane panel" style="height:75%">
+  <div id="panelUpload" class="tab-pane panel container-fluid" style="height:75%">
     <center>
     <div class="kv-main">
       <form enctype="multipart/form-data">
@@ -82,7 +85,7 @@
     </div>
     </center>
   </div>
-  <div id="panelLogin" class="tab-pane panel"> <!-- 登入 -->
+  <div id="panelLogin" class="tab-pane panel container-fluid"> <!-- 登入 -->
     <form class="form-signin" role="form">
       <input type="text" id="loginUser" class="form-control" required autofocus data-mt="User" placeholder="帳號"/>
       <input type="password" id="loginPassword" class="form-control" required data-mt="Password" placeholder="密碼"/>

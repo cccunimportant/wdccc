@@ -1,0 +1,790 @@
+# 邏漢語 Lohan (邏輯漢語)
+
+邏漢語 Lohan 具有邏輯語的語法，但是卻可以直接寫入漢字的字詞。
+
+邏萬語的文檔中可以加入註解，每一行在符號 // 之後的文字均為註解。
+
+範例：
+
+```
+do citka lo plise .i // You eat apples.
+do 吃    lo 蘋果  。
+你 吃    位 蘋果  。
+
+mi citka ci lo plise .i
+mi citka 3  lo plise .i
+我 吃    3  位 蘋果  。
+```
+
+## 翻譯小辭典
+
+新
+
+```
+連接詞： .a=或=and/or .e=且=and .i=。 .o=若且唯若|必=if and only if .u=不論如何|不論=whether or not
+        .onai=非必=or ku'i=however ku'inai=
+        ni'o=new paragraph=so
+        ja= je=然後=and then jo= ju=
+        .ija= .ije= .iji= .ijo= .iju=
+        ga= ge= gi= go= gu=
+        be=
+        me=
+        pe'u=please e'o=request ki'e=thank you
+        si=backspace last word sa=backspace to the next word said su=backspace since start of speech
+
+compond word :
+  barda mlatu = (big cat)
+  大    貓
+
+  barda blabi mlatu = ((big white) cat)
+  大    白    貓
+
+  barda ke blabi mlatu ke'e= ((big (whit cat)) 
+= barda ke blabi mlatu // 右邊的 ke'e 可不寫省略
+
+        bo = - // 連接
+
+  barda blabi bo mlatu = barda blabi-mlatu
+```
+
+
+```
+me la bob
+x1 is bob in aspect x2
+
+代群詞： mi'o= =me and you me'a=me and someone else, but not you 
+        do'o=you and someone else, but not me
+        ma'a=you me and some else
+
+ko'a=it1 ko'e=it2 ko'i=it3 ko'o=it4 ko'u=it5
+fo'a=it6 fo'e=it7 fo'i=it8 fo'o=it9 fo'u=it10
+
+goi : sumti assignment; used to define/assign ko'a/fo'a series
+
+da= de= di=
+
+ri= ra= ru=
+
+vi=這裡=here va=那裡=there vu=遠的那裏=there younder
+
+ti=這 ta=那 tu=遠的那個 
+
+mi klama vi   vu   li pano lo karce // 我搭車經由 10 號路從那裏到這裡
+我 搭車   這裡 那裏  粒 10   位 車
+
+mi vi  vu   li pano lo karce cu klama // cu 把動詞延到最後解決嗎?
+我 這裡 那裡 粒 10    位 車    素 搭車 
+
+fa mi fe vi fi vu fo li pano fu lo karce cu klama // 用指定填充位的方式述說
+壹 我 貳 這裡 參 那裏 肆 粒 10 伍 位 車 素 搭車
+
+fu lo karce fo li pano fi vu fe vi fa mi klama
+伍 位 車    肆 粒 10 參 那裏 貳 這裡 壹 我 搭車
+
+x1 comes/goes to destination x2 from origin x3 via route x4 using means/vehicle x5.
+
+// x1 移動到目的地 x2, 從 x3 出發, 經過路徑 x4 , 使用方法/交通工具 x5.
+
+換位詞： se=12換 te=13換 ve=14換 xe=15換 // 
+
+leklama // 那乘客
+leselklama // 目的地 
+leterklama // 來源地
+levelklama // 路徑
+lexelklama // 交通工具
+
+la=the one le=the li= lo=a lu=
+
+le gerku // the dog
+la gerku // a dog
+
+le gerku klama // the (dog-goer
+le gerku ku klama // the (dog) goes, ku=)
+le gerku cu klama // the (dog|goes 
+
+la .ed.
+la ed.djonz.
+
+la DJUliet // 英
+la djuLIET // 法
+la DJUliET // 美 大寫代表重音
+
+la .prenu. 
+la .prenu.prenu.
+la .prenu.prenu. prenu // the person call "prenu prenu" is a person
+
+
+coi = hello
+doi = hey you
+
+coi
+coi .ed.
+coi .ed.djonz.
+
+doi .prenu. // 1. Hello, prenu 2. Hello. There are people
+
+la'o glico. Joe .glico // 我的英文名： Joe
+
+la'o glico. glico .glico // 英文： glico
+
+la'o la'o. glico .la'o // 不知甚麼文： glico
+
+la'o gy. Joe Jones .gy // 我的語文： Joe Jones
+
+coi la'o gy. Joe Jones .gy // Hello, 你的語文： djo.djonz
+
+la'o lojbo. djo.djonz .lojbo // 邏輯語： djo.djonz
+
+la'oi .djo.
+
+la'ai ... li'u
+
+la'ai meri.celi li'u
+
+la // name(s) ending in consonant(s)
+la'oi // all single names
+la'ai/li'u // all multiple names
+
+la'au // 他的名字：
+稱字母 ay ey iy oy uy abu ebu ibu obu ubu
+```
+
+舊
+
+```
+代名詞： mi=我 do=你 ti=這 ta=那 tu=遠的那個 mi'ai=我們
+時態詞： pu=現在=正 ka=過去=已 ba=未來=將
+單稱詞： la=那 le=類 lo=位 li=粒 (la用於cmene，le用於gismu，li用於數字，lo謂詞轉為名詞填充)
+指稱詞： la'e=那的 le'e=類的 lo'e=位的
+群稱詞： lai=那群 lei=類群=lu'o le loi=位群=lu'o lo
+組稱詞： la'i=那組 le'i=類組 lo'i=位組
+組合詞： lu'o=組合=合 lu'a=解散=散
+填充格： fa=壹 fe=貳 fi=參 fo=肆 fu=伍 zo'e = 啾
+區分詞： cu=素 // 它本身沒有任何含義，但是可以把selbri和前面的單詞區分開來。
+時間詞： djedi=天 Xdjed=星期X masti=月 Xmast=X月 vensa=春 crisa=夏 critu=秋 dunra=冬
+疑問詞： xu=是否=疑 ma=嘛 mo=麼 xo=多少=幾 (xu用於YES/No 問句, ma用於填充當 cmene, mo用於填充當 gismu, xo=問數字)
+關係詞： pe=配 po=部 po'e=部的 ti'u=時的 (發生在……的時間) (pe:屬於 po:唯一屬於 )
+命令詞： ko=命令=令 .e'o=請 
+回答詞： go'i=同意=然=是的 na=非=不=否
+數字詞： pa=1 re=2 ci=3 vo=4 mu=5 xa=6 ze=7 bi=8 so=9 no=0
+         dau=10 fei=11 gai=12 jau=13 rei=14 vai=15
+         ki'o=千  pi=點
+部分詞： no=0=沒有 ro=每個=每 du'e=太多 
+         so'a=幾乎所有 so'e=大多數 so'i=許多 so'o=若干 so'u=少許
+         su'e=至多 su'o=至少
+人類詞： prenu=人 ninmu=女人 sonci=戰士
+動物詞： gerku=狗 mlatu=貓 cipni=鳥
+動作詞： pinxe=喝 dunda=給 cinba=親吻=吻 cusku=說
+顏色詞： blanu=藍色 crino=綠色
+物品詞： plise=蘋果 cukta=書
+動作詞： klama=去 marce=車 bajra=跑 viska=看到
+人際詞： nelci=喜歡 prami=愛幕=愛 pendo=朋友=友 xebni=怨恨=恨 fengu=生氣=怒
+話語詞： tcica=騙
+親屬詞： rirni=父母 tamne=表兄 
+從屬詞： nenri=內部 成員=cmima
+形容詞： blabi=白 barda=大
+器官詞： birka=手臂 
+學習詞： slabu=熟練
+邏輯語： gismu=根詞 
+招呼詞： coi=嗨
+表情詞： cmila=笑 
+國家詞： merko=美國人 jungo=中國人
+```
+
+ bau=用
+
+## 陳述句
+
+```
+mi pinxe // I drink.
+我 喝
+
+do pinxe // You drink.
+你 喝
+
+ti ladru // This is some milk.
+這 牛奶
+
+ta mlatu // That is a cat.
+那 貓
+
+do citka lo plise // You eat apples.
+你 吃    位 蘋果
+
+mi blanu
+我 藍色的
+   藍
+
+
+le blanu
+類 藍色的
+類 藍
+
+mi viska le blanu
+我 看見  類 藍色的
+   視       藍
+
+la bil. nelci la meilis
+那 比爾 喜歡  那 梅麗
+
+la bil. nelci le ninmu
+那 比爾 喜歡  類 女人
+```
+
+
+```
+la bil. nelci le ninmu cu klama
+那 比爾 喜歡  類 女人  素 走路
+                 女       行
+
+mi klama 
+我 去
+
+mi pu   klama 
+我 現在 去
+   正
+
+mi ka   klama 
+我 過去 去
+   已
+
+mi ba   klama 
+我 未來 去
+   將
+```
+
+lo=位 : 將謂詞轉為名詞填充
+
+```   
+mi klama fu lo marce 
+我 去    五 位 車     (我搭車去)
+
+mi klama fu lo marce be mi 
+我 去    五 位 車    be 我
+
+mi cusku 
+我 說
+
+mi cusku bau lo jbobau 
+我 說    用  位 邏輯語 (我說邏輯語)
+                邏
+
+barda mlatu 
+大    貓
+
+barda blabi mlatu
+大    白    貓
+```
+
+## 填充規則
+
+ x1 comes/goes to destination x2 from origin x3 via route x4 using means/vehicle x5.
+
+// x1 移動到目的地 x2, 從 x3 出發, 經過路徑 x4 , 使用方法/交通工具 x5.
+
+一種辦法是用zo'e來充當sumti來填充那些被“省略”的位，zo'e的意思是“不必要的東西”。所以
+
+```
+la suzyn. klama la paris. la berlin. zo'e le karce
+那 蘇珊   去    那 巴黎   那 柏林    啾   類 車
+```
+
+的含義就是：蘇珊坐車從柏林出發到巴黎（我們並不關心蘇珊途經何處）。事實上，zo'e是經常被隱含的，即便我們不明說出來。如果有人說klama，實際上他說的就是：
+
+````
+zo'e klama zo'e zo'e zo'e
+啾   去    啾   啾   啾     
+```
+
+大多數人都不希望一句話裡有太多的zo'e（當然，如果你願意這樣講也沒錯）。還有一種更流行的方法就是用位序號詞來標明位：fa、fe、fi、fo和fu。這些標記分別關聯到一個selbri的各個特定的位，無論它在句子中實際是什麼次序：fa代表第一個位，fe代表第二個位，以此類推。例如：
+
+```
+la suzyn. klama fu le karce
+那 蘇珊   去    伍 類 車
+```
+
+蘇珊是坐車去的。
+
+
+## 換位規則
+
+```
+mi prami do (SVO) (我愛你)
+我 愛    你
+
+mi do prami (SOV) (我，你被愛)
+我 你 愛
+
+do se prami mi (OVS) (你是所愛，我的)
+你 是 愛    我
+
+do mi se prami (OSV) (你，我所愛)
+你 我 是 愛
+
+prami fa mi do (VSO) (愛被我，你)
+愛    壹 我 你
+
+prami do fa mi (VOS) (愛你我是)
+愛    你 壹 我
+```
+
+## 命令句
+
+```
+bajra // (有東西在跑)
+跑
+
+ko   bajra // (命令) 你 跑 (你=do, 你+命令 = ko)
+命令 跑
+令
+
+ko kurji ko //（你該行動起來）照顧好你！
+ko 跑    ko
+```
+
+## 疑問句
+
+### YES/NO 問句
+
+```
+xu   do nelci la bil.  // 你喜歡比爾嗎？
+是否 你 喜歡  那 比爾
+疑
+
+xu   mi klama // 我到了嗎？
+是否 我 去
+疑
+
+xu   crino // 是綠色的嗎？
+是否 綠
+疑
+
+```
+
+回答
+
+```
+xu   do nelci la bil.  // (你喜歡比爾嗎？)
+是否 你 喜歡  那 比爾
+疑
+
+nelci // (喜歡)
+喜歡
+
+go'i // 和你說的一樣
+同意
+然
+```
+
+### what/who/when/where/how/why 問句?
+
+```
+do klama ma  // (你要去哪裡？)
+你 去    嘛
+
+la london.   // (倫敦)
+那 倫敦
+
+ma klama la london. // (誰要去倫敦？)
+嘛 去    那 倫敦
+
+la klaudias. // (克勞迪婭。)
+那 克勞迪雅
+
+mi dunda ma do // (我給你什麼？)（通常情況下，這句話的意思是：“你讓我給你什麼？”）
+我 給    嘛 你
+
+le cukta (書)
+類 書
+```
+
+### mo (做什麼, 問謂詞)
+
+最後出場的是mo。它非常類似於ma，不同的是它代表selbri而不是sumti——在漢語裡就是“干什麼？”和“是什麼？”的區別（記住，“是什麼”和“干什麼”在邏輯語裡並沒有本質上的區別）。從邏輯的角度來說，我們可以將mo視為向某人問詢sumti之間的關系。
+
+```
+do mo la klaudias. // 你和克勞迪婭怎麼了？
+你 麼 那 克勞迪雅
+```
+
+根據情況，回答可能是：
+
+```
+nelci // 我喜歡她。
+喜歡
+喜
+
+pendo // 我是她的朋友。
+朋友
+友
+
+prami // 我愛慕她。
+愛慕
+愛
+
+xebni // 我恨她。
+怨恨
+恨
+
+fengu // 我生她的氣。
+生氣
+怒
+
+cinba // 我吻她。
+親吻
+吻
+```
+
+## 否定
+
+```
+mi na tavla la suzyn. // 我和苏珊聊天（这件事）不是真的。
+我 不 聊天  那 蘇珊
+```
+
+## 關係
+
+pe : 屬於 (多重屬於)
+
+```
+la proc.  pe la meiris. // 玛丽的保时捷 
+那 保時捷 配 那 瑪莉
+
+le tamne pe la tim. // 提姆的表兄 
+類 表兄  配 那 提姆
+
+le nenri pe le karce // 车的内部 
+類 內部  配 類 車
+
+le cmima pe la lojbangirz. // 逻辑语小组的成员 
+類 成員  配 那 邏輯語組織
+```
+
+po : 屬於 (唯一屬於)
+
+```
+le cukta po mi // 我的书
+類 書    部 我
+
+le cipni po la meilis. // 梅丽的鸟
+類 鳥    部 那 梅莉
+
+la kokakolys. po do // 你的可口可乐
+類 可口可樂   部 你
+```
+
+po'e : 屬於 (不可變化的屬於)
+
+```
+le rirni po'e la djulias. // 朱丽叶的父母
+類 父母  部的 那 茱麗葉
+
+le birka po'e la klaudias. // 克劳迪娅的手臂
+類 手臂  部的 那 克勞迪雅
+```
+
+## 數字語句
+
+```
+ci lo gerku // 三條狗
+三 位 狗
+
+ci lo gerku cu batci mi // 三條狗咬我 (可能是分別咬)
+三 位 狗    素 咬    我
+
+lu'o ci lo gerku cu batci mi // 三條狗組隊咬我
+組合 三 位 狗    素 咬    我
+
+le pano ninmu cu cinba mi // 十個女人親吻我
+那 10   女人  素 親吻  我
+
+```
+
+有一个办法可以避免上面的困难，那就是使用fi'u，它的作用类似于分号“/”。所以“2/3的人”就可以写作refi'uci loi prenu。实际上这就是分数，而且与对应的小数有相同的效果，你可以说pixaxaxa loi prenu——约等于2/3 。
+
+
+```
+mi tcica pimu lei  prenu // 我骗了一半人（将心里所指的若干人视为一个整体）。
+我 騙    點5  類組 人
+ 
+mi tcica pafi'ure lei prenu // 我骗了一半人（和上句意思相同）。
+我 騙    1/2      類組 人
+
+mi tcica pa le re mlatu // 我耍了两只猫中的一只。
+我 騙    1  類 2  貓
+
+mi se slabu vopano lo pacivore gismu // 我熟练掌握了1342个根词中的410个。
+我 是 熟練  410    位 1342     根詞
+```
+
+## 部分語句
+
+```
+部分詞： no=0=沒有 ro=每個=每 du'e=太多 
+         so'a=几乎所有 so'e=大多数 so'i=许多 so'o=若干 so'u=少许
+         su'e=至多 su'o=至少
+```
+
+```
+no le ninmu cu nelci la bil // 那些女人里没有一个会喜欢比尔。
+0  類 女人  素 喜歡  那 比爾
+
+no lo ninmu cu nelci la bil // 世界上没有任何一个女人会喜欢比尔。
+0  位 女人  素 喜歡  那 比爾
+
+coi rodo // Hi，各位！
+嗨  每你=各位
+
+mi nelci ro lo mlatu // 我喜欢所有的猫。
+我 喜歡  每 位 貓
+
+mi na nelci ro lo gerku // 不是所有的狗，我都喜欢。
+我 不 喜歡  每 位 狗
+
+so'i lo merko  cu nelci la nirvanas. // 多数美国人喜欢涅槃。
+许多 位 美國人 素 喜歡  那 涅槃
+
+so'u lo jungo  cu nelci la nirvanas. // 少数中国人喜欢涅槃。
+許多 位 中國人 素 喜歡  那 涅槃
+
+su'e mu le muno prenu cu cmila // 五十个人里至多有五个人笑了。
+至少 5  類 50   人    素 笑
+
+le su'o re gerku
+類 至少 2  狗
+```
+
+## 時間語句
+
+tcika: x1 [hours, minutes, seconds] is the time/hour of state/event x2 on day x3 at location x4.
+
+```
+ma tcika ti // (现在是什么时间？) 
+嘛 時間  這
+
+li papa // (十一点)
+粒 11
+
+li papa pi'e mu // 11:05（十一点零五分）（十一个单元，和五个子单元）
+粒 11   點的 5
+
+li papa pi'e mu pi'e pabi // 十一点五分十八秒（十一个单元，五个子单元，和十八个子单元的子单元）
+粒 11   點的 5  點的 18
+```
+
+星期幾
+
+djedi : x1 is x2 full days in duration (default is 1 day) by standard x3; (adjective:) x1 is diurnal.
+
+```
+la nodjed // 星期天
+那 0天
+
+la padjed // 星期一
+那 1天
+
+la redjed // 星期二
+那 2天
+
+la cidjed // 星期三
+那 3天
+
+...
+```
+
+月份
+
+```
+pamast. // 一月 pa(v)mast.或pavma'i
+1 月
+
+remast. // 二月 re(l)mast.或relma'i
+2 月
+
+...
+
+daumast // 十月 daumast.或pavnomast.或pavnonma'i
+10 月
+
+feimast // 十一月 feimast.或pavypavmast.或pavypavma'i
+11 月
+gaimast // 十二月 gaimast.或pavrelmast.或pavrelma'i
+12 月
+```
+
+季節
+
+```
+vensa 春天
+crisa 夏天
+critu 秋天
+dunra 冬天
+```
+
+```
+// 1969年7月21日是人类到达月球的那一天。
+li repa pi'e ze pi'e pasoxaso cu detri lenu lo remna cu klama le lunra
+粒 21   點的 7  點的 1969     素 日期  事件 位 人類  素 去    那 月球
+```
+
+detri : x1 is the date [day,week,month,year] of event/state x2, at location x3, by calendar x4.
+lenu : specific event descriptor: contraction of le nu and identical in meaning.
+remna : x1 is a human/human being/man (non-specific gender-free sense);
+
+## 数字提问
+
+用ma来指代未知的sumti，用mo来指代未知的selbri，而xo对数字提问的“未知数”
+
+pa=1 re=2 ci=3 vo=4 mu=5 xa=6 ze=7 bi=8 so=9 no=0
+
+```
+re lo ci mensi pe mi cu nelci la rikis.martin. // 我三个妹妹中的两个喜欢里奇.马丁。
+2  /  3  妹妹  配 我 素 喜歡  那 瑞奇馬汀
+
+xo   le mensi cu nelci la rikis.martin. 
+多少 類 妹妹  素 喜歡  那 瑞奇馬汀
+幾
+
+xo le botpi cu kunti  // 有多少个瓶子是空的？
+幾 類 瓶子  素 空的 
+
+xo lo prenu cu klama ti  // 有多少人来这里？
+幾 位 人類  素 去    這
+
+do viska xo lo sonci  // 你看到了多少个战士？
+你 看到  幾 位 戰士
+```
+
+## 指稱詞
+
+这里还有一些主要的冠词和类似冠词的单词：
+
+```
+la 被命名的 (那)
+le 被描述的 (類)
+lo 真实存在的 (位)
+li 数字 (幾)
+
+（lu不是冠词，它是一个引用标记）
+
+la'e ……的代指 (那的)（la'e所指的是上一句话所指的，而di'u就是上一句里真实存在的单词）
+le'e 定型的 (類的)
+lo'e 典型的 (位的)
+
+lai 被命名为……的集团 (那群)
+lei 被描述的集团     (類群)
+loi 真实存在集团     (位群)
+
+la'i 被名为……组 (那組)
+le'i 被描述的组 (類組)
+lo'i 真实存在组 (位組)
+```
+
+lu'o，它可以把一个组转换成一个集团，而lu'a则把一个集团转换成一组独立的个体（“集合”和“解散”）。严格的来说，这些都不是冠词。
+
+===========================================
+
+## 新增
+
+我们通过使用单词nu来解决这个问题，它的意思是——你可能猜到了——“事件（或状态）”。这被称为“谓词子句描述词”，常见的同类描述词还有ka（质量或属性）、ni（数量）等等（完整的清单请查阅The Complete Lojban Language第269页）。
+
+```
+状态: nu=(谓词子句描述词) ni=ka（质量或属性子句) ka= 數量子句
+連接詞： .i=.|．｜。 
+人類詞： nanmu=男人
+tcika = 時間 lenu=le nu=事件發生的時間
+```
+
+go'i GOhA repeʂts the previʐus ʃridi
+du GOhA equʂlity
+nu'a NUhA mʂth ʐperʂtʐr tʐ selʃri
+moi MOI chʂʏges ʏumʃer tʐ ʐrdiʏʂl selʃri
+mei MOI chʂʏges ʏumʃer tʐ cʂrdiʏʂl selʃri
+nu NU eveʏt ʂʃstrʂctiʐʏ
+kei KEI termiʏʂtʐr fʐr NU
+
+如果你更喜欢使用12小时制，你需要通过一定的方法来区分AM和PM。在逻辑语里一种方便的方法就是使用cmene（我们随后会介绍一些关于cmene的补充知识）。所以“四点钟”就是la vocac.，“五点钟”就是la mucac.，以此类推（来自于gismu：cacra——小时）。对于11和12，我们需要额外的数字。幸运的是，逻辑语早有准备——数字进制可以扩展到16进制，所以我们还有一些“额外”的数字：
+
+dau 10
+fei 11
+gai 12
+jau 13
+rei 14
+
+
+// “上半天”和“下半天”我们就再加上lir.和lec.，意思是“早”和“晚”（来自gismu：clira和lerci）。所以la mucac.lir.就是“早上五点”
+
+nu=(谓词子句描述词)
+
+```
+la daucac. tcika lenu mi klama
+那 10點鐘  時間  類句 我 去
+                   nu
+```
+
+在逻辑语里，se是和te、ve、xe属于同一系列的单词，它们作用是将selbri的第一个位置分别和第二、第三、第四、第五个位置进行位置交换（这种类型的交换被称为“换位”）。
+
+```
+mi viska do // 我看到了你。
+我 看到  你
+
+do se     viska mi // 你被我看到了。
+你 換2=讓 看    我
+
+le nanmu cu klama lo barja // 那男人去了酒吧。
+類 男人  素 去    位 酒吧
+
+lo barja cu se  klama le nanmu // 酒吧就是那个男人去的（地方）。
+位 酒吧  素 換2 去    類 男人
+
+la spot.  mlatu la .abisinian. // “斯坡特”是一只阿比西尼亚品种的猫咪。
+那 斯坡特 猫    那 阿比西尼亚品种
+la .abisinian.     se  mlatu la spot. // 阿比西尼亚是猫咪“斯坡特”的品种。
+那 阿比西尼亚品种  換2 猫    那 斯坡特
+
+lenu mi cilre fi  la lojban. cu xamgu mi // （我）学习逻辑语对我有益。
+事件 我 學習  位2 那 邏輯語  素 有益  我
+
+mi se  xamgu lenu mi cilre fi  la lojban. // 我受益于（我）学习逻辑语。
+我 換2 有益  事件 我 學習  位2 那 邏輯語
+```
+
+时间与事件，进阶二：项标签（sumti tcita）
+
+逻辑语准备了一系列的结构词（cmavo），它们的作用是给selbri添加额外的位。
+
+ti'u，意思是：“发生在……的时间”
+
+```
+mi klama ti'u la daucac. // 我到来的时间是10:00。
+我 去    发生 那 10點鐘
+```
+
+klama在这里表达了六种事物间的关系：一个行者，一个目的地，一个出发地，一条路径，一种交通工具，还有一个“事件发生的时刻”。
+
+
+日期
+
+```
+fe  lenu mi jbena [kei] cu detri fa  li pamu pi'e bi // 我出生（这个事件）的日期是八月十五日。
+填2 事件 我 出生        素 日期  填1 粒 15   點的 8
+```
+
+但是使用se更容易些：
+
+```
+lenu mi jbena cu se  detri li pamu pi'e bi // 我出生（这个事件）发生的日期是八月十五日。
+事件 我 出生  素 換2 日期  粒 15   點的 8
+```
+
+在上述两种情况里，都把lenu放在cu前面是很方便的——交换中有一个著名的逻辑语技巧：cu足以终止任何在它之前的语法结构，包括lenu mi jbena。
+
+你也许猜到了：一定存在一个sumti tcita用来为"日期"服务。它就是de'i，它的工作方式与ti'u类似（请留意sumti tcita试图与selbri类似就如同他们所暗示的那样）。所以，另一种来告诉你我的生日的办法是：
+
+```
+mi jbena de'i li pamu pi'e bi
+我 出生  日期 粒 15   點的 8
+```
+
+第六章、时间和空间——基础逻辑语“时态”
+

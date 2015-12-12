@@ -1,18 +1,18 @@
 # 語言處理
 
-| 章節 | 說明 | 
-|------|------|
-| [[第1章 簡介]](basic)  |  | 
-| [[第2章 語言生成]](generate)  |  | 
-| [[第3章 字元編碼]](encoding)  |  | 
-| [[第4章 詞彙與詞典]](dictionary)  |  | 
-| [[第5章 語法剖析]](syntax)  |  | 
-| [[第6章 語意辨識]](semantics)  |  | 
-| [[第7章 語法比對]](matching)  |  | 
-| [[第8章 自然語言的處理]](nlp)  |  | 
-| [[第9章 機器翻譯]](mt)  |  | 
-
 * 教科書:  @[[語言處理技術 (PDF)]](clBook.pdf)
+
+| 章節 | 影片 | 
+|------|------|
+| [[第1章 簡介]](basic)  | [影片](https://youtu.be/VlzY-eHkyII) | 
+| 第2章 語言生成  |  [影片](https://youtu.be/VlzY-eHkyII) | 
+| 第3章 字元編碼  |  [影片](https://youtu.be/VlzY-eHkyII) | 
+| 第4章 詞彙與詞典 |  [影片](https://youtu.be/VlzY-eHkyII) | 
+| 第5章 語法剖析 |  [影片](https://youtu.be/VlzY-eHkyII) | 
+| 第6章 語意辨識 |  [影片](https://youtu.be/VlzY-eHkyII) | 
+| 第7章 語法比對 | [影片](https://youtu.be/VlzY-eHkyII)  | 
+| 第8章 自然語言的處理 |  [影片](https://youtu.be/VlzY-eHkyII) | 
+| 第9章 機器翻譯 |  [影片](https://youtu.be/VlzY-eHkyII) | 
 
 ## 內容
 

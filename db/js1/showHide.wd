@@ -1,0 +1,18 @@
+### 顯示與隱藏 (Show and hide)
+
+檔案: @[[showHide.html]](code/showHide.html)
+
+
+```html
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <title>範例 -- 顯示隱藏</title>
+  </head>
+  <body>
+    <div id ="hi"><b>你好!</b></div>
+    <input type="button" value="hi.show()" onclick="document.getElementById('hi').style.visibility='visible'"/>
+    <input type="button" value="hi.hide()" onclick="document.getElementById('hi').style.visibility='hidden'"/>
+  </body>
+</html>
+```

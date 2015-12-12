@@ -1,0 +1,16 @@
+# 匿名函數與 callback
+
+| 教學 | 主題  | 影片  |
+|--------|-----------|
+| 文章 | [[匿名函數與回呼 callback]](callback0) | [影片](https://youtu.be/7LtO6eo-d80) (簡短) |
+| 課堂教學 | [[匿名函數與回呼 callback]](callback0) | [影片](https://youtu.be/7LtO6eo-d80)（較長) |
+| 習題 | [[微分]](df) , [[積分]](integral) |  |
+| 習題 | [[映射]](map) | |
+| 習題 | [[亂數]](random) , [[亂數2]](random2) | |
+| 練習 | [[Node.js 版的小時鐘]](node_clock) | [影片](https://youtu.be/3nhzz7M_gDM)  |
+| 練習 | [[網頁版的小時鐘]](clock) | [影片](https://youtu.be/HOOwDqcIuNo)  |
+| 課堂教學 | 小時鐘 | [影片](https://youtu.be/-LqcUl6P_vQ)  |
+| 習題 | [[倒數計數器(碼錶)]](countdown) | [影片](https://youtu.be/gYzY1fW1X7E)  |
+| 文章 | [[Node.js 檔案輸出入系統中的回呼]](callback) |  |
+| 補充 | 查詢 node.js API ([英文](https://nodejs.org/api/) , [中文](http://nodeapi.ucdok.com/#/api/) ) <br/>查詢 MDN API ([英文](https://developer.mozilla.org/en-US/) , [中文](https://developer.mozilla.org/zh-TW/)) | [請查出 node.js 下讀取檔案的 API](https://nodejs.org/api/fs.html#fs_fs_readfile_filename_options_callback) , <BR/> [請查出瀏覽器中 setTimeOut 的 API](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setTimeout) | 
+| 文章 | [[Promise 風格的鏈鎖型寫法]](promise) |  |

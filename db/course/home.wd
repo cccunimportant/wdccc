@@ -1,13 +1,17 @@
 # 課程地圖
 
 <table>
-<tr><th>分類</th><th>課程</th><th>語言與軟體</th><th>學期</th><th>註記</th><th>相關主題</th><th>說明</th></tr>
-<tr><td rowspan="2">程式</td><td> [[程式設計]](js1:home) </td><td>JavaScript + Node.js </td><td> 一上 </td><td> 必 </td><td> [[HTML]](wp:html) , [[CSS]](wp:css)</td><td rowspan="2">從語言到網站</td></tr>
-<tr><td> [[程式設計進階]](js2) </td><td>JavaScript + 基礎 C 語言</td><td> 一下 </td><td> 必 </td><td> [[網路程式]](wp:home) , [[軟體工程]](se:home) </td></tr>
-<tr><td rowspan="2">電腦</td><td> [[計算機結構]](co) </td><td>JavaScript+Verilog</td><td> 二上 </td><td> 必 </td><td>  <a href="https://www.coursera.org/course/nand2tetris1/">nand2tetris (Part I)</a>  </td><td rowspan="2">從硬體到軟體</td></tr>
-<tr><td> [[系統程式]](sp) </td><td>JavaScript + 深入 C 語言</td><td> 二下 </td><td> 必 </td><td> <a href="http://www.nand2tetris.org/">nand2tetris (Part II)</a> </td></tr>
-<tr><td rowspan="2">研究</td><td> [[機率與統計]](st) </td><td>JavaScript + R 軟體</td><td> 三上 </td><td> 選 </td><td> [[微積分]](ca:home) , [[R 軟體]](r:home) </td><td rowspan="2">從數學到智慧</td></tr>
-<tr><td> [[人工智慧]](ai) </td><td>JavaScript + R 軟體</td><td> 三下 </td><td> 選 </td><td> [[自然語言]](cl) , [[計算理論]](ct) </td></tr>
+<tr><th>分類</th><th>課程</th><th>語言與軟體</th><th>學期</th><th>註記</th><th>相關主題</th></tr>
+<tr><td rowspan="2">程式</td><td> [[程式設計]](js1:home) </td><td> [[JavaScript + Node.js]](js1:home) </td><td> 一上 </td><td> 必 </td><td> [[HTML]](wp:html) , [[CSS]](wp:css)</td></tr>
+<tr><td> [[程式設計進階]](js1:home) </td><td> [[JavaScript]](js1:home) + [[C 語言]](c1:home) </td><td> 一下 </td><td> 必 </td><td> [[網路程式]](wp:home) , [[軟體工程]](se:home) </td></tr>
+<tr><td rowspan="2">電腦</td><td> [[計算機結構]](co1:home) </td><td> [[JavaScript]](js1:home) + [[Verilog]](co:home) </td><td> 二上 </td><td> 必 </td><td>  <a href="https://www.coursera.org/course/nand2tetris1/">nand2tetris (Part I)</a>  </td></tr>
+<tr><td> [[系統程式]](sp1:home) </td><td> [[JavaScript]](js1:home) + [[C 語言]](c1:home) </td><td> 二下 </td><td> 必 </td><td> <a href="http://www.nand2tetris.org/">nand2tetris (Part II)</a> </td></tr>
+<tr><td rowspan="3">研究</td><td> [[機率與統計]](st1:home) </td><td> [[JavaScript]](js1:home) + [[R 軟體]](r:home) </td><td> 三上 </td><td> 選 </td><td> [[數學]](ma1:home) , [[微積分]](ca:home) </td></tr>
+<tr><td> [[人工智慧]](ai1:home) </td><td> [[JavaScript]](js1:home) + [[R 軟體]](r:home) </td><td> 三下 </td><td> 選 </td><td> [[計算理論]](ct:home) </td></tr>
+<tr><td> [[計算語言學]](cl1:home) </td><td> [[JavaScript]](js1:home) + [[R 軟體]](r:home) </td><td> 三下 </td><td> 選 </td><td> [[邏輯語]](lo1:home) , [[編譯器]](cd:home) </td></tr>
+<tr><td rowspan="3">自學</td><td> [[3D 動畫設計]](3d:blender) </td><td> <a href="http://www.blender.org/download/get-blender/">Blender</a> </td><td> 一上 </td><td> 選 </td><td> [[電影後製]](3d:movie) </td></tr>
+<tr><td> [[C#程式設計]](cs:home) </td><td> [[VisualSutdio]](cs:csharp) </td><td> 二上 </td><td> 選 </td><td>  [[視窗程式]](cs:window) , [[Thread]](cs:thread) ,  [[網路程式]](cs:net) </td></tr>
+<tr><td> [[微積分]](ca:home) </td><td>  </td><td> 一上 </td><td> 選 </td><td>  </td></tr>
 </table>
 
 

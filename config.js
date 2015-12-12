@@ -2,6 +2,7 @@ var config = (function() {
     
   var titleCcc  = ' [[陳鍾誠]](ccc:home) ';
   var titleBook  = ' / [[教科書]](book:home) ';
+  var titleCourse  = ' / [[課程]](course:home) ';
   var titlePmag = ' [[程式人雜誌]](pmag:home) ';
   var titleYmag = ' [[少年科技人雜誌]](ymag:home) ';
 
@@ -10,7 +11,7 @@ var config = (function() {
 		main:titleCcc, 
     ccc:titleCcc,
     book:titleCcc+titleBook,
-    course:titleCcc+' / [[課程]](course:home) ',
+    course:' [[課程]](course:home) ',
     exam:titleCcc+' / [[考題]](exam:home) ',
     novel:titleCcc+' / [[小說]](novel:home) ',
 		mag: '[[雜誌]](mag:home) ',
@@ -34,6 +35,7 @@ var config = (function() {
     co:titleCcc+titleBook+' / [[計算機結構]](co:home) ',
     ai:titleCcc+titleBook+' / [[人工智慧]](ai:home) ',
     cl:titleCcc+titleBook+' / [[語言處理]](cl:home) ',
+    cl1:titleCcc+titleCourse+' / [[計算語言學]](cl1:home) ',
     ct:titleCcc+titleBook+' / [[計算理論]](ct:home) ',
     ca:titleCcc+titleBook+' / [[微積分]](ca:home) ',
     st:titleCcc+titleBook+' / [[機率統計]](st:home) ',
@@ -51,8 +53,14 @@ var config = (function() {
     ar:titleCcc+titleBook+' / [[Arduino]](ar:home) ',
     pi:titleCcc+titleBook+' / [[樹莓派]](pi:home) ',
     c :titleCcc+titleBook+' / [[C 語言]](c:home) ',
+    cd:titleCcc+titleBook+' / [[編譯器設計]](cd:home) ',
     js:titleCcc+titleBook+' / [[JavaScript 語言]](js:home) ',
-    js1:titleCcc+titleBook+' / [[JavaScript 第一門課]](js1:home) ',
+    js1:titleCcc+titleCourse+' / [[JavaScript 第一門課]](js1:home) ',
+    co1:titleCcc+titleCourse+' / [[計算機結構]](co1:home) ',
+    sp1:titleCcc+titleCourse+' / [[系統程式]](sp1:home) ',
+    st1:titleCcc+titleCourse+' / [[機率統計]](st1:home) ',
+    ai1:titleCcc+titleCourse+' / [[人工智慧]](ai1:home) ',
+    c1:titleCcc+titleCourse+' / [[C語言]](c1:home) ',
     js0:titleCcc+titleBook+' / [[JavaScript 第一門課]](js0:home) ',
     jsb:titleCcc+titleBook+' / [[JavaScript 前端技術]](jsb:home) ',
     wp:titleCcc+titleBook+' / [[Web 程式設計]](wp:home) ',
@@ -60,6 +68,8 @@ var config = (function() {
     cs:titleCcc+titleBook+' / [[C# 語言]](cs:home) ',
     mm:titleCcc+titleBook+' / [[媒體]](mm:home) ',
     ee:titleCcc+titleBook+' / [[動手玩電路]](ee:home) ',
+    lojban:titleCcc+titleBook+' / [[邏輯語 Lojban]](lojban:home) ',
+    lo1:titleCcc+titleCourse+' / [[邏輯語初學]](lo1:home) ',
     ma:titleCcc+titleBook+' / [[學習當一位 maker]](ma:home) '
   };
 
@@ -99,10 +109,19 @@ var config = (function() {
     ccc:templateCopyright
   };
   
-  var sideMooc = "課程#home#active;課本#textbook;講義#lecture;影片#video;訊息#info#active;作業#assignment;公告#announcement;大綱#overview;討論#discuss";
+  var sideBook = "本書#home#active;目錄#directory;內容#content;附錄#appendix;參考#reference;";
+  var sideMooc = "課程#home#active;課本#textbook;講義#lecture;影片#video;訊息#info#active;作業#assignment;公告#announcement;大綱#overview;討論#discuss;參考#reference;";
   var side={
     'default':'',
-    js1:sideMooc
+    cd:sideBook,
+    js1:sideMooc,
+    st1:sideMooc,
+    ai1:sideMooc,
+    c1 :sideMooc,
+    sp1:sideMooc,
+    lo1:sideMooc,
+    cl1:sideMooc,
+    co1:sideMooc
   }
 
   return {

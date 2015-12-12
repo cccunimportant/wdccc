@@ -1,0 +1,106 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="../../gospa.js"></script>
+<title> 陳鍾誠 / 實驗報告: 用 JavaScript 寫 facebook 訊息兩天的實驗心得</title>
+
+ [[陳鍾誠]](ccc:home) 
+
+<h1 id="javascriptfacebook">實驗報告: 用 JavaScript 寫 facebook 訊息兩天的實驗心得</h1>
+
+<h2 id="">實驗動機</h2>
+
+<p><a href="https://www.facebook.com/groups/programmerMagazine/permalink/1180196135330434/">https://www.facebook.com/groups/programmerMagazine/permalink/1180196135330434/</a></p>
+
+<pre><code>如果設計一個不是用來寫，而是用來像英語一樣，作為溝通工具的「程式語言」，不知道有沒有人會想學。
+如果大家都學這種「程式化的世界語」，這樣就不用學英語了阿！
+</code></pre>
+
+<p>這樣的話，不只不用學英語，而且這種語言「除了可以讓人類和人類溝通之外，還可以讓人類和機器溝通」，這樣機器翻譯與自然語言理解等困難的技術不就迎刃而解了嗎？</p>
+
+<h2 id="">實驗過程</h2>
+
+<p><a href="https://www.facebook.com/ccckmit/posts/10153583891526893">https://www.facebook.com/ccckmit/posts/10153583891526893</a></p>
+
+<pre><code>// 來做個實驗，接下來我將用「程式語言」來寫 facebook 兩天，看看大家看不看得懂。
+function experiment() {
+　do {
+　　try {
+　　　var msg = ccc.facebook_write_message();
+　　　if (check_type(msg) !== "programming language")
+　　　　throw "Error";
+　　} catch { ccc.fix_bug(); }
+　} while (now().date() - date("2015/10/23") &lt; 2);
+}
+experiment();
+</code></pre>
+
+<p><a href="https://www.facebook.com/ccckmit/posts/10153584035466893">https://www.facebook.com/ccckmit/posts/10153584035466893</a></p>
+
+<pre><code>at("陳鍾誠", "金門大學");
+if (at(people,"金門大學") &amp;&amp; would_like(people,"陳鍾誠",{eat:"lunch"}) 
+{
+　meet(people, "陳鍾誠", {at:"e315", time:"12:00"});
+}
+</code></pre>
+
+<p><a href="https://www.facebook.com/ccckmit/posts/10153584152411893">https://www.facebook.com/ccckmit/posts/10153584152411893</a></p>
+
+<pre><code>while (now() &lt; time("2015/10/23 16:20")) {
+　ccc.wait(graduate_students);
+}
+</code></pre>
+
+<p><a href="https://www.facebook.com/ccckmit/posts/10153584262496893">https://www.facebook.com/ccckmit/posts/10153584262496893</a></p>
+
+<pre><code>change("洪秀柱", "朱立倫");
+if (win_campain("朱立倫"))
+　taiwan_governer("KMT");
+else
+　taiwan_governer("DPP");
+</code></pre>
+
+<p><a href="https://www.facebook.com/ccckmit/posts/10153584279156893">https://www.facebook.com/ccckmit/posts/10153584279156893</a></p>
+
+<pre><code>朱立倫.make("coffee").face("computer").on("road")
+　　　.without("car").silent("night").not.speech(long())
+　　　.large("damage");
+朱立倫.think.talk({clearly : "幾句話"});
+</code></pre>
+
+<p><a href="https://www.facebook.com/ccckmit/posts/10153584314741893">https://www.facebook.com/ccckmit/posts/10153584314741893</a></p>
+
+<pre><code>// 這是用 mocha 的 TDD 寫法，應該可以執行。
+describe('菊花台', function() {
+　var 唱 = { "花":this, ... }
+　it('讓電腦唱出菊花台歌詞', function(done) {
+　　唱.你.的.淚光;唱.柔.弱.中.帶.傷;唱.慘.白.的.月.彎.彎.勾.住.過.往;
+　 // ....
+　}
+});
+</code></pre>
+
+<h2 id="">實驗結果</h2>
+
+<p>我用 JavaScript 代替中文進行 facebook 溝通，發現其實要以  JavaScript 語法進行交談是完全沒問題的。</p>
+
+<p>這代表人與人可以透過程式語言溝通！</p>
+
+<p>而程式語言 (Javascript) 原本就是人與電腦溝通的工具。</p>
+
+<p>這樣的話，是否代表程式語言可以順利地串聯人與電腦呢？</p>
+
+<p>並非如此，因為我在「人與人之間用 javascript 溝通時，並沒有寫出完整的語意，因此這些程式的執行結果很多都沒有意義」。</p>
+
+<p>因此我們只是採用 javascript 的語法，編碼人類的語言，然後傳送出去，接著對方接到這種 javascript 語言之後，在解碼回人類的語言，理解其意義而已。</p>
+
+<p>在本實驗中，我們發現「javascript 語法絕對可以承載人類的語言訊息，但是如何讓電腦理解這些語言訊息的語意，仍然是一個難以克服的問題」。</p>
+
+<p>如果要進一步的實驗「人與人，人與機器」之間的一致性溝通，寫出來的語法必須具有讓電腦也能執行正確動作，或者回應正確訊息的語意才行。</p>
+
+<p>這又回到了自然語言理解問題，不過有個好處，剖析 (parse) 問題將變得比較小，但是語意問題仍然存在。 </p>
+
+</body>
+</html>

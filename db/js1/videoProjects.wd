@@ -1,0 +1,26 @@
+| 教學 | 主題  | 影片  | 專案 |
+|--------|-----------|-------|
+| 習題 | [[英翻中系統 -- mt.js]](js:mt)  | [影片](https://youtu.be/6s9tAm7Mnag) |  |
+| 習題 | [[英中互翻系統 -- mt2.js]](js:mt2)  | [影片](https://youtu.be/5KXUAfSBu6g) |  |
+| 習題 | [[中翻英系統 -- c2e.js, c2e2.js]](js:c2e) | [影片](https://youtu.be/WE-xZjayVLA) |  |
+| 習題 | [[自動產生英文語句]](js:genen) | [影片](https://youtu.be/BGM557G2O2s) |  |
+| 練習 | [[網頁版的小時鐘]](jsb:clock) | [影片](https://youtu.be/HOOwDqcIuNo)  |  |
+| 範例 | [[功能表程式 (Menu)]](jsb:menu)  | [影片](https://youtu.be/TXaU8XU330Q) |  |
+| 範例 | [[網頁編輯器 (HtmlEditor)]](jsb:htmleditor)  | [影片](https://youtu.be/TXaU8XU330Q) |  |
+| 專案 | [[井字遊戲]](jsb:ox)  |  |  |
+| 挑戰 | [[人與電腦對戰五子棋]](jsb:gomoku_ai) |  | |
+| 範例 | [[網頁記事本]](jsb:note)  |  |  |
+| 專案 | [英文單字測驗系統](/web/elearn/elearn.html)  |  | [github](https://github.com/ccckmit/elearn/) |
+| 專案 | [線上英翻中系統](/web/elearn/mt.html) |  | [github](https://github.com/ccckmit/elearn/) |
+| 範例 | [[移動球2]](jsb:moveball2) | |  |
+| 範例 | [[網頁手繪板]](jsb:painter) |  |  |
+| 專案 | [jslab 科學計算平台](web/jslab/jslab.html) |  | [github](https://github.com/ccckmit/jslab/) |
+| 專案 | [[一對一聊天]](wp:chat11)  |     | |
+| 專案 | [[聊天室系統]](wp:chat)  |     | |
+| 專案 | [[遠端命令列 telnet]](wp:telnet)  |    | |
+| 專案 | [[網頁下載]](wp:pageget)  |      | |
+| 專案 | [[網頁爬蟲]](wp:crawler)  |      | |
+| 專案 | [[簡易 Server]](wp:simpleServer)  |    | |
+| 專案 | [[搶票系統]](wp:ticket)  |       | |
+| 專案 | [[Koa 記事本]](wp:KoaNote)  |          | |
+| 專案 | [[Wikidown 維基型網誌系統]](wp:wikidown)  |   | |

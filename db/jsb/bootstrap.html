@@ -1,0 +1,191 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="../../gospa.js"></script>
+<title> 陳鍾誠  / 教科書  / JavaScript 前端技術 / Bootstrap 彈性樣板</title>
+
+ [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[JavaScript 前端技術]](jsb:home) 
+
+<h1 id="bootstrap">Bootstrap 彈性樣板</h1>
+
+<h2 id="">簡介</h2>
+
+<p>Bootstrap 是 Twitter 公司的 Mark Otto 和 Jacob Thornton 所釋出的一組開放原始碼網頁樣板，這組樣板可以同時適用於『桌上型電腦』與『行動裝置』，讓您設計出來的網站可以同時支援 PC, 筆電, iPad, iPhone, Android Phone, 平板電腦等等裝置。</p>
+
+<p>2011 年八月 Bootstrap 於 github 網站上釋出之後，就成了最受歡迎的樣板套件之一。</p>
+
+<p>為甚麼 Bootstrap 這麼受歡迎呢？ 我想原因有很多，以下分別論述：</p>
+
+<ol>
+<li>要設計出同時適用『電腦和手機』的網站並不容易，Bootstrap 相當好的解決了此一問題，讓網站設計者可以輕易地設計出橫跨『電腦和手機的網站』。(這種網站稱為 responsive 的響應式網站)</li>
+<li>Bootstrap 的美工已經有一定水準，這讓很多美術不好的程式人也能夠輕易地設計出具有一定美術水準的網站 (我就是那種美術很糟的程式人，所以 Bootstrap 對我來說非常重要阿！)。</li>
+<li>Bootstrap 當中已經有很多現成的視覺化元件，像是功能表、各種控制項、按鈕與輸入欄等等，讓您可以輕易地開發出很好的表單界面。</li>
+</ol>
+
+<p>還有，以下的資源其實不用看也能學會使用 bootstrap ，因為你只要會複製貼上通常就搞定了，有問題時再來看應該就可以了，不過事先了解一下是可以避開一些無知的錯誤的！</p>
+
+<h2 id="">使用</h2>
+
+<p>以下是筆者從官網上複製修改後的一個簡易範例，請參考看看。</p>
+
+<p>檔案： <a href="db/jsb/code/bootstrap/bootstrap1.html" class="innerLink">bootstrap1.html</a></p>
+
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+    &lt;!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags --&gt;
+    &lt;meta name="description" content=""&gt;
+    &lt;meta name="author" content=""&gt;
+    &lt;link rel="icon" href="favicon.ico"&gt;
+    &lt;title&gt;Jumbotron Template for Bootstrap&lt;/title&gt;
+    &lt;!-- Bootstrap core CSS --&gt;
+    &lt;link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"&gt;
+    &lt;link href="jumbotron.css" rel="stylesheet"&gt;
+    &lt;script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"&gt;&lt;/script&gt;
+  &lt;/head&gt;
+
+  &lt;body&gt;
+
+    &lt;nav class="navbar navbar-inverse navbar-fixed-top"&gt;
+      &lt;div class="container"&gt;
+        &lt;div class="navbar-header"&gt;
+          &lt;button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"&gt;
+            &lt;span class="sr-only"&gt;Toggle navigation&lt;/span&gt;
+            &lt;span class="icon-bar"&gt;&lt;/span&gt;
+            &lt;span class="icon-bar"&gt;&lt;/span&gt;
+            &lt;span class="icon-bar"&gt;&lt;/span&gt;
+          &lt;/button&gt;
+          &lt;a class="navbar-brand" href="#"&gt;Project name&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div id="navbar" class="navbar-collapse collapse"&gt;
+          &lt;form class="navbar-form navbar-right"&gt;
+            &lt;div class="form-group"&gt;
+              &lt;input type="text" placeholder="Email" class="form-control"&gt;
+            &lt;/div&gt;
+            &lt;div class="form-group"&gt;
+              &lt;input type="password" placeholder="Password" class="form-control"&gt;
+            &lt;/div&gt;
+            &lt;button type="submit" class="btn btn-success"&gt;Sign in&lt;/button&gt;
+          &lt;/form&gt;
+        &lt;/div&gt;&lt;!--/.navbar-collapse --&gt;
+      &lt;/div&gt;
+    &lt;/nav&gt;
+
+    &lt;!-- Main jumbotron for a primary marketing message or call to action --&gt;
+    &lt;div class="jumbotron"&gt;
+      &lt;div class="container"&gt;
+        &lt;h1&gt;Hello, world!&lt;/h1&gt;
+        &lt;p&gt;This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.&lt;/p&gt;
+        &lt;p&gt;&lt;a class="btn btn-primary btn-lg" href="#" role="button"&gt;Learn more &amp;raquo;&lt;/a&gt;&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class="container"&gt;
+      &lt;!-- Example row of columns --&gt;
+      &lt;div class="row"&gt;
+        &lt;div class="col-md-4"&gt;
+          &lt;h2&gt;Heading&lt;/h2&gt;
+          &lt;p&gt;Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. &lt;/p&gt;
+          &lt;p&gt;&lt;a class="btn btn-default" href="#" role="button"&gt;View details &amp;raquo;&lt;/a&gt;&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class="col-md-4"&gt;
+          &lt;h2&gt;Heading&lt;/h2&gt;
+          &lt;p&gt;Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. &lt;/p&gt;
+          &lt;p&gt;&lt;a class="btn btn-default" href="#" role="button"&gt;View details &amp;raquo;&lt;/a&gt;&lt;/p&gt;
+       &lt;/div&gt;
+        &lt;div class="col-md-4"&gt;
+          &lt;h2&gt;Heading&lt;/h2&gt;
+          &lt;p&gt;Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.&lt;/p&gt;
+          &lt;p&gt;&lt;a class="btn btn-default" href="#" role="button"&gt;View details &amp;raquo;&lt;/a&gt;&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;hr&gt;
+
+      &lt;footer&gt;
+        &lt;p&gt;&amp;copy; Company 2014&lt;/p&gt;
+      &lt;/footer&gt;
+    &lt;/div&gt; &lt;!-- /container --&gt;
+
+
+    &lt;!-- Bootstrap core JavaScript
+    ================================================== --&gt;
+    &lt;!-- Placed at the end of the document so the pages load faster --&gt;
+    &lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"&gt;&lt;/script&gt;
+    &lt;script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<h2 id="">版面設計</h2>
+
+<p>要了解 Bootstrap 的版面設計原理，最快的方式是用下列菜鳥教程中的在線編輯器來體會一下：</p>
+
+<ul>
+<li><a href="http://www.runoob.com/try/bootstrap/layoutit/">http://www.runoob.com/try/bootstrap/layoutit/</a></li>
+</ul>
+
+<p>Bootstrap 將寬度分成 12 欄，您可以選擇下列布局。</p>
+
+<ol>
+<li>12 : 全部佔有。</li>
+<li>6+6 : 分成相等的兩半。</li>
+<li>8+4 : 一大一小。</li>
+<li>4+4+4 : 分成相等的三塊。</li>
+<li>2+6+4 : 中間大，兩邊小。</li>
+<li>6+4+4 : 左邊大，兩塊小的。</li>
+<li>9+3   : 一大一小。</li>
+<li>3+3+3+3 : 分成相等的四塊。</li>
+</ol>
+
+<p>....</p>
+
+<p>關於網格系統的原理與設計方式，可以參考下列文章！</p>
+
+<ul>
+<li><a href="http://www.runoob.com/bootstrap/bootstrap-grid-system.html">Bootstrap 网格系统</a></li>
+</ul>
+
+<p>而關於字體大小與顏色可以看下列這篇。</p>
+
+<ul>
+<li><a href="http://www.runoob.com/bootstrap/bootstrap-typography.html">Bootstrap 排版</a></li>
+</ul>
+
+<p>另外關於表格可以參考：</p>
+
+<ul>
+<li><a href="http://www.runoob.com/bootstrap/bootstrap-tables.html">Bootstrap 表格</a></li>
+</ul>
+
+<h2 id="">更多的控制項</h2>
+
+<p>Bootstrap 還有很多視覺化元件，像是功能表、各種控制項、按鈕與輸入欄等等，您可以參考下列文章進一步了解這些控制項。</p>
+
+<ul>
+<li><a href="http://getbootstrap.com/components/">http://getbootstrap.com/components/</a></li>
+</ul>
+
+<h2 id="">注意事項</h2>
+
+<p>如果要讓 bootstrap 一開始就能偵測裝置並且以適當大小與模式呈現，必須在網頁開頭的 head 區塊中加入這行，原本我在自己的 wikidown 網誌系統中沒有加這行，導致在電腦上觀看正常，手機上就怪怪的，後來經高人指點後，加上這行就解決了。</p>
+
+<pre><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+</code></pre>
+
+<h2 id="">參考資源</h2>
+
+<p>更多關於 Bootstrap 的資訊請參考下列資源：</p>
+
+<ul>
+<li><a href="http://getbootstrap.com/getting-started/#examples">Bootstrap 官方範例</a></li>
+<li><a href="http://www.runoob.com/bootstrap/bootstrap-css-overview.html">RUNOOB:Bootstrap 教程</a></li>
+</ul>
+
+</body>
+</html>

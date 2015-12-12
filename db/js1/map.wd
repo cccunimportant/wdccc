@@ -1,0 +1,30 @@
+# 映射
+
+檔案： @[[map.js]](code/map.js)
+
+```
+var c = console;
+
+function map(f, a) {
+  var ma = [];
+  for (var i in a) {
+    ma.push(f(a[i]));
+  }
+  return ma;
+}
+
+function square(x) {
+  return x*x;
+}
+
+c.log("map(x^2, [3, 1, 5, 4, 2])="+map(square, [3,1,5,4,2]));
+c.log("map(sin(x), [3, 1, 5, 4, 2])="+map(Math.sin, [3,1,5,4,2]));
+```
+
+執行結果
+
+```
+D:\Dropbox\cccweb\db\js\code>node map.js
+map(x^2, [3, 1, 5, 4, 2])=9,1,25,16,4
+map(sin(x), [3, 1, 5, 4, 2])=0.1411200080598672,0.8414709848078965,-0.9589242746631385,-0.7568024953079282,0.9092974268256817
+```

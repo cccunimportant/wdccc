@@ -37,10 +37,17 @@ function wd2html(wd, domain, options) {
   return md2html(wd);
 }
 
-function wd2staticHtml(wd, domain, title, staticTemplate) {
+function wd2staticHtml(wd, domain, pathLink, staticTemplate) {
+  var title='', titleMatch = wd.match(/([^#\n]{1,100})/);
+  if (typeof pathLink === 'undefined') pathLink = '';
+  var path = pathLink.replace(/\(.+?\)/g, '').replace(/[\[\]]/g, '');
+  if (titleMatch !== null)
+    title = path + "/"+ titleMatch[1];
+  else
+    title = path;
   var titleHtml = wd2html(title, domain, {isHash:false});
   var wdHtml = wd2html(wd, domain, {isHash:false});
-  var html = staticTemplate.replace("{%=wdHtml%}", wdHtml).replace("{%=titleHtml%}", titleHtml).replace("{%=title%}", title);
+  var html = staticTemplate.replace("{%=wdHtml%}", wdHtml).replace("{%=pathLink%}", pathLink).replace("{%=title%}", title);
   return html;
 }
 

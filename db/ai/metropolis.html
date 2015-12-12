@@ -4,9 +4,9 @@
 </head>
 <body>
 <script src="../../gospa.js"></script>
-<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[人工智慧]](ai:home) </title>
+<title> 陳鍾誠  / 教科書  / 人工智慧 / Metropolis-Hasting 演算法</title>
 
-<p><a href="db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="db/book/home.html"" class="innerLink">教科書</a>  / <a href="db/ai/home.html"" class="innerLink">人工智慧</a>  </p>
+ [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[人工智慧]](ai:home) 
 
 <h2 id="metropolishasting">Metropolis-Hasting 演算法</h2>
 
@@ -24,7 +24,7 @@
 
 <p>因此，Metropolis 設計出了下列通道流量的調整公式，以便用疊代的方式調整狀態轉移機率矩陣 P(x \to y)。</p>
 
-<p>$Q_{t+1}(x \to y) = \begin{cases} Q_t(x \to y) &amp; \;\;\; \text{if x \neq y  , A(x \to y) \geq 1;}\\Q_t(x \to y) A(x \to y) &amp; \;\;\;\text{if x \neq y , A(x \to y) &lt; 1;}\\ Q_t(x \to y) + \sum_{z:A(x \to z) &lt; 1} Q_t(x \to z) (1 - A(x \to z)) &amp; \;\;\;\text{if x = y.} \end{cases}$</p>
+<p>$Q_{t+1}(x \to y) = \begin{cases} Q_t(x \to y) &amp; \;\;\; if x \neq y , A(x \to y) \geq 1;\\Q_t(x \to y) A(x \to y) &amp; \;\;\;if x \neq y , A(x \to y) &lt; 1;\\ Q_t(x \to y) + \sum_{z:A(x \to z) &lt; 1} Q_t(x \to z) (1 - A(x \to z)) &amp; \;\;\;if x = y. \end{cases}$</p>
 
 <h3 id="metropolishasting">Metropolis-Hasting 算法</h3>
 

@@ -1,0 +1,51 @@
+# jQuery 查詢操控框架
+
+## 前言
+
+不認識 jQuery 的人，很容易誤以為 jQuery 是一種資料庫查詢語言，其實雖然 jQuery 常常進行查詢，但是查詢的對象卻是 HTML 網頁中的節點。
+
+HTML 被瀏覽器載入之後就成了一個稱為 DOM 的物件模型，每個 `<tag>` 都會以一個物件的形式存在，而 jQuery 的功能就是從 DOM 中用類似 CSS 的選擇語法查出想要的節點，然後在對這些節點進行想要的操控動作。
+
+所以 jQuery 其實是一種『進行網頁節點查詢修改的前端框架』。
+
+讓我們用一個範例來體會到底甚麼是 jQuery。
+
+## 範例
+
+檔案： @[[jquery_example.html]](code/jquery_example.html)
+
+```
+<html>
+<head>
+<meta charset="UTF-8"/>
+<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+</head>
+<body>
+<button onclick="$('p').css('display', 'none')">
+  $('p').css('display', 'none')
+</button>
+<button onclick="$('p').css('display', 'block')">
+  $('p').css('display', 'block')
+</button>
+<button onclick="$('#main').css('color', 'red').css('text-decoration', 'underline').css('font-weight', 'bold')">
+  $('#main').css('color', 'red').css('text-decoration', 'underline').css('font-weight', 'bold')
+</button>
+<p>p1</p>
+<p>p2</p>
+<div id="main">main</div>
+<p>p3</p>
+<p>p4</p>
+<p>p5</p>
+</body>
+</html>
+```
+
+上述範例中的以下語句，用了 a.b().c().d() 這種形式的鍊式語法，讓您可以輕易地連續對節點進行查詢與操控動作，而這也是 jQuery 最好用的地方，熟悉 jQuery 的人往往可以用一行鍊式語法做到需要數十行甚至百行才能完成的功能，這也是 jQuery 受歡迎的一個重要原因。
+
+```
+$('#main').css('color', 'red').css('text-decoration', 'underline').css('font-weight', 'bold')
+```
+
+## 參考文獻
+
+* [RUNOOB: jQuery 教程](http://www.runoob.com/jquery/jquery-tutorial.html)

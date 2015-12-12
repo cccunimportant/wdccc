@@ -1,184 +1,69 @@
-## Nand2Tetris 第 7-8 週 -- 中間碼轉組合語言
+## Rubi JIT 編譯器的架構與設計原理
 
-本文程式修改自下列 github 網址，使用時請注意遵守開源授權。
+[[Rubi JIT 編譯器]](https://github.com/embedded2015/rubi) 的專案網址如下：
 
-* <https://github.com/havivha/Nand2Tetris/tree/master/7>
-* <https://github.com/havivha/Nand2Tetris/tree/master/8>
+* <https://github.com/embedded2015/rubi>
 
-關於 nand2tetris 第 7-8 週的內容與解說，請參考下列文章。
+其專案首頁中包含了 Ｃ 語言原始碼 （含 *.c 與 *.h 檔) ，而 prog 資料夾內包含了十幾個 *.rb 的範例程式檔。
 
-* [少年科技人雜誌 / 2015年8月號 / Nand2Tetris 第 7 週 -- VM I: Stack Arithmetic](http://localhost/db/ymag201508/focus2.html)
-* [少年科技人雜誌 / 2015年8月號 / Nand2Tetris 第 8 週 -- VM II: Program Control](http://localhost/db/ymag201508/focus2.html)
+![[]](rubi_project.png)
 
-在本文中，我們主要補充的是實作的方法。我們採用 JavaScript 撰寫，並用 node.js 環境進行測試。
+在本文中，我們將講解整體的程式碼架構。
 
-以下是筆者 Nand2Tetris 第 7-8 週習題實作中，程式的主要架構部分。
+主程式 main() 位於 [engine.c](https://github.com/embedded2015/rubi/blob/master/engine.c) 當中，在 main() 的最後一行呼叫了 execute() 函數，這才是真正重要的主角，其原始碼如下：
 
-```javascript
-function vm2asm(vmFile) {
-  ...
-  pass1(lines);
-} 
-
-function pass1(lines, asmFile) {
-  c.log("============== pass1 ================");
-  for (var i=0; i<lines.length; i++) {
-    var p = parse(lines[i], i);
-    if (p===null) continue;
-    comment(lines[i]);
-    translate(p);
-  }
+```
+static int execute(char *source)
+{
+    init();
+    lex(source);
+    parser();
+    ((int (*)(int *, void **)) ntvCode)(0, funcTable);
+    dispose();
+    return 0;
 }
 
-function parse(line, i) {
-  ...
-}
-
-function translate(p) {
-  var p1 = p.tokens[1];
-  var p2 = p.tokens[2];
-  switch (p.op) {
-    case "push": cmdPush(p1, parseInt(p2)); break;
-    case "pop":  cmdPop(p1, parseInt(p2)); break;
-    case "add":  cmdBinary("D+A"); break;
-    case "sub":  cmdBinary("A-D"); break;
-    case "and":  cmdBinary("D&A"); break;
-    case "or" :  cmdBinary("D|A"); break;
-    case "not":  cmdUnary("!D"); break;
-    case "neg":  cmdUnary("-D"); break;
-    case "eq" :  cmdCompare("JEQ"); break;
-    case "gt" :  cmdCompare("JGT"); break;
-    case "lt" :  cmdCompare("JLT"); break;
-    case "goto": cmdGoto(p1); break;
-    case "if-goto": cmdIfGoto(p1); break;
-    case "label": cmdLabel(p1); break;
-    case "function": cmdFunction(p1, parseInt(p2)); break;
-    case "call"  : cmdCall(p1, parseInt(p2)); break;
-    case "return": cmdReturn(); break;
-    default: error();
-  }
+int main(int argc, char **argv) {
+    char *src;
+...
+    fread(src, sizeof(char), ssz, fp);
+...
+    return execute(src);
 }
 ```
 
-接著就是每個指令轉換的實作部份，為了避免公佈解答，我們僅顯示部份程式碼，以便讓讀者知道整體架構。
+函數 execute 的參數 source 是被執行的原始碼。舉例而言，如果您使用 `./rubi progs/pi.rb` 來執行 pi.rb 程式，那麼 source 就會是 pi.rb 的原始碼字串。
 
-```javascript
-function cmdGoto(label) {
-  A(label);
-  C("0;JMP");
-}
+一個極簡編譯器通常可分為三步驟，首先是『詞彙解析』 lex(source) ， 接著是『語法剖析』 parser()， 最後是『程式碼產生』 codegen()。
 
-function cmdIfGoto(label) {
-  popToDest('D');
-  A(label);
-  C('D;JNE');
-}
+但是在 rubi JIT 編譯器中，由於是立即執行，因此在 parser() 裡面一邊 parse 一邊就開始進行『程式碼產生』 的動作，而且 rubi 直接產生的機器碼形式的目的碼，這些機器碼會直接被放入 ntvCode 這個變數中，最後直接把 ntvCode 轉型為函數指標，利用以下的呼叫開始執行該『機器碼』段落。
 
-function cmdUnary(comp) {
-  decSp();               // --SP
-  stackToDest('D');      // D=*SP
-  C('D='+comp);          // D=COMP
-  compToStack('D');      // *SP=D
-  incSp();               // ++SP
-}
-
-function cmdCompare(j) {
-  decSp();               // --SP
-  stackToDest('D');      // D=*SP
-  decSp();               // --SP
-  stackToDest('A');      // A=*SP
-  C('D=A-D');            // D=A-D
-  var label_eq = jump('D', j);  // D;jump to label_eq
-  compToStack('0');      // *SP=0
-  var label_ne = jump('0', 'JMP'); // 0;JMP to label_ne
-  cmdLabel(label_eq);    // (label_eq)
-  compToStack('-1');     // *SP=-1
-  cmdLabel(label_ne);       // (label_ne)
-  incSp();               // ++SP
-}
-
-function cmdBinary(comp) {
-  decSp();           // --SP
-  stackToDest('D');  // D=*SP
-  decSp();           // --SP
-  stackToDest('A');  // A=*SP
-  C('D='+comp);      // D=comp
-  compToStack('D');  // *SP=D
-  incSp();
-}
-
-function cmdLabel(name) {
-  asm("("+name+")");
-}
-
-function cmdFunction(name, n) {
-  cmdLabel(name);
-  for (var i=0; i<n; i++) {
-    cmdPush("constant", 0);
-  }
-}
-
-function cmdCall(name, n) {
-  var returnAddress = newLabel();
-  cmdPush("constant", returnAddress); // push return_address
-  cmdPush("reg", R_LCL);              // push LCL
-  cmdPush("reg", R_ARG);              // push ARG
-  cmdPush("reg", R_THIS);             // push THIS
-  cmdPush("reg", R_THAT);             // push THAT
-  loadSeg("R"+R_SP, -n-5, true);
-  compToReg(R_ARG, 'D');              // ARG=SP-n-5
-  regToReg(R_LCL, R_SP);              // LCL=SP
-  A(name);                            // A=function_name
-  C('0;JMP');                         // 0;JMP
-  cmdLabel(returnAddress);            // (return_address)
-}
-
-function regToReg(dest, src) {
-  regToDest('D', src);
-  compToReg(dest, 'D');        // Rdest = Rsrc
-}
-
-function prevFrameToReg(reg) {
-  regToDest('D', R_FRAME);     // D=FRAME
-  C('D=D-1');                  // D=FRAME-1
-  compToReg(R_FRAME, 'D');     // FRAME=FRAME-1
-  C('A=D');                    // A=FRAME-1
-  C('D=M');                    // D=*(FRAME-1)
-  compToReg(reg, 'D');         // reg=D
-}
-
-function cmdReturn() {
-  regToReg(R_FRAME, R_LCL);   // R_FRAME = R_LCL
-  A("5");                     // A=5 ??
-  C("A=D-A");                 // A=FRAME-5
-  C("D=M");                   // D=M
-  compToReg(R_RET, 'D');      // RET=*(FRAME-5)
-  cmdPop("argument", 0);      // *ARG=return value
-  regToDest('D', R_ARG);      // D=ARG
-  compToReg(R_SP, 'D+1');     // SP=ARG+1
-  prevFrameToReg(R_THAT);     // THAT=*(FRAME-1)
-  prevFrameToReg(R_THIS);     // THIS=*(FRAME-2)
-  prevFrameToReg(R_ARG);      // ARG=*(FRAME-3)
-  prevFrameToReg(R_LCL);      // LCL=*(FRAME-4)
-  regToDest('A', R_RET);      // A=RET
-  C("0;JMP");                 // goto RET
-}
-
-function jump(comp, j) {
-  var label = newLabel();
-  A(label);
-  C(""+comp+";"+j);
-  return label;
-}
-
-function init() {
-  comment("init");
-  A('256');
-  C('D=A');
-  compToReg(R_SP, 'D');    // SP=256
-  cmdCall('Sys.init', 0);  // call Sys.init()
-}
+```
+((int (*)(int *, void **)) ntvCode)(0, funcTable);
 ```
 
-當您了解了上述的主架構之後，應該就能開始自己重新打造完整的程式了。
+這樣，就完成了整個 Rubi JIT compiler 的核心流程。 
+
+在 [asm.h](https://github.com/embedded2015/rubi/blob/master/asm.h) 檔案中宣告了 ntvCode 所需要的相關變數與函數，以下是其關鍵性的程式碼。
+
+```
+unsigned char *ntvCode;
+int ntvCount;
+
+enum { EAX = 0, ECX, EDX, EBX, ESP, EBP, ESI, EDI };
+
+static inline void emit(unsigned char val)
+{
+    ntvCode[ntvCount++] = (val);
+}
+....
+```
+
+現在只剩下一個關鍵性問題， parser 到底是如何產生出機器碼的呢？ 而產生的機器碼又長得什麼樣呢？
+
+關於這個問題，我們將在下一篇文章中再來討論並說明。
+
+
+
+
 

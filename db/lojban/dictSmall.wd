@@ -1,0 +1,261 @@
+# 小字典
+
+## 代名詞
+
+```
+mi = I =我
+do = you = 你
+mi'ai = we = 我們
+ti = this one
+ta = that one
+tu = that one over there
+```
+
+```
+mi pinxe
+I drink.
+
+do pinxe
+You drink.
+
+ti ladru
+This is some milk.
+
+ta mlatu
+That is a cat.
+
+do citka lo plise
+You eat apples.
+```
+
+## 名字詞 (cmene)
+
+## 數字
+
+Numbers: 1 2 3 4 5 6 7 8 9 0 = pa re ci vo mu xa ze bi so no
+
+```
+0 no
+1 pa
+2 re
+3 ci
+4 vo
+5 mu
+6 xa
+7 ze
+8 bi
+9 so
+```
+
+16 進制的數字
+
+```
+dau 10
+fei 11
+gai 12
+jau 13
+rei 14
+vai 15
+```
+
+顺口溜: noparecivo muxazebiso
+
+10以上（包含10）的数字，通过把各位上的数字连接在一起来表达，就像我们在报电话号码那样。例如：
+
+```
+pano 10
+zebi 78
+xanoci 603
+vomusore 4,592
+```
+
+ki'o : 千
+
+```
+3,000 : ci ki'o
+```
+
+pi: 小数点
+
+```
+5.3 : mupici
+```
+
+在数字前，逻辑语使用冠词li。所以li pareci的意思就是“数字一百二十三”。如果要说“一、二、三”（就像我们要进行跑步比赛发令那样），那么 就要写成li pa li re li ci，每一个li意味着后面是个“全新”的数字，和前面的数字区分开来。
+
+该怎样做才能表达“三条狗”呢？要达到这个目标，我们需要另外一个冠词：lo。lo的逻辑含义非常复杂，不过它最基础的意思是“某些或某个真实存在的……”，和英语里的a和some的意思八九不离十
+
+```
+ci lo gerku的意思就是“三条真实存在的狗”，或者像我们平时那样说的“三条狗”。
+
+lo ci gerku意思就是“世界上仅存的三条狗”，
+
+ci lo nanmu cu bevri le pipno
+三个男人中的每一个人都在抬钢琴。
+
+ci lo gerku cu batci mi
+三条狗咬了我
+```
+
+lu'o的意思是“由……组成的一大块”，它的作用是把一大群独立的个体转化为一个组合的单元。在狗的例句里，三条狗被“打包”成为一个集体。
+
+```
+lu'o ci lo nanmu cu bevri le pipno
+lu'o ci lo gerku cu batci mi
+```
+
+le就更简单了。le pano ninmu 意思是“那十个女人”，lu'o le pano ninmu自然就是“那十个女人组成的一群人”。让我们想象一下十个女人（我认为的）依次亲吻我，那么就可以这样说：
+
+```
+le pano ninmu cu cinba mi
+```
+
+lu'o le和lu'o lo是非常有用的概念，即便没有明确的数字。而且在没有数字在它们中间的时候，还有一种缩写的形式：lei和loi分别对应。所以“三个男人抬钢琴”可以被表达为：loi nanmu cu bevri le pipno，而一群女人亲吻我就可以写成：lei pano ninmu cu cinba mi。
+
+## 时间
+
+```
+ma tcika ti (现在是什么时间？)
+li papa (十一点)
+li papa pi'e mu // 11:05（十一点零五分）（十一个单元，和五个子单元）
+li papa pi'e mu pi'e pabi // 十一点五分十八秒 （十一个单元，五个子单元，和十八个子单元的子单元）
+```
+
+”ti的意思是“这件事情（或东西）”，也可以理解为“现在”。
+
+。pi'e，换一种说法，意味着“子单元”，而不是“十进制小数点”。所以对于前面的问题，可以换一种方式来回答：
+
+“四点钟”就是la vocac.，“五点钟”就是la mucac.
+
+“十一点钟”就是la feicac.，“十二点”就是la gaicac.。
+
+对于“上半天”和“下半天”我们就再加上lir.和lec.，意思是“早”和“晚”（来自gismu：clira和lerci）。所以la mucac.lir.就是“早上五点”。
+
+就像你看到的，12小时制看上去有点凌乱（想想你该怎么说9:22AM？），所以24小时制更受到大家的欢迎。
+
+
+星期同样是来自与数字有关的cmene，这一次要加上djed.——源自gsimu：djedi，意思是“星期”。现在还存在一些关于“到底哪一天是星期里的第一天？”的争论。最初的约定是根据犹太-基督惯例，把星期天作为第一天，据此：
+
+```
+星期天 la padjed.
+星期一 la redjed.
+星期二 la cidjed.
+```
+
+……以此类推。然而，在1992年的一次逻辑语组织会议上，大家达成一致：将星期一作为每个星期的第1天，而星期天排行第7（la zedjed.）或者第0（la nodjed.）。当前各地的人们都会使用自己习惯的体系，直到有一种通用的约定被大家共同接受。
+
+你在星期里也会看到的完整的lujvo格式（意思是在实际使用中在数字后面天上一个额外的辅音字母）：
+
+```
+no(n)djed.或nondel 第0日
+pa(v)djed.或pavdel 第1日
+re(l)djed.或reldel 第2日
+ci(b)djed.或cibdel 第3日
+vo(n)djed.或vondel 第4日
+mu(m)djed.或mumdel 第5日
+xa(v)djed.或xavdel 第6日
+ze(l)djed.或zeldel 第7日（=第0日）
+```
+
+月份同样适用于“数字化”的cmene，加上mast.后缀（来自gismu：masti——月份），所以一月份就是la pamast.，以此类推。同样的，由于一共有十二个月份，我需要使用“额外”的数字，所以十月份就是la daumast.。
+
+注意：你同样也会看到月份的完整的lujvo格式——原因在于十六进制数字尚未被指定词缀（rafsi），所以：
+
+```
+一月 pa(v)mast.或pavma'i
+二月 re(l)mast.或relma'i
+三月 ci(b)mast.或cibma'i
+四月 vo(n)mast.或vonma'i
+五月 mu(my)mast.或mumyma'i
+六月 xa(v)mast.或xavma'i
+七月 ze(l)mast.或xavma'i
+八月 bi(v)mast.或bivma'i
+九月 so(z)mast.或sozma'i
+十月 daumast.或pavnomast.或pavnonma'i
+十一月 feimast.或pavypavmast.或pavypavma'i
+十二月 gaimast.或pavrelmast.或pavrelma'i
+```
+
+关于季节的单词：
+
+```
+vensa 春天
+crisa 夏天
+critu 秋天
+dunra 冬天
+```
+
+日期的gismu是detri，位结构為： X1是时间（或状态）X2的日期，位于X3位置，根据X4的历法
+
+* 如果只有一个数字，那么这是日期。例如：li pano 就是“十号”。
+* 如果有两个数字，那么它们就是日期和月份。例如：li pano pi'e pare就是“十二月十号”。
+* 如果有三个数字，那么它们就是日、月、年（不是美国常用的“月/日/年”的格式）。例如：li repa pi'e ze pi'e pasoxaso是1967年7月21日（这一天，人类第一次登上月球。）。
+
+
+我们因此可以这样说：
+
+```
+li repa pi'e ze pi'e pasoxaso cu detri lenu lo remna cu klama le lunra
+1969年7月21日是人类到达月球的那一天。
+```
+
+
+## 冠詞
+
+个冠词：la用于cmene，le用于gismu，li用于数字。
+
+我们可以把数字放在le的前面或后面。比如：
+
+```
+ci le gerku 意思是：“那些狗中的三条”
+le ci gerku 意思却是：“那三条狗”
+```
+
+## 根詞 (gismu)
+
+```
+klama(去)
+```
+
+xu : 問句開頭 (嗎?)
+
+pe : 的 (描述關係)
+
+```
+玛丽的保时捷 la proc. pe la meiris.
+蒂姆的表兄 le tamne pe la tim.
+车的内部 le nenri pe le karce
+逻辑语小组的成员 le cmima pe la lojbangirz.
+```
+
+po : 屬於 (描述關係)
+
+```
+le cukta po mi 我的书
+le cipni po la meilis. 梅丽的鸟
+la kokakolys. po do 你的可口可乐
+```
+
+po'e : 屬於 (不可變化的關係)
+
+
+许多种语言对于这种不可变化的物主关系和可能变化的物主关系是进行区分的，逻辑语也是这样一种语言，对于你的父母或手，你可以用po'e来的代替po。比如：
+
+```
+le rirni po'e la djulias. 朱丽叶的父母
+le birka po'e la klaudias. 克劳迪娅的手臂
+```
+
+注意：
+
+```
+碰巧，英语和汉语（世界上被最广泛使用的两种语言）并不属于这类将两种概念（可转化的物主关系和不可转化的物主关系——在南太平洋地区却非常普及）区分得很清楚的语言，所以这种区别在逻辑语的发展过程中并没有被充分开发。更常见的情况是：pe所代表的更含糊的关系在一般情况下足以“锁定”你的对象。眼下，大多数逻辑语者的对这种情况的态度是：就这样吧——你也很可能会这样。
+```
+
+
+## 项标签（sumti tcita）
+
+ti'u，意思是：“发生在……的时间”。
+
+mi klama ti'u la daucac.
+我到来的时间是10:00。

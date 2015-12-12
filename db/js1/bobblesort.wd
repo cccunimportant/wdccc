@@ -1,0 +1,34 @@
+# 泡沫排序法
+
+檔案: @[[bobbleSort.js]](code/bobbleSort.js)
+
+```
+function bobbleSort(a) {
+  for (var i=0; i<a.length; i++) {
+    for (var j=0; j<i; j++) {
+      if (a[i]<a[j]) {
+        var t=a[i];
+        a[i] = a[j];
+        a[j] = t;
+      }
+    }
+  }
+}
+
+var x = [ 3, 9, 2, 7, 1, 8, 5, 6];
+
+console.log("x=%j", x);
+
+bobbleSort(x);
+
+console.log("x=%j", x);
+```
+
+執行結果
+
+```
+D:\Dropbox\cccweb\db\js\code>node bobbleSort.js
+x=[3,9,2,7,1,8,5,6]
+x=[1,2,3,5,6,7,8,9]
+```
+

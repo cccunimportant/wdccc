@@ -1,6 +1,11 @@
 | 分級 | 教科書  | 作者  |
 |----|--------|-----------|
+| 入門 | [Learn Javascript](https://www.gitbook.com/book/gitbookio/javascript/details) | Gitbook |
 | 入門 | [[JavaScript 語言基礎]](js:home) | 陳鍾誠 |
 | 入門 | [[JavaScript 前端技術]](jsb:home) | 陳鍾誠  | 
 | 進階 | [JavaScript 标准参考教程](http://javascript.ruanyifeng.com/)  |  阮一峰  | 
 | 進階 | [[Web 程式設計]](wp:home) (含後端 server 技術) |  陳鍾誠  | 
+| 參考 | <http://www.runoob.com/> |  [菜鸟教程](http://www.runoob.com/) | 
+| 其他 | [[人工智慧]](ai:home) | 使用 JavaScript 實作 AI 程式 | 
+| 其他 | [[系統軟體]](ss:home) | 使用 JavaScript 實作系統程式 | 
+

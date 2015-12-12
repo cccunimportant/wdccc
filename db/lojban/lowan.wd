@@ -1,0 +1,74 @@
+# 邏萬語 Lowan (邏輯萬國語)
+
+將非 [A-Za-z] 的字母直接嵌入邏輯語中，然後將 [A-Za-z] 的字母用 『語言=』 的方式前置，預設語言則只要前置等號即可。若未指定預設語言時，則預設為英文。
+
+邏萬語的文檔中可以加入註解，每一行在符號 // 之後的文字均為註解。
+
+字串符號刮起來的部分，代表全文保留，像是 "Hello, World !" . 其中的 " 符號這種保留功能在 lojban 裏有對應的詞 - "gy."。
+
+注意 gy. 匡起來代表裡面是英文，而 py. 匡起來代表裡面是日文。但 Zoi Zoi .... Zoi 則可用來框住任何語言。
+
+範例：
+
+```
+do citka lo plise .i // You eat apples.
+你 吃    位 蘋果   。
+do 吃    lo 蘋果   .i
+
+do =eat lo =apple 。
+
+do it=mangia lo it=mela .i
+
+"Hello, World !"
+
+@default \n=.i // 接下來不需要加句尾符號「。或 .i」 了，因為會自動在換行時加入。
+@default "=.py
+
+"お元気ですか"
+
+mi citka cimu lo plise 
+mi citka 35   lo plise 
+我 吃    35   位 蘋果
+
+@default it
+
+do =mangia lo =mela
+
+@default en
+
+do =eat lo =apple
+```
+
+it 代表義大利文, en 代表英文
+
+## 翻譯為邏輯語
+
+```
+do citka lo plise .i  // You eat apples.
+do citka lo plise .i  // 你 吃    位 蘋果   。
+do citka lo plise .i  // do 吃    lo 蘋果   .i
+
+do citka lo plise .i  // do =eat lo =apple 。
+
+do citka lo plise .i  // do it=mangia lo it=mela .i
+
+gy. Hello, World! gy.
+
+// @default \n=.i // 接下來不需要加句尾符號「。或 .i」 了，因為會自動在換行時加入。
+
+py. お元気ですか py.
+
+mi citka cimu lo plise .i 
+mi citka cimu lo plise .i  // mi citka 35   lo plise 
+mi citka cimu lo plise .i  // 我 吃    35   位 蘋果
+
+// @default it
+
+do citka lo plise .i  // do =mangia lo =mela
+
+// @default en
+
+do citka lo plise .i  // do =eat lo =apple
+```
+
+請注意，念的時候， .i 這樣的逗點，通常是加在一句的最前面，當作發語詞。（有點『我要發言了』的語氣）

@@ -1,0 +1,229 @@
+# Rubi JIT 編譯器的 JIT 程式碼產生與執行
+
+接著就讓我們進入最令人興奮，但對我來說也是最困難的 JIT 機器碼產生動作了，到底這部份是如何運作的呢？
+
+還是讓我們從最上層的 eval() 函數一路看下來吧！
+
+```CPP
+static int eval(int pos, int status)
+{
+    while (tok.pos < tok.size)
+        if (expression(pos, status)) return 1;
+    return 0;
+}
+```
+
+這個函數呼叫 expression() 去 parse 所有的第一層元素，並在適當的時候呼叫 emit() 函數產生機器碼，例如 expression() 函數在遇到 if 詞彙時，會呼叫下列的 ifStmt() 函數， ifStmt() 在處理像 `if i<2` 這樣的條件部份時會呼叫 relExpr() 遞迴下降的去進行剖析編譯動作，relExpr() 所產生的 JIT 機器碼應該會將運算的結果放在 eax 當中傳回，於是 ifStmt() 函數就可以用 `cmp eax, 0` 來判斷條件式是否成立，接著用 `jne 5` 這個組合語言陳述判斷是否要進行跳躍動作。
+
+```CPP
+
+static int ifStmt()
+{
+    uint32_t end;
+    relExpr(); /* if condition */
+    emit(0x83); emit(0xf8); emit(0x00);// cmp eax, 0
+    emit(0x75); emit(0x05); // jne 5
+    emit(0xe9); end = ntvCount; emitI32(0);// jmp
+    return eval(end, NON);
+}
+```
+
+問題是，為何 jne 要跳 5 byte 呢？看來應該是後面由 emit(0xe9); emitI32(0) 所射出的 `jmp` 指令剛好佔 5 bytes ，所以只要向前跳 5 bytes 就能跳過該指令。
+
+然後繼續呼叫 eval(end, NON) 就可以處理 else, elsif 等區塊的語法，這樣就完成了 if 陳述的機器碼產生動作。
+
+其他的部份我想原理應該類似，但是開發者必須對 x86 的組合語言架構很熟悉，才有辦法寫出這麼棒的 Rubi JIT compiler 了。
+
+除了產生組合語言碼之外，變數的管理對 JIT compiler 也是重要的，否則就很難處理像 a=3*b+5 這樣的 assign 指令。接著就任我們來追蹤 Rubi JIT compier 當中與變數管理指定有關的程式碼。
+
+在 rubi JIT compiler 當中， parser.c 中的 assignment() 函數是用來處理指定語句的，您可以看到其中用 getVar() 這個函數來查詢並取得變數，當查不到的時候則用 declareVariable() 函數來建立新的變數。
+
+```CPP
+int32_t assignment()
+{
+    Variable *v = getVar(tok.tok[tok.pos].val);
+    int32_t inc = 0, dec = 0, declare = 0;
+    if (v == NULL) {
+        declare++;
+        v = declareVariable();
+    }
+    tok.pos++;
+
+    if (v->loctype == V_LOCAL) {
+        if (skip("[")) { // Array?
+            relExpr();
+            emit(0x50 + EAX); // push eax
+            if (skip("]") && skip("=")) {
+                relExpr();
+                emit(0x8b); emit(0x4d);
+                emit(256 -
+                        (v->type == T_INT ? sizeof(int32_t) :
+                         v->type == T_STRING ? sizeof(int32_t *) :
+                         v->type == T_DOUBLE ? sizeof(double) : 4) * v->id);
+                    // mov ecx [ebp-n]
+                emit(0x58 + EDX); // pop edx
+                if (v->type == T_INT) {
+                    emit(0x89); emit(0x04); emit(0x91); // mov [ecx+edx*4], eax
+                } else {
+                    emit(0x89); emit(0x04); emit(0x11); // mov [ecx+edx], eax
+                }
+            } else if ((inc = skip("++")) || (dec = skip("--"))) {
+            } else 
+                error("%d: invalid assignment", tok.tok[tok.pos].nline);
+        } else { // Scalar?
+            if(skip("=")) {
+                relExpr();
+            } else if((inc = skip("++")) || (dec = skip("--"))) {
+                emit(0x8b); emit(0x45);
+                emit(256 -
+                        (v->type == T_INT ? sizeof(int32_t) :
+                         v->type == T_STRING ? sizeof(int32_t *) :
+                         v->type == T_DOUBLE ? sizeof(double) : 4) * v->id);
+                    // mov eax varaible
+                emit(0x50 + EAX); // push eax
+                if (inc) emit(0x40); // inc eax
+                else if(dec) emit(0x48); // dec eax
+            }
+            emit(0x89); emit(0x45);
+            emit(256 -
+                    (v->type == T_INT ? sizeof(int32_t) :
+                     v->type == T_STRING ? sizeof(int32_t *) :
+                     v->type == T_DOUBLE ? sizeof(double) : 4) * v->id);
+                // mov var eax
+            if (inc || dec) emit(0x58 + EAX); // pop eax
+        }
+    } else if (v->loctype == V_GLOBAL) {
+        if (declare) { // first declare for global variable?
+            // assignment only int32_terger
+            if (skip("=")) {
+                unsigned *m = (unsigned *) v->id;
+                *m = atoi(tok.tok[tok.pos++].val);
+            }
+        } else {
+            if (skip("[")) { // Array?
+                relExpr();
+                emit(0x50 + EAX); // push eax
+                if(skip("]") && skip("=")) {
+                    relExpr();
+                    emit(0x8b); emit(0x0d); emitI32(v->id);
+                        // mov ecx GLOBAL_ADDR
+                    emit(0x58 + EDX); // pop edx
+                    if (v->type == T_INT) {
+                        emit(0x89); emit(0x04); emit(0x91);
+                            // mov [ecx+edx*4], eax
+                    } else {
+                        emit(0x89); emit(0x04); emit(0x11);
+                            // mov [ecx+edx], eax
+                    }
+                } else error("%d: invalid assignment",
+                             tok.tok[tok.pos].nline);
+            } else if (skip("=")) {
+                relExpr();
+                emit(0xa3); emitI32(v->id); // mov GLOBAL_ADDR eax
+            } else if ((inc = skip("++")) || (dec = skip("--"))) {
+                emit(0xa1); emitI32(v->id); // mov eax GLOBAL_ADDR
+                emit(0x50 + EAX); // push eax
+                if (inc) emit(0x40); // inc eax
+                else if (dec) emit(0x48); // dec eax
+                emit(0xa3); emitI32(v->id); // mov GLOBAL_ADDR eax
+            }
+            if (inc || dec) emit(0x58 + EAX); // pop eax
+        }
+    }
+    return 0;
+}
+```
+
+問題是這些變數到底存放在哪裡呢？我追蹤的結果發現放在 parser.c 當中的開頭部分，其宣告如下：
+
+```
+struct {
+    Variable var[0xFF];
+    int count;
+} gblVar;
+
+static Variable locVar[0xFF][0xFF];
+static int varSize[0xFF], varCounter;
+```
+
+而且在 parser.h 當中有下列的 Variable 結構宣告。
+
+```CPP
+typedef struct {
+    char name[32];
+    unsigned int id;
+    int type;
+    int loctype;
+} Variable;
+```
+
+您可以看到這些變數其實就是一般的 C 語言變數，而非以組合語言或機器碼的方式宣告的。
+
+讀到這裡，筆者心裏感到疑問，那主程式 engine.c 裡面的個 `((int (*)(int *, void **)) ntvCode)(0, funcTable)` 程式可以直接存取這些變數嗎？
+
+```CPP
+static int execute(char *source)
+{
+    init();
+    lex(source);
+    parser();
+    ((int (*)(int *, void **)) ntvCode)(0, funcTable);
+    dispose();
+    return 0;
+}
+```
+
+但是後來想想，這種顧慮是多餘的，因為 C 語言最後也是一堆機器碼，把 ntvCode 當函數執行和編譯後的 C 語言是一模一樣的，只要沒有被作業系統的分段保護機制給卡住，那 ntvCode 中的機器指令當然是可以存取 gblVar 與 locVar 的。
+
+回頭來看，上述的 assignment() 函數有點複雜，假如我們先不看陣列元素的指定，而是單純看一般性的全域變數指定，那麼分析起來應該會簡單一些，就讓我們以 a=b+5 這樣一個語句為例，來分析看看整個 assignment() 函數是如何運作的好了。
+
+```CPP
+int32_t assignment()
+{
+    Variable *v = getVar(tok.tok[tok.pos].val);
+    int32_t inc = 0, dec = 0, declare = 0;
+    if (v == NULL) {
+        declare++;
+        v = declareVariable();
+    }
+    tok.pos++;
+    ...
+    } else if (v->loctype == V_GLOBAL) {
+        if (declare) { // first declare for global variable?
+            // assignment only int32_terger
+            if (skip("=")) {
+                unsigned *m = (unsigned *) v->id;
+                *m = atoi(tok.tok[tok.pos++].val);
+            }
+        } else {
+            ...
+            } else if (skip("=")) {
+                relExpr();
+                emit(0xa3); emitI32(v->id); // mov GLOBAL_ADDR eax
+            } else if ((inc = skip("++")) || (dec = skip("--"))) {
+                emit(0xa1); emitI32(v->id); // mov eax GLOBAL_ADDR
+                emit(0x50 + EAX); // push eax
+                if (inc) emit(0x40); // inc eax
+                else if (dec) emit(0x48); // dec eax
+                emit(0xa3); emitI32(v->id); // mov GLOBAL_ADDR eax
+            }
+            if (inc || dec) emit(0x58 + EAX); // pop eax
+        }
+    }
+    return 0;
+}
+```
+
+對於 a=b+5 這個指定式而言，假如 a 尚未被定義過，那麼就會呼叫 declareVariable() 宣告一個新的 a 變數，但是如果 a 已經定義過，那麼就會呼叫 getVar(tok.tok[tok.pos].val) 取得該變數。
+
+不管如何，最後變數會記錄在 v 當中，而且如果是第一次宣告並且有設定初始值的話，會在 `*m = atoi(tok.tok[tok.pos++].val)` 這行中將變數的初值設定好。
+
+但是 `a=b+5` 並非此種初始值設定的算式，所以接下來會執行的是下列段落：
+
+```CPP
+                relExpr();
+                emit(0xa3); emitI32(v->id); // mov GLOBAL_ADDR eax
+```
+
+目前 v->id 存放的是該全域變數 a 的位址，當程式解析到 = 之後時，會呼叫 relExpr() 去遞迴下降的處理 b+5 這樣一個運算式，等到該運算式處理完之後，運算式的值匯存放在 eax 暫存器中傳回，接著就可以利用 `mov v->id, eax` 這樣一個指令將 b+5 的結果填入 a 變數中，因而完成了整個指定的動作。
+

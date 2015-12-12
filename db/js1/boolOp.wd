@@ -1,0 +1,104 @@
+# 布林判斷 
+
+```
+C:\Users\user>node
+> 3=5
+3=5
+ReferenceError: Invalid left-hand side in assignment
+    at Object.exports.createScript (vm.js:24:10)
+    at REPLServer.defaultEval (repl.js:137:25)
+    at bound (domain.js:250:14)
+    at REPLServer.runBound [as eval] (domain.js:263:12)
+    at REPLServer. (repl.js:392:12)
+    at emitOne (events.js:82:20)
+    at REPLServer.emit (events.js:169:7)
+    at REPLServer.Interface._onLine (readline.js:210:10)
+    at REPLServer.Interface._line (readline.js:546:8)
+    at REPLServer.Interface._ttyWrite (readline.js:823:14)
+> 3==5
+false
+> 3===5
+false
+> 3="3"
+ReferenceError: Invalid left-hand side in assignment
+    at Object.exports.createScript (vm.js:24:10)
+    at REPLServer.defaultEval (repl.js:137:25)
+    at bound (domain.js:250:14)
+    at REPLServer.runBound [as eval] (domain.js:263:12)
+    at REPLServer. (repl.js:392:12)
+    at emitOne (events.js:82:20)
+    at REPLServer.emit (events.js:169:7)
+    at REPLServer.Interface._onLine (readline.js:210:10)
+    at REPLServer.Interface._line (readline.js:546:8)
+    at REPLServer.Interface._ttyWrite (readline.js:823:14)
+> 3=="3"
+true
+> 3==="3"
+false
+> x=3
+3
+> 3===x
+true
+> 3==x
+true
+> 3>3
+false
+> 3>=3
+true
+> 3false
+> 3true
+> true && true
+true
+> true && false
+false
+> false && false
+false
+> true || true
+true
+> false || true
+true
+> false || false
+false
+> (3>2) && (3>1)
+true
+> (3>2) && (3>4)
+false
+> (3>2) || (3>4)
+true
+> !(3>2)
+false
+> !(3>4)
+true
+> 3 != "3"
+false
+> 3 !== "3"
+true
+> !true
+false
+> !false
+true
+> "hello"=="hello"
+true
+> "hello"="hi"
+ReferenceError: Invalid left-hand side in assignment
+    at Object.exports.createScript (vm.js:24:10)
+    at REPLServer.defaultEval (repl.js:137:25)
+    at bound (domain.js:250:14)
+    at REPLServer.runBound [as eval] (domain.js:263:12)
+    at REPLServer. (repl.js:392:12)
+    at emitOne (events.js:82:20)
+    at REPLServer.emit (events.js:169:7)
+    at REPLServer.Interface._onLine (readline.js:210:10)
+    at REPLServer.Interface._line (readline.js:546:8)
+    at REPLServer.Interface._ttyWrite (readline.js:823:14)
+> "hello"=="hi"
+false
+> true==true
+true
+> true==false
+false
+> true==(1>3)
+false
+> true==(1true
+>
+```

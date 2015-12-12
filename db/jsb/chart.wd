@@ -4,9 +4,198 @@ javascript 的圖表繪製函式庫很多，我最常用的兩個是 vis.js 與 
 
 Vis.js 有 3D 曲線圖，但是互動性不如 d3.js ，但是 d3.js 使用並不容易，封裝為 c3.js 之後就比較容易使用了。
 
-如果您只想選一個使用，我會建議 vis.js 。
+如果您只想選一個使用，我會建議 vis.js (因為完整又有 3D 繪圖) 。
 
 * vis.js :  <http://visjs.org/>
 * c3.js :  <http://c3js.org/>
 * d3.js :  <http://d3js.org/>
+* chart.js : <http://www.chartjs.org/>
+* flot.js : <http://www.flotcharts.org/>
+
+
+## 範例 1
+
+檔案： @[[simpleNetwork.html]](code/visjs/simpleNetwork.html)
+
+```
+<!doctype html>
+<html>
+<head>
+  <title>Network | Basic usage</title>
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.8.1/vis.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.8.1/vis.min.css" rel="stylesheet" type="text/css" />
+
+  <style type="text/css">
+    #mynetwork {
+      width: 600px;
+      height: 400px;
+      border: 1px solid lightgray;
+    }
+  </style>
+</head>
+<body>
+
+<p>
+  Create a simple network with some nodes and edges.
+</p>
+
+<div id="mynetwork"></div>
+
+<script type="text/javascript">
+  // create an array with nodes
+  var nodes = new vis.DataSet([
+    {id: 1, label: 'Node 1'},
+    {id: 2, label: 'Node 2'},
+    {id: 3, label: 'Node 3'},
+    {id: 4, label: 'Node 4'},
+    {id: 5, label: 'Node 5'}
+  ]);
+
+  // create an array with edges
+  var edges = new vis.DataSet([
+    {from: 1, to: 3},
+    {from: 1, to: 2},
+    {from: 2, to: 4},
+    {from: 2, to: 5}
+  ]);
+
+  // create a network
+  var container = document.getElementById('mynetwork');
+  var data = {
+    nodes: nodes,
+    edges: edges
+  };
+  var options = {};
+  var network = new vis.Network(container, data, options);
+</script>
+</body>
+</html>
+```
+
+
+## 範例 2
+
+檔案： @[[simpleBar.html]](code/visjs/simpleBar.html)
+
+```
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Graph2d | Bar Graph Example</title>
+
+    <style type="text/css">
+        body, html {
+            font-family: sans-serif;
+        }
+    </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.8.1/vis.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.8.1/vis.min.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<h2>Graph2d | Bar Graph Example</h2>
+
+<div id="visualization"></div>
+
+<script type="text/javascript">
+
+    var container = document.getElementById('visualization');
+    var items = [
+        {x: '2014-06-11', y: 10},
+        {x: '2014-06-12', y: 25},
+        {x: '2014-06-13', y: 30},
+        {x: '2014-06-14', y: 10},
+        {x: '2014-06-15', y: 15},
+        {x: '2014-06-16', y: 30}
+    ];
+
+    var dataset = new vis.DataSet(items);
+    var options = {
+        style:'bar',
+        barChart: {width:50, align:'center'}, // align: left, center, right
+        drawPoints: false,
+        dataAxis: {
+            icons:true
+        },
+        orientation:'top',
+        start: '2014-06-10',
+        end: '2014-06-18'
+    };
+    var graph2d = new vis.Graph2d(container, items, options);
+
+</script>
+</body>
+</html>
+```
+
+
+
+## 範例 3
+
+檔案： @[[graph3d.html]](code/visjs/graph3d.html)
+
+```
+<!doctype html>
+<html>
+<head>
+  <title>Graph 3D demo</title>
+
+  <style>
+    body {font: 10pt arial;}
+  </style>
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.8.1/vis.min.js"></script>
+
+  <script type="text/javascript">
+    var data = null;
+    var graph = null;
+
+    function custom(x, y) {
+      return (Math.sin(x/50) * Math.cos(y/50) * 50 + 50);
+    }
+
+    // Called when the Visualization API is loaded.
+    function drawVisualization() {
+      // Create and populate a data table.
+      data = new vis.DataSet();
+      // create some nice looking data with sin/cos
+      var counter = 0;
+      var steps = 50;  // number of datapoints will be steps*steps
+      var axisMax = 314;
+      var axisStep = axisMax / steps;
+      for (var x = 0; x < axisMax; x+=axisStep) {
+        for (var y = 0; y < axisMax; y+=axisStep) {
+          var value = custom(x,y);
+          data.add({id:counter++,x:x,y:y,z:value,style:value});
+        }
+      }
+
+      // specify options
+      var options = {
+        width:  '600px',
+        height: '600px',
+        style: 'surface',
+        showPerspective: true,
+        showGrid: true,
+        showShadow: false,
+        keepAspectRatio: true,
+        verticalRatio: 0.5
+      };
+
+      // Instantiate our graph object.
+      var container = document.getElementById('mygraph');
+      graph = new vis.Graph3d(container, data, options);
+    }
+  </script>
+</head>
+
+<body onload="drawVisualization();">
+<div id="mygraph"></div>
+
+<div id="info"></div>
+</body>
+</html>
+
+```
 

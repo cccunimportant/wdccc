@@ -1,0 +1,14 @@
+| 課堂（影片+習題） | 課程內容（文章） |
+|--------|-----------|
+| [第 0 講](https://youtu.be/sJ38B8-k1C4) | [[陳鍾誠的課程地圖]](course:home) |
+| [[第 6 講]](video6) | Assembler |
+| [[第 7 講]](video7) | VM I: Stack Arithmetic |
+| [[第 8 講]](video8) | VM II: Program Control |
+| [[第 9 講]](video9) | High-Level Language |
+| [[第 10 講]](video10) | Compiler I: Syntax Analysis |
+| [[第 11 講]](video11) | Compiler II: Code Generation |
+| [[第 12 講]](video12) | Operating System |
+| [[專案研究]](videoRubiJITcompiler) | [[向 Jserv 學 Rubi JIT 編譯器設計]](pmag201511:home) |
+| [[專案研究]](videoMbedOS) | [ARM MBed OS](https://docs.mbed.com/docs/getting-started-mbed-os/en/latest/installation/) |
+
+

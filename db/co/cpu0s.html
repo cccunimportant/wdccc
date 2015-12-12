@@ -4,9 +4,9 @@
 </head>
 <body>
 <script src="../../gospa.js"></script>
-<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[計算機結構]](co:home) </title>
+<title> 陳鍾誠  / 教科書  / 計算機結構 / CPU0 完整版 -- cpu0s</title>
 
-<p><a href="db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="db/book/home.html"" class="innerLink">教科書</a>  / <a href="db/co/home.html"" class="innerLink">計算機結構</a>  </p>
+ [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[計算機結構]](co:home) 
 
 <h2 id="cpu0cpu0s">CPU0 完整版 -- cpu0s</h2>
 
@@ -14,52 +14,11 @@
 R0 是一個永遠為常數 0 的唯讀暫存器，R15 是程式計數器 (Program Counter : PC)，R14 是連結暫存器 (Link Register : LR)，
 R13 是堆疊指標暫存器 (Stack Pointer : SP)，而 R12 是狀態暫存器 (Status Word : SW)。</p>
 
-<p><img src="../img/cpu0architecture.jpg" alt="圖、CPU0 的架構圖" title="" /></p>
+<div class="figure"><img src="db/co/cpu0architecture.jpg"/><p class="caption">圖、CPU0 的架構圖</p></div>
 
 <h3 id="cpu0">CPU0 的指令集</h3>
 
-<p>CPU0 包含『載入儲存』、『運算指令』、『跳躍指令』、『堆疊指令』等四大類指令，以下表格是 CPU0 的指令編碼表，記載了 CPU0 的指令集與每個指令的編碼。</p>
-
-<p>格式    指令        OP      說明                     語法                       語意
------   ---------   ------  ---------------------    --------------------       ---------------------
-L       LD          00      載入word                 LD  Ra, [Rb+Cx]             Ra=[Rb+Cx]
-L       ST          01      儲存word                 ST  Ra, [Rb+Cx]             Ra=[Rb+Cx]
-L       LDB         02      載入 byte                LDB Ra, [Rb+Cx]             Ra=(byte)[Rb+Cx]
-L       STB         03      儲存 byte                STB Ra, [Rb+Cx]             Ra=(byte)[Rb+Cx]
-A       LDR         04      LD的暫存器版             LDR Ra, [Rb+Rc]             Ra=[Rb+Rc]
-A       STR         05      ST的暫存器版             STR Ra, [Rb+Rc]             Ra=[Rb+Rc]
-A       LBR         06      LDB的暫存器版            LBR Ra, [Rb+Rc]             Ra=(byte)[Rb+Rc]
-A       SBR         07      STB的暫存器版            SBR Ra, [Rb+Rc]             Ra=(byte)[Rb+Rc]
-L       LDI         08      載入常數                 LDI Ra, Cx                  Ra=Cx
-A       CMP         10      比較                     CMP Ra, Rb                  SW=Ra >=&lt; Rb
-A       MOV         12      移動                     MOV Ra, Rb                  Ra=Rb
-A       ADD         13      加法                     ADD Ra, Rb, Rc              Ra=Rb+Rc
-A       SUB         14      減法                     SUB Ra, Rb, Rc              Ra=Rb-Rc
-A       MUL         15      乘法                     MUL Ra, Rb, Rc              Ra=Rb*Rc
-A       DIV         16      除法                     DIV Ra, Rb, Rc              Ra=Rb/Rc
-A       AND         18      邏輯 AND                 AND Ra, Rb, Rc              Ra=Rb and Rc
-A       OR          19      邏輯 OR                  OR Ra, Rb, Rc               Ra=Rb or Rc
-A       XOR         1A      邏輯 XOR                 XOR Ra, Rb, Rc              Ra=Rb xor Rc
-A       ADDI        1B      常數加法                 ADDI Ra, Rb, Cx             Ra=Rb + Cx
-A       ROL         1C      向左旋轉                 ROL Ra, Rb, Cx              Ra=Rb rol Cx
-A       ROR         1D      向右旋轉                 ROR Ra, Rb, Cx              Ra=Rb ror Cx
-A       SHL         1E      向左移位                 SHL Ra, Rb, Cx              Ra=Rb &lt;&lt; Cx
-A       SHR         1F      向右移位                 SHR Ra, Rb, Cx              Ra=Rb >> Cx
-J       JEQ         20      跳躍 (相等)              JEQ Cx                      if SW(=)  PC=PC+Cx
-J       JNE         21      跳躍 (不相等)            JNE Cx                      if SW(!=) PC=PC+Cx
-J       JLT         22      跳躍 (&lt;)                 JLT Cx                      if SW(&lt;)  PC=PC+Cx
-J       JGT         23      跳躍 (>)                 JGT Cx                      if SW(>)  PC=PC+Cx
-J       JLE         24      跳躍 (&lt;=)                JLE Cx                      if SW(&lt;=) PC=PC+Cx
-J       JGE         25      跳躍 (>=)                JGE Cx                      if SW(>=) PC=PC+Cx
-J       JMP         26      跳躍 (無條件)            JMP Cx                      PC=PC+Cx
-J       SWI         2A      軟體中斷                 SWI Cx                      LR=PC; PC=Cx; INT=1
-J       CALL        2B      跳到副程式               CALL Cx                     LR=PC; PC=PC+Cx
-J       RET         2C      返回                     RET                         PC=LR
-J       IRET        2D      中斷返回                 IRET                        PC=LR; INT=0
-A       PUSH        30      推入word                 PUSH Ra                     SP-=4; [SP]=Ra;
-A       POP         31      彈出 word                POP Ra                      Ra=[SP]; SP+=4;
-A       PUSHB       32      推入 byte                PUSHB Ra                    SP--; [SP]=Ra; (byte)
-A       POPB        33      彈出 byte                POPB Ra                     Ra=[SP]; SP++; (byte)</p>
+<p>CPU0 包含『載入儲存』、『運算指令』、『跳躍指令』、『堆疊指令』等四大類指令，請參考 <a href="db/co/cpu0.html"" class="innerLink">CPU0 指令集</a> ，記載了 CPU0 的指令集與每個指令的編碼。</p>
 
 <h3 id="cpu0">CPU0 指令格式</h3>
 
@@ -68,7 +27,7 @@ A       POPB        33      彈出 byte                POPB Ra                  
 <p>大部分的運算指令屬於A (Arithmatic) 型，而載入儲存指令通常屬於 L (Load &amp; Store) 型，跳躍指令則通常屬於 J (Jump) 型，
 這三種型態的指令格式如下圖所示。</p>
 
-<p><img src="../img/cpu0format.jpg" alt="圖、CPU0的指令格式" title="" /></p>
+<div class="figure"><img src="db/co/cpu0format.jpg"/><p class="caption">圖、CPU0的指令格式</p></div>
 
 <h3 id="">狀態暫存器</h3>
 
@@ -77,7 +36,7 @@ A       POPB        33      彈出 byte                POPB Ra                  
 溢位旗標 (Overflow，簡寫為 V) 等等。下圖顯示了 CPU0 的狀態暫存器格式，最前面的四個位元 N、Z、C、V所代表的，
 正是上述的幾個旗標值。</p>
 
-<p><img src="../img/cpu0sw.jpg" alt="圖、CPU0 中狀態暫存器 SW 的結構" title="" /></p>
+<div class="figure"><img src="db/co/cpu0sw.jpg"/><p class="caption">圖、CPU0 中狀態暫存器 SW 的結構</p></div>
 
 <p>條件旗標的 N、Z 旗標值可以用來代表比較結果是大於 (>)、等於 (=) 還是小於 (&lt;)，當執行 CMP Ra, Rb 動作後，會有下列三種可能的情形。</p>
 

@@ -1,0 +1,64 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="../../gospa.js"></script>
+<title> 陳鍾誠  / 教科書  / JavaScript 前端技術 / jQuery 查詢操控框架</title>
+
+ [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[JavaScript 前端技術]](jsb:home) 
+
+<h1 id="jquery">jQuery 查詢操控框架</h1>
+
+<h2 id="">前言</h2>
+
+<p>不認識 jQuery 的人，很容易誤以為 jQuery 是一種資料庫查詢語言，其實雖然 jQuery 常常進行查詢，但是查詢的對象卻是 HTML 網頁中的節點。</p>
+
+<p>HTML 被瀏覽器載入之後就成了一個稱為 DOM 的物件模型，每個 <code>&lt;tag&gt;</code> 都會以一個物件的形式存在，而 jQuery 的功能就是從 DOM 中用類似 CSS 的選擇語法查出想要的節點，然後在對這些節點進行想要的操控動作。</p>
+
+<p>所以 jQuery 其實是一種『進行網頁節點查詢修改的前端框架』。</p>
+
+<p>讓我們用一個範例來體會到底甚麼是 jQuery。</p>
+
+<h2 id="">範例</h2>
+
+<p>檔案： <a href="db/jsb/code/jquery_example.html" class="innerLink">jquery_example.html</a></p>
+
+<pre><code>&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset="UTF-8"/&gt;
+&lt;script src="https://code.jquery.com/jquery-2.1.3.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;button onclick="$('p').css('display', 'none')"&gt;
+  $('p').css('display', 'none')
+&lt;/button&gt;
+&lt;button onclick="$('p').css('display', 'block')"&gt;
+  $('p').css('display', 'block')
+&lt;/button&gt;
+&lt;button onclick="$('#main').css('color', 'red').css('text-decoration', 'underline').css('font-weight', 'bold')"&gt;
+  $('#main').css('color', 'red').css('text-decoration', 'underline').css('font-weight', 'bold')
+&lt;/button&gt;
+&lt;p&gt;p1&lt;/p&gt;
+&lt;p&gt;p2&lt;/p&gt;
+&lt;div id="main"&gt;main&lt;/div&gt;
+&lt;p&gt;p3&lt;/p&gt;
+&lt;p&gt;p4&lt;/p&gt;
+&lt;p&gt;p5&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>上述範例中的以下語句，用了 a.b().c().d() 這種形式的鍊式語法，讓您可以輕易地連續對節點進行查詢與操控動作，而這也是 jQuery 最好用的地方，熟悉 jQuery 的人往往可以用一行鍊式語法做到需要數十行甚至百行才能完成的功能，這也是 jQuery 受歡迎的一個重要原因。</p>
+
+<pre><code>$('#main').css('color', 'red').css('text-decoration', 'underline').css('font-weight', 'bold')
+</code></pre>
+
+<h2 id="">參考文獻</h2>
+
+<ul>
+<li><a href="http://www.runoob.com/jquery/jquery-tutorial.html">RUNOOB: jQuery 教程</a></li>
+</ul>
+
+</body>
+</html>

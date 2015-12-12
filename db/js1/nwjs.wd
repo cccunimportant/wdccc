@@ -1,0 +1,9 @@
+# 瀏覽器型的視窗程式 -- NW.js
+
+* [NW.js](http://nwjs.io/)
+ * [Tutorials on Node WebKit](https://github.com/nwjs/nw.js/wiki/Tutorials-on-Node-WebKit)
+ * [YouTube: Mini-Series: Bulding HTML5 Desktop Apps with Node-Webkit](https://www.youtube.com/playlist?list=PLkyEadCJGLm0-yn8wi-a5n8H7lKll23t9)
+ * [Node Webkit (NW.js) tutorial: creating a Markdown editor](https://ducode.org/node-webkit-tutorial-creating-a-markdown-editor.html)
+
+* 問題
+ * [Add Android Support](https://github.com/nwjs/nw.js/issues/94)

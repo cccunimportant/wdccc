@@ -20,7 +20,7 @@
 	@10
 	D=D-A // D = i - 10
 	@END
-	D;JGT // If (i-100) > 0 goto END
+	D;JGT // If (i-10) > 0 goto END
 	@i
 	D=M // D = i
 	@sum

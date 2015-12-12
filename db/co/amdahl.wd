@@ -24,7 +24,7 @@ $\frac{1}{(1-P)+P/S}=\frac{1}{(1-0.5)+0.5/2}=\frac{1}{0.75}=1.333$
 
 下圖是 Amdahl 法則的一個視覺化呈現，您可以看到對 B 元件改進五倍的效果，還不如對 A 元件改進兩倍來得有效。
 
-![圖、Amdahl 法則 -- 增進不同部件性能所能得到的效能提升程度<BR/>來源：http://en.wikipedia.org/wiki/Amdahl's_law](../img/AmdahlLaw2.jpg)
+![[圖、Amdahl 法則 -- 增進不同部件性能所能得到的效能提升程度<BR/>來源：http://en.wikipedia.org/wiki/Amdahl's_law]](AmdahlLaw2.jpg)
 
 
 ### 將 Amdahl 法則應用於平行計算
@@ -35,11 +35,12 @@ $S(N)=\frac{1}{(1-P)+P/N}$
 
 下圖是 Amdahl 法則在多處理器上的一個視覺化呈現，您可以看到在可平行程度 50% 的時候，加再多處理器都不可能讓效能提升到兩倍以上。
 
-![圖、Amdahl 法則 -- 在各種不同平行度下，增加處理器所得到的效果<BR/>來源：http://zh.wikipedia.org/wiki/File:AmdahlsLaw.svg](../img/AmdahlsLaw.jpg)
+![[圖、Amdahl 法則 -- 在各種不同平行度下，增加處理器所得到的效果<BR/>來源：http://zh.wikipedia.org/wiki/File:AmdahlsLaw.svg]](AmdahlsLaw.jpg)
 
 但是、根據上圖的綠線顯示，在可平行程度 95% 的情況之下，加很多處理器可以讓效能提升近 20 倍，所以增加處理器所產生的效果與可平行化的程度有非常密切的關係。
 
 授權聲明：本文修改自以下維基百科網頁，使用時請採用 [姓名標示、相同方式分享] 授權 。
 
-* <http://en.wikipedia.org/wiki/Amdahl's_law>
+* [Wikipedia:Amdahl's_law](http://en.wikipedia.org/wiki/Amdahl's_law)
+
 

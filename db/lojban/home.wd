@@ -1,0 +1,15 @@
+| 標題  |  說明  |
+|--------|-----------|
+|  [[基礎]](basic)  | [[字母]](alphabet)  ｜ [[音調]](pronounce) ｜ [[構詞]](word) ｜ [[根詞]](gismu) |
+|  [[規則]]  | [[文法]](grammar) ｜ [[語句]](sentence)  ｜ [[填充]](fill)  |
+|  [[字典]](dictionary)  | [[小字典]](dictSmall) ｜ [字典1](http://jbovlaste.lojban.org/) ｜ [字典2](http://vlasisku.lojban.org/) ｜ [翻譯](http://www.lojban.org/jboski/index.php) ｜ [[小抄]](cheatsheet) ｜ [[測驗]](test)  |
+|  [[語料]](corpus)  | [IRC紀錄](http://www.lojban.org/resources/irclog/all_logs.txt) ｜ [語料字典](https://en.glosbe.com/jbo/en/)｜[語音庫](https://mw.lojban.org/papri/Recordings_of_live_Lojban_discussions) |
+|  [[交談]](corpus)  |  [IRC](https://kiwiirc.com/client/irc.freenode.net/?#jbosnu,#ckule,#lojban)｜ [Facebook](https://www.facebook.com/groups/lojban/) |
+|  [[資源]](resource)  | [[影片]](video)｜ [[書籍]](book)｜ [[論文]](paper) ｜ [[紀錄]](record)｜ [[軟體]](software) ｜ [[APP]](app) ｜ [[網誌]](blog) ｜ [維基](https://jbo.wikipedia.org/) |
+|  [[變形]](transform)  | [[邏漢語]](lohan) ｜ [[邏萬語]](lowan) ｜ [[英漢語]](enhan) ｜ [[漢英語]](hanen) |
+|  [[程式]](code)  | [[dic2json]](dic2json) ｜ [[mt]](mt) ｜ [[parser]](parser) |
+|  [[研究]](research)  | [[PEG]] ｜ [[SlotFill]] |
+|  [[邏輯語初學]](book1) | [[第三版]](version3rd) ｜ [[第四版]](version4th)  |
+
+
+ * [Parsing Expression Grammer (PEG) 的理論](PEG)

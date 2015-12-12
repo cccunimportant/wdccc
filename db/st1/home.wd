@@ -1,0 +1,17 @@
+| 課堂（影片+習題） | 課程內容（文章） |
+|--------|-----------|
+| [[第 0 章]](videoMap) | [[陳鍾誠的課程地圖]](course:home) |
+| [[第 1 章]](st1:videoBasic) | [[機率統計簡介]](st:basic) |
+| [[第 2 章]](st1:videoProb) | [[機率的概念]](st:prob) |
+| [[第 3 章]](st1:videoRandvar) | [[隨機變數]](st:randvar) |
+| [[第 4 章]](st1:videoDistribution) | [[機率分布]](st:distribution) |
+| [[第 5 章]](st1:videoExp) | [[期望值與動差生成函數]](st:exp)  |
+| [[第 6 章]](st1:videoJoint) | [[聯合分布]](st:joint) |
+| [[第 7 章]](st1:videoDescriptive) | [[抽樣與敘述統計]](st:descriptive) |
+| [[第 8 章]](st1:videoCentralLimit) | [[中央極限定理]](st:CentralLimit) |
+| [[第 9 章]](st1:videoTest1) | [[平均值的估計與檢定]](st:test1) |
+| [[第 10 章]](st1:videoTest2) | [[再論估計與檢定]](st:test2) |
+| [[第 11 章]](st1:videoAnova) | [[變異數分析]](st:anova) |
+| [[第 12 章]](st1:videoRegression) | [[迴歸分析]](st:regression) |
+| [[第 13 章]](st1:videoPCA) | [[主成分分析與因子分析]](st:PCA) |
+

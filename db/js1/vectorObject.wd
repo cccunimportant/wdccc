@@ -1,0 +1,13 @@
+# 習題：具有『加減乘』法的向量物件
+
+請寫一個向量物件 Vector ，該向量具有加法 Vector.add(v) , 減法 Vector.sub(v) , 乘法 Vector.mul(v) 等函數。
+
+使用方法如下：
+
+```
+var v1 = Vector.create([1,2,3]), v2 = Vector.create([2,1,1]);
+var add12 = v1.add(v2);
+var sub12 = v1.sub(v2);
+var mul12 = v1.mul(v2);
+``` 
+

@@ -1,0 +1,25 @@
+# 軟體
+* [PEG parser](https://mw.lojban.org/papri/PEG)
+ * [PEG.js](http://pegjs.org/) -- camxes.js 是用 PEG.js 產生的。
+  * [camxes.js -- Lojban Parser written in JavaScript based on camxes.](http://masatohagiwara.net/camxes.js/)
+  * [camxes.js.peg](https://github.com/mhagiwara/camxes.js/blob/master/camxes.js.peg)
+* <https://github.com/lojban>
+ * JBOFIHE -- <https://github.com/lojban/jbofihe>
+* Lojbanic Software
+ * <https://mw.lojban.org/papri/Lojbanic_Software>
+* Ilmen-vodhr/ilmentufa : Syntactical and semantical parser of Lojban text
+ * <https://github.com/Ilmen-vodhr/ilmentufa>
+ * 線上版： <http://mw.lojban.org/extensions/ilmentufa/camxes-exp.html>
+ * 線上版： <http://mw.lojban.org/extensions/ilmentufa/glosser/glosser.htm> 
+* La Bangu is a new method of teaching Lojban
+ * <https://mw.lojban.org/papri/La_Bangu>
+ * <https://mw.lojban.org/papri/La_Bangu:_The_Journey>
+ * 電子書 -- <https://mw.lojban.org/papri/L17-01>
+* 語音合成 -- <http://lojban-thing.icebubble.org/current/local/README.html>
+* A tiny application by Matt Arnold showing how Lojbanic letters sound
+ * <https://mw.lojban.org/images/b/b1/Lojban_interactive.swf>
+* <http://jbotcan.org/>
+* Anki - 包含各類詞彙的詞頻表可下載
+ * <https://ankiweb.net/shared/decks/Lojban>
+* Quizlet 的邏輯語學習課堂 (有一些邏英對照的詞彙語念法）
+ * <https://quizlet.com/subject/lojban/>

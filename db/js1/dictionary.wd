@@ -1,0 +1,74 @@
+# JavaScript 中的 JSON 字典格式
+
+## 單層結構
+
+```
+nqu-192-168-61-142:code mac020$ node
+> d={ dog:"狗", cat:"貓", a: "一隻", chase:"追", eat:"吃" };
+{ dog: '狗', cat: '貓', a: '一隻', chase: '追', eat: '吃' }
+> d.dog
+'狗'
+> d.eat
+'吃'
+> d.x
+undefined
+> d.snoopy
+undefined
+> d["dog"]
+'狗'
+> d["x"]
+undefined
+> d
+{ dog: '狗', cat: '貓', a: '一隻', chase: '追', eat: '吃' }
+> d["狗"]
+undefined
+> 
+
+```
+
+## 多層結構
+
+```
+> t={ dog:{ name:"Snoopy", age:3}, 
+... cat:{ name:"Garfield", age:5}
+... }
+{ dog: { name: 'Snoopy', age: 3 },
+  cat: { name: 'Garfield', age: 5 } }
+> t
+{ dog: { name: 'Snoopy', age: 3 },
+  cat: { name: 'Garfield', age: 5 } }
+> t.dog
+{ name: 'Snoopy', age: 3 }
+> t.cat
+{ name: 'Garfield', age: 5 }
+> t.dog.name
+'Snoopy'
+> t.dog.age
+3
+> t.cat.name
+'Garfield'
+> t.cat.age
+5
+> t.cat.tel
+undefined
+> 
+```
+
+接著新增 t.man 這個欄位
+
+```
+> t.man={name:"ccc", friends:[ t.dog, t.cat]}
+{ name: 'ccc',
+  friends: [ { name: 'Snoopy', age: 3 }, { name: 'Garfield', age: 5 } ] }
+> t
+{ dog: { name: 'Snoopy', age: 3 },
+  cat: { name: 'Garfield', age: 5 },
+  man: { name: 'ccc', friends: [ [Object], [Object] ] } }
+> t.man.friends[0]
+{ name: 'Snoopy', age: 3 }
+> t.man.friends[1]
+{ name: 'Garfield', age: 5 }
+> t.man.friends[2]
+undefined
+> 
+```

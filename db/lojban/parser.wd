@@ -1,0 +1,32 @@
+# parser
+
+## 語意 parser
+
+* JIMPE : <https://github.com/YoshikuniJujo/cakyrespa/blob/master/src/Jimpe.hs>
+ * 程式碼很簡潔，但卻是 Haskell 寫的。
+ * 專案： <https://github.com/YoshikuniJujo/cakyrespa>
+ * 論文： <http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.87.7134&rep=rep1&type=pdf>
+* 線上版： <http://www.lojban.org/jboski/index.php> , C 語言
+ * 原始碼： <https://github.com/lojban/jbofihe>
+ * However, jbofi’e is an unmaintained project1 which can only handle a small subset of the language. Camxes on the other hand is a robust system that supports most Lojban syntax features and is even resilient to malformed sub-expressions.
+* <https://gitlab.com/zugz/tersmu> , Haskell 語言
+
+## 語法 parser
+
+* [zantufa](https://mw.lojban.org/papri/zantufa)
+ * zentufa 看來是簡化過(或說進化)的版本，但是看來很有潛力，parse 速度快，而且語法樹結構漂亮很多。(Zantufa is based on an unofficial but beautiful and simple grammar aiming at impartiality according to Guskant.)
+ * 線上版 -- <http://guskant.github.io/gerna_cipra/zantufa-1.html> , 速度快多了。(語法簡化影響這麼大嗎？)
+  * 語法修改
+   * the temporary grammar -- <https://mw.lojban.org/papri/zasni_gerna_cenba_vreji>
+   * MEX grammar proposal -- <https://mw.lojban.org/papri/MEX_grammar_proposal>
+   * Zantufa is kind to [Cekitaujaus](https://mw.lojban.org/papri/ce_ki_tau_jau) , and will adopt it as one of the variations of Zantufa.
+ * github -- <https://github.com/guskant/gerna_cipra>
+  * 用來產生 parser 的程式 -- <https://github.com/guskant/gerna_cipra/blob/master/zantufa-pegjs.js>
+  * 最後的成品 -- <https://raw.githubusercontent.com/guskant/gerna_cipra/master/js/zantufa-1.9999.js> (支援 node.js, 有 export)。
+ * 作者的 github -- <https://github.com/guskant>
+ * Most part of the idea of Cekitaus is adopted by Zantufa. However, for the importance of the selma'o GA, Zantufa cannot adopt exchanges (mo'oi ge) (i'au go) (zo'u go) (moi'oi gei ge'i) etc.
+ * Most of Lojban IRC members and frequent Lojban speakers (who are the creator of La Bangu and the speakers of the Lojban IRC dialect that is explained by La Bangu) damn much Zantufa. The opinions of them are so illogical that Guskant will not sincerely respond. Zantufa is simply one of the parsers of texts in Lojban, and it forces nobody to do anything. Frequent abuse on Zantufa is similar to the situation that American English speakers heap abuse on Indian English. Despicable.
+* [Official LLG Parser](https://mw.lojban.org/papri/Official_LLG_Parser) , C in DOS.
+* [jbofihe](https://github.com/lojban/jbofihe) , C 
+* [jbogenturfa'i](http://wiki.call-cc.org/eggref/4/jbogenturfahi)
+ * <https://github.com/alanpost/jbogenturfahi>

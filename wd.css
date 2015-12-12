@@ -1,3 +1,9 @@
+iframe {
+  margin-left: auto;
+  display:inline-block;
+  margin-right: auto;
+}
+
 textarea {
   font-family: courier;
 }
@@ -165,10 +171,16 @@ th {
 	color:white;
 }
 
-td {
-  padding: 5px 15px 5px 15px;
+td  {
+  padding: 10px 15px 10px 15px;
   vertical-align: middle;
-  border: 1px solid #373737;
+  border: 1px solid #a0a0a0;
+}
+
+td p {
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
+  vertical-align: middle;
 }
  
 em {

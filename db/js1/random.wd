@@ -1,0 +1,47 @@
+# 亂數
+
+檔案： @[[random.js]](code/random.js)
+
+```
+function randBetween(a,b) {
+  return a+Math.random()*(b-a);
+}
+
+function randInt(a,b) {
+  return Math.floor(randBetween(a,b));
+}
+
+function repeats(n, f) {
+  var a = [];
+  for (var i=0; i<n; i++) {
+    a.push(f());
+  }
+  return a;
+}
+
+var rList = repeats(10, function() {
+  var r=randInt(0,2);
+  console.log("r="+r);
+  return r;
+});
+
+console.log("rList=%j", rList);
+```
+
+執行結果
+
+```
+D:\Dropbox\cccweb\db\js\code>node random.js
+r=1
+r=1
+r=1
+r=0
+r=1
+r=0
+r=0
+r=1
+r=0
+r=0
+rList=[1,1,1,0,1,0,0,1,0,0]
+
+```

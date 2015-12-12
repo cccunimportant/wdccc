@@ -1,0 +1,12 @@
+# 字典
+
+* 在线词典导出的gismu/cmavo列表, tsv/html格式.
+ * <http://guskant.github.io/lojbo/gismu-cmavo.html>
+* @[[高頻詞頻表]](dictionary/HiFreq.txt)
+* @[[完整詞頻表]](dictionary/MyFreq-COMB_without_dots.txt)
+* @[[邏英XML字典]](dictionary/xml-export_english.html)
+* @[[邏漢XML字典]](dictionary/xml-export_chinese.html)
+ * 可考慮用下列軟體處理
+ * <https://github.com/ndebeiss/jsxmlsaxparser>
+ * <https://github.com/isaacs/sax-js>
+ * <https://github.com/buglabs/node-xml2json>

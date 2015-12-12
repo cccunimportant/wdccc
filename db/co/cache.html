@@ -4,15 +4,15 @@
 </head>
 <body>
 <script src="../../gospa.js"></script>
-<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[計算機結構]](co:home) </title>
+<title> 陳鍾誠  / 教科書  / 計算機結構 / 快取記憶體 (Cache) </title>
 
-<p><a href="db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="db/book/home.html"" class="innerLink">教科書</a>  / <a href="db/co/home.html"" class="innerLink">計算機結構</a>  </p>
+ [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[計算機結構]](co:home) 
 
 <h2 id="cache">快取記憶體 (Cache)</h2>
 
 <p>傳統的處理器通常採用「單一匯流排馮紐曼架構」設計，這種架構非常簡單且易懂，如下圖所示：</p>
 
-<p><img src="../img/voneumann1bus.jpg" alt="圖、單一匯流排的馮紐曼架構" title="" /></p>
+<div class="figure"><img src="db/co/voneumann1bus.jpg"/><p class="caption">圖、單一匯流排的馮紐曼架構</p></div>
 
 <p>但是、以當今的技術，上圖中的記憶體通常採用 DRAM 為主。</p>
 
@@ -20,7 +20,7 @@
 
 <p>如果要讓 CPU 的執行速度更快，就不能讓 CPU 遷就於 DRAM 的速度跟著變慢，此時我們可以在 CPU 內部加入一個快取記憶體 (cache)，讓位於 DRAM 中常用到的指令與資料放入快取當中，如下圖所示：</p>
 
-<p><img src="../img/voneumann1cache.jpg" alt="圖、單一匯流排的馮紐曼架構" title="" /></p>
+<div class="figure"><img src="db/co/voneumann1cache.jpg"/><p class="caption">圖、單一匯流排的馮紐曼架構</p></div>
 
 <p>當 CPU 想要執行一個指令時，如果該指令已經在 cache 當中，就不需要讀取 DRAM，因此「指令擷取」階段就可以快上數十倍。</p>
 
@@ -36,13 +36,13 @@
 
 <p>Cache 技術是現代電腦能夠快速執行的一個重要原因，因為 CPU 的速度比 DRAM 記憶體快上數十倍到百倍，而 DRAM 的速度又比硬碟快上數十倍到百倍，因此若沒有依賴快取的話，現代電腦就不能達到「記憶容量又大，執行速度又快」的功能了。</p>
 
-<p><img src="../img/hierarchy.jpg" alt="圖、記憶體階層與快取機制" title="" /></p>
+<div class="figure"><img src="db/co/hierarchy.jpg"/><p class="caption">圖、記憶體階層與快取機制</p></div>
 
 <p>處理器內部的靜態記憶體 SRAM 可以作為外部動態記憶體 DRAM 的快取，而動態記憶體又可以作為硬碟的快取。</p>
 
 <p>快取的運作通常必須要依靠「一個查詢表格」與「對應的小區塊儲存空間」，在處理器內部，用來作為「查詢表格」的稱為 TLB (translation lookaside buffer)， TLB 可以用來記錄哪些 DRAM 區塊被放入到處理器中了，如此才能透過 TLB 查詢某個記憶體位址的資料是否在處理器快取中，如果發現在快取中，就可以直接取用，否則就會引發快取失誤 (cache miss) ，產生中斷並載入所需要的 DRAM 區塊到快取當中。</p>
 
-<p><img src="../img/voneumann1cache_disk.jpg" alt="圖、處理器、記憶體、硬碟之間的快取關係" title="" /></p>
+<div class="figure"><img src="db/co/voneumann1cache_disk.jpg"/><p class="caption">圖、處理器、記憶體、硬碟之間的快取關係</p></div>
 
 <p>另外、在「計算機結構」與「作業系統」領域都會談論到的「虛擬記憶體技術」(Virtual Memory)，則是用 DRAM 作為硬碟的快取，此時的「查詢表格」稱為「需求分頁表」 (Page Table)，作業系統可以透過 Page Table 查詢某個分頁是否在記憶體中 (如果不在記憶體中就是被換出去到硬碟裏儲存了)，當需要的分頁不再記憶體中，而是在硬碟裏時，就會引發分頁失誤 (page fault)，然後產生中斷去載入該分頁到記憶體中之後，該記憶體存取與行程 (Process) 才能再繼續執行。</p>
 

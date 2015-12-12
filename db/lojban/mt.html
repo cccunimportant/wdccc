@@ -1,0 +1,74 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="../../gospa.js"></script>
+<title> 陳鍾誠  / 教科書  / 邏輯語 Lojban / mt.js -- 翻譯程式</title>
+
+ [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[邏輯語 Lojban]](lojban:home) 
+
+<h1 id="mtjs">mt.js -- 翻譯程式</h1>
+
+<p>預設輸入邏漢字典 lojban.json ，於是得到羅漢翻譯系統。</p>
+
+<p>此預設字典為「邏輯語轉漢語，漢語也轉邏輯語」的雙向翻譯系統。</p>
+
+<p>檔案： <a href="db/lojban/code/mt.js" class="innerLink">mt.js</a></p>
+
+<p>執行結果：</p>
+
+<pre><code>D:\Dropbox\cccwd\db\lojban\code&gt;node mt 你 看到 幾 位 戰士
+["do","viska","xo","lo","sonci"]
+
+D:\Dropbox\cccwd\db\lojban\code&gt;node mt do viska xo lo sonci
+["你","看到","幾","位","戰士"]
+
+D:\Dropbox\cccwd\db\lojban\code&gt;node mt do xo lo prenu cu klama ti
+["你","幾","位","人","素","去","這裏"]
+
+D:\Dropbox\cccwd\db\lojban\code&gt;node mt mi pu   klama
+["我","現在","去"]
+
+D:\Dropbox\cccwd\db\lojban\code&gt;node mt mi ka   klama
+["我","過去","去"]
+
+D:\Dropbox\cccwd\db\lojban\code&gt;node mt mi ba   klama
+["我","未來","去"]
+
+D:\Dropbox\cccwd\db\lojban\code&gt;node mt barda blabi mlatu
+["大","白","貓"]
+
+D:\Dropbox\cccwd\db\lojban\code&gt;node mt 大 白 貓
+["barda","blabi","mlatu"]
+</code></pre>
+
+<h2 id="">程式碼</h2>
+
+<p>檔案： <a href="db/lojban/code/mt.js" class="innerLink">mt.js</a></p>
+
+<pre><code>var fs = require('fs');
+var c  = console;
+
+var dicFile = "lojban.json";
+if (process.argv[2].endsWith(".json")) {
+  dicFile = process.argv[2];
+  wordStart = 3;
+} else
+  wordStart = 2;
+
+var dic = JSON.parse(fs.readFileSync(dicFile, "utf-8"));
+var toWords = mt(dic, process.argv.slice(wordStart));
+c.log("%j", toWords);
+
+function mt(dic, words) {
+  var toWords = [];
+  for (var i in words) {
+    toWords.push(dic[words[i]]);
+  }
+  return toWords;
+}
+</code></pre>
+
+</body>
+</html>

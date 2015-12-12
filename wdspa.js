@@ -191,7 +191,7 @@ function httpRef() {
 }
 
 function facebookShare() {
-  window.open("https://www.facebook.com/sharer/sharer.php?u="+escape(absolute(httpRef(), '../../db/'+domain+'/'+file+'.html'))+'&t='+document.title, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600')
+  window.open("https://www.facebook.com/sharer/sharer.php?u="+escape(absolute(httpRef(), 'db/'+domain+'/'+file+'.html'))+'&t='+document.title, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600')
 }
 
 function staticShare() {
@@ -219,7 +219,8 @@ function showTitleHead(domain) {
   var titleHead = config.title['default'];
   if (config.title[domain] !== undefined)
     titleHead = config.title[domain];
-  titleHead = ' [[首頁]](main:home) / '+titleHead;
+// Unicode Symbol page : http://jrgraphix.net/r/Unicode/2600-26FF
+  titleHead = ' [[※]](main:home) '+titleHead; // &#x264B; &#x26EA; <- house &#9967;
   var titleHtml = wdlib.wd2html(titleHead, domain, {isHash:isHash});
   $('#titleHead').html(titleHtml);
 }

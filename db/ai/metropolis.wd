@@ -14,7 +14,7 @@ $A(x \to y) = \frac{P(x) Q(x \to y)}{P(y) Q(y \to x)}$
 
 因此，Metropolis 設計出了下列通道流量的調整公式，以便用疊代的方式調整狀態轉移機率矩陣 P(x \to y)。
 
-$Q_{t+1}(x \to y) = \begin{cases} Q_t(x \to y) & \;\;\; \text{if x \neq y  , A(x \to y) \geq 1;}\\Q_t(x \to y) A(x \to y) & \;\;\;\text{if x \neq y , A(x \to y) < 1;}\\ Q_t(x \to y) + \sum_{z:A(x \to z) < 1} Q_t(x \to z) (1 - A(x \to z)) & \;\;\;\text{if x = y.} \end{cases}$
+$Q_{t+1}(x \to y) = \begin{cases} Q_t(x \to y) & \;\;\; if x \neq y , A(x \to y) \geq 1;\\Q_t(x \to y) A(x \to y) & \;\;\;if x \neq y , A(x \to y) < 1;\\ Q_t(x \to y) + \sum_{z:A(x \to z) < 1} Q_t(x \to z) (1 - A(x \to z)) & \;\;\;if x = y. \end{cases}$
 
 
 ### Metropolis-Hasting 算法

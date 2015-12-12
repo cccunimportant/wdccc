@@ -1,0 +1,142 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="../../gospa.js"></script>
+<title> 陳鍾誠  / 教科書  / JavaScript 前端技術 / HTML 編輯器</title>
+
+ [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[JavaScript 前端技術]](jsb:home) 
+
+<h2 id="html">HTML 編輯器</h2>
+
+<p>在本節當中，我們將透過 JavaScript 設計一個 HTML 編輯器，讓您可以直接在瀏覽器當中看到 HTML 網頁的呈現結果，
+筆者認為這個範例對學習動態網頁設計是一個非常簡單、卻又很有啟發性的程式。因為他很明顯的展現了動態網頁的原理。</p>
+
+<p>以下是該 HTML 編輯器的執行結果，當我們在 CSS 與 HTML 區塊輸入對應的原始碼之後，就可以按下「→」按鈕，然後在
+呈現的 <code>&lt;div id="showbox" ...&lt;/div&gt;</code> 區塊看到兩者搭配時的呈現結果。</p>
+
+<div class="figure"><img src="db/jsb/HtmlEditorRun.jpg"/><p class="caption">HTML 編輯器的執行畫面</p></div>
+
+<p>您也可以點選下列連結以實際檢視該網頁：</p>
+
+<ul>
+<li>HTML 編輯器： <a href="db/jsb/code/HtmlEditor.htm" class="innerLink">HtmlEditor.htm</a></li>
+</ul>
+
+<p>以下是這個網頁的原始 HTML 程式碼，其中有兩大段是我們預設填入的 CSS 與 HTML 原始碼，這兩段原則上可以去掉，但是
+為了測試方便起見，我們就留在檔案中，請讀者閱讀的時候仔細區分之。</p>
+
+<pre><code class="html">&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset="UTF-8"/&gt;
+&lt;style&gt;
+textarea, #showbox { border: 1px solid #9f9f9f; }
+&lt;/style&gt;
+&lt;style id="showboxstyle"&gt;
+&lt;/style&gt;
+&lt;script type="text/javascript"&gt;
+function convert() {
+  var cssbox  = document.getElementById("cssbox");
+  var editbox = document.getElementById("editbox");
+  var showbox = document.getElementById("showbox");
+  var showboxstyle = document.getElementById("showboxstyle");
+  showbox.innerHTML = editbox.value;
+  showboxstyle.innerHTML = cssbox.value;
+}
+&lt;/script&gt;    
+&lt;body&gt;
+&lt;form&gt;
+&lt;table width="95%" style="border-collapse: collapse; border: 0px;"&gt;&lt;tr&gt;
+&lt;tr&gt;&lt;td colspan="2" style="text-align:center"&gt;HTML 原始碼　　&lt;input type="button" value=" → " onclick="JavaScript:convert()"/&gt;　　　顯示結果&lt;/td&gt;&lt;/tr&gt;
+&lt;td width="50%"&gt;
+&lt;textarea id="cssbox" style="width:100%; height:100px;" &gt;
+&lt;!-- 預設貼入的CSS：開始 --&gt;
+td, th { padding:10px; }
+th { background-color:black; color:white; }
+table { border-collapse: collapse; border: 1px solid #373737; }
+&lt;!---預設貼入的CSS：結束 --&gt;
+&lt;/textarea&gt;
+&lt;textarea id="editbox" style="width:100%; height:400px;"&gt;
+&lt;!-- 預設貼入的HTML：開始 --&gt;
+Hello! &lt;a href="http://tw.yahoo.com"&gt;Yahoo&lt;/a&gt;&lt;br/&gt;&lt;/br&gt;
+&lt;table&gt;
+&lt;tr&gt;&lt;th&gt;&lt;/th&gt;&lt;th&gt;欄 1&lt;/th&gt;&lt;th&gt;欄 2&lt;/th&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;th&gt;列 1&lt;/th&gt;&lt;td&gt;1,1&lt;/td&gt;&lt;td&gt;1,2&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;th&gt;列 2&lt;/th&gt;&lt;td&gt;2,1&lt;/td&gt;&lt;td&gt;2,2&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;&lt;br/&gt;
+&lt;form action="signup" method="post"&gt;
+帳號: &lt;input type="text" name="user"/&gt;&lt;br/&gt;
+密碼: &lt;input type="password" name="password"/&gt;&lt;br/&gt;
+信箱: &lt;input type="email" name="email"/&gt;&lt;br/&gt;
+生日: &lt;input type="date" name="birthday"/&gt;&lt;br/&gt;
+照片: &lt;input type="file" name="picture"/&gt;&lt;br/&gt;
+性別: &lt;input type="radio" name="sex" value="male" checked/&gt; 男
+      &lt;input type="radio" name="sex" value="female"/&gt; 女&lt;br/&gt;
+血型: &lt;select name="BloodType"&gt;
+        &lt;option value="A"&gt;A 型&lt;/option&gt;
+        &lt;option value="B"&gt;B 型&lt;/option&gt;
+        &lt;option value="AB"&gt;AB 型&lt;/option&gt;
+        &lt;option value="O"&gt;O 型&lt;/option&gt;
+      &lt;/select&gt; &lt;br/&gt;
+自我介紹： &lt;br/&gt;
+&lt;input type="submit" value="送出"/&gt;&lt;input type="reset" value="清除"/&gt;&lt;br/&gt;
+&lt;/form&gt;
+&lt;!-- 預設貼入的HTML：結束 --&gt;
+&lt;/textarea&gt; 
+&lt;/td&gt;
+&lt;td&gt;
+&lt;div id="showbox" style="width:100%; height:500px;"&gt;
+&lt;/div&gt;
+&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<h3 id="">程式解析</h3>
+
+<p>上述程式當中有三個主要的區塊，分別是：</p>
+
+<ol>
+<li>CSS 填入區塊： <code>&lt;textarea id="cssbox" ...&lt;/textarea&gt;</code></li>
+<li>HTML 填入區塊：<code>&lt;textarea id="editbox" ...&lt;/textarea&gt;</code> </li>
+<li>HTML 顯示區塊：<code>&lt;div id="showbox" ... &lt;/div&gt;</code></li>
+</ol>
+
+<p>此網頁的核心程式部分真的很簡單，只有如下短短的一小段：</p>
+
+<ol>
+<li>利用 <code>var editbox = document.getElementById("editbox");</code> 取得 HTML 區塊內容</li>
+<li>利用 <code>showbox.innerHTML = editbox.value;</code> 這個指令將該 HTML 原始碼填入 showbox 當中</li>
+</ol>
+
+<p>這樣就完成顯示 HTML 的動作了。</p>
+
+<pre><code class="javascript">function convert() {
+  var cssbox  = document.getElementById("cssbox");
+  var editbox = document.getElementById("editbox");
+  var showbox = document.getElementById("showbox");
+  var showboxstyle = document.getElementById("showboxstyle");
+  showbox.innerHTML = editbox.value;
+  showboxstyle.innerHTML = cssbox.value;
+}
+</code></pre>
+
+<p>但是這樣作並沒有加入 cssbox 的內容到 HTML 當中，因此我們加入了下列原始碼：</p>
+
+<ol>
+<li>在整個網頁的頭部事先用 <code>&lt;style id="showboxstyle"&gt;...&lt;/style&gt;</code> 這個標記加入一個 CSS style 顯示區塊</li>
+<li>利用 <code>showboxstyle.innerHTML = cssbox.value</code> 這個指令將 cssbox 的內容填入到該表頭的 style 區塊中</li>
+</ol>
+
+<p>這樣就達成了套用 CSS 內容到網頁中的目的，完成了整個 HTML 編輯器的功能。</p>
+
+<h3 id="">小結</h3>
+
+<p>在本節中，我們用非常簡單的程式，建構了一個 HTML 編輯器。事實上我們只不過是把網頁內容從編輯區域移動到顯示區域，然後流覽器就會
+自動解釋這些內容進行呈現了。 </p>
+
+</body>
+</html>

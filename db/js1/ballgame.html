@@ -1,0 +1,64 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="../../gospa.js"></script>
+<title> 陳鍾誠  / 教科書  / JavaScript 前端技術 / 遊戲設計 -- 碰撞球</title>
+
+ [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[JavaScript 前端技術]](jsb:home) 
+
+<h1 id="">遊戲設計 -- 碰撞球</h1>
+
+<p>檔案： <a href="db/jsb/code/canvas/ballgame1.html" class="innerLink">ballgame1.html</a></p>
+
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+&lt;img id="ball" src="ball.jpg" alt="The Scream" style="display:none"&gt;
+&lt;p&gt;Canvas:&lt;/p&gt;
+&lt;canvas id="myCanvas" width="240" height="297" style="border:1px solid #d3d3d3;"/&gt;
+&lt;script&gt;
+var img, ctx, canvas;
+var x=0, y=0;
+
+window.onload = main;
+
+var dx = 2, dy=2;
+function update() {
+  x+=dx; y+=dy;
+  if (x &lt; 0 &amp;&amp; dx &lt; 0)
+    dx = -1 * dx;
+  else if (x+img.width &gt;= canvas.width &amp;&amp; dx &gt; 0)
+    dx = -1 * dx;
+  if (y &lt; 0 &amp;&amp; dy &lt; 0)
+    dy = -1 * dy;
+  else if (y+img.height &gt;= canvas.height &amp;&amp; dy &gt; 0)
+    dy = -1 * dy;
+}
+
+function draw() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.drawImage(img, x, y);
+}
+
+function main() {
+  img = document.getElementById("ball");
+  canvas = document.getElementById("myCanvas");
+  ctx = canvas.getContext("2d");
+  var loop = function() {
+    update();
+    draw();
+    window.requestAnimationFrame(loop, canvas);
+  };
+  window.requestAnimationFrame(loop, canvas);
+}
+
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+</body>
+</html>

@@ -1,0 +1,14 @@
+# 習題：具有『加減乘』法的矩陣物件
+
+請寫一個矩陣物件 Matrix ，該向量具有轉置 Matrix.transpose(), 加法 Matrix.add(v) , 減法 Matrix.sub(v) , 乘法 Matrix.mul(v) 等函數。
+
+使用方法如下：
+
+```
+var m1 = Matrix.create([[1,2,3],[3,2,1]]);
+var m2 = Matrix.create([[2,1,3],[1,1,1]]);
+var m2t = m2.transpose();
+var add12 = m1.add(m2t);
+var sub12 = m1.sub(m2t);
+var mul12 = m1.mul(m2t);
+``` 

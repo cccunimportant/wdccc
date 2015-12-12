@@ -4,145 +4,216 @@
 </head>
 <body>
 <script src="../../gospa.js"></script>
-<title> [[程式人雜誌]](pmag:home)  / [[2015年11月號]](pmag201511:home) </title>
+<title> 程式人雜誌  / 2015年11月號 / Rubi JIT 編譯器的編譯與執行</title>
 
-<p><a href="db/pmag/home.html"" class="innerLink">程式人雜誌</a>  / <a href="db/pmag201511/home.html"" class="innerLink">2015年11月號</a>  </p>
+ [[程式人雜誌]](pmag:home)  / [[2015年11月號]](pmag201511:home) 
 
-<h2 id="nand2tetris6">Nand2Tetris 第 6 週 -- 自製組譯器</h2>
+<h2 id="rubijit">Rubi JIT 編譯器的編譯與執行</h2>
 
-<p>本文程式修改自下列 github 網址，使用時請注意遵守開源授權。</p>
-
-<ul>
-<li><a href="https://github.com/havivha/Nand2Tetris/tree/master/6">https://github.com/havivha/Nand2Tetris/tree/master/6</a></li>
-</ul>
-
-<p>關於 nand2tetris 第 6 週的內容與解說，請參考下列文章。</p>
+<p>Rubi JIT 編譯器是 jserv 在 <a href="https://www.facebook.com/groups/ncku.embedded2015/permalink/782123778600776/">『2015年嵌入式系統課程』</a> 中所釋放出的原始碼，該專案的網址如下：</p>
 
 <ul>
-<li><a href="http://ccc.nqu.edu.tw/db/ymag201506/focus8.html">少年科技人雜誌 / 2015年6月號 / Nand2Tetris 第 6 週 -- 組譯器</a></li>
+<li><a href="https://github.com/embedded2015/rubi">https://github.com/embedded2015/rubi</a></li>
 </ul>
 
-<p>在本文中，我們主要補充的是實作的方法。我們採用 JavaScript 撰寫，並用 node.js 環境進行測試。</p>
+<p>整個專案包含四個 *.c 的 C 語言檔案與四個 *.h 的標頭引用檔，程式寫得非常清楚且精簡，主要的開發測試平台為 Ubuntu Linux，應該在其他的 x86 Linux 平台也可以很容易的被編譯執行，但必須先安裝 gcc-multilib 與 libc6-dev-i386 等兩個套件。</p>
 
-<p>由於 HackCPU 的獨特設計方式，讓組譯器牽涉到比較多的表格，以下是這些表格的內容。</p>
+<p>另外，在 prog 資料夾中，有十幾個 *.rb 的檔案，是可以被執行的 rubi 程式，您可以用下列與法來執行這些範例程式。</p>
 
-<pre><code class="javascript">var dtable = {
-  ""   :0b000,
-  "M"  :0b001,
-  "D"  :0b010,
-  "MD" :0b011,
-  "A"  :0b100,
-  "AM" :0b101,
-  "AD" :0b110,
-  "AMD":0b111
-}
-
-var jtable = {
-  ""   :0b000,
-  "JGT":0b001,
-  "JEQ":0b010,
-  "JGE":0b011,
-  "JLT":0b100,
-  "JNE":0b101,
-  "JLE":0b110,
-  "JMP":0b111
-}
-
-var ctable = {
-  "0"   :0b0101010,
-  "1"   :0b0111111,
-  "-1"  :0b0111010,
-  "D"   :0b0001100,
-  "A"   :0b0110000, 
-  "M"   :0b1110000,
-  "!D"  :0b0001101,
-  "!A"  :0b0110001, 
-  "!M"  :0b1110001,
-  "-D"  :0b0001111,
-  "-A"  :0b0110011,
-  "-M"  :0b1110011,
-  "D+1" :0b0011111,
-  "A+1" :0b0110111,
-  "M+1" :0b1110111,
-  "D-1" :0b0001110,
-  "A-1" :0b0110010,
-  "M-1" :0b1110010,
-  "D+A" :0b0000010,
-  "D+M" :0b1000010,
-  "D-A" :0b0010011,
-  "D-M" :0b1010011,
-  "A-D" :0b0000111,
-  "M-D" :0b1000111,
-  "D&amp;A" :0b0000000,
-  "D&amp;M" :0b1000000,
-  "D|A" :0b0010101,
-  "D|M" :0b1010101
-}
-
-var symTable = {
-  "R0"  :0,
-  "R1"  :1,
-  "R2"  :2,
-  "R3"  :3,
-  "R4"  :4,
-  "R5"  :5,
-  "R6"  :6,
-  "R7"  :7,
-  "R8"  :8,
-  "R9"  :9,
-  "R10" :10,
-  "R11" :11,
-  "R12" :12,
-  "R13" :13,
-  "R14" :14,
-  "R15" :15,
-  "SP"  :0,
-  "LCL" :1,
-  "ARG" :2,
-  "THIS":3, 
-  "THAT":4,
-  "KBD" :24576,
-  "SCREEN":16384
-};
+<pre><code>$ ./rubi [filename]
 </code></pre>
 
-<p>然後和傳統的組譯器一樣，我們可以採用兩階段的組譯方式，第一階段紀錄每個符號的位址，第二階段則進行編碼的動作。</p>
+<p>根據 rubi 專案中的說明，我進行了下列動作，</p>
 
-<pre><code class="javascript">function pass1(lines) {
-  // 對於每一行程式碼
-  //   計算該行的位址
-  //   如果有符號，紀錄符號的位址
-}
-
-function pass2(lines, objFile) {
-  // 對於每一行程式碼
-  //   將指令轉為機器碼 (查表，編碼，輸出)
-}
-
-// 轉換指令為程式碼的主要程式如下。
-function toCode(p) {
-  var address; 
-  if (p.type === "A") {
-    if (p.arg.match(/^\d+$/)) {
-      address = parseInt(p.arg);
-    } else {
-      address = symTable[p.arg]; 
-      if (typeof address === 'undefined') {
-        address = symTop;
-        addSymbol(p.arg, address);        
-      }
-    }
-    return address; 
-  } else { // if (p.type === "C")
-    var d = dtable[p.d];
-    var cx = ctable[p.c];
-    var j = jtable[p.j];
-    return 0b111&lt;&lt;13|cx&lt;&lt;6|d&lt;&lt;3|j;
-  }
-}
+<pre><code>$ sudo apt-get install gcc-multilib libc6-dev-i386
+$ git clone https://github.com/embedded2015/rubi.git
+$ cd rubi
+$ make
+$ ./rubi progs/pi.rb
+3141592653589793238462643383279502884197169399375105820974944592
+3078164062862089986280348253421170679821480865132823066470938446
+0955058223172535940812848111745028410270193852110555964462294895
+...
 </code></pre>
 
-<p>只要搞清楚指令格式，並且把表格寫出來， HackCPU 的組譯器算是相當容易撰寫的一個程式。</p>
+<p>此時果然看到了程式的輸出，程式是可以正確執行的。</p>
+
+<p>接著讓我們來看一個完整的程式並執行之，就以 <a href="https://github.com/embedded2015/rubi/blob/master/progs/fact.rb">fact.rb</a> 為例好了，以下是其程式碼：</p>
+
+<pre><code>def fact(n)
+    if n == 1
+        1
+    else
+        fact(n - 1) * n
+    end
+end
+
+puts fact(10)
+</code></pre>
+
+<p>該程式的執行結果如下：</p>
+
+<pre><code>ccc@ccc-K30BD:~/git/rubi$ ./rubi progs/fact.rb
+3628800
+</code></pre>
+
+<p>接著讓我們多執行幾個程式看看。</p>
+
+<pre><code>ccc@ccc-K30BD:~/git/rubi$ ./rubi progs/fib.rb
+1346269
+
+ccc@ccc-K30BD:~/git/rubi$ ./rubi progs/file.rb
+I love to do my homework.
+
+ccc@ccc-K30BD:~/git/rubi$ ./rubi progs/qsort.rb
+L W N V L D I Q L T G U Q T U T L D Q V 
+D D G I L L L L N Q Q Q T T T U U V V W 
+
+ccc@ccc-K30BD:~/git/rubi$ ./rubi progs/includes.rb
+R5WW18UWwyxEbm7t
+LyB0gx9Rp8EiDoFU
+IFYdYDREqimWWkca
+vFrR7EGynITCnzdt
+KJm6uZ5e3f6z4YHM
+udcc5g7EttogktAq
+EghNC2BRZvSKBi7E
+E3Nasj1Nsj8SvuBs
+ccc@ccc-K30BD:~/git/rubi$ ./rubi progs/fizbuzz.rb
+file not found: No such file or directory
+ccc@ccc-K30BD:~/git/rubi$ ./rubi progs/fizzbuzz.rb
+1
+2
+fizz
+4
+buzz
+fizz
+7
+8
+fizz
+buzz
+11
+fizz
+13
+14
+fizzbuzz
+16
+17
+fizz
+19
+buzz
+fizz
+22
+23
+fizz
+buzz
+26
+fizz
+28
+29
+ccc@ccc-K30BD:~/git/rubi$ ./rubi progs/miller.rb
+61091 is prime
+5099 is prime
+2971 is prime
+10663 is prime
+47251 is prime
+21317 is prime
+51487 is prime
+40883 is prime
+59113 is prime
+39359 is prime
+6869 is prime
+22621 is prime
+14557 is prime
+56821 is prime
+30841 is prime
+38851 is prime
+50021 is prime
+17293 is prime
+56501 is prime
+5167 is prime
+20641 is prime
+5861 is prime
+34781 is prime
+60457 is prime
+38867 is prime
+7529 is prime
+64091 is prime
+54833 is prime
+38189 is prime
+25237 is prime
+613 is prime
+59419 is prime
+50287 is prime
+19429 is prime
+7027 is prime
+33181 is prime
+44657 is prime
+65027 is prime
+50461 is prime
+37369 is prime
+461 is prime
+22619 is prime
+38447 is prime
+40009 is prime
+30113 is prime
+47819 is prime
+49943 is prime
+60397 is prime
+29947 is prime
+57503 is prime
+4397 is prime
+32687 is prime
+38669 is prime
+21011 is prime
+56893 is prime
+15061 is prime
+28643 is prime
+7793 is prime
+63607 is prime
+18583 is prime
+4943 is prime
+16573 is prime
+53617 is prime
+29753 is prime
+9437 is prime
+61007 is prime
+9277 is prime
+11867 is prime
+35753 is prime
+32479 is prime
+11593 is prime
+55009 is prime
+50069 is prime
+12073 is prime
+2609 is prime
+64123 is prime
+14281 is prime
+2143 is prime
+21557 is prime
+54877 is prime
+35059 is prime
+9127 is prime
+18913 is prime
+16253 is prime
+51769 is prime
+38377 is prime
+5077 is prime
+18713 is prime
+13829 is prime
+373 is prime
+37123 is prime
+40387 is prime
+39821 is prime
+8707 is prime
+51647 is prime
+42793 is prime
+29191 is prime
+22937 is prime
+11329 is prime
+9497 is prime
+</code></pre>
+
+<p>現在我們已經確認這個 rubi JIT compiler 確實可以在 Ubuntu Linux 平台上正確執行了，接下來就讓我們來閱讀其原始碼，並研究其設計方法吧！</p>
 
 </body>
 </html>

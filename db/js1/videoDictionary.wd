@@ -1,0 +1,10 @@
+# JSON 字典格式
+
+| 教學 | 主題  | 影片  |
+|--------|-----------|
+| 文章 | [[JavaScript 中的 JSON 字典格式]](dictionary)  | [影片](https://youtu.be/UDKLSVtaMto) |
+| 習題 | [[字典查詢程式 -- dlook.js]](dlook)  | [影片](https://youtu.be/fOP6tuC5bgs) |
+| 習題 | [[通訊錄查詢 -- plook.js]](plook)  | [影片](https://youtu.be/3HEVe0-nq84) |
+| 習題 | [[英翻中系統 -- mt.js]](mt)  | [影片](https://youtu.be/6s9tAm7Mnag) |
+| 習題 | [[英中互翻系統 -- mt2.js]](mt2)  | [影片](https://youtu.be/5KXUAfSBu6g) |
+| 習題 | [[中翻英系統 -- c2e.js, c2e2.js]](c2e) | [影片](https://youtu.be/WE-xZjayVLA) |

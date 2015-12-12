@@ -1,0 +1,45 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="../../gospa.js"></script>
+<title> 陳鍾誠  / 教科書  / JavaScript 前端技術 / 習題：倒數計數器(碼錶)</title>
+
+ [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[JavaScript 前端技術]](jsb:home) 
+
+<h1 id="">習題：倒數計數器(碼錶)</h1>
+
+<p>請寫一個網頁碼錶，可以倒數計時，並在時間到了之後，顯示『時間到了』的提示訊息！</p>
+
+<p>起始時間設 10 秒就可以了！</p>
+
+<p>記得時間到的時候可以用 alert("時間到了！") 顯示訊息！</p>
+
+<p>解答： <a href="db/jsb/code/countdown.html" class="innerLink">countdown.html</a></p>
+
+<pre><code class="javascript">&lt;html&gt;
+&lt;head&gt;
+  &lt;meta charset='utf-8'&gt; 
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div id="time"&gt;&lt;/div&gt;    
+  &lt;script&gt;
+  var n=10;
+  function showtime(){
+    document.getElementById("time").innerHTML=n+'';
+    if(n===0){
+      alert("時間到了");
+    } else {         
+      setTimeout(showtime,1000);
+    }
+    n=n-1;
+  }          
+  showtime();               
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+</body>
+</html>

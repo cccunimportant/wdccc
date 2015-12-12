@@ -1,0 +1,82 @@
+# 使用 Express 套件的靜態 Server
+
+專案下載： @[[express.zip]](code/express.zip)
+
+檔案： @[[staticServer.js]](code/express/staticServer.js)
+
+```javascript
+var express = require('express');
+var app = express();
+app.use('/media', express.static(__dirname + '/media'));
+app.use(express.static(__dirname + '/public'));
+app.listen(3000);
+
+```
+
+安裝 express：
+
+```
+D:\Dropbox\cccwd\db\js1\code\express>npm install
+▄ ╢░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+▌ ╢░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+loadDep:express → request ▐ ╢██████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+...
+staticServer@0.0.0 D:\Dropbox\cccwd\db\js1\code\express
+└─┬ express@4.13.3
+  ├─┬ accepts@1.2.13
+  │ ├─┬ mime-types@2.1.8
+  │ │ └── mime-db@1.20.0
+  │ └── negotiator@0.5.3
+  ├── array-flatten@1.1.1
+  ├── content-disposition@0.5.0
+  ├── content-type@1.0.1
+  ├── cookie@0.1.3
+  ├── cookie-signature@1.0.6
+  ├─┬ debug@2.2.0
+  │ └── ms@0.7.1
+  ├── depd@1.0.1
+  ├── escape-html@1.0.2
+  ├── etag@1.7.0
+  ├─┬ finalhandler@0.4.0
+  │ └── unpipe@1.0.0
+  ├── fresh@0.3.0
+  ├── merge-descriptors@1.0.0
+  ├── methods@1.1.1
+  ├─┬ on-finished@2.3.0
+  │ └── ee-first@1.1.1
+  ├── parseurl@1.3.0
+  ├── path-to-regexp@0.1.7
+  ├─┬ proxy-addr@1.0.9
+  │ ├── forwarded@0.1.0
+  │ └── ipaddr.js@1.0.4
+  ├── qs@4.0.0
+  ├── range-parser@1.0.3
+  ├─┬ send@0.13.0
+  │ ├── destroy@1.0.3
+  │ ├─┬ http-errors@1.3.1
+  │ │ └── inherits@2.0.1
+  │ ├── mime@1.3.4
+  │ └── statuses@1.2.1
+  ├── serve-static@1.10.0
+  ├─┬ type-is@1.6.10
+  │ └── media-typer@0.3.0
+  ├── utils-merge@1.0.0
+  └── vary@1.0.1
+
+runTopLevelLifecycles     ▀ ╢█████████████████████████
+npm WARN EPACKAGEJSON staticServer@0.0.0 No description
+runTopLevelLifecycles     ▐ ╢█████████████████████████
+npm WARN EPACKAGEJSON staticServer@0.0.0 No repository field.
+runTopLevelLifecycles     ▄ ╢████████████████████████
+npm WARN EPACKAGEJSON staticServer@0.0.0 No license field.
+runTopLevelLifecycles     ▌ ╢████████████████████████
+```
+
+執行
+
+```
+D:\Dropbox\cccwd\db\js1\code\express>node staticServer
+```
+
+![[]](expressStaticServer.jpg)
+

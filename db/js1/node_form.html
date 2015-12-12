@@ -1,0 +1,228 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="../../gospa.js"></script>
+<title> 陳鍾誠  / 課程  / JavaScript 第一門課 / Node.js -- 表單資料的處理</title>
+
+ [[陳鍾誠]](ccc:home)  / [[課程]](course:home)  / [[JavaScript 第一門課]](js1:home) 
+
+<h1 id="nodejs">Node.js -- 表單資料的處理</h1>
+
+<p>本文完整專案下載： <a href="db/js1/code/server.zip" class="innerLink">server.zip</a></p>
+
+<h2 id="web">Web 的表單資料</h2>
+
+<p>在「HTML 網頁設計」這個章節裏，我們曾經介紹過 form 這個標記的用法，以及包含於其中的一群表單標記，讓我們再次複習一下這個主題。</p>
+
+<p>在 HTML 當中，表單 (Form) 是指可以讓使用者進行輸入的元件，其語法是用 <code>&lt;form&gt; ...&lt;/form&gt;</code> 夾住一堆的輸入元件，這些輸入元件包含 input (輸入)、 textarea (文字區)、 select (選項) 等，其中的 input 還可以根據其 type 欄位顯示成 checkbox, color, date, datetime, datetime-local, email, file, hidden, image, month, number, password, radio, range, reset, search, submit, tel, text, time, url, week 等各種不同的輸入欄形式，以下是一個表單的範例。</p>
+
+<p>檔案： <a href="db/js1/code/server/formget.html" class="innerLink">formget.html</a></p>
+
+<pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8"&gt;&lt;meta charset="utf-8"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;form action="/form/get"&gt;
+帳號: &lt;input type="text" name="user"&gt;&lt;br&gt;
+密碼: &lt;input type="password" name="password"&gt;&lt;br&gt;
+信箱: &lt;input type="email" name="email"&gt;&lt;br&gt;
+生日: &lt;input type="date" name="birthday"&gt;&lt;br&gt;
+照片: &lt;input type="file" name="picture"&gt;&lt;br&gt;
+性別: &lt;input type="radio" name="sex" value="male" checked=""&gt; 男
+      &lt;input type="radio" name="sex" value="female"&gt; 女&lt;br&gt;
+血型: &lt;select name="BloodType"&gt;
+        &lt;option value="A"&gt;A 型&lt;/option&gt;
+        &lt;option value="B"&gt;B 型&lt;/option&gt;
+        &lt;option value="AB"&gt;AB 型&lt;/option&gt;
+        &lt;option value="O"&gt;O 型&lt;/option&gt;
+      &lt;/select&gt; &lt;br&gt;
+自我介紹： &lt;br&gt;
+&lt;textarea name="AboutMe"&gt;&lt;/textarea&gt; &lt;br/&gt;
+&lt;input type="submit" value="送出"&gt;&lt;input type="reset" value="清除"&gt;&lt;br/&gt;
+&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<div class="figure"><img src="db/js1/form.jpg"/><p class="caption">表單的顯示結果</p></div>
+
+<p>在上述的範例中，當 submit 類型的送出鈕被按下後，瀏覽器會將這些填寫的資訊，以先前所說的 GET/POST 方式，發送給伺服器，如果 method 欄位是 GET，那麼會採用在 HTTP 表頭網址處傳送 singup?user=xxx&amp;password=xxx .....這樣的形式送出，這種方式會將密碼顯示在瀏覽器的網址列上，比較容易被看到，若 method 欄位是 POST，則會在 HTTP 表頭尾端加上 user=xxx&amp;password=xxx ... 的資訊，不會在網址列上被看到。當然、如果有人監控網路上訊息的話，還是會看得到這些輸入資訊。</p>
+
+<p>若要更安全，則必須採用 HTTPS 的 SSL 方式傳遞，這種方式會對訊息加密編碼，就比較不會有輸入訊息外洩的危險。</p>
+
+<p>node.js 對於 GET/POST 訊息的處理，是以 url 與 querystring 為基礎，然後還有個額外的套件 express 可以進行方便的進階處理，以下我們將介紹這些主題。</p>
+
+<h2 id="get">GET 的處理</h2>
+
+<p>為了要能夠建構一個完整具有表單的伺服器，我首先必須建立一個『靜態檔案』的 server 函式庫 <a href="db/js1/code/server/staticServer.js" class="innerLink">staticServer.js</a> ，然後在此基礎上建構能處理 get 與 post 的伺服器。</p>
+
+<p>node.js 在處理 GET 表單訊息時，最基礎的方式是使用 url.parse() 與 querystring.parse() 等兩個函數為基礎的，以下是一個簡單的範例。</p>
+
+<p>檔案： <a href="db/js1/code/server/getServer.js" class="innerLink">getServer.js</a></p>
+
+<pre><code class="javascript">var http = require('http'), 
+    url = require('url'),
+    qs = require('querystring'),
+    s = require("./staticServer");
+
+var server = http.createServer(function (req, res) {
+  var path = url.parse(req.url);
+  if (path.pathname==="/form/get") {
+    parameter = qs.parse(path.query);
+    res.writeHead(200, {'Content-Type': 'text/plain'});
+    res.write("path="+JSON.stringify(path,null,2)+"\n\n");
+    res.write("parameter="+JSON.stringify(parameter,null,2)+"\n");
+    res.end();
+  } else {
+    s.staticServer(req, res);
+  }
+});
+
+server.listen(3000);
+
+console.log("Server running at http://localhost:3000");
+</code></pre>
+
+<p>執行結果：</p>
+
+<pre><code>D:\Dropbox\cccwd\db\js1\code\server&gt;node getServer
+Server running at http://localhost:3000
+</code></pre>
+
+<p>上述程式的入口畫面</p>
+
+<div class="figure"><img src="db/js1/getServerIndex.jpg"/><p class="caption"></p></div>
+
+<p>表單填寫的畫面</p>
+
+<div class="figure"><img src="db/js1/formget_html.jpg"/><p class="caption"></p></div>
+
+<p>表單送出後的畫面</p>
+
+<div class="figure"><img src="db/js1/formget_response.jpg"/><p class="caption"></p></div>
+
+<p>由於 GET 的傳送方式是透過網址欄，因此您只要在網址上進行修改，就可以看到上述程式會有不同的執行結果。</p>
+
+<h2 id="post">POST 的處理</h2>
+
+<p>對於 POST 訊息而言，就無法透過修改網址的方式測試了，要示範如何用 node.js 處理 post 訊息，我們必須先有一個
+包含表單的 HTML 網頁，然後在 form 欄位內指定 <code>method="POST"</code> ，這樣當您填完按下 submit 送出鈕時，網頁中所
+填寫的資訊就會附加在 HTTP 表頭的尾部傳送出去。</p>
+
+<p>檔案： <a href="db/js1/code/server/formpost.html" class="innerLink">formpost.html</a></p>
+
+<pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset="utf-8" /&gt;
+&lt;/head&gt;
+  &lt;body&gt; 
+    &lt;form method="POST" action="/form/post"&gt;
+      &lt;label&gt;帳號：&lt;/label&gt;&lt;input type="text" id="user" name="user" value="ccc"/&gt;&lt;br/&gt;
+      &lt;label&gt;密碼：&lt;/label&gt;&lt;input type="text" id="password" name="password" value="1234567"/&gt;&lt;br/&gt;
+      &lt;label&gt;標題：&lt;/label&gt;&lt;input type="text" id="title" name="title" size="80" value="當您死後，您在意的是公墓裏的那塊牌子，還是 facebook 上的日誌與照片呢？"/&gt;&lt;br&gt;
+      &lt;textarea name="text" rows=30 cols=80&gt;
+如果我死了！我不會在意自己被葬在哪裡，公墓裏有沒有一個骨灰罈或牌子！
+
+但是我會在意自己的「照片、錄影、網誌、facebook、YouTube上的影片、電子書、以及我所創辦的程式人雜誌」是否有人接手、整理或出版。
+
+我不希望死後 facebook 上的資訊就被視為靜止戶而刪除，我不希望網誌上的資訊雜亂無章，我不希望數位相機的照片與錄影從此消失，我不希望那些美好的記憶在家人的腦海裡逐漸模糊！
+
+我希望這些資訊可以變成我的日記、著作，有人幫我剪接這些影片，在喪禮上可以回顧我的一生，我希望我的小孩有空時能透過這些資訊瞭解我，甚至是與已經身在天堂的我對話，當他有的生命遇到疑問時，可以從我的人生經驗當中得到啟發，或者些許的指引與安慰！
+
+如果我的老婆小孩經濟困難，我希望可以從我的數位遺產中找到有價值出版的作品，幫助他們度過難關，如果他們的經濟情況不錯，我希望這些價值就捐獻給公益團體。
+
+要完成這些事，就必須要有一個組織，提供「數位遺產管理」的服務。這需要有一些工具可以擷取出這些數位遺產，需要一些人力可以幫組織與整理，並且需要服務人員對家屬提供適當的協助。所以我想，這需要一整個公司，甚至整個供應鏈的配合。
+
+這是一個全新的領域 -- 「數位殯葬業 + 數位遺產管理事業」，當您抱怨網路行業都已經被 Google 、Facebook 、淘寶等公司壟斷的時候，實體的世界當中仍然有很多的創業機會，等著您去開發！
+      &lt;/textarea&gt;&lt;br/&gt;
+      &lt;input type="submit" value="送出" /&gt;
+    &lt;/form&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<div class="figure"><img src="db/js1/httppost_htm.jpg"/><p class="caption"></p></div>
+
+<p>接著、我們就可以用請求參數 req 的 <code>on("data", ...)</code> 事件與接收資料，然後在 <code>on("end", ...)</code> 事件
+時完成接收並處理 POST 訊息，如以下程式所示。</p>
+
+<p>檔案： <a href="db/js1/code/server/postServer.js" class="innerLink">postServer.js</a></p>
+
+<pre><code class="javascript">var http = require('http'), 
+    url = require('url'),
+    qs = require('querystring'),
+    s = require("./staticServer");
+
+var server = http.createServer(function (req, res) {
+  var path = url.parse(req.url);
+  if (path.pathname==="/form/post") {
+    res.writeHead(200, {'Content-Type': 'text/plain'});
+    formData = '';
+    req.on("data", function(data) {
+      return formData += data;
+    });
+    req.on("end", function() {
+      res.writeHead(200, {"Content-Type":"text/html; charset=utf-8"});
+      post = qs.parse(formData);
+      console.log("post="+JSON.stringify(post,null,2)+"\n");
+      user = post.user;
+      password = post.password;
+      title = decodeURIComponent(post.title);
+      text  = decodeURIComponent(post.text);
+      res.write("user="+user+"&lt;br/&gt;");
+      res.write("password="+password+"&lt;br/&gt;");
+      res.write("title="+title+"&lt;br/&gt;");
+      res.write("text="+text+"&lt;br/&gt;");
+      res.end();
+    });    
+  } else {
+    s.staticServer(req, res);
+  }
+});
+
+server.listen(3000);
+
+console.log("Server running at http://localhost:3000");
+</code></pre>
+
+<p>瀏覽器執行畫面：</p>
+
+<div class="figure"><img src="db/js1/formpost_html.jpg"/><p class="caption">表單填寫畫面</p></div>
+
+<div class="figure"><img src="db/js1/formpost_response.jpg"/><p class="caption">資料送出後的畫面</p></div>
+
+<p>伺服端執行過程：</p>
+
+<pre><code>D:\Dropbox\cccwd\db\js1\code\server&gt;node postServer
+Server running at http://localhost:3000
+post={
+  "user": "ccc",
+  "password": "1234567",
+  "title": "當您死後，您在意的是公墓裏的那塊牌子，還是 facebook 上的日誌與照片呢
+？",
+  "text": "如果我死了！我不會在意自己被葬在哪裡，公墓裏有沒有一個骨灰罈或牌子！\
+r\n\r\n但是我會在意自己的「照片、錄影、網誌、facebook、YouTube上的影片、電子書、
+以及我所創辦的程式人雜誌」是否有人接手、整理或出版。\r\n\r\n我不希望死後 faceboo
+k 上的資訊就被視為靜止戶而刪除，我不希望網誌上的資訊雜亂無章，我不希望數位相機的
+照片與錄影從此消失，我不希望那些美好的記憶在家人的腦海裡逐漸模糊！\r\n\r\n我希望
+這些資訊可以變成我的日記、著作，有人幫我剪接這些影片，在喪禮上可以回顧我的一生，
+我希望我的小孩有空時能透過這些資訊瞭解我，甚至是與已經身在天堂的我對話，當他有的
+生命遇到疑問時，可以從我的人生經驗當中得到啟發，或者些許的指引與安慰！\r\n\r\n如
+果我的老婆小孩經濟困難，我希望可以從我的數位遺產中找到有價值出版的作品，幫助他們
+度過難關，如果他們的經濟情況不錯，我希望這些價值就捐獻給公益團體。\r\n\r\n要完成
+這些事，就必須要有一個組織，提供「數位遺產管理」的服務。這需要有一些工具可以擷取
+出這些數位遺產，需要一些人力可以幫組織與整理，並且需要服務人員對家屬提供適當的協
+助。所以我想，這需要一整個公司，甚至整個供應鏈的配合。\r\n\r\n這是一個全新的領域
+ -- 「數位殯葬業 + 數位遺產管理事業」，當您抱怨網路行業都已經被 Google 、Faceboo
+k 、淘寶等公司壟斷的時候，實體的世界當中仍然有很多的創業機會，等著您去開發！\r\n
+      "
+}
+</code></pre>
+
+</body>
+</html>

@@ -288,7 +288,7 @@ $M \times \,^{\prime\prime} 0 \; 1 \; 0 \; 0 \; 0 \; 0 \mbox{-1} \; 0 \,^{\prime
 
 事實上，任何二進制數中連續的 1 可以被分解為兩個二進制數之差：
 
-![](../img/BoothExp.jpg) .
+![[]](BoothExp.jpg) .
 
 <!--$(\ldots 0 \overbrace{1 \ldots 1}^{n} 0 \ldots)_{2} \equiv (\ldots 1 \overbrace{0 \ldots 0}^{n} 0 \ldots)_{2} - (\ldots 0 \overbrace{0 \ldots 1}^{n} 0 \ldots)_2$-->
 

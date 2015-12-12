@@ -4,9 +4,9 @@
 </head>
 <body>
 <script src="../../gospa.js"></script>
-<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[計算機結構]](co:home) </title>
+<title> 陳鍾誠  / 教科書  / 計算機結構 / CPU0 迷你版 - CPU0m</title>
 
-<p><a href="db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="db/book/home.html"" class="innerLink">教科書</a>  / <a href="db/co/home.html"" class="innerLink">計算機結構</a>  </p>
+ [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[計算機結構]](co:home) 
 
 <h2 id="cpu0cpu0m">CPU0 迷你版 - CPU0m</h2>
 
@@ -19,26 +19,136 @@
 <p>我們從 CPU0 的指令集當中，挑出了以下的四個指令，以便寫出一個可以計算 1+2+.....+n+.... 的組合語言程式 
 (喔！不、應該說是機器語言程式)，然後用 Verilog 實作一個可以執行這些指令的 CPU0m 處理器。</p>
 
-<p>格式    指令        OP      說明              語法                  語意 <br />
------   ---------   ------  ---------------   --------------------  ------------ 
-L       LD          00      載入word          LD  Ra, [Rb+Cx]       Ra=[Rb+Cx] <br />
-L       ST          01      儲存word          ST  Ra, [Rb+Cx]       Ra=[Rb+Cx] <br />
-A       ADD         13      加法              ADD Ra, Rb, Rc        Ra=Rb+Rc <br />
-J       JMP         26      跳躍 (無條件)     JMP Cx                PC=PC+Cx     </p>
+<table>
+<thead>
+<tr>
+<th id="格式" style="text-align:left;"> 格式 </th>
+<th id="指令" style="text-align:left;"> 指令     </th>
+<th id="op" style="text-align:left;">    OP </th>
+<th id="說明" style="text-align:left;">  說明        </th>
+<th id="語法" style="text-align:left;"> 語法              </th>
+<th id="語意" style="text-align:left;"> 語意         </th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align:left;"><p>L   </p></td>
+<td style="text-align:left;"><p>LD       </p></td>
+<td style="text-align:left;"><p>00    </p></td>
+<td style="text-align:left;"><p>載入word     </p></td>
+<td style="text-align:left;"><p>LD  Ra, [Rb+Cx]  </p></td>
+<td style="text-align:left;"><p>Ra=[Rb+Cx]  </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>L   </p></td>
+<td style="text-align:left;"><p>ST       </p></td>
+<td style="text-align:left;"><p>01    </p></td>
+<td style="text-align:left;"><p>儲存word     </p></td>
+<td style="text-align:left;"><p>ST  Ra, [Rb+Cx]  </p></td>
+<td style="text-align:left;"><p>Ra=[Rb+Cx] </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>A   </p></td>
+<td style="text-align:left;"><p>ADD      </p></td>
+<td style="text-align:left;"><p>13    </p></td>
+<td style="text-align:left;"><p>加法         </p></td>
+<td style="text-align:left;"><p>ADD Ra, Rb, Rc   </p></td>
+<td style="text-align:left;"><p>Ra=Rb+Rc    </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>J   </p></td>
+<td style="text-align:left;"><p>JMP      </p></td>
+<td style="text-align:left;"><p>26    </p></td>
+<td style="text-align:left;"><p>跳躍 (無條件) </p></td>
+<td style="text-align:left;"><p>JMP Cx           </p></td>
+<td style="text-align:left;"><p>PC=PC+Cx    </p></td>
+</tr>
+
+</tbody>
+</table>
 
 <p>然後，我們就可以用這幾個指令寫出以下的程式：</p>
 
-<p>位址 機器碼    標記  組合語言            對照的 C 語言
----- --------- ----- ----------------    ----------------------------
-0000 001F0018        LD   R1, K1         R1 = K1
-0004 002F0010        LD   R2, K0         R2 = K0
-0008 003F0014        LD   R3, SUM        R3 = SUM
-000C 13221000  LOOP: ADD  R2, R2, R1     R2 = R2 + R1
-0010 13332000        ADD  R3, R3, R2     R3 = R3 + R2
-0014 26FFFFF4        JMP  LOOP           goto LOOP
-0018 00000000  K0:   WORD 0              int K0=0
-001C 00000001  K1:   WORD 1              int K1=1
-0020 00000000  SUM:  WORD 0              int SUM=0</p>
+<table>
+<thead>
+<tr>
+<th id="位址" style="text-align:left;"> 位址 </th>
+<th id="機器碼" style="text-align:left;"> 機器碼    </th>
+<th id="標記__組合語言" style="text-align:left;"> 標記  組合語言           </th>
+<th id="對照的_c_語言" style="text-align:left;">  對照的 C 語言 </th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align:left;"><p>0000 </p></td>
+<td style="text-align:left;"><p>001F0018 </p></td>
+<td style="text-align:left;"><p>LD   R1, K1     </p></td>
+<td style="text-align:left;"><p>R1 = K1 </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>0004 </p></td>
+<td style="text-align:left;"><p>002F0010 </p></td>
+<td style="text-align:left;"><p>LD   R2, K0     </p></td>
+<td style="text-align:left;"><p>R2 = K0 </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>0008 </p></td>
+<td style="text-align:left;"><p>003F0014 </p></td>
+<td style="text-align:left;"><p>LD   R3, SUM    </p></td>
+<td style="text-align:left;"><p>R3 = SUM </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>000C </p></td>
+<td style="text-align:left;"><p>13221000 </p></td>
+<td style="text-align:left;"><p>LOOP: ADD  R2, R2, R1 </p></td>
+<td style="text-align:left;"><p>R2 = R2 + R1 </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>0010 </p></td>
+<td style="text-align:left;"><p>13332000 </p></td>
+<td style="text-align:left;"><p>ADD  R3, R3, R2 </p></td>
+<td style="text-align:left;"><p>R3 = R3 + R2 </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>0014 </p></td>
+<td style="text-align:left;"><p>26FFFFF4 </p></td>
+<td style="text-align:left;"><p>JMP  LOOP       </p></td>
+<td style="text-align:left;"><p>goto LOOP </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>0018 </p></td>
+<td style="text-align:left;"><p>00000000 </p></td>
+<td style="text-align:left;"><p>K0:   WORD 0          </p></td>
+<td style="text-align:left;"><p>int K0=0 </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>001C </p></td>
+<td style="text-align:left;"><p>00000001 </p></td>
+<td style="text-align:left;"><p>K1:   WORD 1          </p></td>
+<td style="text-align:left;"><p>int K1=1 </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>0020 </p></td>
+<td style="text-align:left;"><p>00000000 </p></td>
+<td style="text-align:left;"><p>SUM:  WORD 0          </p></td>
+<td style="text-align:left;"><p>int SUM=0 </p></td>
+</tr>
+
+</tbody>
+</table>
 
 <p>這個程式的行為模式，是會讓暫存器 R3 (對應到 SUM) 從 0, 1, 1+2, 1+2+3, .... 一路向上跑，而且是永無止境的無窮迴圈。
 因此我們會看到 R3 的內容會是 0, 1, 3, 6, 10, 15, 21, 28, 36, 45, 55 ... ，的情況。</p>
@@ -60,12 +170,57 @@ J       JMP         26      跳躍 (無條件)     JMP Cx                PC=PC+C
 
 <p>執行階段的動作根據指令的類型而有所不同。舉例而言，假如執行的指令是 ADD R1, R2, R1，那麼執行階段所進行的動作如下：</p>
 
-<p>格式    指令        OP      說明              語法                  執行動作
------   ---------   ------  ---------------   --------------------  ---------------------------
-L       LD          00      載入word          LD  Ra, [Rb+Cx]       R[ra] = m[rb+c16] (4byte)
-L       ST          01      儲存word          ST  Ra, [Rb+Cx]       m[rb+c16] = R[ra] (4byte)
-A       ADD         13      加法              ADD Ra, Rb, Rc        R[ra] = R[rb]+R[rc]
-J       JMP         26      跳躍 (無條件)     JMP Cx                PC = PC+c24</p>
+<table>
+<thead>
+<tr>
+<th id="格式" style="text-align:left;"> 格式 </th>
+<th id="指令" style="text-align:left;"> 指令    </th>
+<th id="op" style="text-align:left;">   OP </th>
+<th id="說明" style="text-align:left;">  說明        </th>
+<th id="語法" style="text-align:left;"> 語法    </th>
+<th id="執行動作" style="text-align:left;">               執行動作 </th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align:left;"><p>L   </p></td>
+<td style="text-align:left;"><p>LD  </p></td>
+<td style="text-align:left;"><p>00   </p></td>
+<td style="text-align:left;"><p>載入word  </p></td>
+<td style="text-align:left;"><p>LD  Ra, [Rb+Cx]   </p></td>
+<td style="text-align:left;"><p>R[ra] = m[rb+c16] (4byte) </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>L   </p></td>
+<td style="text-align:left;"><p>ST  </p></td>
+<td style="text-align:left;"><p>01   </p></td>
+<td style="text-align:left;"><p>儲存word  </p></td>
+<td style="text-align:left;"><p>ST  Ra, [Rb+Cx]   </p></td>
+<td style="text-align:left;"><p>m[rb+c16] = R[ra] (4byte) </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>A   </p></td>
+<td style="text-align:left;"><p>ADD </p></td>
+<td style="text-align:left;"><p>13   </p></td>
+<td style="text-align:left;"><p>加法     </p></td>
+<td style="text-align:left;"><p>ADD Ra, Rb, Rc   </p></td>
+<td style="text-align:left;"><p>R[ra] = R[rb]+R[rc] </p></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><p>J   </p></td>
+<td style="text-align:left;"><p>JMP </p></td>
+<td style="text-align:left;"><p>26   </p></td>
+<td style="text-align:left;"><p>跳躍 (無條件) </p></td>
+<td style="text-align:left;"><p>JMP Cx               </p></td>
+<td style="text-align:left;"><p>PC = PC+c24 </p></td>
+</tr>
+
+</tbody>
+</table>
 
 <h3 id="cpu0m">CPU0m 模組</h3>
 

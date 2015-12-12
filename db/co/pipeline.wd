@@ -12,7 +12,7 @@ Pipeline 是一種讓指令分成幾個步驟，然後兩個指令的不同步�
 
 那麼在理想的情況下，我們就能夠讓這些指令充分的重疊執行，如下圖所示。
 
-![圖、理想的 Pipeline 執行情況](../img/Pipeline1.jpg)
+![[圖、理想的 Pipeline 執行情況]](Pipeline1.jpg)
 
 如此、只要讓每個步驟所需的時間幾乎一樣，然後將 Clock 調快五倍，就能讓速度整整加快五倍。
 
@@ -24,7 +24,7 @@ Hazard 有好幾種，像是資料圍障 (data hazard)、快取失敗 (cache mis
 
 流水線架構的設計，通常必須用暫存器圍牆 (Register wall) 將每個步驟之間相互隔開，以避免線路之間的干擾，如下所示：
 
-![圖、以暫存器圍牆分隔流水線架構的每個階段](../img/pipeline_register_wall.jpg)
+![[圖、以暫存器圍牆分隔流水線架構的每個階段]](pipeline_register_wall.jpg)
 
 Pipeline 處理器最困難的地方，就是要盡可能的減少這些 hazard。然而、有些 hazard 是可以用硬體方式消除的，但是很多 hazard 的消除卻是需要編譯器的配合才能夠做得到。
 

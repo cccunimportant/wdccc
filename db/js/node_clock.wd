@@ -1,0 +1,28 @@
+# Node.js 版的小時鐘
+
+JavaScript 內建的函數 setTimeOut() 是一個採用回呼方式設計的函數，以下是一個用回呼來印出時間的範例。
+
+檔案： @[[clock.js]](code/clock.js)
+
+```
+function printTime() {
+  console.log(new Date());
+  setTimeout(printTime, 1000);
+}
+
+setTimeout(printTime, 1000);
+```
+
+執行結果
+
+```
+nqu-192-168-61-142:code mac020$ node clock
+Mon Oct 12 2015 16:37:38 GMT+0800 (CST)
+Mon Oct 12 2015 16:37:39 GMT+0800 (CST)
+Mon Oct 12 2015 16:37:40 GMT+0800 (CST)
+Mon Oct 12 2015 16:37:41 GMT+0800 (CST)
+Mon Oct 12 2015 16:37:42 GMT+0800 (CST)
+....
+```
+
+在上述的 printTime() 函數中，透過 setTimeout(printTime, 1000) 會在 1 秒之後再度呼叫 printTime() ，於是每隔 1 秒就會印出一次時間，這是一個結合遞迴與回呼的程式。

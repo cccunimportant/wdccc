@@ -1,0 +1,22 @@
+# 瀏覽器型的手機程式 -- PhoneGap
+
+* <http://phonegap.com/>
+ * [PhoneGap Documentation](http://docs.phonegap.com/)
+ * [Install PhoneGap](http://phonegap.com/install/) -- 用 npm 安裝， 2015/11/28 失敗！
+ * 解法： [Android 安裝 PhoneGap 3.3 流程(及問題排除)](https://www.dotblogs.com.tw/maplenote/2014/01/16/phonegap_android_install)
+ * <https://www.npmjs.com/package/phonegap>
+ * [YouTube: Installing Nodejs and creating a phonegap project](https://www.youtube.com/watch?v=b8zAq6vtTWk) (MAC)
+
+* [Desktop App](http://docs.phonegap.com/getting-started/1-install-phonegap/desktop/) -- 下載後安裝，包含第一個程式範例。PC 和手機都要安裝
+ * PC : [Step 1: Install PhoneGap](http://docs.phonegap.com/getting-started/1-install-phonegap/desktop/)
+ * 手機 : [Step 2: Install Mobile App](http://docs.phonegap.com/getting-started/2-install-mobile-app/)
+ * 創建 APP : [Step 3: Create Your App](http://docs.phonegap.com/getting-started/3-create-your-app/desktop/)
+ * 執行 APP : [Step 4: Run Your App](http://docs.phonegap.com/getting-started/4-run-your-app/desktop/)
+ * 更多 : [Step 5: Going Further](http://docs.phonegap.com/getting-started/5-going-further/)
+ * 問題： 2015/11/28 我按照上述步驟測試失敗，問題可能是我用手機透過 USB 直接連電腦，但這樣我的 ip 應該設多少呢？
+
+
+* <https://www.facebook.com/PhoneGapTW>
+* <http://www.phonegaptutorial.com/>
+* <http://www.phonegap.co.in/phonegap-tutorial/>
+* [元智跨平台手機APP設計(用PhoneGap將網站轉APP)第2次上課](http://terry28853669.pixnet.net/blog/post/59943727)

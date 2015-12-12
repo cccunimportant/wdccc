@@ -1,0 +1,8 @@
+{
+  "name": "staticServer",
+  "version": "0.0.0",
+  "main": "staticServer.js",
+  "dependencies": {
+    "express": "^4.13.3"
+  }
+}

@@ -1,0 +1,39 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="../../gospa.js"></script>
+<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[JavaScript 語言]](js:home) </title>
+
+<p><a href="db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="db/book/home.html"" class="innerLink">教科書</a>  / <a href="db/js/home.html"" class="innerLink">JavaScript 語言</a>  </p>
+
+<h1 id="nodejs">Node.js 版的小時鐘</h1>
+
+<p>JavaScript 內建的函數 setTimeOut() 是一個採用回呼方式設計的函數，以下是一個用回呼來印出時間的範例。</p>
+
+<p>檔案： <a href="db/js/code/clock.js" class="innerLink">clock.js</a></p>
+
+<pre><code>function printTime() {
+  console.log(new Date());
+  setTimeout(printTime, 1000);
+}
+
+setTimeout(printTime, 1000);
+</code></pre>
+
+<p>執行結果</p>
+
+<pre><code>nqu-192-168-61-142:code mac020$ node clock
+Mon Oct 12 2015 16:37:38 GMT+0800 (CST)
+Mon Oct 12 2015 16:37:39 GMT+0800 (CST)
+Mon Oct 12 2015 16:37:40 GMT+0800 (CST)
+Mon Oct 12 2015 16:37:41 GMT+0800 (CST)
+Mon Oct 12 2015 16:37:42 GMT+0800 (CST)
+....
+</code></pre>
+
+<p>在上述的 printTime() 函數中，透過 setTimeout(printTime, 1000) 會在 1 秒之後再度呼叫 printTime() ，於是每隔 1 秒就會印出一次時間，這是一個結合遞迴與回呼的程式。 </p>
+
+</body>
+</html>

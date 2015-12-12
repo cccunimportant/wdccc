@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>留言板</title>
+    <!-- Bootstrap core CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+body {
+  padding-top: 60px;
+  padding-bottom: 20px;
+}
+.panel-title {
+  display:inline;
+  vertical-align: bottom;
+}
+.panel-body {
+  min-height: 60px;
+}
+    </style>
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">留言板</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <form class="navbar-form navbar-right">
+            <div class="form-group">
+              <input id="user" type="text" placeholder="帳號" class="form-control">
+            </div>
+            <div class="form-group">
+              <input id="password" type="password" placeholder="密碼" class="form-control">
+            </div>
+            <button type="button" class="btn btn-success" onclick="login()">登入</button>
+            <button type="button" class="btn btn-success" onclick="logout()">登出</button>
+          </form>
+        </div><!--/.navbar-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-3">
+        </div>
+        <div class="col-sm-6" id="main">
+          <div id="edit_panel" class="panel panel-primary">
+            <div class="panel-heading">
+              <p>
+              <h3 id="user_title" class="panel-title">使用者尚未登入</h3>
+              <button type="button" class="btn btn-sm btn-info pull-right" onclick="addMessage()">留言</button> 
+              </p>
+            </div>
+            <div id="edit_body" class="panel-body" contentEditable="true">
+              
+            </div>
+          </div>
+        </div><!-- /.col-sm-4 -->
+        <div class="col-sm-3">
+        </div>
+      </div>
+    </div> <!-- /container -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script>
+$(document).ready(function() {
+  showAll();
+  var user = localStorage.getItem("user");
+  if (user !== null) {
+    $('#user').val(user);
+    $('#user_title').html(user);
+  }    
+});      
+      
+function login() {
+  var user = $('#user').val();
+  var password = $('#password').val();
+  localStorage.setItem("user", user);
+  localStorage.setItem("password", password); 
+  $('#user_title').html(user);
+}
+
+function logout() {
+  localStorage.removeItem("user");
+  localStorage.removeItem("password");  
+}
+
+var panelTemplate = 
+'<div class="panel panel-primary">\
+<div class="panel-heading">\
+<p><h3 class="panel-title">{?=user?} -- {?=time?}</h3></p>\
+</div>\
+<div class="panel-body">{?=message?}</div>\
+</div>';
+
+
+function showAll() {
+  for (var key in localStorage) {
+    if (key.startsWith("fb:")) {
+      var message = localStorage[key];
+      var parts = key.split("::");
+      var user = parts[1];
+      var time = parts[2];
+      appendMessageBox(user, time, message);
+    }
+  }
+}
+
+function appendMessageBox(user, time, message) {
+  var panelHtml = panelTemplate.replace('{?=user?}', user).replace('{?=time?}', time).replace('{?=message?}', message);
+  $(panelHtml).insertAfter('#edit_panel');
+}
+
+function user() { return localStorage.getItem("user"); }
+
+
+function getTime() {
+  var d = new Date();
+  return d.getFullYear()+"/"+d.getMonth()+"/"+d.getDay()+" "+d.getHours()+":"+d.getMinutes()+":"+d.getSeconds();
+}
+
+function addMessage() {
+  if (user() === null) {
+    alert("請先登入！");
+    return;
+  }
+  var now = getTime();
+  var key = 'fb::'+user()+'::'+now;
+  var message = $('#edit_body').html().trim();
+  if (message === "") {
+    alert("您尚未輸入任何留言！");
+    return;
+  }
+  localStorage.setItem(key, message);
+  appendMessageBox(user(), now, message);
+  $('#edit_body').html('');
+}
+
+    </script>
+  </body>
+</html>

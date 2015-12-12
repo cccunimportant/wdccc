@@ -1,0 +1,118 @@
+# 邏輯語 -- 正式語法 LLG 與實驗語法 ELG 的差異？
+
+我目前全力在學習與研究《邏輯語》， 原本邏輯語採用的 parser 是以 BNF 定義的語法。舉例而言，邏輯語官方網站 LLG 中由 [John Cowan](http://mercury.ccil.org/~cowan/) 所開發的  [Official LLG Parser](https://mw.lojban.org/papri/Official_LLG_Parser) 就是以 BNF 定義的語法。
+
+但在 2000 年以後，邏輯語的 parser 似乎就轉向了 PEG 形式定義的語法，其中 [camxes](http://mw.lojban.org/extensions/ilmentufa/camxes.html) 是完全符合官方語法的 parser ，但是 parse 的速度卻非常的慢，我用 camxes 去 parse 短短一兩百字的 [北風與太陽故事](http://mw.lojban.org/extensions/ilmentufa/o/)，經測試僅 parse 動作就需要花費五秒的時間。
+
+這種速度顯然是不太能接受的，於是似乎有一些新的邏輯語 parser 開始採用簡化後的語法，像是 [ilmentufa](https://mw.lojban.org/papri/La_Bangu:_ilmentufa) 就同時支援  [『官方正式語法版』](http://mw.lojban.org/extensions/ilmentufa/camxes.html) 以及 [『實驗性語法版』](http://mw.lojban.org/extensions/ilmentufa/camxes-exp.html) 。
+
+而這個實驗性語法似乎和一個稱為 [La_Bangu](https://mw.lojban.org/papri/La_Bangu) 的新式教學法有關，這個教學法從語句開始出發，和原本 LLG 官網中的教法有所不同，因此同樣屬於 Unofficial 的 experimental 作法。
+
+La_Bangu 教法的書籍主要是由 La Gleki's 所寫的 [Crash Course in Lojban, The guide to the naturalistic logical language, Published 2016](https://mw.lojban.org/papri/L17-01) ， 而這本書似乎衍生出一種簡化後的邏輯語語法，稱為 [Extended Lojban Grammar, (ELG)](https://mw.lojban.org/papri/ELG) 。
+
+而更新更快的一種稱為 zantufa 的 parser ，也只支援實驗語法 ELG，因此在邏輯語的世界裡，這兩種語法的爭論似乎被挑了起來。
+
+有些人認為 ELG 語法沒辦法符合一些邏輯語的現有著作，因此 ELG 到底是否會被 LLG 接受為正式語法，仍然持續爭論之中。
+
+而這些爭論的核心，似乎與 BNF 和 PEG 兩種不同的描述語法有關，所以我必須先理解這兩種描述語法的差異之所在。
+
+## Parsing Expression Grammar (PEG) 是甚麼?
+
+我早就學過 BNF 語法了，但是對 PEG 到底是甚麼卻一頭霧水？
+
+為了理解 PEG ，我找到了下列文章，並且正在閱讀當中，歡迎您與我一同討論研究這個主題。
+
+* [PEG: Ambiguity, precision and confusion](http://jeffreykegler.github.io/Ocean-of-Awareness-blog/individual/2015/03/peg.html) 
+
+
+上文重點筆記：
+
+```
+Roberto Ierusalimschy, author of Lua and one of the best programmers of our time, has written a PEG-based parser of his own. Roberto is fully aware of PEG's limits, but he makes a very good case for choosing PEG as the basis of LPEG, his parser generator. LPEG is intended for use with Lua, a ruthlessly minimal language. Roberto's minimalist implementation limits the power of his parser, but his aim is to extend regular expressions in a disciplined way, and a compact parser of limited power is quite acceptable for his purposes.
+```
+
+但是在閱讀完上文之後，我完全感受不到 PEG 到底有甚麼好處，為何邏輯語的 parser 撰寫者要改用新的實驗語法 ELG 呢？
+
+舊語法既然符合 BNF ，處理起來應該比較順利，但是舊語法的剖析樹通常很深，導致整個結構並不容易一眼理解。
+
+新語法似乎可以用很淺的剖析樹就分析完 lojban 的語句，難道這就是新 parser 採用 ELG 的原因嗎？
+
+到底 ELG 在學習上有何好處呢？ BNF 難道就無法描述 ELG 嗎？
+
+我目前對這些問題還感到很困惑？ 如果有人可以告訴我就好了！
+
+## 可能的答案
+
+關於這點，似乎下列文章可能有答案！
+
+* <https://mw.lojban.org/papri/PEG>
+
+
+```
+Parsing Expression grammars. Parsing expression grammars allow for full lookahead and backtracking in time linear to the input size. This makes them more expressive than YACC or BNF, which are limited in the how far they look ahead, and as a consequence how far they can backtrack. They also require more memory than either YACC or BNF to parse an equivalently sized input.
+
+PEG grammars also do not have a separate lexing stage. Lexing and parsing are performed at the same time, using the same language for both.
+```
+
+
+而有關舊語法的問題，可以參考下列這篇文章。
+
+* [Issues With The Lojban Formal Grammar](http://users.digitalkingdom.org/~rlpowell/hobbies/lojban/grammar/)
+
+在上文的最下面一段，我似乎找到了解答，邏輯語目前並非一個可用 BNF 描述的語言，如果硬要描述的話，BNF 會變得非常龐大。
+
+換句話說，邏輯語的語法並非 Context-Free Grammar ，這恐怕才是為何要移向 PEG 的原因了。
+
+```
+Old Approach
+
+For a while I was trying to adjust the BNF grammar (after conversion to ABNF) to do The Right Thing with respect to elidable terminators, because that's the hard part. I have since come to the conclusion that elidable terminators can merely be made optional if longest-match disambiguation is used, but that puts us in the realm of specifying the parser again, which is what I was trying to avoid.
+
+I still think that one could probably get BNF to do The Right Thing with respect to elidable terminators, but it would be Very, VERY hard. I would be surprised if it could be done without expanding the grammar by a factor of 20 or so. No, that's not an exaggeration or a joke.
+
+Update 20 Sep 2005: I am no longer so sure that it's possible, but I don't have any good reason; just a change in my gut feeling. I also think a 20 times size increase is probably conservative.
+
+To give you a sense of what I mean, consider fixing 'kei'. This requires having the grammar descending from a NU clause to eat all brivla it sees until the next kei. Because BNF is inherently ambiguous, forcing this requires that every place where two brivla could occur next to each other be re-written`to only form two separate selbri when there is a kei between them, but only inside a NU clause. If this is possible in BNF/CFGs, and I'm not totally certain it is, it requires nearly doubling the size of the grammar because you have to have everything under 'subsentence' copied into a "[foo]_during_NU" form, or whatever.
+
+When you're done with that, try another big elidable terminator, like 'ku'. This will require the same thing, but the ku additions to the grammar and the nu additions to the grammar must work nested, in either order. That's two more complete sets, not including the 'ku' or 'kei' sets. You now have a grammar on the order of four times the original size, and you've fixed only two elidable terminators.
+
+Good luck; let me know when you're done.
+```
+
+於是、才會有新一代的語法 CLL version 2.0 提出來，但是這尚未定案，仍然處於實驗階段。
+
+* <https://mw.lojban.org/papri/PEG#4th_Baseline_Machine_Grammar_Proposal>
+* [suggestions for CLL, second edition](https://mw.lojban.org/papri/suggestions_for_CLL,_second_edition)
+
+但是對我來說，這樣的現象感覺像是一種退化，而不是進化。
+
+因為 CLL version 1.0 是在 1997 年提出來的，現在都已經 2015 年了，
+
+* [the Complete Lojban Language](https://mw.lojban.org/papri/the_Complete_Lojban_Language) (CLL)
+
+```
+The Complete Lojban Language (also spelled as CLL, The Book, The Refgram) originally published in year 1997 is a complete description of the artificial language Lojban.
+```
+
+18 年的時間都沒有改版，而 PEG 的好處在理論上又沒有明顯的說服力，為何要從一個速度很快的 BNF parser 修改為速度很慢的 PEG parser ，恐怕是很難令人信服的事情啊！
+
+
+難道我們不能限制 lojban 的語法，讓整個語言得以順利用 BNF 描述嗎？ lojban 真的難以納入 BNF 規範的描述嗎？ lojban 真的不能適用 Context Free Grammar 嗎？
+
+我的疑問似乎越來越多，但是可以研究的問題也越來越多了！
+
+## 研究方向
+
+寫完這篇，我忍不住要提出一個問題？
+
+邏輯語官方組織 LLG 似乎走錯了方向！
+
+既然核心是欄位填充基制，那真的還需要一個完整的 BNF 來描述嗎？
+
+只要能將語句一句一句的分開，然後讓各個欄位都被正確填好，那又何必要定義詳細的 BNF 語法呢？
+
+從這個角度看，所謂的 parse 問題根本就不存在阿？
+
+因為這不是傳統的 parse 問題，而是 slot filling 問題，這和 BNF 規範的東西是完全無關的。
+
+我決定將這個觀點寫成一篇論文，然後根據這個原則來實作一個 slot filling 導向的邏輯語填充器。

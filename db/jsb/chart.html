@@ -4,9 +4,9 @@
 </head>
 <body>
 <script src="../../gospa.js"></script>
-<title> [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[JavaScript 前端技術]](jsb:home) </title>
+<title> 陳鍾誠  / 教科書  / JavaScript 前端技術 / 圖表繪製</title>
 
-<p><a href="db/ccc/home.html"" class="innerLink">陳鍾誠</a>  / <a href="db/book/home.html"" class="innerLink">教科書</a>  / <a href="db/jsb/home.html"" class="innerLink">JavaScript 前端技術</a>  </p>
+ [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[JavaScript 前端技術]](jsb:home) 
 
 <h1 id="">圖表繪製</h1>
 
@@ -14,13 +14,194 @@
 
 <p>Vis.js 有 3D 曲線圖，但是互動性不如 d3.js ，但是 d3.js 使用並不容易，封裝為 c3.js 之後就比較容易使用了。</p>
 
-<p>如果您只想選一個使用，我會建議 vis.js 。</p>
+<p>如果您只想選一個使用，我會建議 vis.js (因為完整又有 3D 繪圖) 。</p>
 
 <ul>
 <li>vis.js :  <a href="http://visjs.org/">http://visjs.org/</a></li>
 <li>c3.js :  <a href="http://c3js.org/">http://c3js.org/</a></li>
 <li>d3.js :  <a href="http://d3js.org/">http://d3js.org/</a></li>
+<li>chart.js : <a href="http://www.chartjs.org/">http://www.chartjs.org/</a></li>
+<li>flot.js : <a href="http://www.flotcharts.org/">http://www.flotcharts.org/</a></li>
 </ul>
+
+<h2 id="1">範例 1</h2>
+
+<p>檔案： <a href="db/jsb/code/visjs/simpleNetwork.html" class="innerLink">simpleNetwork.html</a></p>
+
+<pre><code>&lt;!doctype html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;Network | Basic usage&lt;/title&gt;
+
+  &lt;script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.8.1/vis.min.js"&gt;&lt;/script&gt;
+  &lt;link href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.8.1/vis.min.css" rel="stylesheet" type="text/css" /&gt;
+
+  &lt;style type="text/css"&gt;
+    #mynetwork {
+      width: 600px;
+      height: 400px;
+      border: 1px solid lightgray;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;p&gt;
+  Create a simple network with some nodes and edges.
+&lt;/p&gt;
+
+&lt;div id="mynetwork"&gt;&lt;/div&gt;
+
+&lt;script type="text/javascript"&gt;
+  // create an array with nodes
+  var nodes = new vis.DataSet([
+    {id: 1, label: 'Node 1'},
+    {id: 2, label: 'Node 2'},
+    {id: 3, label: 'Node 3'},
+    {id: 4, label: 'Node 4'},
+    {id: 5, label: 'Node 5'}
+  ]);
+
+  // create an array with edges
+  var edges = new vis.DataSet([
+    {from: 1, to: 3},
+    {from: 1, to: 2},
+    {from: 2, to: 4},
+    {from: 2, to: 5}
+  ]);
+
+  // create a network
+  var container = document.getElementById('mynetwork');
+  var data = {
+    nodes: nodes,
+    edges: edges
+  };
+  var options = {};
+  var network = new vis.Network(container, data, options);
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<h2 id="2">範例 2</h2>
+
+<p>檔案： <a href="db/jsb/code/visjs/simpleBar.html" class="innerLink">simpleBar.html</a></p>
+
+<pre><code>&lt;!DOCTYPE HTML&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Graph2d | Bar Graph Example&lt;/title&gt;
+
+    &lt;style type="text/css"&gt;
+        body, html {
+            font-family: sans-serif;
+        }
+    &lt;/style&gt;
+
+    &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.8.1/vis.min.js"&gt;&lt;/script&gt;
+    &lt;link href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.8.1/vis.min.css" rel="stylesheet" type="text/css" /&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h2&gt;Graph2d | Bar Graph Example&lt;/h2&gt;
+
+&lt;div id="visualization"&gt;&lt;/div&gt;
+
+&lt;script type="text/javascript"&gt;
+
+    var container = document.getElementById('visualization');
+    var items = [
+        {x: '2014-06-11', y: 10},
+        {x: '2014-06-12', y: 25},
+        {x: '2014-06-13', y: 30},
+        {x: '2014-06-14', y: 10},
+        {x: '2014-06-15', y: 15},
+        {x: '2014-06-16', y: 30}
+    ];
+
+    var dataset = new vis.DataSet(items);
+    var options = {
+        style:'bar',
+        barChart: {width:50, align:'center'}, // align: left, center, right
+        drawPoints: false,
+        dataAxis: {
+            icons:true
+        },
+        orientation:'top',
+        start: '2014-06-10',
+        end: '2014-06-18'
+    };
+    var graph2d = new vis.Graph2d(container, items, options);
+
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<h2 id="3">範例 3</h2>
+
+<p>檔案： <a href="db/jsb/code/visjs/graph3d.html" class="innerLink">graph3d.html</a></p>
+
+<pre><code>&lt;!doctype html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;Graph 3D demo&lt;/title&gt;
+
+  &lt;style&gt;
+    body {font: 10pt arial;}
+  &lt;/style&gt;
+
+  &lt;script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.8.1/vis.min.js"&gt;&lt;/script&gt;
+
+  &lt;script type="text/javascript"&gt;
+    var data = null;
+    var graph = null;
+
+    function custom(x, y) {
+      return (Math.sin(x/50) * Math.cos(y/50) * 50 + 50);
+    }
+
+    // Called when the Visualization API is loaded.
+    function drawVisualization() {
+      // Create and populate a data table.
+      data = new vis.DataSet();
+      // create some nice looking data with sin/cos
+      var counter = 0;
+      var steps = 50;  // number of datapoints will be steps*steps
+      var axisMax = 314;
+      var axisStep = axisMax / steps;
+      for (var x = 0; x &lt; axisMax; x+=axisStep) {
+        for (var y = 0; y &lt; axisMax; y+=axisStep) {
+          var value = custom(x,y);
+          data.add({id:counter++,x:x,y:y,z:value,style:value});
+        }
+      }
+
+      // specify options
+      var options = {
+        width:  '600px',
+        height: '600px',
+        style: 'surface',
+        showPerspective: true,
+        showGrid: true,
+        showShadow: false,
+        keepAspectRatio: true,
+        verticalRatio: 0.5
+      };
+
+      // Instantiate our graph object.
+      var container = document.getElementById('mygraph');
+      graph = new vis.Graph3d(container, data, options);
+    }
+  &lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body onload="drawVisualization();"&gt;
+&lt;div id="mygraph"&gt;&lt;/div&gt;
+
+&lt;div id="info"&gt;&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
 
 </body>
 </html>

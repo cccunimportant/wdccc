@@ -1,0 +1,56 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="../../gospa.js"></script>
+<title> 陳鍾誠  / 教科書  / 邏輯語 Lojban / dic2json.js -- 字典轉換為 JSON 格式</title>
+
+ [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[邏輯語 Lojban]](lojban:home) 
+
+<h1 id="dic2jsonjsjson">dic2json.js -- 字典轉換為 JSON 格式</h1>
+
+<p>檔案：  <a href="db/lojban/code/dic2json.js" class="innerLink">dic2json.js</a></p>
+
+<p>用法： node dic2json.js lojban.dic > lojban.json</p>
+
+<pre><code>var rl = require('readline');
+var fs = require('fs');
+var c  = console;
+
+function dic2json(file) {
+  var dic = {};
+
+  var reader = rl.createInterface({ 
+    input: fs.createReadStream(file)
+  });
+
+  c.log("{");
+
+  reader.on('line', function (line) {
+    var line1 = line.split("//")[0].trim();
+    if (line1.length &gt; 0) {
+      var parts = line1.split("=");
+      var word  = parts[0].trim();
+      var towords = parts[1].split("|");
+      c.log('"%s":"%s",', word, towords[0].trim());
+      for (var i in towords) {
+        dic[word] = towords[i];
+        c.log('"%s":"%s",', towords[i].trim(), word);
+      }
+    }
+  });  
+
+  reader.on("close",function(){    
+    c.log('"":""}');
+  })
+}
+
+if (process.argv.length === 3)
+  dic2json(process.argv[2]);
+else
+  c.log("Usage : node dic2json [file.dic] &gt; [file.json]");
+</code></pre>
+
+</body>
+</html>

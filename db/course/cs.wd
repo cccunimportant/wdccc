@@ -1,0 +1,41 @@
+# 資工傳統 (氣宗) 的修課方法
+
+| 教師 | 課程 | 學期 | 評 | 說明 |
+|-----|------|---------|------|-------|
+| [Nick](https://www.coursera.org/instructor/~217) | [Computer Science 101](https://www.coursera.org/course/cs101) | 一上 | 好 | Coursera : Stanford 計算機概論 |
+| [吴宁](https://www.coursera.org/instructor/wuning) | [系统平台与计算环境](https://www.coursera.org/learn/jisuanji-wangluo) | 一上 | 好 | Coursera : 西安交大 計算機概論 |
+| [江蕙如](http://www.ee.nctu.edu.tw/People/Professor/individual.php?TeacherID=T9407) | [邏輯設計](http://ocw.nctu.edu.tw/course_detail.php?bgid=8&gid=0&nid=174#.Vk5qjXYrJki) | 一下 | 好 | 交大 OCW [Youtube 頻道(可快轉)](https://www.youtube.com/playlist?list=PLj6E8qlqmkFuO3Fy2TAswX05PgaV3HsvF) |
+| 自選語言 | [[程式類課程]](course:coding) | 一上 | 必 | 請選擇一程式語言並達到精熟程度 |
+| [Philip Klein](https://www.coursera.org/instructor/~243) | [Coding the Matrix](https://www.coursera.org/course/matrix) | 一下 | 好 | Coursera : Brown University (沒看到特徵向量) |
+| [陈斌](https://www.coursera.org/instructor/bin-chen) | [离散数学概论](https://www.coursera.org/course/dmathgen) | 一下 |   讚 | Coursera : 北京大學 |
+| 马昱春 | [组合数学](https://www.xuetangx.com/courses/TsinghuaX/60240013_2015X/2015_T1/about) | 一下 | 好 | 學堂在線 : 清華大學 |
+| [[陳鍾誠]](course:home) | [[機率與統計]](st1:home) | 一下  | R | 使用 [[R 軟體]](r:home) 輔助學習 |
+| [Don H. Johnson](https://www.coursera.org/instructor/~102) | [Fundamentals of Electrical Engineering](https://www.coursera.org/course/eefun) | 一下 | 讚 | Coursera:Rice (適合資工，含訊號處理) |
+| 华成英 | [模拟电子技术基础](https://www.xuetangx.com/courses/course-v1:TsinghuaX+20250064_1X+2015_T2/about) | 一下 | 讚 | 學堂在線 : 清華大學 |
+| 黃能富 | [電腦網路概論](http://www.sharecourse.net/sharecourse/course/view/courseInfo/568) | 一下 | 好 | [ShareCourse](http://www.sharecourse.net/) |
+| [Shimon](https://www.coursera.org/instructor/shimon) | [nand2tetris (Part I)](https://www.coursera.org/course/nand2tetris1) | 二上 | 讚 | 設計電腦 - 計算機結構 |
+| [Shimon](https://www.coursera.org/instructor/shimon) | [nand2tetris (Part II)](http://www.nand2tetris.org/) | 二下 | 好 |  設計電腦 - 系統程式 (沒影片) |
+| [陆俊林](https://www.coursera.org/instructor/pkuljl) | [计算机组成](https://class.coursera.org/pkuco-001) | 二上 | 讚 | 可與 [nand2tetris](http://www.nand2tetris.org/) 和 [[計算機結構]](co1:home) 搭配 |
+| [袁春风](https://www.coursera.org/instructor/cfyuan) | [计算机系统基础（一）](https://www.coursera.org/course/njuics1) <br/>程序的表示、转换与链接 | 二上 | 好 | 可與 [nand2tetris](http://www.nand2tetris.org/) 搭配，Coursera:南京大學 |
+| [张铭](https://www.coursera.org/instructor/mzhang) | [数据结构基础](https://www.coursera.org/learn/shuju-jiegou-suanfa/) | 二下 | 普 | Coursera : 北京大學  |
+| [刘家瑛](https://www.coursera.org/instructor/liujiaying) | [算法基础](http://ocw.nctu.edu.tw/course_detail.php?bgid=8&gid=0&nid=493#.Vk5q7nYrJkh) | 二下 | 好 | Coursera : 北京大學 |
+| [张铭](https://www.coursera.org/instructor/mzhang) | [高级数据结构与算法](https://www.coursera.org/learn/gaoji-shuju-jiegou) | 二下 | 普 | Coursera : 北京大學  |
+| [張智星](http://mirlab.org/jang/) | [資料結構與演算法](https://www.coursera.org/learn/gaoji-shuju-jiegou) | 二下 | 好 | U.camdemy : 台灣大學  |
+| [江蕙如](http://www.ee.nctu.edu.tw/People/Professor/individual.php?TeacherID=T9407) | [演算法](http://ocw.nctu.edu.tw/course_detail.php?bgid=8&gid=0&nid=493#.Vk5q7nYrJkh) | 二下 | 好 | 交大 OCW [Youtube 頻道(可快轉)](https://www.youtube.com/playlist?list=PLj6E8qlqmkFtoRpLn6IXnH_eboef-3QvZ) |
+| [Kubiatowicz](http://www.cs.berkeley.edu/~kubitron/) | [OS and System Programming](https://www.youtube.com/watch?v=XgQo4JkN4Bw&list=PL3289DD0D0F0CD4A3)  | 三上 |  | (YouTube) UCBerkeley [CS162 教材](https://cs162.eecs.berkeley.edu/) |
+| [骆斌](https://www.coursera.org/instructor/~3494) | [计算机操作系统](https://www.coursera.org/learn/jisuanji-caozuo-xitong) | 三上 | 普 | Coursera : 南京大學 |
+| [陈向群](https://www.coursera.org/instructor/chenxiangqun) | [操作系统原理](https://www.coursera.org/course/os) | 三上 |  普 | Coursera : 北京大學 |
+| [沈晴霓](https://www.coursera.org/instructor/shenqingni) | [操作系统与虚拟化安全](https://www.coursera.org/course/osvirtsecurity) | 三上 |  普 | Coursera : 北京大學 |
+| [Alex Aiken](https://www.coursera.org/instructor/~28) | [Compilers](https://www.coursera.org/course/compilers) | 三上 |  | Coursera Stanford |
+| [[陳鍾誠]](course:home) | [[人工智慧]](ai:home) | 三下 | 易 | 使用 JavaScript 實作 |
+| [Aggelos](https://www.coursera.org/instructor/~566) | [Image and Video Processing](https://www.coursera.org/course/digital) | 三下 |  | Coursera : Northwestern University |
+| [Michael Mannino](https://www.coursera.org/instructor/~2393) | [Database Management Essentials](https://www.coursera.org/learn/database-management) | 三下 |  | Coursera : University of Colorado System |
+| [Nathan Kutz](https://www.coursera.org/instructor/~618) | [Scientific Computing](https://www.coursera.org/course/scientificcomp) | 三下 |  | Coursera : University of Washington |
+| [Jonathan Katz](https://www.coursera.org/instructor/~2061) | [Cryptography](https://www.coursera.org/course/cryptography) | 三下 |  | Coursera : University of Maryland |
+| [林軒田](https://www.coursera.org/instructor/htlin) | [機器學習基石](https://www.coursera.org/course/ntumlone) | 四上 | 好 | 理論基礎 |
+| [林軒田](https://www.coursera.org/instructor/htlin) | [機器學習技法](https://www.coursera.org/course/ntumltwo) | 四上 |  好 | 方法實作 |
+| [Ullman](https://www.coursera.org/instructor/~215) | [Automata](https://www.coursera.org/course/automata) | 四上 | 好 | Coursera : Stanford , [Automata筆記](http://www.evanlin.com/moocs-coursera-automata-note1/) |
+| [Zhenyu Chen](https://www.coursera.org/instructor/zychen) | [软件测试](https://www.coursera.org/learn/ruanjian-ceshi) | 四上 | 好 | Coursera : 南京大學 (Java) |
+| [李秀副](https://www.coursera.org/instructor/htlin) | [软件工程](https://www.xuetangx.com/courses/TsinghuaX/34100325X/2015_T1/about) | 四上 | 好 | [学堂在线](https://www.xuetangx.com/courses?org=29&cid=117&page_type=0) [清华大学](https://www.xuetangx.com/courses?org=29&cid=117&page_type=0) |
+| [刘田](https://www.edx.org/bio/liu-tian) | [理论计算机科学基础](https://www.edx.org/course/li-lun-ji-suan-ji-ke-xue-ji-chu-pekingx-04830260x-0) | 四下 | 好 | edX : 北京大學 , 參考書： [[計算理論]](ct:home) |
+| [[陳鍾誠]](course:home) | [[計算語言學]](cl1:home) | 四下 | 易 | 使用 C + JavaScript 實作 |

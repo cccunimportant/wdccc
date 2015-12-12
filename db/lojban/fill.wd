@@ -1,0 +1,255 @@
+# 填充
+
+## 指定填充類型
+
+如果klama有一个“位”可以表示来或去的时间，那就非常美妙了，但是它没有（而且你大概也不太乐意学习一个六个位的selbri！）。为了解决selbri位不足的问题，逻辑语准备了一系列的结构词（cmavo），它们的作用是给selbri添加额外的位。在这里我们需要用到cmavo就是ti'u，意思是：“发生在……的时间”。所以我们现在可以这样说：
+
+```
+mi klama ti'u la daucac.
+我到来的时间是10:00。
+```
+
+klama在这里表达了六种事物间的关系：一个行者，一个目的地，一个出发地，一条路径，一种交通工具，还有一个“事件发生的时刻”。
+
+klama: x1 comes/goes to destination x2 from origin x3 via route x4 using means/vehicle x5.
+
+## 時間
+
+detri : x1 is the date [day,week,month,year] of event/state x2, at location x3, by calendar x4.
+
+日期的gismu是detri，位结构如下：
+
+X1是时间（或状态）X2的日期，位于X3位置，根据X4的历法
+
+
+就像tcika一样，大多数detri的位可以不用。比如，位置（X3）只有在我们讨论不同的时区、或星球时是重要的，而历法（X4）默认情况下指公历——如果你需要使用它的话，比如阿拉伯历法或中国历法（农历），你可以用le xrabo或le jungo填充这个位置（通常情况下，语境是非常重要的，在关于伊斯兰历史的讨论中，我们很有可能默认使用的是阿拉伯历法）。
+
+微妙之处在于X1处的数字。通常我们并不会特别指出日期、星期、月份和年份！为了防止混淆，我们使用了下面的约定：
+*如果只有一个数字，那么这是日期。例如：li pano 就是“十号”。
+*如果有两个数字，那么它们就是日期和月份。例如：li pano pi'e pare就是“十二月十号”。
+*如果有三个数字，那么它们就是日、月、年（不是美国常用的“月/日/年”的格式）。例如：li repa pi'e ze pi'e pasoxaso是1967年7月21日（这一天，人类第一次登上月球。）。
+
+我们因此可以这样说：
+
+```
+li repa pi'e ze pi'e pasoxaso cu detri lenu lo remna cu klama le lunra
+1969年7月21日是人类到达月球的那一天。
+```
+
+
+```
+我的生日是八月十五号 // 我出生（这个事件）的日期是八月十五日
+fe lenu mi jbena [kei] cu detri fa li pamu pi'e bi
+
+我出生（这个事件）发生的日期是八月十五日。
+lenu mi jbena cu se detri li pamu pi'e bi
+```
+
+lenu : specific event descriptor: contraction of le nu and identical in meaning.
+
+
+你也许猜到了：一定存在一个sumti tcita用来为"日期"服务。它就是de'i，它的工作方式与ti'u类似（请留意sumti tcita试图与selbri类似就如同他们所暗示的那样）。所以，另一种来告诉你我的生日的办法是：
+
+tcita : x1 is a label/tag of x2 showing information x3.
+
+de'i: detri modal, 1st place (for letters) dated ... ; attaches date stamp.
+
+```
+mi jbena de'i li pamu pi'e bi
+我出生（这个事件）发生的日期是八月十五日。
+```
+
+提问：如果detri只用了一个数字，那么它是日期。那么不同时给出日期和月份，我们该怎样来描述事件发生的年份呢？
+
+
+逻辑语的解决办法正是它的“卖点”之一：逻辑语使用叫做“终止词”的单词，用于指示一组单词——比如段落——何时终止。你可以把它和数学里的括号相提并论，它们的作用非常类似。所以，在逻辑语里，如果一个语句结构的长度不是预先知晓的，一个终止词就应该出现在语句结构的尾部。这造就了逻辑语在语法上的“没有歧义”：
+
+
+1. 一个冠词（比如le或loi）开始的一个sumti，用ku来终止。
+2. 一串数字，用boi来终止。
+3. 一组紧跟着selbri的sumti，用vau来终止。
+4. 由nu起头的谓词子句——一个bridi嵌入另外一个bridi中（就是前面我们学到的 lenu……），用kei终止。
+
+比如，如果我们看到cu出现在句子中，我们就知道后面紧跟着的是一个selbri，在它之前的sumti也就自然终止了，所以我们就可以省略掉ku。（事实上，那就是为什么cu出现在最前面——在自然语言里，一个动词的开头作为语句结构标志的效果，远超过一个名词的结尾。）如果一句新句子开始——由“可听见的标点符号”：.i（也许是逻辑语里最有标志性的标记）来标记——意味着接下来的单词没有任何一个属于上一句的sumti的了，所以我们可以省略掉vau。事实上，它是在我们前面看到的句子里唯一有可能产生歧义的地方，确实需要终止词登场。所以，关于登月这句话，两种通常可能的含义如下：
+
+
+## 時態
+
+cmavo : x1 is a structure word of grammatical class x2, with meaning/function x3 in usage (language) x4.
+
+当你想说关于时间的内容时，自然会有很多关于时间的办法，而且逻辑语准备了足够多的cmavo来处理时间。让我们来说：张在10:00离开酒吧而苏珊在11:00到达（尽管没有日期）。用最恰当的办法来使用“时间”，就像上一课教的那样：
+
+la jan. cliva le barja ti'u la jaucac..i la suzyn. klama le barja ti'u la feicac.
+
+
+
+然而，如果确切的时间并不重要的话，我们可以这样说：
+
+```
+ba lenu la jan. cliva kei la suzyn. klama le barja
+张离开后，苏珊来到了酒吧。
+
+pu lenu la suzyn. klama le barja kei la jan. cliva
+在苏珊来到酒吧之前，张离开了。
+```
+
+ba : Gloss Word: then in the sense of "afterward"
+Definition: time tense relation/direction: will [selbri]; after [sumti];  default future tense.
+
+pu : Gloss Word: before
+Definition: time tense relation/direction: did [selbri]; before/prior to [sumti]; default past tense.
+
+
+那么这些ba、pu、kei到底是什么呢？kei就是前面的章节里你应该记住的：它负责“封闭”由nu开启的一串单词。你也很可能猜到了，ba就是“在……之后”（源自表示“未来、后来”的gismu：balvi），pu就是“在……之前”（来源于表示“过去、之前”的gismu：purci）。
+
+bridi: Gloss Word: predicate
+Definition: x1 (du'u) is a predicate relationship with relation x2 among arguments (sequence/set) x3.
+
+sumti: Gloss Word: argument
+Definition: x1 is a/the argument of predicate/function x2 filling place x3 (kind/number).
+
+cmavo:  Gloss Word: structure word
+Definition: x1 is a structure word of grammatical class x2, with meaning/function x3 in usage (language) x4.
+
+
+我们像这样使用ba和pu，就是在对一件事件的时间与另一件事件的时间的相对关系进行定位。我们最有可能用来作为参照点的时间，是说话者的“（此地的）现在”。如果我们要定位主bridi相对于“现在”，我们可以省略sumti，并且只用时态cmavo。例如，如果我们想说“稍后，苏珊来到了酒吧。”，我们可以这样说：
+
+baku la suzyn. klama le barja
+
+baku在这里不是一个阿塞拜疆城市（巴库）的名字，它的意思是：“(现在)之后”。而ku的作用就是来分开la suzyn.（你可以把它们写成两个单词:ba ku——意思上没有任何区别。）。同理，“（现在）之，张前离开了。”可以写作：
+
+
+让我们假设一下，苏珊运气没这么坏，当她到酒吧时正好张要离开。我可以这样说：
+
+```
+ca lenu la jan. cliva le barja kei la suzyn. klama le barja
+当张正要离开酒吧时，苏珊进入走进了酒吧。
+```
+
+ca 同样来自一个gismu——cabna，意思是“同时发生”，所以另一种相同的含义的说法就是：
+
+```
+lenu la jan. cliva le barja cu cabna lenu la suzyn. klama le barja
+张离开酒吧和苏珊到达酒吧是在同一时刻。
+
+```
+
+
+如果你把ca后面的sumti省略掉，那么剩下的单词组成的短语caku，就应被理解为是与“说话者所处位置的当前时间”同时。如果与“说话者所处位置的当前时间”同时，那么理所当然就是指事件是在现在发生的，所以caku本身的意思就是“现在”。例如：
+
+```
+caku la suzyn. klama le barja
+现在，苏珊进入了酒吧。
+```
+
+现在我们已经拥有了三个“时间单词”：pu（在…之前）、ca（与…同时）和ba（在…之后）。我们也可以通过另外三个单词来修饰它们：zi、za和zu（成系列的cmavo经常包含-i、-a、-u这样词缀——如果它们不按AEIOU的顺序来排列的话。），代表着时间间隔上的短、中、长。所以，puzi意思就是“在…很短时间之前”，puza意思就是“在…很长时间之前”。
+
+这一次，我们假设苏珊运气欠佳，就差几分钟错过了与张见面。我们可以这样说：
+bazi lenu la jan. cliva kei la suzyn. klama le barja
+假设你正好看到这一幕，然后告诉苏珊：就差几分钟，她就能遇到张，你可以这样说：
+puziku la jan. cliva le barja
+
+## 时间与selbri
+
+比较基本的方法是：任何关于时间的cmavo(或者cmavo的序列)都可以放在一个selbri之前，从而使整个bridi进入相应的“时态”。，这与“时间cmavo + ku”形式的效果是完全一样的。例如：
+
+
+la jan. pu cliva le barja
+
+和
+
+puku la jan. cliva le barja
+
+```
+// 時態詞
+pu=現在|正=before
+ka=過去|已
+ba=未來|將=after
+
+pu=在…之前
+ca=与…同时
+ba=在…之后
+
+zi=距現在..短
+za=距現在..中
+zu=距現在..長
+
+puzi=在…很短时间之前
+puza=在…很长时间之前
+
+ze'i=延續時間..短
+ze'a=延續時間..中
+ze'u=延續時間..長
+```
+
+例句
+
+```
+.oi.uinai le mi zdani puzi se lindi
+哦不！我的屋子刚才被雷击了！
+
+la bil. ze'u pinxe loi birje
+比尔喝了很长时间的啤酒。
+
+mi bazize'a xabju la djakartas.
+很快我就要去雅加达住一段时间。
+
+lo la natos. vinji baze'u gunta la BE,ograd.
+北约（NATO）的飞机将要轰炸贝尔格莱德很长时间。
+```
+
+## 空间
+
+
+还记得单词ti吗？它是系列ti、ta、tu的一部分，意思大致相当于“这个”、“那个”、“其他的”。如果我们不是在讨论东西而是在讨论位置，我我们就说vi、va、vu，意思大致相当于“这里”、“那里”、“远处的那边”。同理，这取决于你是在讨论什么。如果是在和医生说身上哪里疼，ti可能是你的脚趾头；如果你是在讨论天文学话题，ti也许指的是太阳系。因此我们可以这样说：
+
+```
+viku mi gunka
+我在这里工作
+```
+
+
+我们之前看到过puku意思是“在现在（这里）之前”。类似的，viku意思是“在这里（现在）很近的范围内”，通俗的说法就是“这里”。如果我们不希望表达相对于说话者的位置，而是相对于其他事物的位置，我们可以往空的sumti里填上内容，采用同样的方式来描述附近发生的事情。当然，这里可以把vi、va、vu当做之前提到过的sumti tcita来使用，就像de'i和ti'u:它们可以为bridi增加新的sumti。比如：
+
+```
+vi la paris. mi gunka
+我在巴黎工作。
+vu le mi zdani mi gunka
+我工作的地方和我住的地方相距很远。
+va lenu la KEnedis. se catra kei mi gunka
+我工作的地方和肯尼迪被杀（这件事情发生）的地方不远也不近。
+```
+
+
+如果我们用类似ri'u这样的单词来合并位置和vi之类的单词，它们会变得更有成效。ri'u是一个位置cmavo，意思是“在……的右边”，所以ri'u vi ku就是“靠在这里（现在）的右边”。你现在所说的仍然指的是某处发生了与你有关的某事物，不过你还告诉了在哪个方向上可以发现它。例如：
+
+```
+la bil. sanli ri'u vi ku
+la bil. ri'u vi sanli
+比尔就紧靠着站在右边。
+```
+
+而且就如同vi和bu'u，你可以和一些明显的sumti一起使用，来描述在哪里发生了与某物相关的某事：
+
+```
+la bil. sanli ri'u vi la meiris.
+比尔就紧靠着站在玛丽的右边。
+```
+
+其实，存在一类在功能上类似ri'u的cmavo，它们被称为FAhA类cmavo，名字来源于其中的成员之一——fa'a（在……的方向上）。它们还有：to'o（远离……）、zu'a（在……的左边）、ne'a（挨着……）、ne'i(在……内部)等等。（所有的空间cmavo都在《The Complete Lojban Language》第十章内详述。）
+
+我还可以将时间和空间统一。比如，mi vipuzu gunka 意思是“我很久以前在这里工作”。一个常见的组合是：puzuvuku，意思是“很久以前在一个遥远的地方……”——“标准的”传说故事的开头。
+
+
+## 更多否定
+
+用来“专门否定”selbri的单词（而不是整句bridi）就是na'e。所以如果我们说mi na nelci ro gerku，即便我们对所有的犬类都没有兴趣，这样说也没错。但是：
+
+```
+mi na'e nelci ro gerku
+我没有喜欢所有的狗。
+```
+
+
+# 第七章 代词和更多的谓词子句
+

@@ -1,0 +1,49 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="../../gospa.js"></script>
+<title> 陳鍾誠  / 教科書  / 邏輯語 Lojban / parser</title>
+
+ [[陳鍾誠]](ccc:home)  / [[教科書]](book:home)  / [[邏輯語 Lojban]](lojban:home) 
+
+<h1 id="parser">parser</h1>
+
+<h2 id="parser">語意 parser</h2>
+
+<ul>
+<li>JIMPE : <a href="https://github.com/YoshikuniJujo/cakyrespa/blob/master/src/Jimpe.hs">https://github.com/YoshikuniJujo/cakyrespa/blob/master/src/Jimpe.hs</a>
+<ul><li>程式碼很簡潔，但卻是 Haskell 寫的。</li>
+<li>專案： <a href="https://github.com/YoshikuniJujo/cakyrespa">https://github.com/YoshikuniJujo/cakyrespa</a></li>
+<li>論文： <a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.87.7134&amp;rep=rep1&amp;type=pdf">http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.87.7134&amp;rep=rep1&amp;type=pdf</a></li></ul></li>
+<li>線上版： <a href="http://www.lojban.org/jboski/index.php">http://www.lojban.org/jboski/index.php</a> , C 語言
+<ul><li>原始碼： <a href="https://github.com/lojban/jbofihe">https://github.com/lojban/jbofihe</a></li>
+<li>However, jbofi’e is an unmaintained project1 which can only handle a small subset of the language. Camxes on the other hand is a robust system that supports most Lojban syntax features and is even resilient to malformed sub-expressions.</li></ul></li>
+<li><a href="https://gitlab.com/zugz/tersmu">https://gitlab.com/zugz/tersmu</a> , Haskell 語言</li>
+</ul>
+
+<h2 id="parser">語法 parser</h2>
+
+<ul>
+<li><a href="https://mw.lojban.org/papri/zantufa">zantufa</a>
+<ul><li>zentufa 看來是簡化過(或說進化)的版本，但是看來很有潛力，parse 速度快，而且語法樹結構漂亮很多。(Zantufa is based on an unofficial but beautiful and simple grammar aiming at impartiality according to Guskant.)</li>
+<li>線上版 -- <a href="http://guskant.github.io/gerna_cipra/zantufa-1.html">http://guskant.github.io/gerna_cipra/zantufa-1.html</a> , 速度快多了。(語法簡化影響這麼大嗎？)</li>
+<li>語法修改</li>
+<li>the temporary grammar -- <a href="https://mw.lojban.org/papri/zasni_gerna_cenba_vreji">https://mw.lojban.org/papri/zasni_gerna_cenba_vreji</a></li>
+<li>MEX grammar proposal -- <a href="https://mw.lojban.org/papri/MEX_grammar_proposal">https://mw.lojban.org/papri/MEX_grammar_proposal</a></li>
+<li>Zantufa is kind to <a href="https://mw.lojban.org/papri/ce_ki_tau_jau">Cekitaujaus</a> , and will adopt it as one of the variations of Zantufa.</li>
+<li>github -- <a href="https://github.com/guskant/gerna_cipra">https://github.com/guskant/gerna_cipra</a></li>
+<li>用來產生 parser 的程式 -- <a href="https://github.com/guskant/gerna_cipra/blob/master/zantufa-pegjs.js">https://github.com/guskant/gerna_cipra/blob/master/zantufa-pegjs.js</a></li>
+<li>最後的成品 -- <a href="https://raw.githubusercontent.com/guskant/gerna_cipra/master/js/zantufa-1.9999.js">https://raw.githubusercontent.com/guskant/gerna_cipra/master/js/zantufa-1.9999.js</a> (支援 node.js, 有 export)。</li>
+<li>作者的 github -- <a href="https://github.com/guskant">https://github.com/guskant</a></li>
+<li>Most part of the idea of Cekitaus is adopted by Zantufa. However, for the importance of the selma'o GA, Zantufa cannot adopt exchanges (mo'oi ge) (i'au go) (zo'u go) (moi'oi gei ge'i) etc.</li>
+<li>Most of Lojban IRC members and frequent Lojban speakers (who are the creator of La Bangu and the speakers of the Lojban IRC dialect that is explained by La Bangu) damn much Zantufa. The opinions of them are so illogical that Guskant will not sincerely respond. Zantufa is simply one of the parsers of texts in Lojban, and it forces nobody to do anything. Frequent abuse on Zantufa is similar to the situation that American English speakers heap abuse on Indian English. Despicable.</li></ul></li>
+<li><a href="https://mw.lojban.org/papri/Official_LLG_Parser">Official LLG Parser</a> , C in DOS.</li>
+<li><a href="https://github.com/lojban/jbofihe">jbofihe</a> , C </li>
+<li><a href="http://wiki.call-cc.org/eggref/4/jbogenturfahi">jbogenturfa'i</a>
+<ul><li><a href="https://github.com/alanpost/jbogenturfahi">https://github.com/alanpost/jbogenturfahi</a> </li></ul></li>
+</ul>
+
+</body>
+</html>

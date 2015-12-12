@@ -1,0 +1,21 @@
+# 習題：取小值 min.js
+
+檔案： @[[min.js]](code/min.js)
+
+```
+function min(a,b) {
+   if (a<b) 
+     return a;
+   else
+     return b;
+ } 
+ 
+ console.log("min(3,5)="+min(3,5));
+```
+
+執行結果
+
+```
+nqu-192-168-61-142:code mac020$ node min.js
+min(3,5)=3
+```
