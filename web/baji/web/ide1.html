@@ -1,0 +1,294 @@
+<!-- firefox 似乎不支援 ruby tag : http://www.w3schools.com/tags/tag_ruby.asp -->
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"> -->
+  <link href="bootstrap.min.css" rel="stylesheet">
+  <link href="main.css" rel="stylesheet">
+  <title>八極語 Baji IDE</title>
+</head>
+<body onload="load()">
+
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#" style="color:#cccc33">八極語 Baji IDE</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">        
+              <a id="dictname" class="dropdown-toggle" data-toggle="dropdown">Panel<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a onclick="switchPanel('Help')">About</a></li>
+                <li><a onclick="switchPanel('Main')">Main</a></li>
+              </ul>
+            </li>
+          </ul>       
+        </div>
+      </div>
+    </nav>
+    <div id="panelMain" class="container panel" style="display:none;">
+        <form name="formMT" class="lead">
+          <div class="row" style="height:300px">
+            <div class="col-md-6">
+              <div class="page-header">
+                <div class="dropdown">
+                  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    <span id="sourceLanguage">English</span>
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li><a href="JavaScript:switchSource('e')">English</a></li>
+                    <li><a href="JavaScript:switchSource('c')">中文</a></li>
+                  </ul>
+                </div>
+              </div>
+              <textarea id="xbox" class="form-control" style="height:100%">
+八極語=baji:N 是適合機器翻譯的人造語言，
+
+設計目標是讓不同語言的 使用者=user:M ， 
+
+可以用母語 詞彙=vocabulary:N 溝通。
+
+例如中文使用者可以撰寫八極語文章，
+
+然後電腦 會=will 翻譯為 八極=baji:N 英語，
+
+於是英語 閱讀者=reader:M 不需學習中文，
+
+應該 就= 能讀懂 這些=these 句子。
+
+If you want to learn baji , visit `http://ccc.nqu.edu.tw/baji/home` for more information.
+
+You will found baji is easy to learn, all you have to do is write based on the baji rule, nothing more. 
+              </textarea>
+            </div>
+            <div class="col-md-6">
+              <div class="page-header">
+                <div class="dropdown">
+                  <button class="btn btn-default dropdown-toggle" type="button" id="targetLanguage" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    中英對照
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li><a href="JavaScript:switchTarget('ce')">中英對照</a></li>
+                    <li><a href="JavaScript:switchTarget('c')">中文</a></li>
+                    <li><a href="JavaScript:switchTarget('e')">English</a></li>
+                  </ul>                  
+                </div>
+              </div>
+              <div id="ybox" style="width:100%; height:100%; border:1px dotted #888; overflow:auto;" class="form-control" contenteditable></div>
+            </div>
+            <div></div>
+          </div> <!-- row -->
+        </form>
+    </div>
+    <div id="panelHelp" class="container panel" style="display:none;">
+      <center>
+        <div class="page-header"><h1>About</h1></div>
+        <br/><img id="waitIcon" src="wait.gif"/><br/>
+        <p class="lead">
+        8gIDE is a editor and machine translation system for 8gL language<br/><br/>
+        Source at github -- <a href="https://github.com/ccckmit/8g">https://github.com/ccckmit/baji</a><br/>
+        </p>
+      </center>
+    </div>
+    <div id="candidates" class="well well-sm" style="overflow:auto"></div>
+    <script src="jquery.min.js"></script>
+    <script src="bootstrap.min.js"></script>
+<!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>-->
+    <script src="../kb/kb8.json"></script>
+    <script src="../lib/spa.js"></script>
+    <script src="baji.js"></script>
+<script>
+
+var xbox, ybox;
+
+switchPanel("Help");
+
+function load() {
+
+  kb8.loadJson(kb8json);
+  xbox   = document.getElementById("xbox");
+  ybox   = document.getElementById("ybox");
+  switchDict('e2c');
+  $('#waitIcon').hide();
+  switchPanel("Main");
+  var dbDictKnown = spa.db.load('dictKnown');
+  if (dbDictKnown !== undefined)
+    dictKnown = dbDictKnown;
+  $("#xbox").bind("keyup click focus", function() {
+    cursorMove(this);
+  });
+  $("#ybox").bind("keyup click focus", function() {
+    cursorMove(this);
+  });
+//  console.log("doMT()");
+  doMT();
+}
+
+function forget() {
+  spa.db.forget('dictKnown');
+  dictKnown = {};
+}
+
+var s2t={};
+var languageMap = { e: "English", c:"中文", j:"Japanese" };
+
+function switchLanguage(id, language) {
+  $(id).html(languageMap[language]);
+}
+
+function switchDict(s, t) {
+  s2t.s = s;
+  s2t.t = t;
+  switchLanguage('#sourceLanguage', s);
+  switchLanguage('#sourceLanguage', t);
+}
+
+function switchPanel(name) {
+  $(".panel" ).css( "display", "none" );
+  $("#panel"+name).css("display", "block");
+  $(".tab" ).removeClass("active");
+  $("#tab"+name).addClass("active");
+}
+
+function normalize(e) {
+  return e.replace("'", '_').toLowerCase();
+}
+
+function mt(text) {
+  return mt8.translate(text, 'ruby_st', 'html');
+}
+
+function array2html(array) {
+  var str="";
+  for (var i in array) {
+    str += ""+JSON.stringify(array[i])+" ";
+  }
+  return str;
+}
+
+function doMT() {
+  var cstr = mt(xbox.value);
+  ybox.innerHTML = cstr.replace(/\n/g, "<BR/>");
+}
+
+function cursorMove(element) {
+  var el = $(element).get(0);
+  var pos = el.selectionStart+1;
+  var text = " "+xbox.value;
+  var tail = text.substring(pos), m, w, tag, msg, candidates;
+  if (m=tail.match(/^[a-zA-Z]+/)) {
+    w = m[0].toLowerCase();
+    candidates = kb8.getHits('e2c', w);
+    tag        = kb8.getOne('e2p', w);
+    msg        = w+"("+tag+"):"+array2html(candidates);
+  } else if (m=tail.match(/^[\u4E00-\u9FA5]{1}/)) {
+    msg = '';
+    var ci = 1, candidates=[];
+    for (var len=4; len>=0; len--) {
+      w = tail.substr(0,len);
+      hits = kb8.getHits('c2e', w);
+      if (lib.defined(hits) && hits.length > 0) {
+        for (var hi in hits) {
+          var e = hits[hi];
+          msg += ci+":"+w+'='+e+",";
+          candidates.push[w+'='+e];
+          ci++;
+        }
+      }
+    }
+  } else {
+    msg = '';
+  }
+  var xy = getSelectionCoords();
+  $('#candidates').html(msg+" x="+xy.x+" y="+xy.y);
+}
+
+$('#xbox').keyup(doMT);
+
+window.onbeforeunload = function(){
+  spa.db.save('dictKnown', dictKnown);
+};
+
+document.onmouseup = function() {
+  var coords = getSelectionCoords();
+  $('#candidates').html(coords.x + ", " + coords.y);
+}
+
+function getSelectionCoords(win) {
+    win = win || window;
+    var doc = win.document;
+    var sel = doc.selection, range, rects, rect;
+    var x = 0, y = 0;
+    if (sel) {
+        if (sel.type != "Control") {
+            range = sel.createRange();
+            range.collapse(true);
+            x = range.boundingLeft;
+            y = range.boundingTop;
+        }
+    } else if (win.getSelection) {
+        sel = win.getSelection();
+        if (sel.rangeCount) {
+            range = sel.getRangeAt(0).cloneRange();
+            if (range.getClientRects) {
+                range.collapse(true);
+                rects = range.getClientRects();
+                if (rects.length > 0) {
+                    rect = rects[0];
+                }
+                x = rect.left;
+                y = rect.top;
+            }
+        }
+    }
+    return { x: x, y: y };
+}
+</script>
+</body>
+</html>
+
+<!--
+
+              I see 一隻狗追一隻貓 in the 228 park
+              
+              The snow glows white on the mountain tonight.
+
+              The snow glow white on the mountain tonight.
+              
+              Not a footprint to be seen.
+
+              Not a foot print to be seen.
+              
+              A kingdom of isolation, and it looks like I'm the Queen.
+
+              A kingdom of isolation, and it look like I am the Queen.
+              
+              The wind is howling like this swirling storm inside.
+
+              The wind is howl like this swirl storm inside.
+              
+              Couldn't keep it in; Heaven knows I've tried.              
+              
+              Could not keep it in; Heaven know I have tried.              
+
+/*  
+  for (var i=pos+1; i>0; i--) {
+    if (/[\s]/.test(text[i])) {
+      i--;
+      break;
+    }
+  }
+  i = Math.max(i,0);
+*/  
+-->

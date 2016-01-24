@@ -1,0 +1,119 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="../../gospa.js"></script>
+<title> 陳鍾誠  / 課程  / JavaScript 第一門課 / Android 手機的開發者設定</title>
+
+ [[陳鍾誠]](ccc:home)  / [[課程]](course:home)  / [[JavaScript 第一門課]](js1:home) 
+
+<h1 id="android">Android 手機的開發者設定</h1>
+
+<h2 id="">手機設定的問題</h2>
+
+<p>不管是 phonegap, cordova 或 react native 我都跑不起來，結果發現下列網頁：</p>
+
+<ul>
+<li><a href="http://www.technipages.com/galaxy-tab-4-enable-usb-debugging">http://www.technipages.com/galaxy-tab-4-enable-usb-debugging</a></li>
+</ul>
+
+<p>在《設定/一般/關於裝置》中找到《版本號碼》，連續點七次之後就會開啟《開發人員模式》...... XD
+這到底是哪招阿！ 有任何一本《開發人員手冊》上會這樣寫的嗎？</p>
+
+<p>然後還要把 USB 偵錯打勾！</p>
+
+<ul>
+<li><a href="http://www.samsung.com/us/support/answer/ANS00030524/237280/">http://www.samsung.com/us/support/answer/ANS00030524/237280/</a></li>
+</ul>
+
+<p>Google 官方的設定說明</p>
+
+<ul>
+<li><a href="http://developer.android.com/tools/device.html">http://developer.android.com/tools/device.html</a></li>
+</ul>
+
+<pre><code>Setting up a Device for Development
+
+1 Verify that your application is "debuggable" in your manifest or build.gradle file.
+
+2 Enable USB debugging on your device.
+
+On most devices running Android 3.2 or older, you can find the option under Settings &gt; Applications &gt; Development.
+On Android 4.0 and newer, it's in Settings &gt; Developer options.
+Note: On Android 4.2 and newer, Developer options is hidden by default. To make it available, go to 
+
+Settings &gt; About phone and tap Build number seven times. 
+
+Return to the previous screen to find Developer options. 
+
+3. Set up your system to detect your device.
+
+If you're developing on Windows, you need to install a USB driver for adb. For an installation guide and links to OEM drivers, see the OEM USB Drivers document.
+
+If you're developing on Mac OS X, it just works. Skip this step.
+If you're developing on Ubuntu Linux, you need to add a udev rules file that contains a USB configuration for each type of device you want to use for development. In the rules file, each device manufacturer is identified by a unique vendor ID, as specified by the ATTR{idVendor} property. For a list of vendor IDs, see USB Vendor IDs, below. To set up device detection on Ubuntu Linux:
+Log in as root and create this file: /etc/udev/rules.d/51-android.rules.
+Use this format to add each vendor to the file:
+SUBSYSTEM=="usb", ATTR{idVendor}=="0bb4", MODE="0666", GROUP="plugdev" 
+
+In this example, the vendor ID is for HTC. The MODE assignment specifies read/write permissions, and GROUP defines which Unix group owns the device node.
+Note: The rule syntax may vary slightly depending on your environment. Consult the udev documentation for your system as needed. For an overview of rule syntax, see this guide to writing udev rules.
+
+Now execute:
+chmod a+r /etc/udev/rules.d/51-android.rules
+</code></pre>
+
+<h2 id="driver">driver</h2>
+
+<p>在 windows 中 Samsung Galaxy Tab4 必須安裝下列 driver 才能進行開發！</p>
+
+<ul>
+<li><a href="http://developer.samsung.com/technical-doc/view.do?v=T000000117">Samsung Android USB Driver for Windows</a></li>
+</ul>
+
+<p>參考： <a href="http://stackoverflow.com/questions/4503582/android-development-with-samsung-galaxy-tablet">http://stackoverflow.com/questions/4503582/android-development-with-samsung-galaxy-tablet</a></p>
+
+<h2 id="androidapp">測試第一個 Android APP</h2>
+
+<ul>
+<li><p><a href="http://developer.android.com/training/basics/firstapp/index.html">Building Your First App</a></p></li>
+<li><p><a href="http://stackoverflow.com/questions/23081263/adb-android-device-unauthorized">ADB Android Device Unauthorized</a></p></li>
+</ul>
+
+<p>當上傳失敗時，請做下列動作：</p>
+
+<pre><code>down vote
+It's likely that the device is no longer authorized on ADB for whatever reason.
+
+1. Check if authorized:
+
+&lt;ANDROID_SDK_HOME&gt;\platform-tools&gt;adb devices
+List of devices attached
+4df798d76f98cf6d        unauthorized
+2. Revoke USB Debugging on phone
+
+If the device is shown as unauthorized, go to the developer options on the phone and click "Revoke USB debugging authorization" (tested with JellyBean &amp; Samsung GalaxyIII).
+
+3. Restart ADB Server:
+
+Then restarted adb server
+
+adb kill-server
+adb start-server
+4. Reconnect the device
+
+The device will ask if you are agree to connect the computer id. You need to confirm it.
+
+5. Now Check the device
+
+It is now authorized!
+
+adb devices
+&lt;ANDROID_SDK_HOME&gt;\platform-tools&gt;adb devices
+List of devices attached
+4df798d76f98cf6d        device
+</code></pre>
+
+</body>
+</html>

@@ -1,0 +1,95 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="../../gospa.js"></script>
+<title> 陳鍾誠  / 課程  / JavaScript 第一門課 / PhoneGap 開源版 -- Cordova</title>
+
+ [[陳鍾誠]](ccc:home)  / [[課程]](course:home)  / [[JavaScript 第一門課]](js1:home) 
+
+<h1 id="phonegapcordova">PhoneGap 開源版 -- Cordova</h1>
+
+<h2 id="">入門</h2>
+
+<ul>
+<li><a href="http://blog.tiger-workshop.com/difference-between-phonegap-and-cordova/">PhoneGap 與 Cordova 的實際差異</a></li>
+<li><a href="https://cordova.apache.org/docs/en/latest/guide/cli/index.html">Cordova:The Command-Line Interface</a></li>
+<li><a href="https://cordova.apache.org/docs/en/2.4.0/guide/getting-started/index.html">Getting Started Guides</a> 
+<ul><li><a href="https://cordova.apache.org/docs/en/2.4.0/guide/getting-started/windows-8/index.html">Getting Started with Windows 8 (Windows Store apps)</a></li>
+<li><a href="https://cordova.apache.org/docs/en/2.4.0/guide/getting-started/android/index.html">Getting Started with Android</a> (讚!) -- 必須先按 <a href="https://cordova.apache.org/docs/en/latest/guide/platforms/android/index.html">Android Platform Guide</a> 裝好 </li>
+<li><a href="https://cordova.apache.org/docs/en/2.4.0/guide/getting-started/ios/index.html">Getting Started with iOS</a> -- 必須先按 <a href="https://cordova.apache.org/docs/en/latest/guide/platforms/ios/index.html">iOS Platform Guide</a> 裝好。</li>
+<li><a href="https://www.npmjs.com/package/cca">cca : Run Chrome Apps on mobile using Apache Cordova</a> (已停止開發)</li></ul></li>
+<li><a href="https://developer.chrome.com/apps/chrome_apps_on_mobile">Google Chrome: Run Chrome Apps on Mobile Using Apache Cordova</a></li>
+<li><a href="https://netbeans.org/kb/docs/webclient/cordova-gettingstarted.html">Getting Started with Creating a Cordova Application</a></li>
+<li><a href="https://technet.microsoft.com/en-gb/library/dn757057(v=vs.120).aspx">Create Your First Apache Cordova App</a></li>
+<li><a href="http://www.csie.nptu.edu.tw/ezfiles/128/1128/img/291/cordova_1.pdf">http://www.csie.nptu.edu.tw/ezfiles/128/1128/img/291/cordova_1.pdf</a></li>
+</ul>
+
+<h2 id="clicommandlineinterface">CLI (command line interface) 支援平台</h2>
+
+<pre><code>iOS (Mac)
+Amazon Fire OS (Mac, Linux, Windows)
+Android (Mac, Linux, Windows)
+BlackBerry 10 (Mac, Linux, Windows)
+Windows Phone 8 (Windows)
+Windows (Windows)
+Firefox OS (Mac, Linux, Windows)
+</code></pre>
+
+<h2 id="nodejscli">在 node.js 裡面使用 CLI</h2>
+
+<pre><code>$ npm install -g cordova
+$ cordova create hello com.example.hello HelloWorld // 創建專案
+$ cd hello
+$ cordova platforms ls          // 列出平台
+$ cordova platform add ios      // 加入 iOS 平台支援
+$ cordova platform add android  // 加入 Android 平台支援
+$ cordova build                 // 建置專案
+$ cordova emulate android       // 開啟模擬器
+$ cordova plugin search bar code // 搜尋套件
+$ cordova plugin add cordova-plugin-device // 加入基本套件
+$ cordova plugin add cordova-plugin-network-information // 網路套件
+$ cordova plugin add cordova-plugin-battery-status // 電池狀態
+$ cordova plugin add cordova-plugin-device-motion // 移動感知
+$ cordova plugin add cordova-plugin-device-orientation // 方向感知
+$ cordova plugin add cordova-plugin-geolocation // 地理定位
+$ cordova plugin add cordova-plugin-camera // 相機
+$ cordova plugin add cordova-plugin-media-capture // 媒體抓取
+$ cordova plugin add cordova-plugin-media // 媒體
+$ cordova plugin add cordova-plugin-file // 檔案函式庫
+$ cordova plugin add cordova-plugin-file-transfer
+$ cordova plugin add cordova-plugin-dialogs // 對話框
+$ cordova plugin add cordova-plugin-vibration // 震動
+$ cordova plugin add cordova-plugin-contacts // 通訊錄
+$ cordova plugin add cordova-plugin-globalization // 全球化
+$ cordova plugin add cordova-plugin-splashscreen // 載入畫面
+$ cordova plugin add cordova-plugin-inappbrowser // 開新瀏覽器
+$ cordova plugin add cordova-plugin-console // 除錯套件
+$ cordova plugin ls // 列出套件
+$ cordova plugin rm cordova-plugin-console // 移除套件
+$ cordova plugin add cordova-plugin-console cordova-plugin-device // 新增套件
+</code></pre>
+
+<h2 id="pluginapi">Plugin &amp; API</h2>
+
+<ul>
+<li><p><a href="https://cordova.apache.org/docs/en/2.4.0/">Cordova:API</a></p></li>
+<li><p><a href="https://www.npmjs.com/package/cordova-plugin-file">https://www.npmjs.com/package/cordova-plugin-file</a></p>
+
+<ul><li><a href="https://github.com/apache/cordova-plugin-file">https://github.com/apache/cordova-plugin-file</a></li></ul></li>
+</ul>
+
+<h2 id="">檔案存取</h2>
+
+<ul>
+<li><a href="https://cordova.apache.org/docs/en/2.4.0/cordova/file/file.html">cordova:File</a>
+<ul><li><a href="https://cordova.apache.org/docs/en/2.4.0/cordova/file/filewriter/filewriter.html">cordova:FileWriter</a></li></ul></li>
+<li><a href="http://www.raymondcamden.com/2014/11/05/Cordova-Example-Writing-to-a-file">Cordova Example: Writing to a file</a></li>
+<li><a href="https://gist.github.com/alunny/1904992">simple PhoneGap File API example</a></li>
+<li><a href="https://dzone.com/articles/cordova-example-writing-file">Cordova Example: Writing to a File</a></li>
+<li><a href="https://www.neontribe.co.uk/cordova-file-plugin-examples/">CORDOVA FILE PLUGIN EXAMPLES</a> (讚!)</li>
+</ul>
+
+</body>
+</html>

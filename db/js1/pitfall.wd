@@ -1,0 +1,11 @@
+# JavaScript 語法的陷阱
+
+* <https://www.facebook.com/ccckmit/posts/10153688833841893>
+
+```
+剛剛碰到一個 javascript 的語法陷阱，用 for (i in array) 取出的 i 竟然是字串型態，而不是整數。
+
+除錯除了好久！
+
+所以在陣列形態下，最好還是用 for (var i=0; i<array.length; i++)
+```

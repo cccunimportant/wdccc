@@ -1,0 +1,72 @@
+# PhoneGap 開源版 -- Cordova
+
+## 入門
+
+* [Cordova:The Command-Line Interface](https://cordova.apache.org/docs/en/latest/guide/cli/index.html)
+* [Getting Started Guides](https://cordova.apache.org/docs/en/2.4.0/guide/getting-started/index.html)
+ * [Getting Started with Windows 8](https://cordova.apache.org/docs/en/2.4.0/guide/getting-started/windows-8/index.html)
+ * [Getting Started with Android](https://cordova.apache.org/docs/en/2.4.0/guide/getting-started/android/index.html)
+ * [Getting Started with iOS](https://cordova.apache.org/docs/en/2.4.0/guide/getting-started/ios/index.html)
+
+## CLI (command line interface) 支援平台
+
+```
+iOS (Mac)
+Amazon Fire OS (Mac, Linux, Windows)
+Android (Mac, Linux, Windows)
+BlackBerry 10 (Mac, Linux, Windows)
+Windows Phone 8 (Windows)
+Windows (Windows)
+Firefox OS (Mac, Linux, Windows)
+```
+
+## 在 node.js 裡面使用 CLI
+
+```
+$ npm install -g cordova
+$ cordova create hello com.example.hello HelloWorld // 創建專案
+$ cd hello
+$ cordova platforms ls          // 列出平台
+$ cordova platform add ios      // 加入 iOS 平台支援
+$ cordova platform add android  // 加入 Android 平台支援
+$ cordova build                 // 建置專案
+$ cordova emulate android       // 開啟模擬器
+$ cordova plugin search bar code // 搜尋套件
+$ cordova plugin add cordova-plugin-device // 加入基本套件
+$ cordova plugin add cordova-plugin-network-information // 網路套件
+$ cordova plugin add cordova-plugin-battery-status // 電池狀態
+$ cordova plugin add cordova-plugin-device-motion // 移動感知
+$ cordova plugin add cordova-plugin-device-orientation // 方向感知
+$ cordova plugin add cordova-plugin-geolocation // 地理定位
+$ cordova plugin add cordova-plugin-camera // 相機
+$ cordova plugin add cordova-plugin-media-capture // 媒體抓取
+$ cordova plugin add cordova-plugin-media // 媒體
+$ cordova plugin add cordova-plugin-file // 檔案函式庫
+$ cordova plugin add cordova-plugin-file-transfer
+$ cordova plugin add cordova-plugin-dialogs // 對話框
+$ cordova plugin add cordova-plugin-vibration // 震動
+$ cordova plugin add cordova-plugin-contacts // 通訊錄
+$ cordova plugin add cordova-plugin-globalization // 全球化
+$ cordova plugin add cordova-plugin-splashscreen // 載入畫面
+$ cordova plugin add cordova-plugin-inappbrowser // 開新瀏覽器
+$ cordova plugin add cordova-plugin-console // 除錯套件
+$ cordova plugin ls // 列出套件
+$ cordova plugin rm cordova-plugin-console // 移除套件
+$ cordova plugin add cordova-plugin-console cordova-plugin-device // 新增套件
+```
+
+## Plugin & API
+
+* [Cordova:API](https://cordova.apache.org/docs/en/2.4.0/)
+
+* <https://www.npmjs.com/package/cordova-plugin-file>
+ * <https://github.com/apache/cordova-plugin-file>
+
+## 檔案存取
+
+* [cordova:File](https://cordova.apache.org/docs/en/2.4.0/cordova/file/file.html)
+ * [cordova:FileWriter](https://cordova.apache.org/docs/en/2.4.0/cordova/file/filewriter/filewriter.html)
+* [Cordova Example: Writing to a file](http://www.raymondcamden.com/2014/11/05/Cordova-Example-Writing-to-a-file)
+* [simple PhoneGap File API example](https://gist.github.com/alunny/1904992)
+* [Cordova Example: Writing to a File](https://dzone.com/articles/cordova-example-writing-file)
+* [CORDOVA FILE PLUGIN EXAMPLES](https://www.neontribe.co.uk/cordova-file-plugin-examples/) (讚!)

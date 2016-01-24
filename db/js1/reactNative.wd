@@ -1,0 +1,10 @@
+# React Native
+
+* <https://facebook.github.io/react-native/docs/getting-started.html#content>
+
+```
+$ npm install -g react-native-cli
+$ react-native init AwesomeProject
+$ cd AwesomeProject
+$ react-native run-android
+```

@@ -5,5 +5,10 @@
  * [YouTube: Mini-Series: Bulding HTML5 Desktop Apps with Node-Webkit](https://www.youtube.com/playlist?list=PLkyEadCJGLm0-yn8wi-a5n8H7lKll23t9)
  * [Node Webkit (NW.js) tutorial: creating a Markdown editor](https://ducode.org/node-webkit-tutorial-creating-a-markdown-editor.html)
 
-* 問題
- * [Add Android Support](https://github.com/nwjs/nw.js/issues/94)
+## 資料儲存
+
+* [Save persistent data in app](https://github.com/nwjs/nw.js/wiki/Save-persistent-data-in-app)
+* [NW JS - Download and Save a File from URL](http://stackoverflow.com/questions/31125357/nw-js-download-and-save-a-file-from-url)
+
+## 問題
+* [Add Android Support](https://github.com/nwjs/nw.js/issues/94)

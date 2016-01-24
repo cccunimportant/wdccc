@@ -1,3 +1,14 @@
 | 教學 | 主題  | 影片  |
 |--------|-----------|
+| 文章 |  [[JavaScript 手機 APP 的各種解決方案]](mobileApp)  |  |
+| 文章 |  [[Android 手機的開發者設定]](android)  |  |
 | 文章 |  [[瀏覽器型的手機程式 -- PhoneGap]](phonegap)  |  |
+| 文章 |  [[PhoneGap 開源版 -- Cordova]](cordova)  |  |
+| 文章 |  [[我的第一個 Cordova 程式]](cordova_hello)  |  |
+| 文章 |  [[在 Cordova 上儲存資料]](cordova_dava)  |  |
+| 文章 |  [[我的第一個 Cordova Android 手機程式]](cordova_android)  |  |
+| 文章 |  [[用 Ionic + Cordova 寫手機程式]](ionic)  |  |
+| 文章 |  [[React Native]](reactNative)  |  |
+| 文章 |  [[在手機上面跑 node.js -- JXCore]](jxcore)  |  |
+| 文章 |  [[EZoApp 快速開發行動 App 的工具]](ezoapp)  |  |
+| 文章 |  [[Chrome App]](ChromeApp)  |  |

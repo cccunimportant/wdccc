@@ -13,7 +13,22 @@
 <ul>
 <li><p>官網 : <a href="http://browserify.org/">http://browserify.org/</a></p></li>
 <li><p>討論： <a href="http://stackoverflow.com/questions/28674652/what-is-the-difference-between-browserify-requirejs-modules-and-es6-modules">http://stackoverflow.com/questions/28674652/what-is-the-difference-between-browserify-requirejs-modules-and-es6-modules</a></p></li>
+<li><p><a href="http://www.alloyteam.com/2014/10/browserify-yun-xing-yuan-li-fen-xi/">browserify运行原理分析</a></p></li>
+<li><p><a href="https://www.facebook.com/ccckmit/posts/10153694656771893">https://www.facebook.com/ccckmit/posts/10153694656771893</a></p></li>
 </ul>
+
+<pre><code>使用 browserify 一直搞錯方向，原來不是把模組匯出來，而是要寫個主程式，那個主程式會被直接執行。
+
+於是在主程式裡若設定為區域變數，那麼瀏覽器裏就存取不到，但若設為 global variable，那麼瀏覽器裏就存取得到了。
+</code></pre>
+
+<p>我在八極語裏要把模組匯給瀏覽器使用時，以下程式中的變數不能加上 var ，這樣才會是全域變數，外面的瀏覽器程式才能用得到。</p>
+
+<pre><code>lib = require("./lib");
+kb = require("./kb");
+kb8 = require("./kb8");
+mt8 = require("./mt8");
+</code></pre>
 
 </body>
 </html>

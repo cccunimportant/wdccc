@@ -1,0 +1,1 @@
+browserify ../lib/baji.js > ../web/baji.js

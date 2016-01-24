@@ -1,0 +1,96 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="../../gospa.js"></script>
+<title> 陳鍾誠  / 課程  / JavaScript 第一門課 / 在 Cordova 上儲存資料</title>
+
+ [[陳鍾誠]](ccc:home)  / [[課程]](course:home)  / [[JavaScript 第一門課]](js1:home) 
+
+<h1 id="cordova">在 Cordova 上儲存資料</h1>
+
+<ul>
+<li><a href="https://github.com/apache/cordova-plugin-file/blob/master/README.md">cordova-plugin-file</a></li>
+<li><a href="https://cordova.apache.org/docs/en/3.3.0/cordova/file/file.html">Cordova:File</a></li>
+</ul>
+
+<h2 id="fileplugin">安裝 file plugin</h2>
+
+<pre><code>D:\js\MyApp&gt;cordova plugin add org.apache.cordova.file
+Notice: org.apache.cordova.file has been automatically converted to cordova-plug
+in-file and fetched from npm. This is due to our old plugins registry shutting d
+own.
+Fetching plugin "cordova-plugin-file" via npm
+Installing "cordova-plugin-file" for android
+...
+
+D:\js\MyApp&gt;cordova plugin add org.apache.cordova.file-transfer
+Notice: org.apache.cordova.file-transfer has been automatically converted to cor
+dova-plugin-file-transfer and fetched from npm. This is due to our old plugins r
+egistry shutting down.
+Fetching plugin "cordova-plugin-file-transfer" via npm
+Installing "cordova-plugin-file-transfer" for android
+Dependent plugin "cordova-plugin-file" already installed on android.
+Installing "cordova-plugin-file-transfer" for browser
+Dependent plugin "cordova-plugin-file" already installed on browser.
+
+D:\js\MyApp&gt;cordova run browser
+Running command: cmd "/s /c "D:\js\MyApp\platforms\browser\cordova\run.bat""
+Static file server running on port 8000 (i.e. http://localhost:8000)
+CTRL + C to shut down
+Static file server running @ http://localhost:8000/index.html
+CTRL + C to shut down
+...
+</code></pre>
+
+<h2 id="">檔案系統範例</h2>
+
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;File System Example&lt;/title&gt;
+
+    &lt;script type="text/javascript" charset="utf-8" src="cordova.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8"&gt;
+
+    // Wait for device API libraries to load
+    //
+    document.addEventListener("deviceready", onDeviceReady, false);
+
+    // device APIs are available
+    //
+    function onDeviceReady() {
+        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFileSystemSuccess, fail);
+    }
+
+    function onFileSystemSuccess(fileSystem) {
+        console.log(fileSystem.name);
+        console.log(fileSystem.root.name);
+    }
+
+    function fail(error) {
+        console.log(error.code);
+    }
+
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Example&lt;/h1&gt;
+    &lt;p&gt;File System&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>執行結果</p>
+
+<div class="figure"><img src="db/js1/CordovaFileSystemExample.jpg"/><p class="caption"></p></div>
+
+<p>問題是：上面結果中有 missing command error ，經查詢後發現可能是元件沒安裝好。</p>
+
+<ul>
+<li><a href="http://stackoverflow.com/questions/26533573/error-initializing-cordovamissing-command-error-in-windows-phone-8-1">http://stackoverflow.com/questions/26533573/error-initializing-cordovamissing-command-error-in-windows-phone-8-1</a></li>
+</ul>
+
+</body>
+</html>

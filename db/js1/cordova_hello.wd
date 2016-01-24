@@ -1,0 +1,41 @@
+# 我的第一個 Cordova 程式
+
+```
+$ npm install -g cordova
+$ cordova create MyApp
+$ cd MyApp
+$ cordova platform add browser
+$ cordova run browser
+```
+
+![[圖、執行畫面]](HelloCordova.jpg)
+
+
+<!--
+
+```
+D:\js\hello>cordova platforms remove android
+
+D:\js\hello>cordova platforms add android@4.1.1
+Adding android project...
+Running command: cmd "/s /c "C:\Users\user\.cordova\lib\npm_cache\cordova-androi
+d\4.1.1\package\bin\create.bat D:\js\hello\platforms\android com.example.hello H
+elloWorld --cli""
+Creating Cordova project for the Android platform:
+        Path: platforms\android
+        Package: com.example.hello
+        Name: HelloWorld
+        Activity: MainActivity
+        Android target: android-22
+Copying template files...
+Android project created with cordova-android@4.1.1
+Installing "cordova-plugin-whitelist" for android
+
+This plugin is only applicable for versions of cordova-android greater than 4.0.
+ If you have a previous platform version, you do *not* need this plugin since th
+e whitelist will be built in.
+
+
+```
+
+-->

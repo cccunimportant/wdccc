@@ -1,0 +1,10 @@
+<table>
+<tr><th colspan="2" style="text-align:center"> 軟體工程</th></tr>
+<tr><td> [[第 1 講]](videoGit) </td><td> [[版本管理 -- 使用 git]](git) (施工中) </td></tr>
+<tr><td> [[第 2 講]](videoDebug) </td><td> [[除錯工具 -- node debug]](debug) (施工中) </td></tr>
+<tr><td> [[第 3 講]](videoMocha) </td><td> [[測試驅動開發 -- 使用 Mocha]](mocha) (施工中) </td></tr>
+<tr><td> [[第 4 講]](videoSelenium) </td><td> [[網站自動測試 -- 使用 Selenium]](selenium) (施工中) </td></tr>
+<tr><td> [[第 5 講]](videoJenkins) </td><td> [[整合測試 -- 使用 Jenkins]](jenkins) (施工中) </td></tr>
+<tr><td> [[補充教材]](videoSoftwareEngineering) </td><td> [[軟體工程的相關技術]](SoftwareEngineering) </td></tr>
+<tr><td> [[實作專案]](videoProjects) </td><td> [[只有實作後才能真正學會程式設計]](practice) </td></tr>
+</table>

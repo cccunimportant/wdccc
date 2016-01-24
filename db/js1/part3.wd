@@ -1,0 +1,48 @@
+<table>
+<tr><th colspan="2" style="text-align:center">JavaScript 語言基礎 (上學期)</th></tr>
+<tr><td> [[第 0 講]](ccc:courseMap) </td><td> [[陳鍾誠的課程地圖]](course:home) </td></tr>
+<tr><td> [[第 1 講]](videoBasic) </td><td> [[JavaScript 與 Node.js 的基本用法]](basic) </td></tr>
+<tr><td> [[第 2 講]](videoControl) </td><td> [[JavaScript 的流程控制]](control) </td></tr>
+<tr><td> [[第 3 講]](videoArraystring) </td><td> [[JavaScript 的陣列與字串]](arraystring) </td></tr>
+<tr><td> [[第 4 講]](videoFunction0) </td><td> [[JavaScript 的函數與參數]](function0) </td></tr>
+<tr><td> [[第 5 講]](videoDictionary) </td><td> [[JavaScript 中的 JSON 字典格式]](dictionary)  </td></tr>
+<tr><td> [[第 6 講]](videoRecursive) </td><td> [[遞迴函數]](recursive) </td></tr>
+<tr><td> [[第 7 講]](videoCallback0) </td><td> [[匿名函數與回呼 callback]](callback0) </td></tr>
+<tr><td> [[第 8 講]](videoObject0) </td><td> [[JavaScript 的物件導向基礎]](object1) </td></tr>
+<tr><td> [[補充教材]](videoModule) </td><td> [[模組、套件、版本與除錯]](module) </td></tr>
+<tr><th colspan="2" style="text-align:center"> 前端網頁技術 (上學期) </th></tr>
+<tr><td> [[第 9 講]](videoHtml) </td><td> [[HTML 網頁的基本語法]](html) </td></tr>
+<tr><td> [[第 10 講]](videoCSS) </td><td> [[CSS 網頁排版格式]](css) </td></tr>
+<tr><td> [[第 11 講]](videoDHtml) </td><td> [[DHTML 動態網頁]](dhtml) </td></tr>
+<tr><td> [[第 12 講]](videoBootstrap) </td><td> [[Bootstrap 彈性樣板]](bootstrap) </td></tr>
+<tr><td> [[第 13 講]](videoJQuery) </td><td> [[jQuery 前端查詢操控者]](jQuery) </td></tr>
+<tr><td> [[第 14 講]](videoCanvas) </td><td> [[Canvas 2D 繪圖技術]](canvas) </td></tr>
+<tr><td> [[第 15 講]](videoChart) </td><td> [[圖表繪製套件]](chart) </td></tr>
+<tr><td> [[第 16 講]](videoGame) </td><td> [[遊戲設計]](game) </td></tr>
+<tr><td> [[第 17 講]](videoGpsMap) </td><td> [[衛星定位與地圖]](gpsMap) </td></tr>
+<tr><td> [[第 18 講]](videoImage) </td><td> [[影像處理]](image) </td></tr>
+<tr><td> [[補充教材]](videoFrontend) </td><td> [[前端的相關技術]](frontend) </td></tr>
+<tr><th colspan="2" style="text-align:center"> 後端伺服器技術 (下學期)  </th></tr>
+<tr><td> [[第 19 講]](videoSocket) </td><td> [[Socket 網路函式庫]](socket) </td></tr>
+<tr><td> [[第 20 講]](videoServer) </td><td> [[設計 Web Server]](videoServer) </td></tr>
+<tr><td> [[第 21 講]](videoExpress) </td><td> [[伺服端框架 Express]](express) </td></tr>
+<tr><td> [[第 22 講]](videoKoa) </td><td> [[伺服端框架 Koa]](koa) </td></tr>
+<tr><td> [[第 23 講]](videoDB) </td><td> [[資料庫]](db:home) </td></tr>
+<tr><td> [[第 24 講]](videoLogin) </td><td> [[帳號與登入]](login) </td></tr>
+<tr><td> [[第 25 講]](videoOnline) </td><td> [[發佈與上線]](online) </td></tr>
+<tr><td> [[補充教材]](videoBackend) </td><td> [[後端的相關技術]](backend) </td></tr>
+<tr><th colspan="2" style="text-align:center"> 本地應用 </th></tr>
+<tr><td> [[第 26 講]](videoShell) </td><td> [[命令列工具開發 -- Shell]](shell) (施工中) </td></tr>
+<tr><td> [[第 27 講]](videoWindow) </td><td> [[視窗程式開發 -- NW.js]](nwjs) (施工中) </td></tr>
+<tr><td> [[第 28 講]](videoPhone) </td><td> [[手機程式開發 -- Cordova]](cordova) (施工中) </td></tr>
+<tr><td> [[第 29 講]](videoPlugin) </td><td> [[瀏覽器插件 -- plugin]](plugin) (施工中) </td></tr>
+<tr><td> [[第 30 講]](videoLocalGame) </td><td> [[3D 遊戲 -- WebGL]](webgl) (施工中) </td></tr>
+<tr><th colspan="2" style="text-align:center"> 軟體工程 (下學期) </th></tr>
+<tr><td> [[第 31 講]](videoGit) </td><td> [[版本管理 -- 使用 git]](git) (施工中) </td></tr>
+<tr><td> [[第 32 講]](videoDebug) </td><td> [[除錯工具 -- node debug]](debug) (施工中) </td></tr>
+<tr><td> [[第 33 講]](videoMocha) </td><td> [[測試驅動開發 -- 使用 Mocha]](mocha) (施工中) </td></tr>
+<tr><td> [[第 34 講]](videoSelenium) </td><td> [[網站自動測試 -- 使用 Selenium]](selenium) (施工中) </td></tr>
+<tr><td> [[第 35 講]](videoJenkins) </td><td> [[整合測試 -- 使用 Jenkins]](jenkins) (施工中) </td></tr>
+<tr><td> [[補充教材]](videoSoftwareEngineering) </td><td> [[軟體工程的相關技術]](SoftwareEngineering) </td></tr>
+<tr><td> [[實作專案]](videoProjects) </td><td> [[只有實作後才能真正學會程式設計]](practice) </td></tr>
+</table>

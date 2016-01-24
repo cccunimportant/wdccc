@@ -1,3 +1,18 @@
+| 部分 | JavaScript 主題 | 
+|-------|-------| 
+| 前言      | [[課程地圖]](course:home) | 
+| 第 1 部分 | [[語言基礎]](partLanguage) | 
+| 第 2 部分 | [[前端網頁技術]](partFrontend) | 
+| 第 3 部分 | [[後端伺服器技術]](partBackend) | 
+| 第 4 部分 | [[資料庫]](partDatabase) | 
+| 第 5 部分 | [[本地應用]](partApp) | 
+| 第 6 部分 | [[軟體工程]](partSoftwareEngineering) | 
+| 第 7 部分 | [[科學計算]](sciComputing) | 
+| 附錄      | [[實作範例]](videoProjects) | 
+| 工具      | [[工具集錦]](tools) | 
+
+<!--
+
 <table>
 <tr><th colspan="2" style="text-align:center">JavaScript 語言基礎 (上學期)</th></tr>
 <tr><td> [[第 0 講]](ccc:courseMap) </td><td> [[陳鍾誠的課程地圖]](course:home) </td></tr>
@@ -34,7 +49,7 @@
 <tr><th colspan="2" style="text-align:center"> 本地應用 </th></tr>
 <tr><td> [[第 26 講]](videoShell) </td><td> [[命令列工具開發 -- Shell]](shell) (施工中) </td></tr>
 <tr><td> [[第 27 講]](videoWindow) </td><td> [[視窗程式開發 -- NW.js]](nwjs) (施工中) </td></tr>
-<tr><td> [[第 28 講]](videoPhone) </td><td> [[手機程式開發 -- PhoneGap]](phonegap) (施工中) </td></tr>
+<tr><td> [[第 28 講]](videoPhone) </td><td> [[手機程式開發 -- Cordova]](cordova) (施工中) </td></tr>
 <tr><td> [[第 29 講]](videoPlugin) </td><td> [[瀏覽器插件 -- plugin]](plugin) (施工中) </td></tr>
 <tr><td> [[第 30 講]](videoLocalGame) </td><td> [[3D 遊戲 -- WebGL]](webgl) (施工中) </td></tr>
 <tr><th colspan="2" style="text-align:center"> 軟體工程 (下學期) </th></tr>
@@ -43,5 +58,8 @@
 <tr><td> [[第 33 講]](videoMocha) </td><td> [[測試驅動開發 -- 使用 Mocha]](mocha) (施工中) </td></tr>
 <tr><td> [[第 34 講]](videoSelenium) </td><td> [[網站自動測試 -- 使用 Selenium]](selenium) (施工中) </td></tr>
 <tr><td> [[第 35 講]](videoJenkins) </td><td> [[整合測試 -- 使用 Jenkins]](jenkins) (施工中) </td></tr>
+<tr><td> [[補充教材]](videoSoftwareEngineering) </td><td> [[軟體工程的相關技術]](SoftwareEngineering) </td></tr>
 <tr><td> [[實作專案]](videoProjects) </td><td> [[只有實作後才能真正學會程式設計]](practice) </td></tr>
 </table>
+
+-->

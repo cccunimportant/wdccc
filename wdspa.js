@@ -1,5 +1,5 @@
 // facebook 留言板前置區塊
-
+/*
 (function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
@@ -7,7 +7,7 @@
   js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.4&appId=1556392457962507";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
-
+*/
 $('.panel').css( "display", "none");
 
 var domain, file; // filepath, 

@@ -1,0 +1,83 @@
+# 在 Cordova 上儲存資料
+
+* [cordova-plugin-file](https://github.com/apache/cordova-plugin-file/blob/master/README.md)
+* [Cordova:File](https://cordova.apache.org/docs/en/3.3.0/cordova/file/file.html)
+
+## 安裝 file plugin
+
+```
+D:\js\MyApp>cordova plugin add org.apache.cordova.file
+Notice: org.apache.cordova.file has been automatically converted to cordova-plug
+in-file and fetched from npm. This is due to our old plugins registry shutting d
+own.
+Fetching plugin "cordova-plugin-file" via npm
+Installing "cordova-plugin-file" for android
+...
+
+D:\js\MyApp>cordova plugin add org.apache.cordova.file-transfer
+Notice: org.apache.cordova.file-transfer has been automatically converted to cor
+dova-plugin-file-transfer and fetched from npm. This is due to our old plugins r
+egistry shutting down.
+Fetching plugin "cordova-plugin-file-transfer" via npm
+Installing "cordova-plugin-file-transfer" for android
+Dependent plugin "cordova-plugin-file" already installed on android.
+Installing "cordova-plugin-file-transfer" for browser
+Dependent plugin "cordova-plugin-file" already installed on browser.
+
+D:\js\MyApp>cordova run browser
+Running command: cmd "/s /c "D:\js\MyApp\platforms\browser\cordova\run.bat""
+Static file server running on port 8000 (i.e. http://localhost:8000)
+CTRL + C to shut down
+Static file server running @ http://localhost:8000/index.html
+CTRL + C to shut down
+...
+```
+
+## 檔案系統範例
+
+```
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>File System Example</title>
+
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+    <script type="text/javascript" charset="utf-8">
+
+    // Wait for device API libraries to load
+    //
+    document.addEventListener("deviceready", onDeviceReady, false);
+
+    // device APIs are available
+    //
+    function onDeviceReady() {
+        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFileSystemSuccess, fail);
+    }
+
+    function onFileSystemSuccess(fileSystem) {
+        console.log(fileSystem.name);
+        console.log(fileSystem.root.name);
+    }
+
+    function fail(error) {
+        console.log(error.code);
+    }
+
+    </script>
+  </head>
+  <body>
+    <h1>Example</h1>
+    <p>File System</p>
+  </body>
+</html>
+```
+
+執行結果
+
+![[]](CordovaFileSystemExample.jpg)
+
+
+問題是：上面結果中有 missing command error ，經查詢後發現可能是元件沒安裝好。
+
+* <http://stackoverflow.com/questions/26533573/error-initializing-cordovamissing-command-error-in-windows-phone-8-1>
+
