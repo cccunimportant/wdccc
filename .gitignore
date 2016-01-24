@@ -9,6 +9,10 @@ node_modules
 *.mpg
 *.wmv
 *.avi
+*.odp
+*.ppt
+*.md
+*.exe
 .git
 google248635f00fa5b089.html
 bak
