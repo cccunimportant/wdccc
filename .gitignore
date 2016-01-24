@@ -3,6 +3,13 @@ node_modules
 *.bak
 *.exe
 *.pem
+*.blend
+*.zip
+*.rar
+*.mpg
+*.wmv
+*.avi
+.git
 google248635f00fa5b089.html
 bak
 setting.js
